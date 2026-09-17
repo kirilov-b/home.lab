@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Home Lab – Dokumentation</title>
+    <title>Home Lab – Technische Dokumentation</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
@@ -16,26 +20,37 @@
         }
 
         .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 50px 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 25px;
+        }
+
+        header {
+            margin-bottom: 50px;
+        }
+
+        .label {
+            color: #8b949e;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
+            font-size: 48px;
+            margin: 10px 0;
+        }
+
+        .subtitle {
+            color: #8b949e;
+            font-size: 19px;
+            max-width: 750px;
         }
 
         h2 {
-            margin-top: 45px;
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 10px;
-        }
-
-        .intro {
-            color: #8b949e;
-            font-size: 18px;
-            margin-bottom: 40px;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            font-size: 26px;
         }
 
         .grid {
@@ -46,13 +61,13 @@
 
         .card {
             display: block;
-            padding: 20px;
+            padding: 22px;
             background: #161b22;
             border: 1px solid #30363d;
             border-radius: 10px;
             text-decoration: none;
             color: #e6edf3;
-            transition: 0.2s;
+            transition: 0.2s ease;
         }
 
         .card:hover {
@@ -60,29 +75,50 @@
             transform: translateY(-2px);
         }
 
+        .icon {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
         .card-title {
-            font-size: 19px;
+            font-size: 18px;
             font-weight: bold;
-            margin-bottom: 6px;
         }
 
         .card-description {
+            margin-top: 6px;
             color: #8b949e;
             font-size: 14px;
         }
 
-        .diagram {
-            margin-top: 25px;
+        .diagram-container {
             background: #161b22;
             border: 1px solid #30363d;
             border-radius: 10px;
             overflow: hidden;
         }
 
+        .diagram-header {
+            padding: 18px 22px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .diagram-header strong {
+            font-size: 18px;
+        }
+
+        .diagram-header p {
+            margin: 4px 0 0;
+            color: #8b949e;
+            font-size: 14px;
+        }
+
         iframe {
+            display: block;
             width: 100%;
             height: 650px;
             border: 0;
+            background: white;
         }
 
         .footer {
@@ -92,6 +128,20 @@
             color: #8b949e;
             font-size: 13px;
         }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .container {
+                padding: 40px 18px;
+            }
+
+            iframe {
+                height: 500px;
+            }
+        }
     </style>
 </head>
 
@@ -99,60 +149,80 @@
 
 <div class="container">
 
-    <h1>Home Lab</h1>
+    <header>
+        <div class="label">Technical Documentation</div>
 
-    <div class="intro">
-        Technische Dokumentation einer virtualisierten IT-Infrastruktur.
-    </div>
+        <h1>Home Lab</h1>
+
+        <div class="subtitle">
+            Dokumentation einer virtualisierten IT-Infrastruktur –
+            von Hardware und Netzwerk über virtuelle Maschinen
+            bis hin zu Firewall, Domain Controller und Backup.
+        </div>
+    </header>
+
 
     <h2>📚 Dokumentation</h2>
 
     <div class="grid">
 
-        <a class="card" href="Dokumentation/01-hardware-setup.html">
-            <div class="card-title">🖥️ Hardware & Setup</div>
+        <a class="card" href="Dokumentation/1-hardware-setup.html">
+            <div class="icon">🖥️</div>
+            <div class="card-title">Hardware & Setup</div>
             <div class="card-description">
                 Hardware, Grundinstallation und Systemaufbau.
             </div>
         </a>
 
-        <a class="card" href="Dokumentation/02-netzwerk.html">
-            <div class="card-title">🌐 Netzwerk</div>
+
+        <a class="card" href="Dokumentation/2-netzwerk.html">
+            <div class="icon">🌐</div>
+            <div class="card-title">Netzwerk</div>
             <div class="card-description">
                 Netzwerkstruktur, Adressierung und Konfiguration.
             </div>
         </a>
 
-        <a class="card" href="Dokumentation/03-vm-client.html">
-            <div class="card-title">💻 VM – Client</div>
-            <div class="card-description">
-                Dokumentation des virtuellen Client-Systems.
-            </div>
-        </a>
 
-        <a class="card" href="Dokumentation/04-vm-dc.html">
-            <div class="card-title">🏢 VM – Domain Controller</div>
-            <div class="card-description">
-                Dokumentation des Domain Controllers.
-            </div>
-        </a>
-
-        <a class="card" href="Dokumentation/05-vm-fw.html">
-            <div class="card-title">🛡️ VM – Firewall</div>
-            <div class="card-description">
-                Firewall und Netzwerkkonfiguration.
-            </div>
-        </a>
-
-        <a class="card" href="Dokumentation/06-vm-liste.html">
-            <div class="card-title">📋 VM – Liste</div>
+        <a class="card" href="Dokumentation/3-vm-liste.html">
+            <div class="icon">📋</div>
+            <div class="card-title">VM-Liste</div>
             <div class="card-description">
                 Übersicht der virtuellen Maschinen.
             </div>
         </a>
 
-        <a class="card" href="Dokumentation/07-backup.html">
-            <div class="card-title">💾 Backup</div>
+
+        <a class="card" href="Dokumentation/4-vm-firewall.html">
+            <div class="icon">🛡️</div>
+            <div class="card-title">VM – Firewall</div>
+            <div class="card-description">
+                Firewall und Netzwerkkonfiguration.
+            </div>
+        </a>
+
+
+        <a class="card" href="Dokumentation/5-vm-domain-controller.html">
+            <div class="icon">🏢</div>
+            <div class="card-title">VM – Domain Controller</div>
+            <div class="card-description">
+                Domain Controller und zentrale Dienste.
+            </div>
+        </a>
+
+
+        <a class="card" href="Dokumentation/6-vm-client01.html">
+            <div class="icon">💻</div>
+            <div class="card-title">VM – CLIENT01</div>
+            <div class="card-description">
+                Dokumentation des virtuellen Clients.
+            </div>
+        </a>
+
+
+        <a class="card" href="Dokumentation/7-back-up.html">
+            <div class="icon">💾</div>
+            <div class="card-title">Backup</div>
             <div class="card-description">
                 Backup-Konzept und Konfiguration.
             </div>
@@ -163,7 +233,14 @@
 
     <h2>📐 Infrastruktur-Diagramm</h2>
 
-    <div class="diagram">
+    <div class="diagram-container">
+
+        <div class="diagram-header">
+            <strong>Systemübersicht</strong>
+            <p>
+                Interaktive Darstellung der Infrastruktur und Netzwerkverbindungen.
+            </p>
+        </div>
 
         <iframe
             src="https://viewer.diagrams.net/?nav=1&resize=1&toolbar=zoom%20layers&dark=auto#Uhttps%3A%2F%2Fraw.githubusercontent.com%2FStefan-B%2Fhome.lab%2Fmain%2FDokumentation%2Fdiagramm.drawio"
