@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {{ page.title }} – Home Lab
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #0d1117;
+
+            color: #e6edf3;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           LAYOUT
+           ========================= */
+
+        .container {
+
+            max-width: 1000px;
+
+            margin: 0 auto;
+
+            padding: 50px 25px 70px;
+        }
+
+
+        /* =========================
+           HEADER
+           ========================= */
+
+        .top-label {
+
+            color: #00813F;
+
+            font-size: 13px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 8px;
+        }
+
+
+        .site-title {
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+            color: #e6edf3;
+
+            text-decoration: none;
+        }
+
+
+        .site-title:hover {
+
+            color: #00A3A3;
+        }
+
+
+        .navigation {
+
+            margin-top: 25px;
+
+            padding-bottom: 20px;
+
+            border-bottom:
+                1px solid #30363d;
+        }
+
+
+        .back-link {
+
+            color: #00813F;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        .back-link:hover {
+
+            color: #00A3A3;
+
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           DOCUMENT
+           ========================= */
+
+        .document {
+
+            margin-top: 45px;
+        }
+
+
+        .document-title {
+
+            font-size: 38px;
+
+            line-height: 1.25;
+
+            margin-bottom: 30px;
+
+            color: #e6edf3;
+        }
+
+
+        /* =========================
+           HEADINGS
+           ========================= */
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+
+            color: #00813F;
+
+            line-height: 1.3;
+
+            margin-top: 35px;
+
+            margin-bottom: 15px;
+        }
+
+
+        h1 {
+
+            font-size: 36px;
+        }
+
+
+        h2 {
+
+            font-size: 28px;
+        }
+
+
+        h3 {
+
+            font-size: 22px;
+        }
+
+
+        h4 {
+
+            font-size: 19px;
+        }
+
+
+        /* =========================
+           TEXT
+           ========================= */
+
+        p {
+
+            color: #c9d1d9;
+
+            margin-bottom: 18px;
+        }
+
+
+        strong {
+
+            color: #e6edf3;
+        }
+
+
+        /* =========================
+           LINKS
+           ========================= */
+
+        a {
+
+            color: #00813F;
+
+            text-decoration: none;
+        }
+
+
+        a:hover {
+
+            color: #00A3A3;
+
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           LISTS
+           ========================= */
+
+        ul,
+        ol {
+
+            color: #c9d1d9;
+
+            padding-left: 28px;
+        }
+
+
+        li {
+
+            margin-bottom: 7px;
+        }
+
+
+        /* =========================
+           CODE
+           ========================= */
+
+        code {
+
+            padding:
+                2px 6px;
+
+            background: #161b22;
+
+            border:
+                1px solid #30363d;
+
+            border-radius: 5px;
+
+            color: #00A3A3;
+
+            font-family:
+                Consolas,
+                Monaco,
+                monospace;
+
+            font-size: 0.9em;
+        }
+
+
+        pre {
+
+            padding: 20px;
+
+            background: #161b22;
+
+            border:
+                1px solid #30363d;
+
+            border-radius: 8px;
+
+            overflow-x: auto;
+        }
+
+
+        pre code {
+
+            padding: 0;
+
+            border: 0;
+
+            background: transparent;
+
+            color: #c9d1d9;
+        }
+
+
+        /* =========================
+           TABLES
+           ========================= */
+
+        table {
+
+            width: 100%;
+
+            border-collapse:
+                collapse;
+
+            margin:
+                25px 0;
+        }
+
+
+        th {
+
+            background: #003D1F;
+
+            color: #ffffff;
+
+            text-align: left;
+
+            padding: 12px;
+
+            border:
+                1px solid #00813F;
+        }
+
+
+        td {
+
+            padding: 12px;
+
+            border:
+                1px solid #30363d;
+
+            color: #c9d1d9;
+        }
+
+
+        tr:nth-child(even) {
+
+            background: #161b22;
+        }
+
+
+        /* =========================
+           BLOCKQUOTE
+           ========================= */
+
+        blockquote {
+
+            margin:
+                25px 0;
+
+            padding:
+                10px 20px;
+
+            border-left:
+                4px solid #00813F;
+
+            background: #161b22;
+
+            color: #8b949e;
+        }
+
+
+        /* =========================
+           HORIZONTAL LINE
+           ========================= */
+
+        hr {
+
+            border: 0;
+
+            border-top:
+                1px solid #30363d;
+
+            margin:
+                40px 0;
+        }
+
+
+        /* =========================
+           IMAGES
+           ========================= */
+
+        img {
+
+            max-width: 100%;
+
+            height: auto;
+
+            border-radius: 8px;
+
+            margin:
+                15px 0;
+        }
+
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        footer {
+
+            margin-top: 60px;
+
+            padding-top: 20px;
+
+            border-top:
+                1px solid #30363d;
+
+            color: #8b949e;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           MOBILE
+           ========================= */
+
+        @media (max-width: 600px) {
+
+            .container {
+
+                padding:
+                    35px 18px 50px;
+            }
+
+
+            .document-title {
+
+                font-size: 30px;
+            }
+
+
+            h1 {
+
+                font-size: 30px;
+            }
+
+
+            h2 {
+
+                font-size: 24px;
+            }
+
+
+            h3 {
+
+                font-size: 20px;
+            }
+
+
+            table {
+
+                display: block;
+
+                overflow-x: auto;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =========================
+         HEADER
+         ========================= -->
+
+    <div class="top-label">
+        Technische Dokumentation
+    </div>
+
+
+    <a
+        class="site-title"
+        href="{{ '/' | relative_url }}">
+
+        Home Lab
+
+    </a>
+
+
+    <!-- =========================
+         NAVIGATION
+         ========================= -->
+
+    <div class="navigation">
+
+        <a
+            class="back-link"
+            href="{{ '/' | relative_url }}">
+
+            ← Zurück zur Übersicht
+
+        </a>
+
+    </div>
+
+
+    <!-- =========================
+         DOCUMENT
+         ========================= -->
+
+    <main class="document">
+
+
+        {% if page.title %}
+
+        <div class="document-title">
+
+            {{ page.title }}
+
+        </div>
+
+        {% endif %}
+
+
+        {{ content }}
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer>
+
+        Home Lab · Technische Projektdokumentation
+
+    </footer>
+
+
+</div>
+
+
+</body>
+
+</html>
