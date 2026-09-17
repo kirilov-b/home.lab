@@ -37,10 +37,6 @@
         }
 
 
-        /* =========================
-           LAYOUT
-           ========================= */
-
         .container {
 
             max-width: 1000px;
@@ -53,7 +49,7 @@
 
         /* =========================
            HEADER
-           ========================= */
+        ========================= */
 
         .top-label {
 
@@ -87,6 +83,10 @@
         }
 
 
+        /* =========================
+           NAVIGATION
+        ========================= */
+
         .navigation {
 
             margin-top: 25px;
@@ -118,9 +118,37 @@
         }
 
 
+        .repo-link {
+
+            color: #00813F;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        .repo-link:hover {
+
+            color: #00A3A3;
+
+            text-decoration: underline;
+        }
+
+
+        .nav-separator {
+
+            margin: 0 10px;
+
+            color: #30363d;
+        }
+
+
         /* =========================
            DOCUMENT
-           ========================= */
+        ========================= */
 
         .document {
 
@@ -140,10 +168,6 @@
         }
 
 
-        /* =========================
-           HEADINGS
-           ========================= */
-
         h1,
         h2,
         h3,
@@ -162,32 +186,24 @@
 
 
         h1 {
-
             font-size: 36px;
         }
 
 
         h2 {
-
             font-size: 28px;
         }
 
 
         h3 {
-
             font-size: 22px;
         }
 
 
         h4 {
-
             font-size: 19px;
         }
 
-
-        /* =========================
-           TEXT
-           ========================= */
 
         p {
 
@@ -202,10 +218,6 @@
             color: #e6edf3;
         }
 
-
-        /* =========================
-           LINKS
-           ========================= */
 
         a {
 
@@ -225,7 +237,7 @@
 
         /* =========================
            LISTS
-           ========================= */
+        ========================= */
 
         ul,
         ol {
@@ -244,12 +256,11 @@
 
         /* =========================
            CODE
-           ========================= */
+        ========================= */
 
         code {
 
-            padding:
-                2px 6px;
+            padding: 2px 6px;
 
             background: #161b22;
 
@@ -297,18 +308,16 @@
 
 
         /* =========================
-           TABLES
-           ========================= */
+           TABLE
+        ========================= */
 
         table {
 
             width: 100%;
 
-            border-collapse:
-                collapse;
+            border-collapse: collapse;
 
-            margin:
-                25px 0;
+            margin: 25px 0;
         }
 
 
@@ -346,15 +355,13 @@
 
         /* =========================
            BLOCKQUOTE
-           ========================= */
+        ========================= */
 
         blockquote {
 
-            margin:
-                25px 0;
+            margin: 25px 0;
 
-            padding:
-                10px 20px;
+            padding: 10px 20px;
 
             border-left:
                 4px solid #00813F;
@@ -367,7 +374,7 @@
 
         /* =========================
            HORIZONTAL LINE
-           ========================= */
+        ========================= */
 
         hr {
 
@@ -376,14 +383,13 @@
             border-top:
                 1px solid #30363d;
 
-            margin:
-                40px 0;
+            margin: 40px 0;
         }
 
 
         /* =========================
            IMAGES
-           ========================= */
+        ========================= */
 
         img {
 
@@ -393,14 +399,13 @@
 
             border-radius: 8px;
 
-            margin:
-                15px 0;
+            margin: 15px 0;
         }
 
 
         /* =========================
            FOOTER
-           ========================= */
+        ========================= */
 
         footer {
 
@@ -419,7 +424,7 @@
 
         /* =========================
            MOBILE
-           ========================= */
+        ========================= */
 
         @media (max-width: 600px) {
 
@@ -470,48 +475,54 @@
 
 <body>
 
-
 <div class="container">
 
 
-    <!-- =========================
-         HEADER
-         ========================= -->
+    <!-- HEADER -->
 
     <div class="top-label">
         Technische Dokumentation
     </div>
 
 
-    <a
-        class="site-title"
-        href="{{ '/' | relative_url }}">
+    <a class="site-title"
+       href="{{ '/' | relative_url }}">
 
         Home Lab
 
     </a>
 
 
-    <!-- =========================
-         NAVIGATION
-         ========================= -->
+    <!-- NAVIGATION -->
 
     <div class="navigation">
 
-        <a
-            class="back-link"
-            href="{{ '/' | relative_url }}">
+        <a class="back-link"
+           href="{{ '/' | relative_url }}">
 
             ← Zurück zur Übersicht
+
+        </a>
+
+
+        <span class="nav-separator">
+            ·
+        </span>
+
+
+        <a class="repo-link"
+           href="https://github.com/Stefan-B/home.lab"
+           target="_blank"
+           rel="noopener">
+
+            GitHub Repository →
 
         </a>
 
     </div>
 
 
-    <!-- =========================
-         DOCUMENT
-         ========================= -->
+    <!-- DOKUMENT -->
 
     <main class="document">
 
@@ -533,9 +544,7 @@
     </main>
 
 
-    <!-- =========================
-         FOOTER
-         ========================= -->
+    <!-- FOOTER -->
 
     <footer>
 
@@ -545,7 +554,6 @@
 
 
 </div>
-
 
 </body>
 
