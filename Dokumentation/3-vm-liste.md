@@ -1,4 +1,5 @@
 ---
+layout: default
 title: VM-Liste
 ---
 # BEISPIELSEITE! PROJEKT WIRD BALD HOCHGELADEN
