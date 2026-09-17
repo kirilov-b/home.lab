@@ -1,4 +1,5 @@
 ---
+layout: default
 title: VM – Domain Controller
 ---
 # BEISPIELSEITE! PROJEKT WIRD BALD HOCHGELADEN
