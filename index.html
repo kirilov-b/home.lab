@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,118 +21,124 @@
             line-height: 1.6;
         }
 
-
-        /* =========================
-           LAYOUT
-           ========================= */
-
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 60px 25px;
+            padding: 60px 25px 80px;
         }
-
 
         /* =========================
            HEADER
-           ========================= */
-
-        header {
-            margin-bottom: 50px;
-        }
+        ========================= */
 
         .label {
             color: #00813F;
-            font-size: 14px;
+            font-size: 13px;
             letter-spacing: 2px;
             text-transform: uppercase;
+            margin-bottom: 10px;
         }
 
         h1 {
-            font-size: 48px;
-            margin: 10px 0;
+            margin: 0;
+            font-size: 46px;
+            line-height: 1.2;
+            color: #e6edf3;
         }
 
         .subtitle {
+            margin-top: 15px;
+            max-width: 700px;
             color: #8b949e;
-            font-size: 19px;
-            max-width: 800px;
+            font-size: 17px;
         }
 
+        .repo-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #00813F;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .repo-link:hover {
+            color: #00A3A3;
+            text-decoration: underline;
+        }
 
         /* =========================
-           HEADINGS
-           ========================= */
+           DIVIDER
+        ========================= */
 
-        h2 {
-            margin-top: 50px;
+        .divider {
+            margin: 45px 0 35px;
+            border-top: 1px solid #30363d;
+        }
+
+        /* =========================
+           DOCUMENTATION
+        ========================= */
+
+        .section-title {
+            font-size: 24px;
             margin-bottom: 25px;
-            font-size: 26px;
+            color: #e6edf3;
         }
 
-
-        /* =========================
-           DOCUMENTATION GRID
-           ========================= */
-
-        .grid {
+        .documentation-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
         }
-
-
-        /* =========================
-           CARDS
-           ========================= */
 
         .card {
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
             padding: 22px;
-            background: #161b22;
+
+            background: #0d1117;
             border: 1px solid #30363d;
             border-radius: 10px;
 
             text-decoration: none;
-            color: #e6edf3;
 
             transition:
                 border-color 0.2s ease,
-                transform 0.2s ease,
-                background 0.2s ease;
+                transform 0.2s ease;
         }
 
         .card:hover {
             border-color: #00A3A3;
-            background: #181f27;
             transform: translateY(-2px);
         }
 
-
         /* =========================
            ICONS
-           ========================= */
+        ========================= */
 
         .icon {
-            width: 42px;
-            height: 42px;
-            margin-bottom: 14px;
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .icon svg {
-            width: 100%;
-            height: 100%;
-            overflow: visible;
+            width: 56px;
+            height: 56px;
         }
 
-
-        /* Standard Icons */
-
-        .icon .icon-fill {
+        .icon-fill {
             fill: #003D1F;
         }
 
-        .icon .icon-stroke {
+        .icon-stroke {
             fill: none;
             stroke: #00813F;
             stroke-width: 2;
@@ -139,10 +146,7 @@
             stroke-linejoin: round;
         }
 
-
-        /* =========================
-           NETWORK ICON
-           ========================= */
+        /* Netzwerk-Icon komplett grün */
 
         .network-icon .icon-fill {
             fill: #00813F;
@@ -152,83 +156,60 @@
             stroke: #00813F;
         }
 
-
         /* =========================
            CARD TEXT
-           ========================= */
+        ========================= */
+
+        .card-content {
+            min-width: 0;
+        }
 
         .card-title {
-            font-size: 18px;
+            color: #e6edf3;
+            font-size: 17px;
             font-weight: bold;
+            margin-bottom: 5px;
         }
 
         .card-description {
-            margin-top: 6px;
             color: #8b949e;
             font-size: 14px;
         }
 
-
         /* =========================
-           DIAGRAMM
-           ========================= */
+           DIAGRAM
+        ========================= */
 
-        .diagram-card {
-            display: block;
-            padding: 25px;
-
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 10px;
-
-            color: #e6edf3;
-
-            transition:
-                border-color 0.2s ease,
-                background 0.2s ease;
+        .diagram-section {
+            margin-top: 40px;
         }
 
-        .diagram-card:hover {
-            border-color: #00A3A3;
-            background: #181f27;
-        }
-
-
-        .diagram-icon {
-            width: 45px;
-            height: 45px;
-            margin-bottom: 15px;
-        }
-
-        .diagram-icon svg {
-            width: 100%;
-            height: 100%;
-        }
-
-
-        /* Diagram Link */
-
-        .open-link {
+        .diagram-link {
             display: inline-block;
-            margin-top: 15px;
 
-            color: #00A3A3;
+            padding: 12px 18px;
 
-            font-weight: bold;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+
+            color: #00813F;
             text-decoration: none;
+
+            font-size: 14px;
+            font-weight: bold;
         }
 
-        .open-link:hover {
-            text-decoration: underline;
+        .diagram-link:hover {
+            border-color: #00A3A3;
+            color: #00A3A3;
         }
-
 
         /* =========================
            FOOTER
-           ========================= */
+        ========================= */
 
-        .footer {
-            margin-top: 60px;
+        footer {
+            margin-top: 70px;
             padding-top: 20px;
 
             border-top: 1px solid #30363d;
@@ -237,23 +218,26 @@
             font-size: 13px;
         }
 
-
         /* =========================
            MOBILE
-           ========================= */
+        ========================= */
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
+
+            .container {
+                padding: 40px 18px 60px;
+            }
 
             h1 {
                 font-size: 36px;
             }
 
-            .container {
-                padding: 40px 18px;
+            .documentation-grid {
+                grid-template-columns: 1fr;
             }
 
-            .grid {
-                grid-template-columns: 1fr;
+            .card {
+                padding: 18px;
             }
 
         }
@@ -261,497 +245,421 @@
     </style>
 </head>
 
-
 <body>
-
 
 <div class="container">
 
+    <!-- HEADER -->
 
-    <!-- =========================
-         HEADER
-         ========================= -->
+    <div class="label">
+        Technische Dokumentation
+    </div>
 
-    <header>
+    <h1>
+        Home Lab
+    </h1>
 
-        <div class="label">
-            Technische Dokumentation
-        </div>
+    <div class="subtitle">
+        Dokumentation einer virtualisierten IT-Infrastruktur
+        mit Netzwerk-, Firewall-, Active-Directory- und
+        Backup-Komponenten.
+    </div>
 
-        <h1>
-            Home Lab
-        </h1>
+    <!-- LINK ZUM GITHUB REPOSITORY -->
 
-        <div class="subtitle">
-            Dokumentation einer virtualisierten IT-Infrastruktur –
-            von Hardware und Netzwerk über virtuelle Maschinen
-            bis hin zu Firewall, Domain Controller und Backup.
-        </div>
-
-    </header>
-
+    <a class="repo-link"
+       href="https://github.com/Stefan-B/home.lab"
+       target="_blank"
+       rel="noopener">
+        GitHub Repository →
+    </a>
 
 
-    <!-- =========================
-         DOKUMENTATION
-         ========================= -->
+    <div class="divider"></div>
 
-    <h2>
+
+    <!-- DOKUMENTATION -->
+
+    <div class="section-title">
         Dokumentation
-    </h2>
+    </div>
 
 
-    <div class="grid">
+    <div class="documentation-grid">
 
 
+        <!-- HARDWARE -->
 
-        <!-- =====================
-             1 – HARDWARE
-             ===================== -->
-
-        <a
-            class="card"
-            href="Dokumentation/1-hardware-setup.html">
+        <a class="card"
+           href="Dokumentation/1-hardware-setup.html">
 
             <div class="icon">
 
-                <svg viewBox="0 0 48 48">
-
-                    <!-- Bildschirm -->
+                <svg viewBox="0 0 56 56">
 
                     <rect
                         class="icon-fill"
                         x="7"
-                        y="6"
-                        width="34"
-                        height="25"
+                        y="9"
+                        width="42"
+                        height="30"
                         rx="3"/>
 
                     <rect
                         class="icon-stroke"
                         x="7"
-                        y="6"
-                        width="34"
-                        height="25"
+                        y="9"
+                        width="42"
+                        height="30"
                         rx="3"/>
-
-
-                    <!-- Standfuß -->
 
                     <line
                         class="icon-stroke"
                         x1="17"
-                        y1="38"
-                        x2="31"
-                        y2="38"/>
+                        y1="46"
+                        x2="39"
+                        y2="46"/>
 
                     <line
                         class="icon-stroke"
-                        x1="24"
-                        y1="31"
-                        x2="24"
-                        y2="38"/>
+                        x1="28"
+                        y1="39"
+                        x2="28"
+                        y2="46"/>
 
                 </svg>
 
             </div>
 
+            <div class="card-content">
 
-            <div class="card-title">
-                Hardware & Setup
-            </div>
+                <div class="card-title">
+                    Hardware & Setup
+                </div>
 
-            <div class="card-description">
-                Hardware, Grundinstallation und Systemaufbau.
+                <div class="card-description">
+                    Hardware und grundlegender Aufbau des Home Labs.
+                </div>
+
             </div>
 
         </a>
 
 
+        <!-- NETZWERK -->
 
-
-        <!-- =====================
-             2 – NETZWERK
-             ===================== -->
-
-        <a
-            class="card"
-            href="Dokumentation/2-netzwerk.html">
+        <a class="card"
+           href="Dokumentation/2-netzwerk.html">
 
             <div class="icon network-icon">
 
-                <svg viewBox="0 0 48 48">
+                <svg viewBox="0 0 56 56">
 
-                    <!-- Globus -->
+                    <circle
+                        class="icon-fill"
+                        cx="28"
+                        cy="28"
+                        r="21"/>
 
                     <circle
                         class="icon-stroke"
-                        cx="24"
-                        cy="24"
-                        r="17"/>
-
-
-                    <!-- Längengrad -->
+                        cx="28"
+                        cy="28"
+                        r="21"/>
 
                     <ellipse
                         class="icon-stroke"
-                        cx="24"
-                        cy="24"
-                        rx="8"
-                        ry="17"/>
+                        cx="28"
+                        cy="28"
+                        rx="10"
+                        ry="21"/>
 
-
-                    <!-- Äquator -->
+                    <line
+                        class="icon-stroke"
+                        x1="7"
+                        y1="28"
+                        x2="49"
+                        y2="28"/>
 
                     <path
                         class="icon-stroke"
-                        d="M7 24 H41"/>
-
-
-                    <!-- Breitengrade -->
+                        d="M10 18
+                           C20 22 36 22 46 18"/>
 
                     <path
                         class="icon-stroke"
-                        d="M10 16 C18 20 30 20 38 16"/>
-
-                    <path
-                        class="icon-stroke"
-                        d="M10 32 C18 28 30 28 38 32"/>
+                        d="M10 38
+                           C20 34 36 34 46 38"/>
 
                 </svg>
 
             </div>
 
+            <div class="card-content">
 
-            <div class="card-title">
-                Netzwerk
-            </div>
+                <div class="card-title">
+                    Netzwerk
+                </div>
 
-            <div class="card-description">
-                Netzwerkstruktur, Adressierung und Konfiguration.
+                <div class="card-description">
+                    Netzwerkstruktur, Adressierung und Kommunikation.
+                </div>
+
             </div>
 
         </a>
 
 
+        <!-- VM LISTE -->
 
-
-        <!-- =====================
-             3 – VM LISTE
-             ===================== -->
-
-        <a
-            class="card"
-            href="Dokumentation/3-vm-liste.html">
+        <a class="card"
+           href="Dokumentation/3-vm-liste.html">
 
             <div class="icon">
 
-                <svg viewBox="0 0 48 48">
+                <svg viewBox="0 0 56 56">
 
-                    <!-- Dokument -->
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="8"
+                        width="42"
+                        height="10"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="23"
+                        width="42"
+                        height="10"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="38"
+                        width="42"
+                        height="10"
+                        rx="2"/>
+
+                    <line
+                        class="icon-stroke"
+                        x1="12"
+                        y1="13"
+                        x2="12"
+                        y2="13"/>
+
+                    <line
+                        class="icon-stroke"
+                        x1="12"
+                        y1="28"
+                        x2="12"
+                        y2="28"/>
+
+                    <line
+                        class="icon-stroke"
+                        x1="12"
+                        y1="43"
+                        x2="12"
+                        y2="43"/>
+
+                </svg>
+
+            </div>
+
+            <div class="card-content">
+
+                <div class="card-title">
+                    VM-Liste
+                </div>
+
+                <div class="card-description">
+                    Übersicht der virtuellen Maschinen und Funktionen.
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- FIREWALL -->
+
+        <a class="card"
+           href="Dokumentation/4-vm-firewall.html">
+
+            <div class="icon">
+
+                <svg viewBox="0 0 56 56">
+
+                    <path
+                        class="icon-fill"
+                        d="M28 5
+                           L47 12
+                           V26
+                           C47 38 39 46 28 51
+                           C17 46 9 38 9 26
+                           V12
+                           Z"/>
+
+                    <path
+                        class="icon-stroke"
+                        d="M28 5
+                           L47 12
+                           V26
+                           C47 38 39 46 28 51
+                           C17 46 9 38 9 26
+                           V12
+                           Z"/>
+
+                    <path
+                        class="icon-stroke"
+                        d="M19 27
+                           L25 33
+                           L38 20"/>
+
+                </svg>
+
+            </div>
+
+            <div class="card-content">
+
+                <div class="card-title">
+                    VM – Firewall
+                </div>
+
+                <div class="card-description">
+                    Firewall, Routing und Netzwerksegmentierung.
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- DOMAIN CONTROLLER -->
+
+        <a class="card"
+           href="Dokumentation/5-vm-domain-controller.html">
+
+            <div class="icon">
+
+                <svg viewBox="0 0 56 56">
 
                     <rect
                         class="icon-fill"
                         x="9"
                         y="7"
-                        width="30"
-                        height="34"
+                        width="38"
+                        height="42"
                         rx="3"/>
 
                     <rect
                         class="icon-stroke"
                         x="9"
                         y="7"
-                        width="30"
-                        height="34"
+                        width="38"
+                        height="42"
                         rx="3"/>
 
-
-                    <!-- Listen -->
-
-                    <line
+                    <circle
                         class="icon-stroke"
-                        x1="16"
-                        y1="17"
-                        x2="32"
-                        y2="17"/>
+                        cx="28"
+                        cy="20"
+                        r="6"/>
 
-                    <line
+                    <path
                         class="icon-stroke"
-                        x1="16"
-                        y1="24"
-                        x2="32"
-                        y2="24"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="16"
-                        y1="31"
-                        x2="32"
-                        y2="31"/>
+                        d="M17 38
+                           C17 31 39 31 39 38"/>
 
                 </svg>
 
             </div>
 
+            <div class="card-content">
 
-            <div class="card-title">
-                VM-Liste
-            </div>
+                <div class="card-title">
+                    VM – Domain Controller
+                </div>
 
-            <div class="card-description">
-                Übersicht der virtuellen Maschinen.
+                <div class="card-description">
+                    Active Directory, DNS und zentrale Benutzerverwaltung.
+                </div>
+
             </div>
 
         </a>
 
 
+        <!-- CLIENT01 -->
 
-
-        <!-- =====================
-             4 – FIREWALL
-             ===================== -->
-
-        <a
-            class="card"
-            href="Dokumentation/4-vm-firewall.html">
+        <a class="card"
+           href="Dokumentation/6-vm-client01.html">
 
             <div class="icon">
 
-                <svg viewBox="0 0 48 48">
-
-                    <!-- Schild -->
-
-                    <path
-                        class="icon-fill"
-                        d="M24 5
-                           L39 11
-                           V22
-                           C39 32 33 39 24 43
-                           C15 39 9 32 9 22
-                           V11 Z"/>
-
-
-                    <path
-                        class="icon-stroke"
-                        d="M24 5
-                           L39 11
-                           V22
-                           C39 32 33 39 24 43
-                           C15 39 9 32 9 22
-                           V11 Z"/>
-
-
-                    <!-- Check -->
-
-                    <path
-                        class="icon-stroke"
-                        d="M17 24 L22 29 L32 18"/>
-
-                </svg>
-
-            </div>
-
-
-            <div class="card-title">
-                VM – Firewall
-            </div>
-
-            <div class="card-description">
-                Firewall und Netzwerkkonfiguration.
-            </div>
-
-        </a>
-
-
-
-
-        <!-- =====================
-             5 – DOMAIN CONTROLLER
-             ===================== -->
-
-        <a
-            class="card"
-            href="Dokumentation/5-vm-domain-controller.html">
-
-            <div class="icon">
-
-                <svg viewBox="0 0 48 48">
-
-                    <!-- Server -->
+                <svg viewBox="0 0 56 56">
 
                     <rect
                         class="icon-fill"
-                        x="8"
-                        y="7"
-                        width="32"
-                        height="34"
+                        x="6"
+                        y="8"
+                        width="44"
+                        height="30"
                         rx="3"/>
 
                     <rect
                         class="icon-stroke"
-                        x="8"
-                        y="7"
-                        width="32"
-                        height="34"
+                        x="6"
+                        y="8"
+                        width="44"
+                        height="30"
                         rx="3"/>
 
-
-                    <!-- Status -->
-
-                    <circle
+                    <line
                         class="icon-stroke"
-                        cx="17"
-                        cy="16"
-                        r="2"/>
-
-                    <circle
-                        class="icon-stroke"
-                        cx="17"
-                        cy="24"
-                        r="2"/>
-
-                    <circle
-                        class="icon-stroke"
-                        cx="17"
-                        cy="32"
-                        r="2"/>
-
-
-                    <!-- Linien -->
+                        x1="18"
+                        y1="46"
+                        x2="38"
+                        y2="46"/>
 
                     <line
                         class="icon-stroke"
-                        x1="23"
-                        y1="16"
-                        x2="33"
-                        y2="16"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="23"
-                        y1="24"
-                        x2="33"
-                        y2="24"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="23"
-                        y1="32"
-                        x2="33"
-                        y2="32"/>
-
-                </svg>
-
-            </div>
-
-
-            <div class="card-title">
-                VM – Domain Controller
-            </div>
-
-            <div class="card-description">
-                Domain Controller und zentrale Dienste.
-            </div>
-
-        </a>
-
-
-
-
-        <!-- =====================
-             6 – CLIENT01 / LAPTOP
-             ===================== -->
-
-        <a
-            class="card"
-            href="Dokumentation/6-vm-client01.html">
-
-            <div class="icon">
-
-                <svg viewBox="0 0 48 48">
-
-                    <!-- Laptop Bildschirm -->
-
-                    <rect
-                        class="icon-fill"
-                        x="8"
-                        y="7"
-                        width="32"
-                        height="24"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-stroke"
-                        x="8"
-                        y="7"
-                        width="32"
-                        height="24"
-                        rx="2"/>
-
-
-                    <!-- Laptop Basis -->
-
-                    <path
-                        class="icon-fill"
-                        d="M5 34
-                           H43
-                           L39 40
-                           H9 Z"/>
-
-
-                    <path
-                        class="icon-stroke"
-                        d="M5 34
-                           H43
-                           L39 40
-                           H9 Z"/>
-
-
-                    <!-- Trackpad -->
-
-                    <line
-                        class="icon-stroke"
-                        x1="20"
-                        y1="37"
+                        x1="28"
+                        y1="38"
                         x2="28"
-                        y2="37"/>
+                        y2="46"/>
 
                 </svg>
 
             </div>
 
+            <div class="card-content">
 
-            <div class="card-title">
-                VM – CLIENT01
-            </div>
+                <div class="card-title">
+                    VM – CLIENT01
+                </div>
 
-            <div class="card-description">
-                Dokumentation des virtuellen Clients.
+                <div class="card-description">
+                    Windows-Client und Integration in die Domäne.
+                </div>
+
             </div>
 
         </a>
 
 
+        <!-- BACKUP -->
 
-
-        <!-- =====================
-             7 – BACKUP
-             ===================== -->
-
-        <a
-            class="card"
-            href="Dokumentation/7-back-up.html">
+        <a class="card"
+           href="Dokumentation/7-back-up.html">
 
             <div class="icon">
 
                 <svg viewBox="0 0 56 48">
 
-                    <!-- =====================
-                         DATENBANK / ZYLINDER
-                         ===================== -->
-
-                    <!-- Zylinder Füllung -->
+                    <!-- DATENBANK / ZYLINDER -->
 
                     <path
                         class="icon-fill"
@@ -763,18 +671,12 @@
                            C12 36 5 33 5 29
                            Z"/>
 
-
-                    <!-- Oberer Rand -->
-
                     <ellipse
                         class="icon-stroke"
                         cx="20"
                         cy="9"
                         rx="15"
                         ry="7"/>
-
-
-                    <!-- Außenkante -->
 
                     <path
                         class="icon-stroke"
@@ -785,12 +687,7 @@
                            V9"/>
 
 
-
-                    <!-- =====================
-                         BACKUP KREIS
-                         ===================== -->
-
-                    <!-- Kreis -->
+                    <!-- BACKUP KREIS -->
 
                     <circle
                         class="icon-fill"
@@ -803,9 +700,6 @@
                         cx="46"
                         cy="32"
                         r="8"/>
-
-
-                    <!-- Backup Pfeil -->
 
                     <path
                         class="icon-stroke"
@@ -820,13 +714,16 @@
 
             </div>
 
+            <div class="card-content">
 
-            <div class="card-title">
-                Backup
-            </div>
+                <div class="card-title">
+                    Backup
+                </div>
 
-            <div class="card-description">
-                Backup-Konzept und Konfiguration.
+                <div class="card-description">
+                    Backup-Konzept und Wiederherstellung wichtiger Systeme.
+                </div>
+
             </div>
 
         </a>
@@ -834,95 +731,18 @@
     </div>
 
 
+    <!-- DIAGRAMM -->
 
+    <div class="diagram-section">
 
-    <!-- =========================
-         INFRASTRUKTUR DIAGRAMM
-         ========================= -->
-
-    <h2>
-        Infrastruktur-Diagramm
-    </h2>
-
-
-    <div class="diagram-card">
-
-
-        <div class="diagram-icon">
-
-            <svg viewBox="0 0 48 48">
-
-                <!-- Netzwerk-Knoten -->
-
-                <rect
-                    class="icon-fill"
-                    x="6"
-                    y="8"
-                    width="14"
-                    height="12"
-                    rx="2"/>
-
-                <rect
-                    class="icon-fill"
-                    x="28"
-                    y="8"
-                    width="14"
-                    height="12"
-                    rx="2"/>
-
-                <rect
-                    class="icon-fill"
-                    x="17"
-                    y="30"
-                    width="14"
-                    height="12"
-                    rx="2"/>
-
-
-                <!-- Verbindungen -->
-
-                <line
-                    class="icon-stroke"
-                    x1="20"
-                    y1="14"
-                    x2="28"
-                    y2="14"/>
-
-                <line
-                    class="icon-stroke"
-                    x1="13"
-                    y1="20"
-                    x2="21"
-                    y2="30"/>
-
-                <line
-                    class="icon-stroke"
-                    x1="35"
-                    y1="20"
-                    x2="27"
-                    y2="30"/>
-
-            </svg>
-
+        <div class="section-title">
+            Netzwerkdiagramm
         </div>
 
-
-        <div class="card-title">
-            Systemübersicht
-        </div>
-
-
-        <div class="card-description">
-            Interaktives Diagramm der Home-Lab-Infrastruktur
-            und Netzwerkverbindungen.
-        </div>
-
-
-        <a
-            class="open-link"
-            href="https://viewer.diagrams.net/?url=https%3A%2F%2Fraw.githubusercontent.com%2FStefan-B%2Fhome.lab%2Fmain%2FDokumentation%2Fdiagramm.drawio"
-            target="_blank"
-            rel="noopener noreferrer">
+        <a class="diagram-link"
+           href="https://viewer.diagrams.net/?url=https%3A%2F%2Fraw.githubusercontent.com%2FStefan-B%2Fhome.lab%2Fmain%2FDokumentation%2Fdiagramm.drawio"
+           target="_blank"
+           rel="noopener">
 
             Diagramm öffnen →
 
@@ -931,21 +751,15 @@
     </div>
 
 
+    <!-- FOOTER -->
 
-
-    <!-- =========================
-         FOOTER
-         ========================= -->
-
-    <div class="footer">
+    <footer>
 
         Home Lab · Technische Projektdokumentation
 
-    </div>
-
+    </footer>
 
 </div>
-
 
 </body>
 </html>
