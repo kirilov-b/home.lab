@@ -1,7 +1,7 @@
 ---
 title: Hardware & Setup
 ---
- BEISPIEL SEITE! PROJEKT WIRD BALD HOCHGELADEN
+# BEISPIELSEITE! PROJEKT WIRD BALD HOCHGELADEN
 # Hardware & Setup
 
 ## Übersicht
