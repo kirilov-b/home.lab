@@ -1,0 +1,9 @@
+theme: jekyll-theme-minimal
+
+title: Home Lab
+description: Technische Projektdokumentation
+
+markdown: kramdown
+
+include:
+  - Dokumentation
