@@ -1,1 +1,183 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Home Lab – Dokumentation</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 50px 25px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 45px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+        }
+
+        .intro {
+            color: #8b949e;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            display: block;
+            padding: 20px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #e6edf3;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            border-color: #58a6ff;
+            transform: translateY(-2px);
+        }
+
+        .card-title {
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .card-description {
+            color: #8b949e;
+            font-size: 14px;
+        }
+
+        .diagram {
+            margin-top: 25px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+            height: 650px;
+            border: 0;
+        }
+
+        .footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #30363d;
+            color: #8b949e;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Home Lab</h1>
+
+    <div class="intro">
+        Technische Dokumentation einer virtualisierten IT-Infrastruktur.
+    </div>
+
+    <h2>📚 Dokumentation</h2>
+
+    <div class="grid">
+
+        <a class="card" href="Dokumentation/01-hardware-setup.html">
+            <div class="card-title">🖥️ Hardware & Setup</div>
+            <div class="card-description">
+                Hardware, Grundinstallation und Systemaufbau.
+            </div>
+        </a>
+
+        <a class="card" href="Dokumentation/02-netzwerk.html">
+            <div class="card-title">🌐 Netzwerk</div>
+            <div class="card-description">
+                Netzwerkstruktur, Adressierung und Konfiguration.
+            </div>
+        </a>
+
+        <a class="card" href="Dokumentation/03-vm-client.html">
+            <div class="card-title">💻 VM – Client</div>
+            <div class="card-description">
+                Dokumentation des virtuellen Client-Systems.
+            </div>
+        </a>
+
+        <a class="card" href="Dokumentation/04-vm-dc.html">
+            <div class="card-title">🏢 VM – Domain Controller</div>
+            <div class="card-description">
+                Dokumentation des Domain Controllers.
+            </div>
+        </a>
+
+        <a class="card" href="Dokumentation/05-vm-fw.html">
+            <div class="card-title">🛡️ VM – Firewall</div>
+            <div class="card-description">
+                Firewall und Netzwerkkonfiguration.
+            </div>
+        </a>
+
+        <a class="card" href="Dokumentation/06-vm-liste.html">
+            <div class="card-title">📋 VM – Liste</div>
+            <div class="card-description">
+                Übersicht der virtuellen Maschinen.
+            </div>
+        </a>
+
+        <a class="card" href="Dokumentation/07-backup.html">
+            <div class="card-title">💾 Backup</div>
+            <div class="card-description">
+                Backup-Konzept und Konfiguration.
+            </div>
+        </a>
+
+    </div>
+
+
+    <h2>📐 Infrastruktur-Diagramm</h2>
+
+    <div class="diagram">
+
+        <iframe
+            src="https://viewer.diagrams.net/?nav=1&resize=1&toolbar=zoom%20layers&dark=auto#Uhttps%3A%2F%2Fraw.githubusercontent.com%2FStefan-B%2Fhome.lab%2Fmain%2FDokumentation%2Fdiagramm.drawio"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+
+    <div class="footer">
+        Home Lab · Technische Projektdokumentation
+    </div>
+
+</div>
+
+</body>
+</html>
