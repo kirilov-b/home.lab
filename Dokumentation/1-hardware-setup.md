@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Hardware & Setup
 ---
 # BEISPIELSEITE! PROJEKT WIRD BALD HOCHGELADEN
