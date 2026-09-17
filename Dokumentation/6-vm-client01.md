@@ -1,4 +1,5 @@
 ---
+layout: default
 title: VM – CLIENT01
 ---
 # BEISPIELSEITE! PROJEKT WIRD BALD HOCHGELADEN
