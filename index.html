@@ -206,11 +206,17 @@
         }
 
 
-        /* Diagram Link */
+        /* Diagram Links */
+
+        .diagram-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
+        }
 
         .open-link {
             display: inline-block;
-            margin-top: 15px;
 
             color: #00A3A3;
 
@@ -289,6 +295,118 @@
         </div>
 
     </header>
+
+
+
+    <!-- =========================
+         INFRASTRUKTUR DIAGRAMM
+         ========================= -->
+
+    <h2>
+        Infrastruktur-Diagramm
+    </h2>
+
+
+    <div class="diagram-card">
+
+
+        <div class="diagram-icon">
+
+            <svg viewBox="0 0 48 48">
+
+                <!-- Netzwerk-Knoten -->
+
+                <rect
+                    class="icon-fill"
+                    x="6"
+                    y="8"
+                    width="14"
+                    height="12"
+                    rx="2"/>
+
+                <rect
+                    class="icon-fill"
+                    x="28"
+                    y="8"
+                    width="14"
+                    height="12"
+                    rx="2"/>
+
+                <rect
+                    class="icon-fill"
+                    x="17"
+                    y="30"
+                    width="14"
+                    height="12"
+                    rx="2"/>
+
+
+                <!-- Verbindungen -->
+
+                <line
+                    class="icon-stroke"
+                    x1="20"
+                    y1="14"
+                    x2="28"
+                    y2="14"/>
+
+                <line
+                    class="icon-stroke"
+                    x1="13"
+                    y1="20"
+                    x2="21"
+                    y2="30"/>
+
+                <line
+                    class="icon-stroke"
+                    x1="35"
+                    y1="20"
+                    x2="27"
+                    y2="30"/>
+
+            </svg>
+
+        </div>
+
+
+        <div class="card-title">
+            Systemübersicht
+        </div>
+
+
+        <div class="card-description">
+            Netzwerkdiagramm der Home-Lab-Infrastruktur
+            und Netzwerkverbindungen.
+        </div>
+
+
+        <div class="diagram-links">
+
+            <a
+                class="open-link"
+                href="Dokumentation/diagramm.pdf"
+                target="_blank"
+                rel="noopener">
+
+                Diagramm PDF →
+
+            </a>
+
+
+            <a
+                class="open-link"
+                href="https://app.diagrams.net/#Hkirilov-b%2Fhome.lab%2Fmain%2FDokumentation%2Fdiagramm.drawio"
+                target="_blank"
+                rel="noopener">
+
+                Diagramm DRAWIO →
+
+            </a>
+
+        </div>
+
+
+    </div>
 
 
 
@@ -828,107 +946,6 @@
             <div class="card-description">
                 Backup-Konzept und Konfiguration.
             </div>
-
-        </a>
-
-    </div>
-
-
-
-
-    <!-- =========================
-         INFRASTRUKTUR DIAGRAMM
-         ========================= -->
-
-    <h2>
-        Infrastruktur-Diagramm
-    </h2>
-
-
-    <div class="diagram-card">
-
-
-        <div class="diagram-icon">
-
-            <svg viewBox="0 0 48 48">
-
-                <!-- Netzwerk-Knoten -->
-
-                <rect
-                    class="icon-fill"
-                    x="6"
-                    y="8"
-                    width="14"
-                    height="12"
-                    rx="2"/>
-
-                <rect
-                    class="icon-fill"
-                    x="28"
-                    y="8"
-                    width="14"
-                    height="12"
-                    rx="2"/>
-
-                <rect
-                    class="icon-fill"
-                    x="17"
-                    y="30"
-                    width="14"
-                    height="12"
-                    rx="2"/>
-
-
-                <!-- Verbindungen -->
-
-                <line
-                    class="icon-stroke"
-                    x1="20"
-                    y1="14"
-                    x2="28"
-                    y2="14"/>
-
-                <line
-                    class="icon-stroke"
-                    x1="13"
-                    y1="20"
-                    x2="21"
-                    y2="30"/>
-
-                <line
-                    class="icon-stroke"
-                    x1="35"
-                    y1="20"
-                    x2="27"
-                    y2="30"/>
-
-            </svg>
-
-        </div>
-
-
-        <div class="card-title">
-            Systemübersicht
-        </div>
-
-
-        <div class="card-description">
-            Interaktives Diagramm der Home-Lab-Infrastruktur
-            und Netzwerkverbindungen.
-        </div>
-
-
-        <a
-            class="open-link"
-            <a class="diagram-link"
-               href="https://app.diagrams.net/#Hkirilov-b%2Fhome.lab%2Fmain%2FDokumentation%2Fdiagramm.drawio"
-               target="_blank"
-               rel="noopener">
-
-                Diagramm öffnen →
-
-</a>
-        </a>
 
         </a>
 
