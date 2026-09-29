@@ -2,7 +2,7 @@
 layout: default
 title: VM – Ansible / Automation
 ---
-
+# NOCH NICHT KONFIGURIERT
 # VM – Ansible / Automation
 
 ## Übersicht
