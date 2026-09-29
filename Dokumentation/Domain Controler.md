@@ -1,6 +1,6 @@
 ---
 layout: default
-title: VM – Domain Controller
+title: VM – Bla
 ---
 
 # VM – Domain Controller
