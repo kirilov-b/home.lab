@@ -2,7 +2,7 @@
 layout: default
 title: VM – FreeIPA / Identity / DNS
 ---
-
+# NOCH NICHT KONFIGURIERT
 # VM – FreeIPA / Identity / DNS
 
 ## Übersicht
