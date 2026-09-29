@@ -1,6 +1,6 @@
 ---
 layout: default
-title: VM – AD, DNS, DHCP
+title: VM – Domain Controller
 ---
 
 # VM – AD, DNS, DHCP
