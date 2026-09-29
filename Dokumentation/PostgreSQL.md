@@ -2,7 +2,7 @@
 layout: default
 title: VM – PostgreSQL
 ---
-
+# NOCH NICHT KONFIGURIERT
 # VM – PostgreSQL
 
 ## Übersicht
