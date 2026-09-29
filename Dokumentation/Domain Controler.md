@@ -1,9 +1,9 @@
 ---
 layout: default
-title: VM – Bla
+title: VM – Domain Controller
 ---
 
-# VM – Domain Controller
+# VM – Windows Domain Controller
 
 ## Übersicht
 
