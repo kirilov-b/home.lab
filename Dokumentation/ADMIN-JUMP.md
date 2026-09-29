@@ -1,9 +1,9 @@
 ---
 layout: default
-title: VM – Verwaltung, Dokumentation, Testclient
+title: VM – Administrator
 ---
 
-# VM – Verwaltung, Dokumentation, Testclient
+# VM – Verwaltung, Dokumentation, Remote Verbindung
 
 ## Übersicht
 
