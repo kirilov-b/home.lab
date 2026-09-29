@@ -3,7 +3,7 @@ layout: default
 title: VM – Domain Controller
 ---
 
-# VM – AD, DNS, DHCP
+# VM – Domain Controller
 
 ## Übersicht
 
