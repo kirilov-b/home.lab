@@ -2,7 +2,7 @@
 layout: default
 title: VM – Zabbix Monitoring
 ---
-
+# NOCH NICHT KONFIGURIERT
 # VM – Zabbix Monitoring
 
 ## Übersicht
