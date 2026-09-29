@@ -18,14 +18,11 @@ Die Dokumentation umfasst aktuell:
   - Netzwerkstruktur, Adressierung und Konfiguration
 - **VM-Planung**
   - Übersicht und Planung der virtuellen Maschinen
-- **VM – Firewall**
-  - OPNsense als Firewall und Router
 - **Backup**
   - Proxmox Backup Server und Backup-Konzept
-- **Testclient CL1**
-  - Windows-11-Testclient für Tests und Validierung
 - **Netzwerkdiagramm**
   - Übersicht der Infrastruktur und Netzwerkverbindungen
+- **Alle weitere VMs**
 
 ## Virtuelle Infrastruktur
 
