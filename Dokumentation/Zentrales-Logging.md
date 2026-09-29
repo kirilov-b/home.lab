@@ -2,7 +2,7 @@
 layout: default
 title: VM – Zentrales Logging
 ---
-
+# NOCH NICHT KONFIGURIERT
 # VM – Zentrales Logging
 
 ## Übersicht
