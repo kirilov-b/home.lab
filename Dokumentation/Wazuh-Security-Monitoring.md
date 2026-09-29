@@ -2,7 +2,7 @@
 layout: default
 title: VM – Wazuh / Security Monitoring
 ---
-
+# NOCH NICHT KONFIGURIERT
 # VM – Wazuh / Security Monitoring
 
 ## Übersicht
