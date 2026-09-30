@@ -1,6 +1,6 @@
 ---
 layout: default
-title: VM-Plannung
+title: Virtuelle Machienen - Planung
 ---
 
 # Virtuelle Machienen - Planung
