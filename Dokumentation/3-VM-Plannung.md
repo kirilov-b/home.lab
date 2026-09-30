@@ -36,8 +36,9 @@ title: VM-Plannung
 	*Außnahme : **FW-OPNsense**, Clients (DHCP)*
   
 ## VM-Tabelle
+
 | VM-ID | SSH nickname | VM-NameServer     | Zweck                                 |     Betriebsystem     |    IPv4 /24    | Größe<br>GB | RAM<br>GB | vCPU |
-| :---: | ------------ | :---------------- | ------------------------------------- | :-------------------: | :---------: | :---------: | :-------: | :--: |
+| ----- | ------------ | ----------------- | ------------------------------------- | ----------------------| ----------- | ----------- | --------- | ---- |
 |  100  | jump         | **JUMP-LM-10-3**  | Administrator, Dokumentation,		   |      Linux Mint       | 10.10.10.3  |     80      |     8     |  4   |
 |  101  | ops          | **FW-OPSense**    | Firewall                              |       OPNsense        |             |     20      |     4     |  2   |
 |  201  | dc           | **DC-WS-20-1**    | AD, DNS, DHCP                         |    winServer 2022     | 10.10.20.2  |     80      |     4     |  4   |
