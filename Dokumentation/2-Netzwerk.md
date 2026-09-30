@@ -61,13 +61,10 @@ Ich verwende eine **VLAN-Aware Bridge (LANbr0)** in Proxmox und einen **VLAN-Tru
 ## Routing - Firewall  
 ### Netzwerkregeln  
 
-|Quelle|Ziel|Port|Zweck|  
-|---|---|---|---|  
-|VLAN 10|VLAN 20|SSH/HTTPS|Administration|  
-|VLAN 20|Internet|80/443|Updates|  
-|WEB01|DB01|5432|PostgreSQL|  
-|VLAN 30|VLAN 20|DNS|Namensauflösung|  
-|VLAN 30|VLAN 20|—|sonstige Zugriffe zunächst blockieren|
+| Quelle  | Ziel     |      Port | Zweck                                 |
+| ------- | -------- | --------: | ------------------------------------- |
+
 ## DHCP und DNS
+
 
 Die Clients beziehen ihre IP-Konfiguration per DHCP. DNS wird für die Namensauflösung innerhalb der Laborumgebung verwendet.
