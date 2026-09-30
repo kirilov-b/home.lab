@@ -7,7 +7,7 @@ title: Netzwerk
 
 ## VLAN, statt virtuelle Netzwerkadapter  
 ### Entscheidung  
-Separate Netze oder **Virtuelle Netzwerke/Bridges** wäre in Proxmox die einfache Variante gewesen, die Trennung von **Management, Server und Clients** aufzubauen.  
+Separate Netze oder **Virtuelle Netzwerke/Bridges** wäre in Proxmox die einfache Variante gewesen, die Trennung von **Management, Service und Clients** aufzubauen.  
 Aus Übungs- und Lernzwecken habe ich mich bewusst dafür entschieden, mit VLAN zu arbeiten. Dadurch wird der praktische Aufbau und die Konfiguration von **VLAN (IEEE 802.1Q)**, **VLAN Trunks** und **VLAN-Tagging** geübt. Die geplante Trennung wird in drei VLANs aufgeteilt.  
   
 ### Ergebnis
@@ -62,7 +62,7 @@ Ich verwende eine **VLAN-Aware Bridge (LANbr0)** in Proxmox und einen **VLAN-Tru
 ### Netzwerkregeln  
 
 | Quelle  | Ziel     |      Port | Zweck                                 |
-| ------- | -------- | --------: | ------------------------------------- |
+| ------- | -------- | --------- | ------------------------------------- |
 
 ## DHCP und DNS
 
