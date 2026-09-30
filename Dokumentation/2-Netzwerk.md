@@ -61,10 +61,3 @@ Ich verwende eine **VLAN-Aware Bridge (LANbr0)** in Proxmox und einen **VLAN-Tru
 ## Routing - Firewall  
 ### Netzwerkregeln  
 
-| Quelle  | Ziel     |      Port | Zweck                                 |
-| ------- | -------- | --------- | ------------------------------------- |
-
-## DHCP und DNS
-
-
-Die Clients beziehen ihre IP-Konfiguration per DHCP. DNS wird für die Namensauflösung innerhalb der Laborumgebung verwendet.
