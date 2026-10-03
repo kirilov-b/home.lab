@@ -4,6 +4,19 @@ title: VM – Proxmox Backup Server
 ---
 # Proxmox VE und Proxmox Backup Server
 
+**Proxmox-VM-Konfiguration**
+|Parameter|Wert|
+|---|---|
+|VM-ID|211|
+|SSH-Nickname|pbs|
+|VM-Name|PBS-PBS-20-10|
+|Zweck|Backup Server|
+|Betriebssystem|Linux-PBS|
+|IPv4|10.10.20.10|
+|Größe|20 GB|
+|RAM|8 GB|
+|vCPU|4|
+
 ## 1. Überblick
 
 Die Backup-Lösung besteht aus dem Proxmox-VE-Host, einer virtuellen
