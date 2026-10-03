@@ -21,26 +21,37 @@ Status-E-Mail.
 
 ## 1. Logische Darstellung des Prozesses
 
-
 ```mermaid
 flowchart TD
-    A["Proxmox-Host startet"] --> B["Systemd startet Backup-Service"]
-    B --> C["Auf OPNsense warten"]
-    C --> D["PBS-VM prüfen"]
-    D --> E["PBS-API und Storage prüfen"]
-    E --> F["Backup-Festplatte prüfen"]
-    F --> G{"Voraussetzungen erfüllt?"}
-    G -- Nein --> H["Abbruch: PBS bleibt eingeschaltet"]
-    G -- Ja --> I["alle VMs außer PBS sichern"]
-    I --> J{"Alle Backups erfolgreich?"}
-    J -- Nein --> H
-    J -- Ja --> K["PBS herunterfahren"]
+    A["Proxmox-Host startet"] --> B["Systemd startet backup-on-boot.service"]
+    B --> C["Warten auf OPNsense"]
+    C --> D["PBS-VM 211 starten oder laufenden Status prüfen"]
+    D --> E["Warten auf PBS-API und aktiven Storage"]
+    E --> F["Backup-Festplatte per SSH prüfen"]
+    F --> G{"Alle Voraussetzungen erfüllt?"}
+
+    G -- Nein --> H["Abbruch bzw. Fehler melden"]
+    H --> I["PBS bleibt eingeschaltet"]
+
+    G -- Ja --> J["Alle VMs außer PBS sichern"]
+    J --> K{"Alle Backups erfolgreich?"}
+
+    K -- Nein --> L["Fehler melden"]
+    L --> I
+
+    K -- Ja --> M["PBS sauber herunterfahren"]
+    M --> N["Backup-Ablauf beendet"]
+
+    classDef error fill:#fde8e7,stroke:#c0392b,color:#222
+    classDef success fill:#e4f5e8,stroke:#27834a,color:#222
+    class H,I,L error
+    class N success
 ```
 
 **Sicherheitslogik:** PBS wird nur heruntergefahren, wenn alle Backups erfolgreich abgeschlossen wurden. Bei einem Fehler bleibt PBS eingeschaltet, damit die Ursache untersucht werden kann.
 
 PVE bleibt danach eingeschaltet, bis es manuell regulär
-heruntergefahren wird. Die LaCie bleibt angeschlossen und eingeschaltet.
+heruntergefahren wird. Die Festplatte bleibt angeschlossen und eingeschaltet.
 ## 2. Festgehaltene Systemdaten
 
 | Komponente            | Wert                       |
@@ -129,7 +140,7 @@ dem Systemstart aus:
 2.  Es wartet, bis die PBS-VM 211 läuft und die PBS-API erreichbar ist.
 3.  Es prüft, ob `Extern-Backup` verfügbar ist.
 4.  Es prüft den Datenträger über SSH.
-5.  Es sichert die VMs 100, 101, 201 und 301.
+5.  Es sichert alle VMs außer PBS - 211.
 6.  Es wertet die Ergebnisse aus und sendet eine Status-E-Mail.
 7.  **Nur bei vollständig erfolgreichen Backups** fährt es PBS herunter.
 
@@ -161,13 +172,11 @@ bedeutet nicht automatisch, dass die Sicherung fehlerhaft ist.
 Eine automatische Verifizierung wurde jede 5 Tage nach der Backup in der WebGUI von PBS eingerichtet.
 
 
-
-
 ## Backup-Skript
 
 Das Skript wird beim Start des Proxmox-Hosts automatisch ausgeführt. Es prüft die Voraussetzungen, sichert die VMs und fährt den PBS nur bei erfolgreichem Abschluss herunter.
 
-<details>
+<details markdown="1">
 <summary><strong>Backup-Skript anzeigen</strong></summary>
 
 ```bash
@@ -175,6 +184,7 @@ Das Skript wird beim Start des Proxmox-Hosts automatisch ausgeführt. Es prüft 
 
 set -u
 set -o pipefail
+
 
 # Backup-Ergebnis per E-Mail melden, auch bei vorzeitigem Abbruch
 notify_backup_result() {
@@ -374,3 +384,11 @@ exit 1
 ```
 
 </details>
+
+
+<!-- Mermaid-Diagramme für GitHub Pages rendern -->
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+  await mermaid.run({ querySelector: 'pre > code.language-mermaid' });
+</script>
