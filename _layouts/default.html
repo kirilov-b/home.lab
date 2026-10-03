@@ -555,6 +555,35 @@
 
 </div>
 
+
+    <!-- Mermaid-Diagramme: kontrastreiche Farben unabhängig vom Browser-Theme -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'base',
+            themeVariables: {
+                background: '#ffffff',
+                primaryColor: '#dbeafe',
+                primaryTextColor: '#111827',
+                primaryBorderColor: '#1d4ed8',
+                lineColor: '#475569',
+                secondaryColor: '#dcfce7',
+                tertiaryColor: '#fef3c7',
+                fontFamily: 'Arial, Helvetica, sans-serif'
+            },
+            flowchart: {
+                htmlLabels: true,
+                curve: 'linear'
+            }
+        });
+
+        await mermaid.run({
+            querySelector: 'pre > code.language-mermaid'
+        });
+    </script>
+
 </body>
 
 </html>
