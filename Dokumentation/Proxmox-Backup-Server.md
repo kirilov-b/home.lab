@@ -99,6 +99,7 @@ Der Ordner soll nur für root zugänglich sein (Modus 700), die Datei
 selbst mit Modus 600.
 
 Ein direkter API-Test wurde mit curl durchgeführt:
+
 	`TOKEN=$(cat /root/.config/pbs-backup/token)`
 	`curl -k -sS -o /tmp/pbs-api-test.json -w 'HTTP-Status: %{http_code}\n' -H "Authorization: PBSAPIToken=root@pam!check-backup:$TOKEN" https://10.10.20.10:8007/api2/json/admin/datastore/Backup/status`
 
@@ -120,6 +121,7 @@ ist unabhängig vom API-Token.
 
 Der Schlüssel liegt auf PVE unter `/root/.ssh/pbs-disk-check`. Der
 Erzeugungsbefehl lautet:
+
 	`ssh-keygen -t ed25519 -f /root/.ssh/pbs-disk-check -N ""`
 
 Der öffentliche Schlüssel (`/root/.ssh/pbs-disk-check.pub`) wird auf PBS
@@ -127,6 +129,7 @@ für den vorgesehenen Benutzer hinterlegt. Der private Schlüssel bleibt
 auf PVE.
 
 Der Verbindungstest verwendet:
+
 	`ssh -i /root/.ssh/pbs-disk-check -o BatchMode=yes -o IdentitiesOnly=yes -o ConnectTimeout=10 -o StrictHostKeyChecking=yes root@10.10.20.10`
 
 Das Skript erwartet für die Datenträgerprüfung die Rückmeldung OK. Der
@@ -145,6 +148,7 @@ dem Systemstart aus:
 7.  **Nur bei vollständig erfolgreichen Backups** fährt es PBS herunter.
 
 Der Backup-Aufruf verwendet:
+
 	`vzdump --storage Extern-Backup --mode snapshot --compress zstd`
 
 **vzdump** erstellt die Sicherung,
