@@ -55,8 +55,8 @@ flowchart TD
     K -- Ja --> M["PBS sauber herunterfahren"]
     M --> N["Backup-Ablauf beendet"]
 
-    classDef error fill:#fde8e7,stroke:#c0392b,color:#222
-    classDef success fill:#e4f5e8,stroke:#27834a,color:#222
+   classDef error fill:#fde8e7,stroke:#c0392b,color:#111827
+    classDef success fill:#e4f5e8,stroke:#27834a,color:#111827
     class H,I,L error
     class N success
 ```
