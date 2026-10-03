@@ -21,31 +21,20 @@ Status-E-Mail.
 
 ## 1. Logische Darstellung des Prozesses
 
+
 ```mermaid
 flowchart TD
-    A["Proxmox-Host startet"] --> B["Systemd startet backup-on-boot.service"]
-    B --> C["Warten auf OPNsense"]
-    C --> D["PBS-VM 211 starten oder laufenden Status prüfen"]
-    D --> E["Warten auf PBS-API und aktiven Storage"]
-    E --> F["Backup-Festplatte per SSH prüfen"]
-    F --> G{"Alle Voraussetzungen erfüllt?"}
-
-    G -- Nein --> H["Abbruch bzw. Fehler melden"]
-    H --> I["PBS bleibt eingeschaltet"]
-
-    G -- Ja --> J["Alle VMs außer PBS sichern"]
-    J --> K{"Alle Backups erfolgreich?"}
-
-    K -- Nein --> L["Fehler melden"]
-    L --> I
-
-    K -- Ja --> M["PBS sauber herunterfahren"]
-    M --> N["Backup-Ablauf beendet"]
-
-    classDef error fill:#fde8e7,stroke:#c0392b,color:#222
-    classDef success fill:#e4f5e8,stroke:#27834a,color:#222
-    class H,I,L error
-    class N success
+    A["Proxmox-Host startet"] --> B["Systemd startet Backup-Service"]
+    B --> C["Auf OPNsense warten"]
+    C --> D["PBS-VM prüfen"]
+    D --> E["PBS-API und Storage prüfen"]
+    E --> F["Backup-Festplatte prüfen"]
+    F --> G{"Voraussetzungen erfüllt?"}
+    G -- Nein --> H["Abbruch: PBS bleibt eingeschaltet"]
+    G -- Ja --> I["alle VMs außer PBS sichern"]
+    I --> J{"Alle Backups erfolgreich?"}
+    J -- Nein --> H
+    J -- Ja --> K["PBS herunterfahren"]
 ```
 
 **Sicherheitslogik:** PBS wird nur heruntergefahren, wenn alle Backups erfolgreich abgeschlossen wurden. Bei einem Fehler bleibt PBS eingeschaltet, damit die Ursache untersucht werden kann.
@@ -172,6 +161,8 @@ bedeutet nicht automatisch, dass die Sicherung fehlerhaft ist.
 Eine automatische Verifizierung wurde jede 5 Tage nach der Backup in der WebGUI von PBS eingerichtet.
 
 
+
+
 ## Backup-Skript
 
 Das Skript wird beim Start des Proxmox-Hosts automatisch ausgeführt. Es prüft die Voraussetzungen, sichert die VMs und fährt den PBS nur bei erfolgreichem Abschluss herunter.
@@ -184,7 +175,6 @@ Das Skript wird beim Start des Proxmox-Hosts automatisch ausgeführt. Es prüft 
 
 set -u
 set -o pipefail
-
 
 # Backup-Ergebnis per E-Mail melden, auch bei vorzeitigem Abbruch
 notify_backup_result() {
