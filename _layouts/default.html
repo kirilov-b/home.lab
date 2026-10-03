@@ -557,35 +557,42 @@
 
 
     <!-- Mermaid-Diagramme: kontrastreiche Farben unabhängig vom Browser-Theme -->
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    
+        <script type="module">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
 
-        mermaid.initialize({
-            startOnLoad: false,
-            theme: 'base',
-            themeVariables: {
-                background: '#161b22',
-                primaryColor: '#e2e8f0',
-                primaryTextColor: '#111827',
-                primaryBorderColor: '#2563eb',
-                lineColor: '#94a3b8',
-                secondaryColor: '#dcfce7',
-                secondaryBorderColor: '#16a34a',
-                tertiaryColor: '#fef3c7',
-                tertiaryBorderColor: '#d97706',
-                edgeLabelBackground: '#ffffff',
-                fontFamily: 'Arial, Helvetica, sans-serif'
-            },
-            flowchart: {
-                htmlLabels: true,
-                curve: 'linear'
-            }
-        });
+            mermaid.initialize({
+                startOnLoad: false,
+                theme: 'base',
+                themeVariables: {
+                    darkMode: true,
+                    background: '#161b22',
+                    mainBkg: '#e2e8f0',
+                    primaryColor: '#e2e8f0',
+                    primaryTextColor: '#111827',
+                    primaryBorderColor: '#2563eb',
+                    lineColor: '#cbd5e1',
+                    textColor: '#111827',
+                    secondaryColor: '#dcfce7',
+                    secondaryTextColor: '#14532d',
+                    secondaryBorderColor: '#16a34a',
+                    tertiaryColor: '#fef3c7',
+                    tertiaryTextColor: '#78350f',
+                    tertiaryBorderColor: '#d97706',
+                    edgeLabelBackground: '#ffffff',
+                    fontFamily: 'Arial, Helvetica, sans-serif'
+                  },
+                flowchart: {
+                    htmlLabels: true,
+                    curve: 'linear'
+                }
+            });
 
-        await mermaid.run({
-            querySelector: 'pre > code.language-mermaid'
-        });
-    </script>
+            await mermaid.run({
+        querySelector: 'pre > code.language-mermaid'
+            });
+        </script>
+
 
 </body>
 
