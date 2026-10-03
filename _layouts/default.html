@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="de">
 
 <head>
@@ -468,6 +468,32 @@
 
         }
 
+        /* Mermaid-Kontrast: greift auch bei HTML-Labels innerhalb von SVG */
+        .mermaid .nodeLabel,
+        .mermaid .nodeLabel p,
+        .mermaid .label,
+        .mermaid .label text,
+        .mermaid .edgeLabel,
+        .mermaid .edgeLabel p,
+        .mermaid foreignObject div,
+        .mermaid foreignObject span {
+            color: #111827 !important;
+            fill: #111827 !important;
+            opacity: 1 !important;
+        }
+
+        .mermaid .flowchart-link,
+        .mermaid .edgePath path,
+        .mermaid path.path {
+            stroke: #64748b !important;
+            stroke-width: 2px !important;
+        }
+
+        .mermaid marker path {
+            fill: #64748b !important;
+            stroke: #64748b !important;
+        }
+
     </style>
 
 </head>
@@ -557,42 +583,39 @@
 
 
     <!-- Mermaid-Diagramme: kontrastreiche Farben unabhängig vom Browser-Theme -->
-    
-        <script type="module">
-            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
 
-            mermaid.initialize({
-                startOnLoad: false,
-                theme: 'base',
-                themeVariables: {
-                    darkMode: true,
-                    background: '#161b22',
-                    mainBkg: '#e2e8f0',
-                    primaryColor: '#e2e8f0',
-                    primaryTextColor: '#111827',
-                    primaryBorderColor: '#2563eb',
-                    lineColor: '#cbd5e1',
-                    textColor: '#111827',
-                    secondaryColor: '#dcfce7',
-                    secondaryTextColor: '#14532d',
-                    secondaryBorderColor: '#16a34a',
-                    tertiaryColor: '#fef3c7',
-                    tertiaryTextColor: '#78350f',
-                    tertiaryBorderColor: '#d97706',
-                    edgeLabelBackground: '#ffffff',
-                    fontFamily: 'Arial, Helvetica, sans-serif'
-                  },
-                flowchart: {
-                    htmlLabels: true,
-                    curve: 'linear'
-                }
-            });
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'base',
+            themeVariables: {
+                background: '#0d1117',
+                primaryColor: '#e2e8f0',
+                primaryTextColor: '#111827',
+                primaryBorderColor: '#1d4ed8',
+                lineColor: '#64748b',
+                textColor: '#111827',
+                darkMode: true,
+                secondaryColor: '#dcfce7',
+                secondaryTextColor: '#14532d',
+                secondaryBorderColor: '#16a34a',
+                tertiaryColor: '#fef3c7',
+                tertiaryTextColor: '#78350f',
+                tertiaryBorderColor: '#d97706',
+                edgeLabelBackground: '#ffffff',
+                fontFamily: 'Arial, Helvetica, sans-serif'
+            },
+            flowchart: {
+                htmlLabels: true,
+                curve: 'linear'
+            }
+        });
 
-            await mermaid.run({
-        querySelector: 'pre > code.language-mermaid'
-            });
-        </script>
-
+        await mermaid.run({
+            querySelector: 'pre > code.language-mermaid'
+        });
+    </script>
 
 </body>
 
