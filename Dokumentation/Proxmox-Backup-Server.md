@@ -5,6 +5,7 @@ title: VM – Proxmox Backup Server
 # Proxmox VE und Proxmox Backup Server
 
 **Proxmox-VM-Konfiguration**
+
 |Parameter|Wert|
 |---|---|
 |VM-ID|211|
