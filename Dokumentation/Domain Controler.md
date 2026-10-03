@@ -9,7 +9,7 @@ title: VM – Domain Controller
 
 Diese Seite dokumentiert die virtuelle Maschine **DC-WS-20-1**.
 
-Proxmox-VM-Konfiguration
+**Proxmox-VM-Konfiguration**
 |Parameter|Wert|
 |---|---|
 |VM-ID|201|
