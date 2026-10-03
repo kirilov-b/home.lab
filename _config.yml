@@ -1,7 +1,12 @@
+
 title: Home Lab
 description: Technische Projektdokumentation
 
 markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
 include:
   - Dokumentation
