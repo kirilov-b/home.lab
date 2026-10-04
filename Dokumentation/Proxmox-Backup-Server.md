@@ -35,7 +35,7 @@ Status-E-Mail.
 
 ## 1. Logische Darstellung des Prozesses
 
-![Vollständiger Ablauf der Proxmox-Backup-Lösung](Dokumentation/images/proxmox-backup-ablauf.png)
+![Vollständiger Ablauf der Proxmox-Backup-Lösung](/images/proxmox-backup-ablauf.png)
 
 PVE bleibt danach eingeschaltet, bis es manuell regulär
 heruntergefahren wird. Die Festplatte bleibt angeschlossen und eingeschaltet.
