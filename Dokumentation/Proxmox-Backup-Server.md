@@ -35,34 +35,7 @@ Status-E-Mail.
 
 ## 1. Logische Darstellung des Prozesses
 
-```mermaid
-flowchart TD
-    A["Proxmox-Host startet"] --> B["Systemd startet backup-on-boot.service"]
-    B --> C["Warten auf OPNsense"]
-    C --> D["PBS-VM 211 starten oder laufenden Status prüfen"]
-    D --> E["Warten auf PBS-API und aktiven Storage"]
-    E --> F["Backup-Festplatte per SSH prüfen"]
-    F --> G{"Alle Voraussetzungen erfüllt?"}
-
-    G -- Nein --> H["Abbruch bzw. Fehler melden"]
-    H --> I["PBS bleibt eingeschaltet"]
-
-    G -- Ja --> J["Alle VMs außer PBS sichern"]
-    J --> K{"Alle Backups erfolgreich?"}
-
-    K -- Nein --> L["Fehler melden"]
-    L --> I
-
-    K -- Ja --> M["PBS sauber herunterfahren"]
-    M --> N["Backup-Ablauf beendet"]
-
-   classDef error fill:#fde8e7,stroke:#c0392b,color:#111827
-    classDef success fill:#e4f5e8,stroke:#27834a,color:#111827
-    class H,I,L error
-    class N success
-```
-
-**Sicherheitslogik:** PBS wird nur heruntergefahren, wenn alle Backups erfolgreich abgeschlossen wurden. Bei einem Fehler bleibt PBS eingeschaltet, damit die Ursache untersucht werden kann.
+![Vollständiger Ablauf der Proxmox-Backup-Lösung](../images/proxmox-backup-ablauf.png)
 
 PVE bleibt danach eingeschaltet, bis es manuell regulär
 heruntergefahren wird. Die Festplatte bleibt angeschlossen und eingeschaltet.
