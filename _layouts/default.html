@@ -471,12 +471,9 @@
 
         /* =========================
            MERMAID-KONTRAST
-           Labels werden von Mermaid in
-           foreignObject innerhalb des SVG
-           als HTML-Elemente ausgegeben.
+           Text in SVG/foreignObject
         ========================= */
 
-        .document pre.mermaid,
         .document .mermaid {
             color: #111827 !important;
         }
@@ -485,16 +482,13 @@
         .document .mermaid .nodeLabel p,
         .document .mermaid .edgeLabel,
         .document .mermaid .edgeLabel p,
-        .document .mermaid foreignObject p,
-        .document .mermaid foreignObject span,
-        .document .mermaid foreignObject div {
+        .document .mermaid foreignObject,
+        .document .mermaid foreignObject *,
+        .document .mermaid .label,
+        .document .mermaid .label * {
             color: #111827 !important;
-            opacity: 1 !important;
-        }
-
-        .document .mermaid svg text,
-        .document .mermaid svg tspan {
             fill: #111827 !important;
+            -webkit-text-fill-color: #111827 !important;
             opacity: 1 !important;
         }
 
@@ -598,7 +592,7 @@
 </div>
 
 
-    <!-- Mermaid-Diagramme -->
+    <!-- Mermaid-Diagramme: kontrastreiches Theme -->
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
 
@@ -606,10 +600,10 @@
             startOnLoad: false,
             theme: 'base',
             themeVariables: {
-                background: '#0d1117',
+                background: '#161b22',
                 primaryColor: '#e2e8f0',
                 primaryTextColor: '#111827',
-                primaryBorderColor: '#1d4ed8',
+                primaryBorderColor: '#2563eb',
                 lineColor: '#64748b',
                 textColor: '#111827',
                 darkMode: true,
