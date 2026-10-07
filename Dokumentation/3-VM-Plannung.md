@@ -49,7 +49,7 @@ title: Virtuelle Machienen - Planung
 |  244  | postgres     | **DB-LD-20-40**   | PostgreSQL                            |        Debian         | 10.10.20.40 |     20      |     4     |  2   |
 |  255  | zabbix       | **MON-LA-20-50**  | Zabbix Monitoring                     |       AlmaLinux       | 10.10.20.50 |     20      |     4     |  2   |
 |  266  | docker       | **DOC-LU-20-60**  | Docker / Podman / Container           |     Ubuntu Server     | 10.10.20.60 |     40      |     4     |  2   |
-|  102  | ansible      | **ANS-LU-10-20**  | Ansible / Automation                  |     Ubuntu Server     | 10.10.10.20 |     20      |     2     |  2   |
+|  102  | ansible      | **ANS-LA-10-20**  | Ansible / Automation                  |       AlmaLinux       | 10.10.10.20 |     20      |     2     |  2   |
 |  277  |              | **LOG-LA-20-70**  | Zentrales Logging                     |       AlmaLinux       | 10.10.20.70 |     40      |     4     |  2   |
 |  288  | wazuh        | **SEC-LA-20-80**  | Wazuh / Security Monitoring           |       AlmaLinux       | 10.10.20.80 |     64      |     4     |  4   |
 |  299  | gitea        | **GIT-LD-20-90**  | Gitea / Git-Server                    |        Debian         | 10.10.20.90 |     32      |     2     |  2   |
