@@ -2,7 +2,7 @@
 layout: default
 title: Hardware & Setup
 ---
-Test Obsidian
+
 # Hardware & Setup
 
 ## Übersicht
