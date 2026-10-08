@@ -11,10 +11,10 @@ title: VM – Domain Controller
 | -------------- | -------------- |
 | VM-ID          | 201            |
 | SSH-Nickname   | dc             |
-| VM-Name        | dc-ws-20-1     |
+| VM-Name        | dc-ws-20-3     |
 | Zweck          | AD, DNS, DHCP  |
 | Betriebssystem | Windows Server |
-| IPv4           | 10.10.20.2     |
+| IPv4           | 10.10.20.3     |
 | Domain         | lab.home       |
 | Größe          | 80 GB          |
 | RAM            | 8 GB           |
