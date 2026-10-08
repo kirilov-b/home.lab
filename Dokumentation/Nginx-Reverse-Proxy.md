@@ -5,10 +5,6 @@ title: VM – Nginx / Reverse Proxy
 # NOCH NICHT KONFIGURIERT
 # VM – Nginx / Reverse Proxy
 
-## Übersicht
-
-Diese Seite dokumentiert die virtuelle Maschine **NGX-LA-20-30**.
-
 **VM Parameter**
 
 | Parameter      | Wert                  |
@@ -23,8 +19,9 @@ Diese Seite dokumentiert die virtuelle Maschine **NGX-LA-20-30**.
 | Größe          | 20 GB                 |
 | RAM            | 2 GB                  |
 | vCPU           | 2                     |
-# 1. Überblick
 
-# 2. Konfigurationsschritte 
+# Überblick
 
-# 3. Tests
+# Konfigurationsschritte 
+
+# Tests

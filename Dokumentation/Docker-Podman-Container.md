@@ -23,8 +23,8 @@ Diese Seite dokumentiert die virtuelle Maschine **DOC-LU-20-60**.
 | Größe          | 40 GB                       |
 | RAM            | 4 GB                        |
 | vCPU           | 2                           |
-# 1. Überblick
+# Überblick
 
-# 2. Konfigurationsschritte 
+# Konfigurationsschritte 
 
-# 3. Tests
+# Tests

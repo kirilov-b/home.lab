@@ -23,8 +23,8 @@ Diese Seite dokumentiert die virtuelle Maschine **ANS-LU-10-20**.
 | Größe          | 20 GB                |
 | RAM            | 4 GB                 |
 | vCPU           | 2                    |
-# 1. Überblick
+#  Überblick
 
-# 2. Konfigurationsschritte 
+# Konfigurationsschritte 
 
-# 3. Tests
+# Tests

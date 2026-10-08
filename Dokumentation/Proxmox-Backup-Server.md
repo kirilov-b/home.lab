@@ -6,7 +6,6 @@ title: VM – Proxmox Backup Server
 
 **VM Parameter**
 
-
 | Parameter      | Wert          |
 | -------------- | ------------- |
 | VM-ID          | 211           |
@@ -19,6 +18,7 @@ title: VM – Proxmox Backup Server
 | Größe          | 20 GB         |
 | RAM            | 8 GB          |
 | vCPU           | 4             |
+
 ## Überblick
 
 Die Backup-Lösung besteht aus dem Proxmox-VE-Host, einer virtuellen

@@ -5,9 +5,6 @@ title: VM – Testclient
 # NOCH NICHT KONFIGURIERT
 # VM – Testclient
 
-## Übersicht
-
-Diese Seite dokumentiert die virtuelle Maschine **CL2-WC-30**.
 
 **VM Parameter**
 
@@ -23,8 +20,9 @@ Diese Seite dokumentiert die virtuelle Maschine **CL2-WC-30**.
 | Größe          | 60 GB      |
 | RAM            | 4 GB       |
 | vCPU           | 2          |
-## 1. Überblick
 
-# 2. Konfigurationsschritte 
+## Überblick
 
-# 3. Tests
+# Konfigurationsschritte 
+
+# Tests

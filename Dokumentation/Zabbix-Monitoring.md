@@ -5,10 +5,6 @@ title: VM – Zabbix Monitoring
 # NOCH NICHT KONFIGURIERT
 # VM – Zabbix Monitoring
 
-## Übersicht
-
-Diese Seite dokumentiert die virtuelle Maschine **MON-LA-20-50**.
-
 **VM Parameter**
 
 | Parameter      | Wert              |
@@ -23,8 +19,9 @@ Diese Seite dokumentiert die virtuelle Maschine **MON-LA-20-50**.
 | Größe          | 32 GB             |
 | RAM            | 4 GB              |
 | vCPU           | 2                 |
-## 1. Überblick
 
-# 2. Konfigurationsschritte 
+# Überblick
 
-# 3. Tests
+# Konfigurationsschritte 
+
+# Tests

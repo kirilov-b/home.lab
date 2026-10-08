@@ -5,10 +5,6 @@ title: VM – FreeIPA / Identity / DNS
 # NOCH NICHT KONFIGURIERT
 # VM – FreeIPA / Identity / DNS
 
-## Übersicht
-
-Diese Seite dokumentiert die virtuelle Maschine **IPA-LA-20-20**.
-
 **VM Parameter**
 
 | Parameter      | Wert                     |

@@ -5,10 +5,6 @@ title: VM – PostgreSQL
 # NOCH NICHT KONFIGURIERT
 # VM – PostgreSQL
 
-## Übersicht
-
-Diese Seite dokumentiert die virtuelle Maschine **DB-LD-20-40**.
-
 **VM Parameter**
 
 | Parameter      | Wert                   |
@@ -23,8 +19,8 @@ Diese Seite dokumentiert die virtuelle Maschine **DB-LD-20-40**.
 | Größe          | 32 GB                  |
 | RAM            | 4 GB                   |
 | vCPU           | 2                      |
-# 1. Überblick
+# Überblick
 
-# 2. Konfigurationsschritte 
+# Konfigurationsschritte 
 
-# 3. Tests
+# Tests

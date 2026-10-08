@@ -5,10 +5,6 @@ title: VM – Testclient
 # NOCH NICHT KONFIGURIERT
 # VM – Testclient
 
-## Übersicht
-
-Diese Seite dokumentiert die virtuelle Maschine **CL3-MAC-30**.
-
 **VM Parameter**
 
 | Parameter      | Wert       |
@@ -23,8 +19,8 @@ Diese Seite dokumentiert die virtuelle Maschine **CL3-MAC-30**.
 | Größe          | 60 GB      |
 | RAM            | 4 GB       |
 | vCPU           | 2          |
-## 1. Überblick
+## Überblick
 
-# 2. Konfigurationsschritte 
+# Konfigurationsschritte 
 
-# 3. Tests
+# Tests

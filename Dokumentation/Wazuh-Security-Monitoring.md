@@ -5,10 +5,6 @@ title: VM – Wazuh / Security Monitoring
 # NOCH NICHT KONFIGURIERT
 # VM – Wazuh / Security Monitoring
 
-## Übersicht
-
-Diese Seite dokumentiert die virtuelle Maschine **SEC-LA-20-80**.
-
 **VM Parameter**
 
 | Parameter      | Wert                        |
@@ -23,8 +19,9 @@ Diese Seite dokumentiert die virtuelle Maschine **SEC-LA-20-80**.
 | Größe          | 64 GB                       |
 | RAM            | 8 GB                        |
 | vCPU           | 4                           |
-## 1. Überblick
 
-# 2. Konfigurationsschritte 
+# Überblick
 
-# 3. Tests
+# Konfigurationsschritte 
+
+# Tests

@@ -23,8 +23,8 @@ Diese Seite dokumentiert die virtuelle Maschine **GIT-LD-20-90**.
 | Größe          | 32 GB              |
 | RAM            | 2 GB               |
 | vCPU           | 2                  |
-# 1. Überblick
+# Überblick
 
-# 2. Konfigurationsschritte 
+# Konfigurationsschritte 
 
-# 3. Tests
+# Tests
