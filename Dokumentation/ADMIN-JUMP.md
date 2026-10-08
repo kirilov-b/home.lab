@@ -5,10 +5,6 @@ title: VM – Administrator
 
 # VM – Verwaltung, Dokumentation, Remote Verbindung
 
-## Übersicht
-
-Diese Seite dokumentiert die virtuelle Maschine **jump-lm-10-3**.
-
 **VM Parameter**
 
 | Parameter      | Wert                      |
@@ -24,18 +20,10 @@ Diese Seite dokumentiert die virtuelle Maschine **jump-lm-10-3**.
 | RAM            | 8 GB                      |
 | vCPU           | 4                         |
 
-## Aufgabe
+# Konfiguration
 
-**Verwaltung, Dokumentation, Testclient**
-
-## Technische Daten
-
-- **Betriebssystem:** Linux Mint
-- **IPv4:** Nicht angegeben
-- **Speicher:** 80 GB
-- **RAM:** 8 GB
-- **vCPU:** 4
-
+<details markdown="1">
+<summary><strong>Konfiguration anzeigen</strong></summary>
 ## RDP Verbindung
 Remote Destkop Protocol **(RDP)** wird auf der Controller Laptop und auf dem jump-lm-10-3 (**JUMP**) installiert, um eine Verbindung zwischen beide Machinen ohne die Proxmox Browser Verbindung benutzen zu müssen.
 Ziel ist der **jump** ein Jumphost zu machen und von dort aus die komplette Umgebung zu verwalten. Die **jump** VM befindet sich in VLAN 10 - Management Netz (**MGMT**). Über den OPNsens Firewall wird an der Managment Netz hat folgende Zugriff ermöglicht:
@@ -48,8 +36,6 @@ Zusätzlich wird zu jede VM von **jump** aus eine SSH Verbindung eingerichtet.
 
 ## SSH Einrichtung
 
-<details markdown="1">
-<summary><strong>Konfiguration anzeigen</strong></summary>
 Auf **jump-lm-10-3**:
 
 1. Ordner für den SHA256 Schlüssel erstellen
@@ -80,8 +66,12 @@ Auf jump-lm-10-3:
 4. Rechte anpassen
      `chmod 600 ~/.ssh/config
 
-</details>
+
 ### OPNsense
 
 
 ## VPN via WireGuard
+
+</details>
+
+# Tests
