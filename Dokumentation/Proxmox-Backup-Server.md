@@ -6,6 +6,7 @@ title: VM – Proxmox Backup Server
 
 **VM Parameter**
 
+
 | Parameter      | Wert          |
 | -------------- | ------------- |
 | VM-ID          | 211           |
@@ -37,7 +38,7 @@ Status-E-Mail.
 
 
 <details markdown="1">
-<summary><strong>Backup-Skript anzeigen</strong></summary>
+<summary><strong>Konfiguration anzeigen</strong></summary>
 
 ## 1. Logische Darstellung des Prozesses
 
@@ -50,7 +51,7 @@ heruntergefahren wird. Die Festplatte bleibt angeschlossen und eingeschaltet.
 | Komponente            | Wert                       |
 | --------------------- | -------------------------- |
 | PVE-Host              | prox                       |
-| PBS-VM                | ID 211, Name PBS-PBS-20-10 |
+| PBS-VM                | ID 211, Name pbs-pbs-20-10 |
 | PBS-Adresse           | 10.10.20.10                |
 | PBS-Weboberfläche     | https: //10.10.20.10:8007  |
 | PBS-Datastore         | Backup                     |
@@ -165,7 +166,7 @@ bedeutet nicht automatisch, dass die Sicherung fehlerhaft ist.
 Eine automatische Verifizierung wurde jede 5 Tage nach der Backup in der WebGUI von PBS eingerichtet.
 
 </details>
-## Backup-Skript
+# Backup-Skript
 
 Das Skript wird beim Start des Proxmox-Hosts automatisch ausgeführt. Es prüft die Voraussetzungen, sichert die VMs und fährt den PBS nur bei erfolgreichem Abschluss herunter.
 
