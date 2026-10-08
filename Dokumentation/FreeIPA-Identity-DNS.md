@@ -11,8 +11,6 @@ Diese Seite dokumentiert die virtuelle Maschine **IPA-LA-20-20**.
 
 **VM Parameter**
 
-**VM Parameter**
-
 | Parameter      | Wert                     |
 | -------------- | ------------------------ |
 | VM-ID          | 222                      |
@@ -25,6 +23,7 @@ Diese Seite dokumentiert die virtuelle Maschine **IPA-LA-20-20**.
 | Größe          | 20 GB                    |
 | RAM            | 2 GB                     |
 | vCPU           | 2                        |
+
 # 1. Überblick
 
 # 2. Konfigurationsschritte 
