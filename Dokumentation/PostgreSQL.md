@@ -19,6 +19,7 @@ title: VM – PostgreSQL
 | Größe          | 32 GB                  |
 | RAM            | 4 GB                   |
 | vCPU           | 2                      |
+
 # Überblick
 
 # Konfigurationsschritte 

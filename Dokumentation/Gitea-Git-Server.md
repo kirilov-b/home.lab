@@ -5,10 +5,6 @@ title: VM – Gitea / Git-Server
 # NOCH NICHT KONFIGURIERT
 # VM – Gitea / Git-Server
 
-## Übersicht
-
-Diese Seite dokumentiert die virtuelle Maschine **GIT-LD-20-90**.
-
 **VM Parameter**
 
 | Parameter      | Wert               |
@@ -23,6 +19,7 @@ Diese Seite dokumentiert die virtuelle Maschine **GIT-LD-20-90**.
 | Größe          | 32 GB              |
 | RAM            | 2 GB               |
 | vCPU           | 2                  |
+
 # Überblick
 
 # Konfigurationsschritte 

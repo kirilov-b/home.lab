@@ -5,7 +5,6 @@ title: VM – Testclient
 # NOCH NICHT KONFIGURIERT
 # VM – Testclient
 
-
 **VM Parameter**
 
 | Parameter      | Wert       |
@@ -21,7 +20,7 @@ title: VM – Testclient
 | RAM            | 4 GB       |
 | vCPU           | 2          |
 
-## Überblick
+# Überblick
 
 # Konfigurationsschritte 
 

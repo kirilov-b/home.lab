@@ -5,10 +5,6 @@ title: VM – Docker / Podman / Container
 # NOCH NICHT KONFIGURIERT
 # VM – Docker / Podman / Container
 
-## Übersicht
-
-Diese Seite dokumentiert die virtuelle Maschine **DOC-LU-20-60**.
-
 **VM Parameter**
 
 | Parameter      | Wert                        |
@@ -23,6 +19,7 @@ Diese Seite dokumentiert die virtuelle Maschine **DOC-LU-20-60**.
 | Größe          | 40 GB                       |
 | RAM            | 4 GB                        |
 | vCPU           | 2                           |
+
 # Überblick
 
 # Konfigurationsschritte 
