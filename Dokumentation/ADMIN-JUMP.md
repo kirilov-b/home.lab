@@ -48,6 +48,7 @@ Zusätzlich wird zu jede VM von **JUMP** aus eine SSH Verbindung eingerichtet.
 
 ## SSH Einrichtung
 
+<details markdown="1">
 <summary><strong>Konfiguration anzeigen</strong></summary>
 Auf **jump-lm-10-3**:
 
