@@ -23,22 +23,8 @@ Diese Seite dokumentiert die virtuelle Maschine **MON-LA-20-50**.
 | Größe          | 32 GB             |
 | RAM            | 4 GB              |
 | vCPU           | 2                 |
-## Aufgabe
+## 1. Überblick
 
-**Zabbix Monitoring**
+# 2. Konfigurationsschritte 
 
-## Technische Daten
-
-- **Betriebssystem:** AlmaLinux
-- **IPv4:** 10.10.20.50
-- **Speicher:** 32 GB
-- **RAM:** 4 GB
-- **vCPU:** 2
-
-## Weitere Konfiguration
-
-Die detaillierte Konfiguration dieser VM wird im weiteren Verlauf der Projektdokumentation ergänzt.
-
-## Hinweise
-
-Weitere technische Informationen, Konfigurationsschritte und Testergebnisse können hier dokumentiert werden.
+# 3. Tests

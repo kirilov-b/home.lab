@@ -25,22 +25,10 @@ Diese Seite dokumentiert die virtuelle Maschine **IPA-LA-20-20**.
 | Größe          | 20 GB                    |
 | RAM            | 2 GB                     |
 | vCPU           | 2                        |
-## Aufgabe
+# 1. Überblick
 
-**FreeIPA / Identity / DNS**
+# 2. Konfigurationsschritte 
 
-## Technische Daten
+# 3. Tests
 
-- **Betriebssystem:** AlmaLinux
-- **IPv4:** 10.10.20.20
-- **Speicher:** 32 GB
-- **RAM:** 2 GB
-- **vCPU:** 2
 
-## Weitere Konfiguration
-
-Die detaillierte Konfiguration dieser VM wird im weiteren Verlauf der Projektdokumentation ergänzt.
-
-## Hinweise
-
-Weitere technische Informationen, Konfigurationsschritte und Testergebnisse können hier dokumentiert werden.

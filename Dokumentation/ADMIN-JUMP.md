@@ -7,7 +7,7 @@ title: VM – Administrator
 
 ## Übersicht
 
-Diese Seite dokumentiert die virtuelle Maschine **JUMP-LM-10-3**.
+Diese Seite dokumentiert die virtuelle Maschine **jump-lm-10-3**.
 
 **VM Parameter**
 
@@ -37,14 +37,14 @@ Diese Seite dokumentiert die virtuelle Maschine **JUMP-LM-10-3**.
 - **vCPU:** 4
 
 ## RDP Verbindung
-Remote Destkop Protocol **(RDP)** wird auf der Controller Laptop und auf dem JUMP-LM-10-3 (**JUMP**) installiert, um eine Verbindung zwischen beide Machinen ohne die Proxmox Browser Verbindung benutzen zu müssen.
-Ziel ist der **JUMP** ein Jumphost zu machen und von dort aus die komplette Umgebung zu verwalten. Die JUMP VM befindet sich in VLAN 10 - Management Netz (**MGMT**). Über den OPNsens Firewall wird an der Managment Netz hat folgende Zugriff ermöglicht:
+Remote Destkop Protocol **(RDP)** wird auf der Controller Laptop und auf dem jump-lm-10-3 (**JUMP**) installiert, um eine Verbindung zwischen beide Machinen ohne die Proxmox Browser Verbindung benutzen zu müssen.
+Ziel ist der **jump** ein Jumphost zu machen und von dort aus die komplette Umgebung zu verwalten. Die **jump** VM befindet sich in VLAN 10 - Management Netz (**MGMT**). Über den OPNsens Firewall wird an der Managment Netz hat folgende Zugriff ermöglicht:
 - Verbindung zu HTTPS: **Proxmox WebGUI**
 - Verbindung zu **Service VLAN 20** (**SRV)**
 - Verbindung zu **Clients VLAN 30** (CL)
 - Verbindung zu **OPNsense Web GUI** 
 
-Zusätzlich wird zu jede VM von **JUMP** aus eine SSH Verbindung eingerichtet.
+Zusätzlich wird zu jede VM von **jump** aus eine SSH Verbindung eingerichtet.
 
 ## SSH Einrichtung
 

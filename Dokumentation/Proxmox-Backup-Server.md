@@ -4,8 +4,6 @@ title: VM – Proxmox Backup Server
 ---
 # Proxmox VE und Proxmox Backup Server
 
-**Proxmox-VM-Konfiguration**
-
 **VM Parameter**
 
 | Parameter      | Wert          |
@@ -20,7 +18,7 @@ title: VM – Proxmox Backup Server
 | Größe          | 20 GB         |
 | RAM            | 8 GB          |
 | vCPU           | 4             |
-## 1. Überblick
+## Überblick
 
 Die Backup-Lösung besteht aus dem Proxmox-VE-Host, einer virtuellen
 Maschine mit Proxmox Backup Server (PBS) und einem externen Datenträger.
@@ -34,6 +32,12 @@ Status-E-Mail.
 
 **Ablauf:** Proxmox-VMs → PVE-Speicher **Extern-Backup** → PBS-Datastore
 **Backup** → externer Datenträger.
+
+# Konfiguration
+
+
+<details markdown="1">
+<summary><strong>Backup-Skript anzeigen</strong></summary>
 
 ## 1. Logische Darstellung des Prozesses
 
@@ -160,7 +164,7 @@ verified** bedeutet, dass noch kein Verify-Lauf dokumentiert ist; es
 bedeutet nicht automatisch, dass die Sicherung fehlerhaft ist. 
 Eine automatische Verifizierung wurde jede 5 Tage nach der Backup in der WebGUI von PBS eingerichtet.
 
-
+</details>
 ## Backup-Skript
 
 Das Skript wird beim Start des Proxmox-Hosts automatisch ausgeführt. Es prüft die Voraussetzungen, sichert die VMs und fährt den PBS nur bei erfolgreichem Abschluss herunter.

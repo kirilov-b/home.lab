@@ -23,22 +23,8 @@ Diese Seite dokumentiert die virtuelle Maschine **CL2-WC-30**.
 | Größe          | 60 GB      |
 | RAM            | 4 GB       |
 | vCPU           | 2          |
-## Aufgabe
+## 1. Überblick
 
-**Testclient**
+# 2. Konfigurationsschritte 
 
-## Technische Daten
-
-- **Betriebssystem:** Windows 11
-- **IPv4:** DHCP
-- **Speicher:** 60 GB
-- **RAM:** 4 GB
-- **vCPU:** 2
-
-## Weitere Konfiguration
-
-Die detaillierte Konfiguration dieser VM wird im weiteren Verlauf der Projektdokumentation ergänzt.
-
-## Hinweise
-
-Weitere technische Informationen, Konfigurationsschritte und Testergebnisse können hier dokumentiert werden.
+# 3. Tests

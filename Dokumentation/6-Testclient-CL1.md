@@ -23,7 +23,8 @@ Diese Seite dokumentiert die virtuelle Maschine **CL1-WC-30**.
 | Größe          | 60 GB      |
 | RAM            | 6 GB       |
 | vCPU           | 2          |
-## Verwendung
+
+## 1. Überblick
 
 Der Testclient wird für Tests innerhalb der Laborumgebung verwendet.
 
@@ -34,3 +35,7 @@ Dazu gehören beispielsweise:
 - Tests von Firewall-Regeln
 - Überprüfung von zentralen Diensten
 - Validierung von Benutzer- und Domänenfunktionen
+
+# 2. Konfigurationsschritte 
+
+# 3. Tests

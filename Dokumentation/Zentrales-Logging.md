@@ -23,22 +23,8 @@ Diese Seite dokumentiert die virtuelle Maschine **LOG-LA-20-70**.
 | Größe          | 20 GB             |
 | RAM            | 4 GB              |
 | vCPU           | 2                 |
-## Aufgabe
+## 1. Überblick
 
-**Zentrales Logging**
+# 2. Konfigurationsschritte 
 
-## Technische Daten
-
-- **Betriebssystem:** AlmaLinux
-- **IPv4:** 10.10.20.70
-- **Speicher:** 40 GB
-- **RAM:** 4 GB
-- **vCPU:** 2
-
-## Weitere Konfiguration
-
-Die detaillierte Konfiguration dieser VM wird im weiteren Verlauf der Projektdokumentation ergänzt.
-
-## Hinweise
-
-Weitere technische Informationen, Konfigurationsschritte und Testergebnisse können hier dokumentiert werden.
+# 3. Tests
