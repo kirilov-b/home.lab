@@ -20,7 +20,7 @@ title: VM – Wazuh / Security Monitoring
 | RAM            | 8 GB                        |
 | vCPU           | 4                           |
 
-# Überblick
+# Übersicht
 
 # Konfigurationsschritte 
 

@@ -20,7 +20,7 @@ title: VM – FreeIPA / Identity / DNS
 | RAM            | 2 GB                     |
 | vCPU           | 2                        |
 
-# Überblick
+# Übersicht
 
 # Konfigurationsschritte 
 

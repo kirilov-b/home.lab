@@ -20,7 +20,7 @@ title: VM – Nginx / Reverse Proxy
 | RAM            | 2 GB                  |
 | vCPU           | 2                     |
 
-# Überblick
+# Übersicht
 
 # Konfigurationsschritte 
 

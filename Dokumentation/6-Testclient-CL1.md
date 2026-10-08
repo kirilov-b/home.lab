@@ -5,10 +5,6 @@ title: VM – Testclient CL1
 
 # VM – Testclient "cl1"
 
-## Übersicht
-
-Diese Seite dokumentiert die virtuelle Maschine **CL1-WC-30**.
-
 **VM Parameter**
 
 | Parameter      | Wert       |
@@ -24,7 +20,7 @@ Diese Seite dokumentiert die virtuelle Maschine **CL1-WC-30**.
 | RAM            | 6 GB       |
 | vCPU           | 2          |
 
-## Überblick
+# Übersicht
 
 Der Testclient wird für Tests innerhalb der Laborumgebung verwendet.
 

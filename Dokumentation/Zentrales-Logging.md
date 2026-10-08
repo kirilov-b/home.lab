@@ -20,7 +20,7 @@ title: VM – Zentrales Logging
 | RAM            | 4 GB              |
 | vCPU           | 2                 |
 
-# Überblick
+# Übersicht
 
 # Konfigurationsschritte 
 

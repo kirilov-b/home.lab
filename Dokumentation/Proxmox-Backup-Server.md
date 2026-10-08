@@ -19,7 +19,7 @@ title: VM – Proxmox Backup Server
 | RAM            | 8 GB          |
 | vCPU           | 4             |
 
-## Überblick
+# Übersicht
 
 Die Backup-Lösung besteht aus dem Proxmox-VE-Host, einer virtuellen
 Maschine mit Proxmox Backup Server (PBS) und einem externen Datenträger.

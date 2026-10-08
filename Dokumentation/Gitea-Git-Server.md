@@ -20,7 +20,7 @@ title: VM – Gitea / Git-Server
 | RAM            | 2 GB               |
 | vCPU           | 2                  |
 
-# Überblick
+# Übersicht
 
 # Konfigurationsschritte 
 
