@@ -47,7 +47,9 @@ Ziel ist der **JUMP** ein Jumphost zu machen und von dort aus die komplette Umge
 Zusätzlich wird zu jede VM von **JUMP** aus eine SSH Verbindung eingerichtet.
 
 ## SSH Einrichtung
-Auf JUMP-LM-10-3:
+
+<summary><strong>Konfiguration anzeigen</strong></summary>
+Auf **jump-lm-10-3**:
 
 1. Ordner für den SHA256 Schlüssel erstellen
 	 `mkdir -p ~/.ssh`
@@ -63,7 +65,7 @@ Auf JUMP-LM-10-3:
 	 `ssh-add ~/.ssh/id_ed25519`
 	 `ssh-add -l`> schlüssel abrufen
 ### Wiederholende Schritte für jede weitere VM-Einrichtung
-Auf JUMP-LM-10-3:
+Auf jump-lm-10-3:
 1. Öffentliche Schlüssel in dementsprechende VM setzen:
      `ssh-copy-id -i ~/.ssh/id_ed25519.pub root@10.10.20.10`
 2. Bequeme Verbindung:
@@ -76,6 +78,8 @@ Auf JUMP-LM-10-3:
 		   *Identify Only yes*
 4. Rechte anpassen
      `chmod 600 ~/.ssh/config
+
+</details>
 ### OPNsense
 
 
