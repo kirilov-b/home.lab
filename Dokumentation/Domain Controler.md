@@ -10,18 +10,21 @@ title: VM – Domain Controller
 Diese Seite dokumentiert die virtuelle Maschine **DC-WS-20-1**.
 
 **Proxmox-VM-Konfiguration**
-|Parameter|Wert|
-|---|---|
-|VM-ID|201|
-|SSH-Nickname|dc|
-|VM-Name|DC-WS-20-1|
-|Zweck|AD, DNS, DHCP|
-|Betriebssystem|winServer 2022|
-|IPv4|10.10.20.1|
-|Größe|80 GB|
-|RAM|8 GB|
-|vCPU|4|
 
+**VM Parameter**
+
+| Parameter      | Wert           |
+| -------------- | -------------- |
+| VM-ID          | 201            |
+| SSH-Nickname   | dc             |
+| VM-Name        | dc-ws-20-1     |
+| Zweck          | AD, DNS, DHCP  |
+| Betriebssystem | Windows Server |
+| IPv4           | 10.10.20.2     |
+| Domain         | lab.home       |
+| Größe          | 80 GB          |
+| RAM            | 8 GB           |
+| vCPU           | 4              |
 ## Aufgabe
 
 **AD, DNS, DHCP**

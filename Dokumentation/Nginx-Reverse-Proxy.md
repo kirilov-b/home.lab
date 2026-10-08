@@ -9,18 +9,20 @@ title: VM – Nginx / Reverse Proxy
 
 Diese Seite dokumentiert die virtuelle Maschine **NGX-LA-20-30**.
 
-| Parameter | Wert |
-|---|---|
-| VM-ID | 233 |
-| SSH-Nickname | ngx |
-| VM-Name | NGX-LA-20-30 |
-| Zweck | Nginx / Reverse Proxy |
-| Betriebssystem | AlmaLinux |
-| IPv4 | 10.10.20.30 |
-| Größe | 20 GB |
-| RAM | 2 GB |
-| vCPU | 2 |
+**VM Parameter**
 
+| Parameter      | Wert                  |
+| -------------- | --------------------- |
+| VM-ID          | 233                   |
+| SSH-Nickname   | ngx                   |
+| VM-Name        | NGX-LA-20-30          |
+| Zweck          | Nginx / Reverse Proxy |
+| Betriebssystem | Linux Alma            |
+| IPv4           | 10.10.20.30           |
+| Domain         | lab.service           |
+| Größe          | 20 GB                 |
+| RAM            | 2 GB                  |
+| vCPU           | 2                     |
 ## Aufgabe
 
 **Nginx / Reverse Proxy**

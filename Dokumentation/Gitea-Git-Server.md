@@ -9,18 +9,20 @@ title: VM – Gitea / Git-Server
 
 Diese Seite dokumentiert die virtuelle Maschine **GIT-LD-20-90**.
 
-| Parameter | Wert |
-|---|---|
-| VM-ID | 299 |
-| SSH-Nickname | gitea |
-| VM-Name | GIT-LD-20-90 |
-| Zweck | Gitea / Git-Server |
-| Betriebssystem | Debian |
-| IPv4 | 10.10.20.90 |
-| Größe | 32 GB |
-| RAM | 2 GB |
-| vCPU | 2 |
+**VM Parameter**
 
+| Parameter      | Wert               |
+| -------------- | ------------------ |
+| VM-ID          | 299                |
+| SSH-Nickname   | gitea              |
+| VM-Name        | git-ld-20-90       |
+| Zweck          | Gitea / Git-Server |
+| Betriebssystem | Linux Debian       |
+| IPv4           | 10.10.20.90        |
+| Domain         | lab.service        |
+| Größe          | 32 GB              |
+| RAM            | 2 GB               |
+| vCPU           | 2                  |
 ## Aufgabe
 
 **Gitea / Git-Server**

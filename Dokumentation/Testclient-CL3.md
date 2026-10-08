@@ -9,18 +9,20 @@ title: VM – Testclient
 
 Diese Seite dokumentiert die virtuelle Maschine **CL3-MAC-30**.
 
+**VM Parameter**
+
 | Parameter      | Wert       |
 | -------------- | ---------- |
 | VM-ID          | 303        |
-| SSH-Nickname   |            |
-| VM-Name        | CL3-MAC-30 |
+| SSH-Nickname   | cl3        |
+| VM-Name        | cl3-mac-30 |
 | Zweck          | Testclient |
 | Betriebssystem | MacOS      |
 | IPv4           | DHCP       |
+| Domain         | lab.home   |
 | Größe          | 60 GB      |
 | RAM            | 4 GB       |
 | vCPU           | 2          |
-
 ## Aufgabe
 
 **Testclient**

@@ -9,18 +9,20 @@ title: VM – Ansible / Automation
 
 Diese Seite dokumentiert die virtuelle Maschine **ANS-LU-10-20**.
 
-| Parameter | Wert |
-|---|---|
-| VM-ID | 102 |
-| SSH-Nickname | ansible |
-| VM-Name | ANS-LU-10-20 |
-| Zweck | Ansible / Automation |
-| Betriebssystem | Ubuntu Server |
-| IPv4 | 10.10.10.20 |
-| Größe | 20 GB |
-| RAM | 2 GB |
-| vCPU | Nicht angegeben |
+**VM Parameter**
 
+| Parameter      | Wert                 |
+| -------------- | -------------------- |
+| VM-ID          | 102                  |
+| SSH-Nickname   | ansible              |
+| VM-Name        | ans-la-10-3          |
+| Zweck          | Ansible / Automation |
+| Betriebssystem | Linux Alma           |
+| IPv4           | 10.10.10.20          |
+| Domain         | lab.service          |
+| Größe          | 20 GB                |
+| RAM            | 4 GB                 |
+| vCPU           | 2                    |
 ## Aufgabe
 
 **Ansible / Automation**

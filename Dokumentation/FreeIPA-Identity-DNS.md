@@ -9,18 +9,22 @@ title: VM – FreeIPA / Identity / DNS
 
 Diese Seite dokumentiert die virtuelle Maschine **IPA-LA-20-20**.
 
-| Parameter | Wert |
-|---|---|
-| VM-ID | 222 |
-| SSH-Nickname | ipa |
-| VM-Name | IPA-LA-20-20 |
-| Zweck | FreeIPA / Identity / DNS |
-| Betriebssystem | AlmaLinux |
-| IPv4 | 10.10.20.20 |
-| Größe | 32 GB |
-| RAM | 2 GB |
-| vCPU | 2 |
+**VM Parameter**
 
+**VM Parameter**
+
+| Parameter      | Wert                     |
+| -------------- | ------------------------ |
+| VM-ID          | 222                      |
+| SSH-Nickname   | ipa                      |
+| VM-Name        | ipa-la-20-20             |
+| Zweck          | FreeIPA / Identity / DNS |
+| Betriebssystem | Linux Alma               |
+| IPv4           | 10.10.20.20              |
+| Domain         | lab.service              |
+| Größe          | 20 GB                    |
+| RAM            | 2 GB                     |
+| vCPU           | 2                        |
 ## Aufgabe
 
 **FreeIPA / Identity / DNS**

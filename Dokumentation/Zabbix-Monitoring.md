@@ -9,18 +9,20 @@ title: VM – Zabbix Monitoring
 
 Diese Seite dokumentiert die virtuelle Maschine **MON-LA-20-50**.
 
-| Parameter | Wert |
-|---|---|
-| VM-ID | 255 |
-| SSH-Nickname | zabbix |
-| VM-Name | MON-LA-20-50 |
-| Zweck | Zabbix Monitoring |
-| Betriebssystem | AlmaLinux |
-| IPv4 | 10.10.20.50 |
-| Größe | 32 GB |
-| RAM | 4 GB |
-| vCPU | 2 |
+**VM Parameter**
 
+| Parameter      | Wert              |
+| -------------- | ----------------- |
+| VM-ID          | 255               |
+| SSH-Nickname   | zabbix            |
+| VM-Name        | MON-LA-20-50      |
+| Zweck          | Zabbix Monitoring |
+| Betriebssystem | Linux Alma        |
+| IPv4           | 10.10.20.50       |
+| Domain         | lab.service       |
+| Größe          | 32 GB             |
+| RAM            | 4 GB              |
+| vCPU           | 2                 |
 ## Aufgabe
 
 **Zabbix Monitoring**

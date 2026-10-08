@@ -9,17 +9,20 @@ title: VM – Administrator
 
 Diese Seite dokumentiert die virtuelle Maschine **JUMP-LM-10-3**.
 
-| Parameter | Wert |
-|---|---|
-| VM-ID | 100 |
-| SSH-Nickname | jump |
-| VM-Name | JUMP-LM-10-3 |
-| Zweck | Verwaltung, Dokumentation, Testclient |
-| Betriebssystem | Linux Mint |
-| IPv4 | Nicht angegeben |
-| Größe | 80 GB |
-| RAM | 8 GB |
-| vCPU | 4 |
+**VM Parameter**
+
+| Parameter      | Wert                      |
+| -------------- | ------------------------- |
+| VM-ID          | 100                       |
+| SSH-Nickname   | jump                      |
+| VM-Name        | jump-lm-10-3              |
+| Zweck          | Verwaltung, Dokumentation |
+| Betriebssystem | Linux Mint                |
+| IPv4           | 10.10.10.3                |
+| Domain         | lab.service               |
+| Größe          | 80 GB                     |
+| RAM            | 8 GB                      |
+| vCPU           | 4                         |
 
 ## Aufgabe
 
