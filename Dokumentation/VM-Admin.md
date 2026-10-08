@@ -54,7 +54,7 @@ Auf **jump-lm-10-3**:
 ### Wiederholende Schritte für jede weitere VM-Einrichtung
 Auf jump-lm-10-3:
 1. Öffentliche Schlüssel in dementsprechende VM setzen:
-     `ssh-copy-id -i ~/.ssh/id_ed25519.pub root@10.10.20.10`
+     `ssh-copy-id -i ~/.ssh/id_ed25519.pub root@10.10.20.xx`
 2. Bequeme Verbindung:
 	   `nano ~/.ssh/config`
 3. Host Daten eintragen:
