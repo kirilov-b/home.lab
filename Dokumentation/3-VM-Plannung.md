@@ -6,7 +6,7 @@ title: Virtuelle Machienen - Planung
 # Virtuelle Machienen - Planung
 
 ## Namenskonventionen
-### VMID (Name - Betriebsystem - vLAN - IP Host)
+### VMID (Name - Betriebssystem - vLAN - IP Host *letzte Oktett*)
 - **VMID** *(nur in Proxmox GUI relevant)*
 	- Erste Zahl - **VLAN**
 	- Zweite Zahl - **Host**
@@ -16,7 +16,7 @@ title: Virtuelle Machienen - Planung
 	- **fw** - Firewall
 	- **dc** - Domain Controler
 	- **pbs** - Proxmox Backup Server
-	- **cl1** Client 1
+	- **cl1** - Client 1
 	- **sec** - Security
 	- **mon** - Monitoring
 - **Betriebsysteme Abkürzung**
@@ -27,7 +27,7 @@ title: Virtuelle Machienen - Planung
 	- **ld** - Linux Debian
 	- **lu** - Linux Ubuntu
 - **Name vLAN**
-	- **10** - Menagment - vLAN .10
+	- **10** - Menagement - vLAN .10
 	- **20** - Service - vLAN .20
 	- **30** - Client - vLAN .30
 	
