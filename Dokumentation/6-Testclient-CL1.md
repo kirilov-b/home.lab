@@ -3,7 +3,7 @@ layout: default
 title: VM – Testclient CL1
 ---
 
-# VM – Testclient CL1
+# VM – Testclient "cl1"
 
 ## Übersicht
 
