@@ -22,9 +22,9 @@ Ich verwende eine **VLAN-Aware Bridge (LANbr0)** in Proxmox und einen **VLAN-Tru
 |  101   | Firewall - Service (SRV)          |  10.10.20.1    | vLAN - 20  | 172.18.87.1  |            |
 |  101   | Firewall - Clients (CL)           |  10.10.30.1    | vLAN - 30  | 172.18.87.1  |            |
 |  100   | Administration, Dokumentation     |  10.10.10.3    | vLAN - 10  | 10.10.10.1   |            |
-|  201   | Domain Controller AD, DNS, DHCP   |  10.10.20.2    | vLAN - 20  | 10.10.20.1   |            |
+|  201   | Domain Controller AD, DNS, DHCP   | 10.10.20.3     | vLAN - 20  | 10.10.20.1   |            |
 |  301   | Testclient - Windows              | 10.10.30.DHCP  | vLAN - 30  | 10.10.30.1   | 10.10.20.2 |
-|  211   | Proxmox Backup Server             |  10.10.20.10   | vLAN - 20  | 10.10.20.1   | 10.10.20.2 |
+|  211   | Proxmox Backup Server             |  10.10.20.10   | vLAN - 20  | 10.10.20.1   |            |
 |  222   | FreeIPA / Identity / DNS          |  10.10.20.20   | vLAN - 20  | 10.10.20.1   |            |
 |  233   | Nginx / Reverse Proxy             |  10.10.20.30   | vLAN - 20  | 10.10.20.1   |            |
 |  244   | PostgreSQL                        |  10.10.20.40   | vLAN - 20  | 10.10.20.1   |            |
@@ -52,11 +52,11 @@ Ich verwende eine **VLAN-Aware Bridge (LANbr0)** in Proxmox und einen **VLAN-Tru
   
 ## VLAN Tabelle
 
-| VLAN | Name   | Zweck                | Netzwerk      | Gateway    |  
-| ---- | ------ | -------------------- | ------------- | ---------- |  
-|   10 | MGMT   | Administration       | 10.10.10.0/24 | 10.10.10.1 |  
-|   20 | SERVER | Infrastruktur/Server | 10.10.20.0/24 | 10.10.20.1 |  
-|   30 | CLT    | Clients              | 10.10.30.0/24 | 10.10.30.1 |  
+| VLAN | Name    | Zweck                 | Netzwerk       | Gateway     |     |
+| ---- | ------- | --------------------- | -------------- | ----------- | --- |
+|   10 | MGMT    | Administration        | 10.10.10.0/24  | 10.10.10.1  |     |
+|   20 | SRV     | Infrastruktur/Server  | 10.10.20.0/24  | 10.10.20.1  |     |
+|   30 | CLT     | Clients               | 10.10.30.0/24  | 10.10.30.1  |     |
   
 ## Routing - Firewall  
 ### Netzwerkregeln  
