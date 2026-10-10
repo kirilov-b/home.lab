@@ -60,10 +60,12 @@ Vor Installation:
 - Standardgateway: `10.10.20.1`.
 - Erreichbarkeit des Gateways und des Windows-Domaincontrollers wurde vor der Installation geprüft.
 - *Zugriffe aus anderen VLANs und passende Firewallregeln sind noch zu prüfen.*
+
 ## 1.2 Hostname und Namensauflösung
 - Vollständiger Hostname: `ipa-la-20-2.srv.test`.
 - Lokale Namensauflösung wurde vor der Installation vorbereitet.
 - FreeIPA-DNS soll die Zone `srv.test` autoritativ bereitstellen.
+
 ## 1.3 Zeit
 - Zeitzone: `Europe/Berlin`.
 - Vor der Installation waren Systemzeit-Synchronisierung und NTP-Dienst aktiv.
