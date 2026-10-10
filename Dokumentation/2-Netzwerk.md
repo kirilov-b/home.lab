@@ -59,5 +59,5 @@ Ich verwende eine **VLAN-Aware Bridge (LANbr0)** in Proxmox und einen **VLAN-Tru
 |   30 | CLT     | Clients               | 10.10.30.0/24  | 10.10.30.1  |     |
   
 ## Routing - Firewall  
-### Netzwerkregeln  
+
 
