@@ -38,11 +38,11 @@ title: Virtuelle Machienen - Planung
 ### Domain Planung
 
 Es sind zwei Domäne geplant.
-Für Service & Management - **lab.service**
+Für Service & Management - **srv.test**
 Für Domain Controller - **lab.home**
 
 **Beispiel FQDNs**
-	ans-la-10-20.lab.service
+	ans-la-10-20.srv.test
 	dc-ws-20-02.lab.home
   
 ## VM-Tabelle
@@ -54,7 +54,7 @@ Für Domain Controller - **lab.home**
 | 102   | ansible      | **ans-la-10-20** | Ansible / Automation          | Linux Alma          | 10.10.10.20 | 20          | 4         | 2    |
 | 201   | dc           | **dc-ws-20-3**   | AD, DNS, DHCP                 | Windows Server 2022 | 10.10.20.2  | 80          | 4         | 4    |
 | 211   | pbs          | **pbs-ld-20-10** | Proxmox Backup Server         | PBS(Debian)         | 10.10.20.10 | 20          | 4         | 2    |
-| 222   | ipa          | **ipa-la-20-2**  | FreeIPA / Identity / DNS      | Linux Alma          | 10.10.20.2  | 20          | 2         | 2    |
+| 222   | ipa          | **ipa-la-20-2**  | FreeIPA / Identity / DNS      | Linux Alma          | 10.10.20.2  | 40          | 4         | 2    |
 | 233   | ngx          | **ngx-la-20-30** | Nginx / Reverse Proxy         | Linux Alma          | 10.10.20.30 | 20          | 2         | 2    |
 | 244   | postgres     | **db-ld-20-40**  | PostgreSQL                    | Linux Debian        | 10.10.20.40 | 20          | 4         | 2    |
 | 255   | zabbix       | **mon-la-20-50** | Zabbix Monitoring             | Linux Alma          | 10.10.20.50 | 20          | 4         | 2    |
