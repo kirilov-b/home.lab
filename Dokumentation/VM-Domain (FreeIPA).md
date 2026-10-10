@@ -1,6 +1,6 @@
 ---
 layout: default
-title: VM – FreeIPA / Identity / DNS
+title: VM – FreeIPA / Identity /
 ---
 # VM – FreeIPA / Identity / DNS
 
@@ -53,17 +53,18 @@ Vor Installation:
 
 <details markdown="1">
 <summary><strong>Prüfpunkte anzeigen</strong></summary>
-### 1.1 Netzwerk
+
+## 1.1 Netzwerk
 - FreeIPA-Server befindet sich im Servernetz `10.10.20.0/24`.
 - Server-IP: `10.10.20.2/24`.
 - Standardgateway: `10.10.20.1`.
 - Erreichbarkeit des Gateways und des Windows-Domaincontrollers wurde vor der Installation geprüft.
 - *Zugriffe aus anderen VLANs und passende Firewallregeln sind noch zu prüfen.*
-### 1.2 Hostname und Namensauflösung
+## 1.2 Hostname und Namensauflösung
 - Vollständiger Hostname: `ipa-la-20-2.srv.test`.
 - Lokale Namensauflösung wurde vor der Installation vorbereitet.
 - FreeIPA-DNS soll die Zone `srv.test` autoritativ bereitstellen.
-### 1.3 Zeit
+## 1.3 Zeit
 - Zeitzone: `Europe/Berlin`.
 - Vor der Installation waren Systemzeit-Synchronisierung und NTP-Dienst aktiv.
 - Zeitstatus nach der Installation ist noch zu kontrollieren.
@@ -74,15 +75,15 @@ Vor Installation:
 <details markdown="1">
 <summary><strong>Installation anzeigen</strong></summary>
 
-### 2.1 Betriebssystem
+## 2.1 Betriebssystem
 - AlmaLinux 10.2 wurde aktualisiert.
 - Nach dem Neustart wurde Kernel `6.12.0-211.64.1.el10_2.x86_64` festgestellt.
 
-### 2.2 FreeIPA-Pakete
+## 2.2 FreeIPA-Pakete
 - Installiert wurden `ipa-server` und `ipa-server-dns`.
 - Paketversion: `4.13.4-1.el10_2`.
 
-### 2.3 Installationsergebnis
+## 2.3 Installationsergebnis
 - Der FreeIPA-Installer wurde mit integriertem DNS ausgeführt.
 - Der Installer meldete `Setup complete` und `The ipa-server-install command was successful`.
 
