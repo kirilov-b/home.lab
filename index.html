@@ -168,6 +168,49 @@
 
 
         /* =========================
+           VM ROLE BADGES
+           ========================= */
+
+        .role-box {
+            fill: #003D1F;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .role-detail {
+            display: none;
+        }
+
+        .role-text {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            dominant-baseline: middle;
+        }
+
+        .role-mgmt .role-box { stroke: #CC0000; }
+        .role-mgmt .role-text { fill: #CC0000; }
+        .role-srv .role-box { stroke: #FF8000; }
+        .role-srv .role-text { fill: #FF8000; }
+        .role-cl .role-box { stroke: #3399FF; }
+        .role-cl .role-text { fill: #3399FF; }
+
+        /*
+         * Rollenkennzeichnung der VM-Icons:
+         * MGMT = Management-Systeme
+         * SRV  = Server und zentrale Dienste
+         * CL   = Testclients
+         *
+         * Die obere Server-Box bleibt immer grün.
+         * Nur Rahmen und Text der unteren Box
+         * erhalten die jeweilige Rollenfarbe.
+         *
+         * Die Firewall behält ihr Schild-Icon.
+         * Die Backup-Kachel ist aus dem Grid entfernt;
+         * der Proxmox Backup Server bleibt als VM sichtbar.
+         */
+
+        /* =========================
            NETWORK ICON
            ========================= */
 
@@ -396,7 +439,6 @@
 
     <div class="grid">
 
-
         <a
             class="card"
             href="Dokumentation/1-Hardware-Setup.html">
@@ -422,6 +464,15 @@
             </div>
 
         </a>
+
+
+
+
+
+
+
+
+
 
 
         <a
@@ -450,6 +501,15 @@
             </div>
 
         </a>
+
+
+
+
+
+
+
+
+
 
 
         <a
@@ -518,6 +578,15 @@
         </a>
 
 
+
+
+
+
+
+
+
+
+
         <a
             class="card vm-card"
             href="Dokumentation/4-VM-Router-Firewall (OPNsense).html">
@@ -571,97 +640,12 @@
         </a>
 
 
-        <a
-            class="card"
-            href="Dokumentation/5-Backup.html">
-
-            <div class="icon">
-
-                <svg viewBox="0 0 56 48">
-
-                    <!-- =====================
-                         DATENBANK / ZYLINDER
-                         ===================== -->
-
-                    <!-- Zylinder Füllung -->
-
-                    <path
-                        class="icon-fill"
-                        d="M5 9
-                           C5 5 12 2 20 2
-                           C28 2 35 5 35 9
-                           V29
-                           C35 33 28 36 20 36
-                           C12 36 5 33 5 29
-                           Z"/>
-
-
-                    <!-- Oberer Rand -->
-
-                    <ellipse
-                        class="icon-stroke"
-                        cx="20"
-                        cy="9"
-                        rx="15"
-                        ry="7"/>
-
-
-                    <!-- Außenkante -->
-
-                    <path
-                        class="icon-stroke"
-                        d="M5 9
-                           V29
-                           C5 33 12 36 20 36
-                           C28 36 35 33 35 29
-                           V9"/>
 
 
 
-                    <!-- =====================
-                         BACKUP KREIS
-                         ===================== -->
-
-                    <!-- Kreis -->
-
-                    <circle
-                        class="icon-fill"
-                        cx="46"
-                        cy="32"
-                        r="8"/>
-
-                    <circle
-                        class="icon-stroke"
-                        cx="46"
-                        cy="32"
-                        r="8"/>
 
 
-                    <!-- Backup Pfeil -->
 
-                    <path
-                        class="icon-stroke"
-                        d="M46 26
-                           A6 6 0 1 1 41 35"/>
-
-                    <polyline
-                        class="icon-stroke"
-                        points="41,31 41,35 45,35"/>
-
-                </svg>
-
-            </div>
-
-
-            <div class="card-title">
-                Backup
-            </div>
-
-            <div class="card-description">
-                Backup-Konzept und Konfiguration.
-            </div>
-
-        </a>
 
 
 
@@ -670,42 +654,54 @@
             href="Dokumentation/VM-Admin.html">
                 <span class="vm-name">jump-lm-10-3</span>
 
-            <div class="icon">
+            <div class="icon role-mgmt">
 
                 <svg viewBox="0 0 48 48">
 
-                    <!-- Computer -->
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-stroke"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
 
                     <rect
                         class="icon-fill"
-                        x="6"
-                        y="7"
-                        width="36"
-                        height="25"
-                        rx="3"/>
+                        x="7"
+                        y="27"
+                        width="34"
+                        height="12"
+                        rx="2"/>
 
-                    <rect
+                    <rect class="role-box" x="7" y="27" width="34" height="12" rx="2"/>
+
+                    <circle
                         class="icon-stroke"
-                        x="6"
-                        y="7"
-                        width="36"
-                        height="25"
-                        rx="3"/>
+                        cx="13"
+                        cy="14"
+                        r="1"/>
+
+                    <circle class="role-detail icon-stroke" cx="13" cy="33" r="1"/>
 
                     <line
                         class="icon-stroke"
-                        x1="17"
-                        y1="39"
-                        x2="31"
-                        y2="39"/>
+                        x1="19"
+                        y1="14"
+                        x2="35"
+                        y2="14"/>
 
-                    <line
-                        class="icon-stroke"
-                        x1="24"
-                        y1="32"
-                        x2="24"
-                        y2="39"/>
+                    <line class="role-detail icon-stroke" x1="19" y1="33" x2="35" y2="33"/>
 
+                                    <text class="role-text" x="24" y="35" text-anchor="middle" style="font-size:7px">MGMT</text>
                 </svg>
 
             </div>
@@ -720,660 +716,22 @@
 
         </a>
 
-        <a
-            class="card vm-card"
-            href="Dokumentation/VM-Domain Controller (Windows).html">
-                <span class="vm-name">dc-ws-20-3</span>
 
-            <div class="icon">
 
-                <svg viewBox="0 0 48 48">
 
-                    <rect
-                        class="icon-fill"
-                        x="7"
-                        y="8"
-                        width="34"
-                        height="12"
-                        rx="2"/>
 
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="8"
-                        width="34"
-                        height="12"
-                        rx="2"/>
 
-                    <rect
-                        class="icon-fill"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
 
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
 
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="14"
-                        r="1"/>
 
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="33"
-                        r="1"/>
 
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="14"
-                        x2="35"
-                        y2="14"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="33"
-                        x2="35"
-                        y2="33"/>
-
-                </svg>
-
-            </div>
-
-            <div class="card-title">
-                VM – Domain Controller
-            </div>
-
-            <div class="card-description">
-                Active Directory, DNS und DHCP.
-            </div>
-
-        </a>
-
-        <a
-            class="card vm-card"
-            href="Dokumentation/VM-Client-1-Windows.html">
-                <span class="vm-name">cl1-wc-30</span>
-
-            <div class="icon">
-
-                <svg viewBox="0 0 48 48">
-
-                    <rect
-                        class="icon-fill"
-                        x="7"
-                        y="8"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="8"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-fill"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="14"
-                        r="1"/>
-
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="33"
-                        r="1"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="14"
-                        x2="35"
-                        y2="14"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="33"
-                        x2="35"
-                        y2="33"/>
-
-                </svg>
-
-            </div>
-
-            <div class="card-title">
-                VM – Testclient CL1
-            </div>
-
-            <div class="card-description">
-                Windows 11 Testclient.
-            </div>
-
-        </a>
-
-        <a
-            class="card vm-card"
-            href="Dokumentation/VM-Backup (PBS).html">
-                <span class="vm-name">pbs-pbs-20-10</span>
-
-            <div class="icon">
-
-                <svg viewBox="0 0 48 48">
-
-                    <rect
-                        class="icon-fill"
-                        x="7"
-                        y="8"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="8"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-fill"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="14"
-                        r="1"/>
-
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="33"
-                        r="1"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="14"
-                        x2="35"
-                        y2="14"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="33"
-                        x2="35"
-                        y2="33"/>
-
-                </svg>
-
-            </div>
-
-            <div class="card-title">
-                VM – Proxmox Backup Server
-            </div>
-
-            <div class="card-description">
-                Zentrale Sicherung der virtuellen Systeme.
-            </div>
-
-        </a>
-
-        <a
-            class="card vm-card"
-            href="Dokumentation/VM-Domain (FreeIPA).html">
-                <span class="vm-name">ipa-la-20-2</span>
-
-            <div class="icon">
-
-                <svg viewBox="0 0 48 48">
-
-                    <rect
-                        class="icon-fill"
-                        x="7"
-                        y="8"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="8"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-fill"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="14"
-                        r="1"/>
-
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="33"
-                        r="1"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="14"
-                        x2="35"
-                        y2="14"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="33"
-                        x2="35"
-                        y2="33"/>
-
-                </svg>
-
-            </div>
-
-            <div class="card-title">
-                VM – FreeIPA / Identity / DNS
-            </div>
-
-            <div class="card-description">
-                Identity Management und DNS.
-            </div>
-
-        </a>
-
-        <a
-            class="card vm-card"
-            href="Dokumentation/VM-Reverse-Proxy (Nginx).html">
-                <span class="vm-name">ngx-la-20-20</span>
-
-            <div class="icon">
-
-                <svg viewBox="0 0 48 48">
-
-                    <rect
-                        class="icon-fill"
-                        x="7"
-                        y="8"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="8"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-fill"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="14"
-                        r="1"/>
-
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="33"
-                        r="1"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="14"
-                        x2="35"
-                        y2="14"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="33"
-                        x2="35"
-                        y2="33"/>
-
-                </svg>
-
-            </div>
-
-            <div class="card-title">
-                VM – Nginx / Reverse Proxy
-            </div>
-
-            <div class="card-description">
-                Webserver und Reverse Proxy.
-            </div>
-
-        </a>
-
-        <a
-            class="card vm-card"
-            href="Dokumentation/VM-Database (PostgreSQL).html">
-                <span class="vm-name">db-ld-20-30</span>
-
-            <div class="icon">
-
-                <svg viewBox="0 0 48 48">
-
-                    <rect
-                        class="icon-fill"
-                        x="7"
-                        y="8"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="8"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-fill"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="14"
-                        r="1"/>
-
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="33"
-                        r="1"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="14"
-                        x2="35"
-                        y2="14"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="33"
-                        x2="35"
-                        y2="33"/>
-
-                </svg>
-
-            </div>
-
-            <div class="card-title">
-                VM – PostgreSQL
-            </div>
-
-            <div class="card-description">
-                Relationale Datenbankplattform.
-            </div>
-
-        </a>
-
-        <a
-            class="card vm-card"
-            href="Dokumentation/VM-Monitoring (Zabbix).html">
-                <span class="vm-name">mon-la-20-40</span>
-
-            <div class="icon">
-
-                <svg viewBox="0 0 48 48">
-
-                    <rect
-                        class="icon-fill"
-                        x="7"
-                        y="8"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="8"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-fill"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="14"
-                        r="1"/>
-
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="33"
-                        r="1"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="14"
-                        x2="35"
-                        y2="14"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="33"
-                        x2="35"
-                        y2="33"/>
-
-                </svg>
-
-            </div>
-
-            <div class="card-title">
-                VM – Zabbix Monitoring
-            </div>
-
-            <div class="card-description">
-                Überwachung der Infrastruktur.
-            </div>
-
-        </a>
-
-        <a
-            class="card vm-card"
-            href="Dokumentation/VM-Container (Docker).html">
-                <span class="vm-name">doc-lu-20-50</span>
-
-            <div class="icon">
-
-                <svg viewBox="0 0 48 48">
-
-                    <rect
-                        class="icon-fill"
-                        x="7"
-                        y="8"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="8"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-fill"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
-
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="14"
-                        r="1"/>
-
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="33"
-                        r="1"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="14"
-                        x2="35"
-                        y2="14"/>
-
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="33"
-                        x2="35"
-                        y2="33"/>
-
-                </svg>
-
-            </div>
-
-            <div class="card-title">
-                VM – Docker / Podman / Container
-            </div>
-
-            <div class="card-description">
-                Container- und Applikationsplattform.
-            </div>
-
-        </a>
 
         <a
             class="card vm-card"
             href="Dokumentation/VM-Automation (Ansible).html">
                 <span class="vm-name">ans-la-10-20</span>
 
-            <div class="icon">
+            <div class="icon role-mgmt">
 
                 <svg viewBox="0 0 48 48">
 
@@ -1401,13 +759,7 @@
                         height="12"
                         rx="2"/>
 
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
+                    <rect class="role-box" x="7" y="27" width="34" height="12" rx="2"/>
 
                     <circle
                         class="icon-stroke"
@@ -1415,11 +767,7 @@
                         cy="14"
                         r="1"/>
 
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="33"
-                        r="1"/>
+                    <circle class="role-detail icon-stroke" cx="13" cy="33" r="1"/>
 
                     <line
                         class="icon-stroke"
@@ -1428,13 +776,9 @@
                         x2="35"
                         y2="14"/>
 
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="33"
-                        x2="35"
-                        y2="33"/>
+                    <line class="role-detail icon-stroke" x1="19" y1="33" x2="35" y2="33"/>
 
+                                    <text class="role-text" x="24" y="35" text-anchor="middle" style="font-size:7px">MGMT</text>
                 </svg>
 
             </div>
@@ -1449,12 +793,22 @@
 
         </a>
 
+
+
+
+
+
+
+
+
+
+
         <a
             class="card vm-card"
-            href="Dokumentation/VM-Logging (Rsyslog).html">
-                <span class="vm-name">log-la-20-60</span>
+            href="Dokumentation/VM-Domain Controller (Windows).html">
+                <span class="vm-name">dc-ws-20-3</span>
 
-            <div class="icon">
+            <div class="icon role-srv">
 
                 <svg viewBox="0 0 48 48">
 
@@ -1482,13 +836,7 @@
                         height="12"
                         rx="2"/>
 
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
+                    <rect class="role-box" x="7" y="27" width="34" height="12" rx="2"/>
 
                     <circle
                         class="icon-stroke"
@@ -1496,11 +844,7 @@
                         cy="14"
                         r="1"/>
 
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="33"
-                        r="1"/>
+                    <circle class="role-detail icon-stroke" cx="13" cy="33" r="1"/>
 
                     <line
                         class="icon-stroke"
@@ -1509,13 +853,548 @@
                         x2="35"
                         y2="14"/>
 
+                    <line class="role-detail icon-stroke" x1="19" y1="33" x2="35" y2="33"/>
+
+                                    <text class="role-text" x="24" y="35" text-anchor="middle" style="font-size:8px">SRV</text>
+                </svg>
+
+            </div>
+
+            <div class="card-title">
+                VM – Domain Controller
+            </div>
+
+            <div class="card-description">
+                Active Directory, DNS und DHCP.
+            </div>
+
+        </a>
+
+
+
+
+
+
+
+
+
+
+
+        <a
+            class="card vm-card"
+            href="Dokumentation/VM-Domain (FreeIPA).html">
+                <span class="vm-name">ipa-la-20-2</span>
+
+            <div class="icon role-srv">
+
+                <svg viewBox="0 0 48 48">
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-stroke"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="27"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect class="role-box" x="7" y="27" width="34" height="12" rx="2"/>
+
+                    <circle
+                        class="icon-stroke"
+                        cx="13"
+                        cy="14"
+                        r="1"/>
+
+                    <circle class="role-detail icon-stroke" cx="13" cy="33" r="1"/>
+
                     <line
                         class="icon-stroke"
                         x1="19"
-                        y1="33"
+                        y1="14"
                         x2="35"
-                        y2="33"/>
+                        y2="14"/>
 
+                    <line class="role-detail icon-stroke" x1="19" y1="33" x2="35" y2="33"/>
+
+                                    <text class="role-text" x="24" y="35" text-anchor="middle" style="font-size:8px">SRV</text>
+                </svg>
+
+            </div>
+
+            <div class="card-title">
+                VM – FreeIPA / Identity / DNS
+            </div>
+
+            <div class="card-description">
+                Identity Management und DNS.
+            </div>
+
+        </a>
+
+
+
+
+
+
+
+
+
+
+
+        <a
+            class="card vm-card"
+            href="Dokumentation/VM-Backup (PBS).html">
+                <span class="vm-name">pbs-pbs-20-10</span>
+
+            <div class="icon role-srv">
+
+                <svg viewBox="0 0 48 48">
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-stroke"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="27"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect class="role-box" x="7" y="27" width="34" height="12" rx="2"/>
+
+                    <circle
+                        class="icon-stroke"
+                        cx="13"
+                        cy="14"
+                        r="1"/>
+
+                    <circle class="role-detail icon-stroke" cx="13" cy="33" r="1"/>
+
+                    <line
+                        class="icon-stroke"
+                        x1="19"
+                        y1="14"
+                        x2="35"
+                        y2="14"/>
+
+                    <line class="role-detail icon-stroke" x1="19" y1="33" x2="35" y2="33"/>
+
+                                    <text class="role-text" x="24" y="35" text-anchor="middle" style="font-size:8px">SRV</text>
+                </svg>
+
+            </div>
+
+            <div class="card-title">
+                VM – Proxmox Backup Server
+            </div>
+
+            <div class="card-description">
+                Zentrale Sicherung der virtuellen Systeme.
+            </div>
+
+        </a>
+
+
+
+
+
+
+
+
+
+
+
+        <a
+            class="card vm-card"
+            href="Dokumentation/VM-Reverse-Proxy (Nginx).html">
+                <span class="vm-name">ngx-la-20-20</span>
+
+            <div class="icon role-srv">
+
+                <svg viewBox="0 0 48 48">
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-stroke"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="27"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect class="role-box" x="7" y="27" width="34" height="12" rx="2"/>
+
+                    <circle
+                        class="icon-stroke"
+                        cx="13"
+                        cy="14"
+                        r="1"/>
+
+                    <circle class="role-detail icon-stroke" cx="13" cy="33" r="1"/>
+
+                    <line
+                        class="icon-stroke"
+                        x1="19"
+                        y1="14"
+                        x2="35"
+                        y2="14"/>
+
+                    <line class="role-detail icon-stroke" x1="19" y1="33" x2="35" y2="33"/>
+
+                                    <text class="role-text" x="24" y="35" text-anchor="middle" style="font-size:8px">SRV</text>
+                </svg>
+
+            </div>
+
+            <div class="card-title">
+                VM – Nginx / Reverse Proxy
+            </div>
+
+            <div class="card-description">
+                Webserver und Reverse Proxy.
+            </div>
+
+        </a>
+
+
+
+
+
+
+
+
+
+
+
+        <a
+            class="card vm-card"
+            href="Dokumentation/VM-Database (PostgreSQL).html">
+                <span class="vm-name">db-ld-20-30</span>
+
+            <div class="icon role-srv">
+
+                <svg viewBox="0 0 48 48">
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-stroke"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="27"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect class="role-box" x="7" y="27" width="34" height="12" rx="2"/>
+
+                    <circle
+                        class="icon-stroke"
+                        cx="13"
+                        cy="14"
+                        r="1"/>
+
+                    <circle class="role-detail icon-stroke" cx="13" cy="33" r="1"/>
+
+                    <line
+                        class="icon-stroke"
+                        x1="19"
+                        y1="14"
+                        x2="35"
+                        y2="14"/>
+
+                    <line class="role-detail icon-stroke" x1="19" y1="33" x2="35" y2="33"/>
+
+                                    <text class="role-text" x="24" y="35" text-anchor="middle" style="font-size:8px">SRV</text>
+                </svg>
+
+            </div>
+
+            <div class="card-title">
+                VM – PostgreSQL
+            </div>
+
+            <div class="card-description">
+                Relationale Datenbankplattform.
+            </div>
+
+        </a>
+
+
+
+
+
+
+
+
+
+
+
+        <a
+            class="card vm-card"
+            href="Dokumentation/VM-Monitoring (Zabbix).html">
+                <span class="vm-name">mon-la-20-40</span>
+
+            <div class="icon role-srv">
+
+                <svg viewBox="0 0 48 48">
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-stroke"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="27"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect class="role-box" x="7" y="27" width="34" height="12" rx="2"/>
+
+                    <circle
+                        class="icon-stroke"
+                        cx="13"
+                        cy="14"
+                        r="1"/>
+
+                    <circle class="role-detail icon-stroke" cx="13" cy="33" r="1"/>
+
+                    <line
+                        class="icon-stroke"
+                        x1="19"
+                        y1="14"
+                        x2="35"
+                        y2="14"/>
+
+                    <line class="role-detail icon-stroke" x1="19" y1="33" x2="35" y2="33"/>
+
+                                    <text class="role-text" x="24" y="35" text-anchor="middle" style="font-size:8px">SRV</text>
+                </svg>
+
+            </div>
+
+            <div class="card-title">
+                VM – Zabbix Monitoring
+            </div>
+
+            <div class="card-description">
+                Überwachung der Infrastruktur.
+            </div>
+
+        </a>
+
+
+
+
+
+
+
+
+
+
+
+        <a
+            class="card vm-card"
+            href="Dokumentation/VM-Container (Docker).html">
+                <span class="vm-name">doc-lu-20-50</span>
+
+            <div class="icon role-srv">
+
+                <svg viewBox="0 0 48 48">
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-stroke"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="27"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect class="role-box" x="7" y="27" width="34" height="12" rx="2"/>
+
+                    <circle
+                        class="icon-stroke"
+                        cx="13"
+                        cy="14"
+                        r="1"/>
+
+                    <circle class="role-detail icon-stroke" cx="13" cy="33" r="1"/>
+
+                    <line
+                        class="icon-stroke"
+                        x1="19"
+                        y1="14"
+                        x2="35"
+                        y2="14"/>
+
+                    <line class="role-detail icon-stroke" x1="19" y1="33" x2="35" y2="33"/>
+
+                                    <text class="role-text" x="24" y="35" text-anchor="middle" style="font-size:8px">SRV</text>
+                </svg>
+
+            </div>
+
+            <div class="card-title">
+                VM – Docker / Podman / Container
+            </div>
+
+            <div class="card-description">
+                Container- und Applikationsplattform.
+            </div>
+
+        </a>
+
+
+
+
+
+
+
+
+
+
+
+        <a
+            class="card vm-card"
+            href="Dokumentation/VM-Logging (Rsyslog).html">
+                <span class="vm-name">log-la-20-60</span>
+
+            <div class="icon role-srv">
+
+                <svg viewBox="0 0 48 48">
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-stroke"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="27"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect class="role-box" x="7" y="27" width="34" height="12" rx="2"/>
+
+                    <circle
+                        class="icon-stroke"
+                        cx="13"
+                        cy="14"
+                        r="1"/>
+
+                    <circle class="role-detail icon-stroke" cx="13" cy="33" r="1"/>
+
+                    <line
+                        class="icon-stroke"
+                        x1="19"
+                        y1="14"
+                        x2="35"
+                        y2="14"/>
+
+                    <line class="role-detail icon-stroke" x1="19" y1="33" x2="35" y2="33"/>
+
+                                    <text class="role-text" x="24" y="35" text-anchor="middle" style="font-size:8px">SRV</text>
                 </svg>
 
             </div>
@@ -1530,12 +1409,22 @@
 
         </a>
 
+
+
+
+
+
+
+
+
+
+
         <a
             class="card vm-card"
             href="Dokumentation/VM-Security-Monitoring (Wazuh).html">
                 <span class="vm-name">sec-la-20-70</span>
 
-            <div class="icon">
+            <div class="icon role-srv">
 
                 <svg viewBox="0 0 48 48">
 
@@ -1563,13 +1452,7 @@
                         height="12"
                         rx="2"/>
 
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
+                    <rect class="role-box" x="7" y="27" width="34" height="12" rx="2"/>
 
                     <circle
                         class="icon-stroke"
@@ -1577,11 +1460,7 @@
                         cy="14"
                         r="1"/>
 
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="33"
-                        r="1"/>
+                    <circle class="role-detail icon-stroke" cx="13" cy="33" r="1"/>
 
                     <line
                         class="icon-stroke"
@@ -1590,13 +1469,9 @@
                         x2="35"
                         y2="14"/>
 
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="33"
-                        x2="35"
-                        y2="33"/>
+                    <line class="role-detail icon-stroke" x1="19" y1="33" x2="35" y2="33"/>
 
+                                    <text class="role-text" x="24" y="35" text-anchor="middle" style="font-size:8px">SRV</text>
                 </svg>
 
             </div>
@@ -1611,12 +1486,22 @@
 
         </a>
 
+
+
+
+
+
+
+
+
+
+
         <a
             class="card vm-card"
             href="Dokumentation/VM-Git-Server (Gitea).html">
                 <span class="vm-name">git-ld-20-80</span>
 
-            <div class="icon">
+            <div class="icon role-srv">
 
                 <svg viewBox="0 0 48 48">
 
@@ -1644,13 +1529,7 @@
                         height="12"
                         rx="2"/>
 
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
+                    <rect class="role-box" x="7" y="27" width="34" height="12" rx="2"/>
 
                     <circle
                         class="icon-stroke"
@@ -1658,11 +1537,7 @@
                         cy="14"
                         r="1"/>
 
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="33"
-                        r="1"/>
+                    <circle class="role-detail icon-stroke" cx="13" cy="33" r="1"/>
 
                     <line
                         class="icon-stroke"
@@ -1671,13 +1546,9 @@
                         x2="35"
                         y2="14"/>
 
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="33"
-                        x2="35"
-                        y2="33"/>
+                    <line class="role-detail icon-stroke" x1="19" y1="33" x2="35" y2="33"/>
 
+                                    <text class="role-text" x="24" y="35" text-anchor="middle" style="font-size:8px">SRV</text>
                 </svg>
 
             </div>
@@ -1692,12 +1563,22 @@
 
         </a>
 
+
+
+
+
+
+
+
+
+
+
         <a
             class="card vm-card"
-            href="Dokumentation/VM-Client-2-Linux.html">
-                <span class="vm-name">cl2-wc-30</span>
+            href="Dokumentation/VM-Client-1-Windows.html">
+                <span class="vm-name">cl1-wc-30</span>
 
-            <div class="icon">
+            <div class="icon role-cl">
 
                 <svg viewBox="0 0 48 48">
 
@@ -1725,13 +1606,7 @@
                         height="12"
                         rx="2"/>
 
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
+                    <rect class="role-box" x="7" y="27" width="34" height="12" rx="2"/>
 
                     <circle
                         class="icon-stroke"
@@ -1739,11 +1614,7 @@
                         cy="14"
                         r="1"/>
 
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="33"
-                        r="1"/>
+                    <circle class="role-detail icon-stroke" cx="13" cy="33" r="1"/>
 
                     <line
                         class="icon-stroke"
@@ -1752,13 +1623,86 @@
                         x2="35"
                         y2="14"/>
 
+                    <line class="role-detail icon-stroke" x1="19" y1="33" x2="35" y2="33"/>
+
+                                    <text class="role-text" x="24" y="35" text-anchor="middle" style="font-size:8px">CL</text>
+                </svg>
+
+            </div>
+
+            <div class="card-title">
+                VM – Testclient CL1
+            </div>
+
+            <div class="card-description">
+                Windows 11 Testclient.
+            </div>
+
+        </a>
+
+
+
+
+
+
+
+
+
+
+
+        <a
+            class="card vm-card"
+            href="Dokumentation/VM-Client-2-Linux.html">
+                <span class="vm-name">cl2-wc-30</span>
+
+            <div class="icon role-cl">
+
+                <svg viewBox="0 0 48 48">
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-stroke"
+                        x="7"
+                        y="8"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect
+                        class="icon-fill"
+                        x="7"
+                        y="27"
+                        width="34"
+                        height="12"
+                        rx="2"/>
+
+                    <rect class="role-box" x="7" y="27" width="34" height="12" rx="2"/>
+
+                    <circle
+                        class="icon-stroke"
+                        cx="13"
+                        cy="14"
+                        r="1"/>
+
+                    <circle class="role-detail icon-stroke" cx="13" cy="33" r="1"/>
+
                     <line
                         class="icon-stroke"
                         x1="19"
-                        y1="33"
+                        y1="14"
                         x2="35"
-                        y2="33"/>
+                        y2="14"/>
 
+                    <line class="role-detail icon-stroke" x1="19" y1="33" x2="35" y2="33"/>
+
+                                    <text class="role-text" x="24" y="35" text-anchor="middle" style="font-size:8px">CL</text>
                 </svg>
 
             </div>
@@ -1773,12 +1717,22 @@
 
         </a>
 
+
+
+
+
+
+
+
+
+
+
         <a
             class="card vm-card"
             href="Dokumentation/VM-Client-3-MacOS.html">
                 <span class="vm-name">cl3-mac-30</span>
 
-            <div class="icon">
+            <div class="icon role-cl">
 
                 <svg viewBox="0 0 48 48">
 
@@ -1806,13 +1760,7 @@
                         height="12"
                         rx="2"/>
 
-                    <rect
-                        class="icon-stroke"
-                        x="7"
-                        y="27"
-                        width="34"
-                        height="12"
-                        rx="2"/>
+                    <rect class="role-box" x="7" y="27" width="34" height="12" rx="2"/>
 
                     <circle
                         class="icon-stroke"
@@ -1820,11 +1768,7 @@
                         cy="14"
                         r="1"/>
 
-                    <circle
-                        class="icon-stroke"
-                        cx="13"
-                        cy="33"
-                        r="1"/>
+                    <circle class="role-detail icon-stroke" cx="13" cy="33" r="1"/>
 
                     <line
                         class="icon-stroke"
@@ -1833,13 +1777,9 @@
                         x2="35"
                         y2="14"/>
 
-                    <line
-                        class="icon-stroke"
-                        x1="19"
-                        y1="33"
-                        x2="35"
-                        y2="33"/>
+                    <line class="role-detail icon-stroke" x1="19" y1="33" x2="35" y2="33"/>
 
+                                    <text class="role-text" x="24" y="35" text-anchor="middle" style="font-size:8px">CL</text>
                 </svg>
 
             </div>
@@ -1857,7 +1797,7 @@
     </div>
 
 
-    <!-- =========================
+<!-- =========================
          FOOTER
          ========================= -->
 
