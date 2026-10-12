@@ -112,9 +112,6 @@
             border-bottom: none;
         }
 
-        .document {
-            margin-top: 20px;
-        }
 
         .back-link {
 
@@ -169,19 +166,15 @@
         ========================= */
 
         .document {
-
-            margin-top: 45px;
+            margin-top: 20px;
         }
 
 
         .document-title {
-
             font-size: 38px;
-
             line-height: 1.25;
-
-            margin-bottom: 30px;
-
+            margin-top: 12px;
+            margin-bottom: 8px;
             color: #e6edf3;
         }
 
@@ -576,24 +569,16 @@
 
     </div>
 
+        {% if page.title %}
+        <div class="document-title">
+            {{ page.title }}
+        </div>
+        {% endif %}
     </div>
 
     <!-- DOKUMENT -->
 
     <main class="document">
-
-
-        {% if page.title %}
-
-        <div class="document-title">
-
-            {{ page.title }}
-
-        </div>
-
-        {% endif %}
-
-
         {{ content }}
 
 
