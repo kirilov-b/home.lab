@@ -1,6 +1,6 @@
 ---
 layout: default
-title: VM – Ansible / Automation
+title: "[MGMT] VM – Ansible / Automation"
 ---
 # NOCH NICHT KONFIGURIERT
 # VM – Ansible / Automation
