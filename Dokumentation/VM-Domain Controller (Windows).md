@@ -1,6 +1,6 @@
 ---
 layout: default
-title: [SRV] VM – Domain Controller
+title: VM – Domain Controller
 ---
 
 # VM – Windows Domain Controller
