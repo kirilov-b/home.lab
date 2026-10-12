@@ -96,7 +96,25 @@
             border-bottom:
                 1px solid #30363d;
         }
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #0d1117;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #30363d;
+        }
 
+        .sticky-header .navigation {
+            margin-top: 8px;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .document {
+            margin-top: 20px;
+        }
 
         .back-link {
 
@@ -515,7 +533,8 @@
 
 
     <!-- HEADER -->
-
+    
+    <div class="sticky-header">
     <div class="top-label">
         Technische Dokumentation
     </div>
@@ -557,6 +576,7 @@
 
     </div>
 
+    </div>
 
     <!-- DOKUMENT -->
 
