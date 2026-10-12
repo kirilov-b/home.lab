@@ -8,9 +8,10 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>
-        {{ page.title }} – Home Lab
-    </title>
+        <title>
+            {{ page.title | remove_first: '"' | remove_last: '"' }} – Home Lab
+         </title>
+
 
 
     <style>
