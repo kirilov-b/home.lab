@@ -1,6 +1,6 @@
 ---
 layout: default
-title: VM – FreeIPA / Identity /
+title: "[SRV] VM – FreeIPA / Identity /"
 ---
 # VM – FreeIPA / Identity / DNS
 

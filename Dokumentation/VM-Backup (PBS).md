@@ -1,6 +1,6 @@
 ---
 layout: default
-title: VM – Proxmox Backup Server
+title: "[SRV] VM – Proxmox Backup Server"
 ---
 # Proxmox VE und Proxmox Backup Server
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: VM – Zentrales Logging
+title: "[SRV] VM – Zentrales Logging"
 ---
 # NOCH NICHT KONFIGURIERT
 # VM – Zentrales Logging

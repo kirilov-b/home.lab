@@ -1,6 +1,6 @@
 ---
 layout: default
-title: VM – Nginx / Reverse Proxy
+title: "[SRV] VM – Nginx / Reverse Proxy"
 ---
 # NOCH NICHT KONFIGURIERT
 # VM – Nginx / Reverse Proxy

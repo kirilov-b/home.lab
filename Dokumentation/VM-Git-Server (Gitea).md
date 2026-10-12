@@ -1,6 +1,6 @@
 ---
 layout: default
-title: VM – Gitea / Git-Server
+title: "[SRV] VM – Gitea / Git-Server"
 ---
 # NOCH NICHT KONFIGURIERT
 # VM – Gitea / Git-Server
