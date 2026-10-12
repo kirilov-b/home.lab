@@ -15,7 +15,7 @@ title: "[SRV] VM – PostgreSQL"
 | Zweck          | PostgreSQL / Datenbank |
 | Betriebssystem | Linux Debian           |
 | IPv4           | 10.10.20.40            |
-| Domain         | lab.service            |
+| Domain         | srv.test               |
 | Größe          | 32 GB                  |
 | RAM            | 4 GB                   |
 | vCPU           | 2                      |

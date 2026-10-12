@@ -15,7 +15,7 @@ title: "[SRV] VM – Zentrales Logging"
 | Zweck          | Zentrales Logging |
 | Betriebssystem | Linux Alma        |
 | IPv4           | 10.10.20.70       |
-| Domain         | lab.service       |
+| Domain         | srv.test          |
 | Größe          | 20 GB             |
 | RAM            | 4 GB              |
 | vCPU           | 2                 |

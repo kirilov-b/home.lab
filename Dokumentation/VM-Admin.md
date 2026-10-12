@@ -15,7 +15,7 @@ title: "[MGMT] VM – Administrator"
 | Zweck          | Verwaltung, Dokumentation |
 | Betriebssystem | Linux Mint                |
 | IPv4           | 10.10.10.3                |
-| Domain         | lab.service               |
+| Domain         | keinen                    |
 | Größe          | 80 GB                     |
 | RAM            | 8 GB                      |
 | vCPU           | 4                         |

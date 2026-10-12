@@ -15,7 +15,7 @@ title: "[SRV] VM – Gitea / Git-Server"
 | Zweck          | Gitea / Git-Server |
 | Betriebssystem | Linux Debian       |
 | IPv4           | 10.10.20.90        |
-| Domain         | lab.service        |
+| Domain         | lsrv.test          |
 | Größe          | 32 GB              |
 | RAM            | 2 GB               |
 | vCPU           | 2                  |

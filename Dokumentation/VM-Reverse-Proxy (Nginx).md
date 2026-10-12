@@ -15,7 +15,7 @@ title: "[SRV] VM – Nginx / Reverse Proxy"
 | Zweck          | Nginx / Reverse Proxy |
 | Betriebssystem | Linux Alma            |
 | IPv4           | 10.10.20.30           |
-| Domain         | lab.service           |
+| Domain         | srv.test              |
 | Größe          | 20 GB                 |
 | RAM            | 2 GB                  |
 | vCPU           | 2                     |

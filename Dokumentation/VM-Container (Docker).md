@@ -15,7 +15,7 @@ title: "[SRV] VM – Docker / Podman / Container"
 | Zweck          | Docker / Podman / Container |
 | Betriebssystem | Linux Ubuntu                |
 | IPv4           | 10.10.20.60                 |
-| Domain         | lab.service                 |
+| Domain         | srv.test                    |
 | Größe          | 40 GB                       |
 | RAM            | 4 GB                        |
 | vCPU           | 2                           |

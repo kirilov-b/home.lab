@@ -15,7 +15,7 @@ title: "[SRV] VM – Wazuh / Security Monitoring"
 | Zweck          | Wazuh / Security Monitoring |
 | Betriebssystem | Linux Alma                  |
 | IPv4           | 10.10.20.80                 |
-| Domain         | lab.service                 |
+| Domain         | srv.test                    |
 | Größe          | 64 GB                       |
 | RAM            | 8 GB                        |
 | vCPU           | 4                           |

@@ -14,7 +14,7 @@ title: "[SRV] VM – Proxmox Backup Server"
 | Zweck          | Backup Server |
 | Betriebssystem | PBS (Debian)  |
 | IPv4           | 10.10.20.10   |
-| Domain         | lab.service   |
+| Domain         | keinen        |
 | Größe          | 20 GB         |
 | RAM            | 8 GB          |
 | vCPU           | 4             |

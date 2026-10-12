@@ -15,7 +15,7 @@ title: "[SRV] VM – Zabbix Monitoring"
 | Zweck          | Zabbix Monitoring |
 | Betriebssystem | Linux Alma        |
 | IPv4           | 10.10.20.50       |
-| Domain         | lab.service       |
+| Domain         | srv.test          |
 | Größe          | 32 GB             |
 | RAM            | 4 GB              |
 | vCPU           | 2                 |
