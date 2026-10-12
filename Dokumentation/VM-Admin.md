@@ -40,7 +40,7 @@ Auf **jump-lm-10-3**:
 
 1. Ordner für den SHA256 Schlüssel erstellen
 	 `mkdir -p ~/.ssh`
-	 `chmod 700 ~/.ssh
+	 `chmod 700 ~/.ssh`
 2. Schlüssel generieren
 	 `ssh-keygen -t ed25519 -a 100 -f ~/.ssh/id_ed25519`
 	 Ein Passphrase (Password) setzen: laut Vorgaben
@@ -48,7 +48,7 @@ Auf **jump-lm-10-3**:
 		~/.ssh/id_ed25519 (geheim)
 		~/.ssh/id_ed25519.pub
 3. Schlüssel prüfen:
-	`eval "$(ssh-agent -s)"
+	`eval "$(ssh-agent -s)`
 	 `ssh-add ~/.ssh/id_ed25519`
 	 `ssh-add -l`> schlüssel abrufen
 ### Wiederholende Schritte für jede weitere VM-Einrichtung
@@ -64,7 +64,7 @@ Auf jump-lm-10-3:
 		   *Identify file ~/.ssh/ided25519*
 		   *Identify Only yes*
 4. Rechte anpassen
-     `chmod 600 ~/.ssh/config
+     `chmod 600 ~/.ssh/config`
 
 
 ### OPNsense
