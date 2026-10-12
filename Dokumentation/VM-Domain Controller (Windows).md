@@ -19,6 +19,7 @@ title: VM – Domain Controller
 | Größe          | 80 GB          |
 | RAM            | 8 GB           |
 | vCPU           | 4              |
+
 ## Aufgabe
 
 **AD, DNS, DHCP**
