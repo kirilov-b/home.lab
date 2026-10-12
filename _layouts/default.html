@@ -96,6 +96,21 @@
             border-bottom:
                 1px solid #30363d;
         }
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #0d1117;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .sticky-header .navigation {
+            margin-top: 8px;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
 
 
         .back-link {
@@ -151,31 +166,39 @@
         ========================= */
 
         .document {
-
-            margin-top: 45px;
+            margin-top: 20px;
         }
 
 
         .document-title {
-
             font-size: 38px;
-
             line-height: 1.25;
-
-            margin-bottom: 30px;
-
+            margin-top: 12px;
+            margin-bottom: 8px;
             color: #e6edf3;
         }
 
+        .title-role-mgmt {
+            color: #FF3333;
+        }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
+        .title-role-srv {
+            color: #FF8000;
+        }
 
-            color: #00813F;
+        .title-role-cl {
+            color: #3399FF;
+        }
+
+
+        .document h1,
+        .document h2,
+        .document h3,
+        .document h4,
+        .document h5,
+        .document h6 {
+
+            color: #e6edf3;
 
             line-height: 1.3;
 
@@ -322,17 +345,11 @@
 
 
         th {
-
-            background: #003D1F;
-
+            background: #1f2937;
             color: #ffffff;
-
             text-align: left;
-
             padding: 12px;
-
-            border:
-                1px solid #00813F;
+            border: 1px solid #30363d;
         }
 
 
@@ -515,7 +532,8 @@
 
 
     <!-- HEADER -->
-
+    
+    <div class="sticky-header">
     <div class="top-label">
         Technische Dokumentation
     </div>
@@ -557,23 +575,27 @@
 
     </div>
 
+        {% if page.title %}
+        <div class="document-title">
+            {% if page.title contains '[MGMT]' %}
+                {% assign title_parts = page.title | split: '[MGMT]' %}
+                {{ title_parts[0] }}<span class="title-role-mgmt">[MGMT]</span>{{ title_parts[1] }}
+            {% elsif page.title contains '[SRV]' %}
+                {% assign title_parts = page.title | split: '[SRV]' %}
+                {{ title_parts[0] }}<span class="title-role-srv">[SRV]</span>{{ title_parts[1] }}
+            {% elsif page.title contains '[CL]' %}
+                {% assign title_parts = page.title | split: '[CL]' %}
+                {{ title_parts[0] }}<span class="title-role-cl">[CL]</span>{{ title_parts[1] }}
+            {% else %}
+                {{ page.title }}
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
 
     <!-- DOKUMENT -->
 
     <main class="document">
-
-
-        {% if page.title %}
-
-        <div class="document-title">
-
-            {{ page.title }}
-
-        </div>
-
-        {% endif %}
-
-
         {{ content }}
 
 

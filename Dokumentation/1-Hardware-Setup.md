@@ -8,7 +8,7 @@ title: Hardware & Setup
 ## Übersicht
 
 Diese Seite dokumentiert den grundlegenden Hardware- und Virtualisierung Aufbau des Home Labs.
-Als Virtualisierungsplattform wird **Proxmox VE** eingesetzt. Die virtuellen Maschinen werden zentral auf dem Proxmox-System (über ein Admin VM) verwaltet und bilden die Grundlage für die verschiedenen Dienste und Testsysteme.
+Als Virtualisierungsplattform wird Proxmox Virtual Environment **PVE** eingesetzt. Die virtuellen Maschinen werden zentral auf dem Proxmox-System (über ein Jumphost VM) verwaltet und bilden die Grundlage für die verschiedenen Dienste und Testsysteme.
 
 ## Aufbau
 Der Aufbau ist modular gehalten:
