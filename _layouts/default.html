@@ -178,6 +178,18 @@
             color: #e6edf3;
         }
 
+        .title-role-mgmt {
+            color: #FF3333;
+        }
+
+        .title-role-srv {
+            color: #FF8000;
+        }
+
+        .title-role-cl {
+            color: #3399FF;
+        }
+
 
         .document h1,
         .document h2,
@@ -565,7 +577,18 @@
 
         {% if page.title %}
         <div class="document-title">
-            {{ page.title }}
+            {% if page.title contains '[MGMT]' %}
+                {% assign title_parts = page.title | split: '[MGMT]' %}
+                {{ title_parts[0] }}<span class="title-role-mgmt">[MGMT]</span>{{ title_parts[1] }}
+            {% elsif page.title contains '[SRV]' %}
+                {% assign title_parts = page.title | split: '[SRV]' %}
+                {{ title_parts[0] }}<span class="title-role-srv">[SRV]</span>{{ title_parts[1] }}
+            {% elsif page.title contains '[CL]' %}
+                {% assign title_parts = page.title | split: '[CL]' %}
+                {{ title_parts[0] }}<span class="title-role-cl">[CL]</span>{{ title_parts[1] }}
+            {% else %}
+                {{ page.title }}
+            {% endif %}
         </div>
         {% endif %}
     </div>
