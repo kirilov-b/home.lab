@@ -1,6 +1,6 @@
 ---
 layout: default
-title: VM – Administrator [MGMT]
+title: VM – Administrator 					[MGMT]
 ---
 
 # VM – Verwaltung, Dokumentation, Remote Verbindung
