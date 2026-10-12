@@ -45,8 +45,8 @@ Auf **jump-lm-10-3**:
 	 `ssh-keygen -t ed25519 -a 100 -f ~/.ssh/id_ed25519`
 	 Ein Passphrase (Password) setzen: laut Vorgaben
 		Zwei keys werden erstellt:
-  	_	~/.ssh/id_ed25519 (geheim)
-   		~/.ssh/id_ed25519.pub_
+  	_~/.ssh/id_ed25519 (geheim)
+   	~/.ssh/id_ed25519.pub_
 3. Schlüssel prüfen:
 	`eval "$(ssh-agent -s)`
 	 `ssh-add ~/.ssh/id_ed25519`
