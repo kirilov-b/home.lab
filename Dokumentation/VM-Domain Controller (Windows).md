@@ -151,7 +151,7 @@ _DC01 übernimmt im HomeLab die DNS-Rolle, da Active Directory auf eine funktion
         - C:\Shares\Produktion
         - C:\Shares\Management
         - C:\Shares\IT
-- **2. Berechtigung geben
+- **2. Berechtigung geben**
     - *Buchhaltung Ordner > Properties > Security > Advanced (Weiter für die andere Ordner)
         - Alle "User..." entfernen
         - Disable inheritance > Convert inheritance permissions ...
