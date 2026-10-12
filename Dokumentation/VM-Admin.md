@@ -3,7 +3,7 @@ layout: default
 title: "[MGMT] VM – Administrator"
 ---
 
-# VM – Verwaltung, Dokumentation, Remote Verbindung
+# Verwaltung, Dokumentation, Remote Verbindung
 
 **VM Parameter**
 
