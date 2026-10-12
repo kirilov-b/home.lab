@@ -1,6 +1,6 @@
 ---
 layout: default
-title: VM – Ansible / Automation
+title: VM – Ansible / Automation [CL]
 ---
 # NOCH NICHT KONFIGURIERT
 # VM – Ansible / Automation
