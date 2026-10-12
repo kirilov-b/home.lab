@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "[CL] VM – Testclient CL1"
+title: "[CL] VM – Testclient - 1 - Windows"
 ---
 
 # VM – Testclient "cl1"
