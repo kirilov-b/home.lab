@@ -50,8 +50,8 @@ Lösung - Installation ohne Netzwerk Verbindung.
 - Problem - Internetzugang, Kein IPv4 Netzwerk Adapter
     - Problem Lösung
         1. Ethernet Adapter manuell über den CD/DVD Virtio ISO suchen und installieren
-        2. IPv4 statische Adresse vergeben. 10.10.20.1
-        3. Gateway: 10.10.1.1
+        2. IPv4 statische Adresse vergeben. 10.10.20.3
+        3. Gateway: 10.10.20.1
 
 ## DNS einrichten
 
@@ -76,7 +76,7 @@ _DC01 übernimmt im HomeLab die DNS-Rolle, da Active Directory auf eine funktion
 
 ## 1. DC an Firewall (FW-OPNsense) anhängen - 10.10.20.0 /24
 
-- **NIC ändern** - Neue Netzwerkkarte erstellen für LAN 10.10.20.1 /24
+- **NIC ändern** - Neue Netzwerkkarte erstellen für LAN 10.10.20.3 /24
 - **IPv4 anpassen** - Statische IP, Gateway, DNS. - Außerhalb der DHCP Bereich so, dass die Daten konstant bleiben.
 - Internet zugang Funktioniert -
     - Test:
@@ -86,6 +86,8 @@ _DC01 übernimmt im HomeLab die DNS-Rolle, da Active Directory auf eine funktion
 
 ## 2. Active Directory Installieren
 
+<details markdown="1">
+<summary><strong>AD-Konfiguration anzeigen</strong></summary>
 ### Active Directory konfigurieren.
 
 1. **Erstellen von Organisational Unit (OU)**
@@ -143,7 +145,11 @@ _DC01 übernimmt im HomeLab die DNS-Rolle, da Active Directory auf eine funktion
             - Member: GG-IT-Admins
         - Testen: Via PS: "net localgroup Administrators" > soll GG-IT-Admins zu sehen sein
 
+</details>
 ## 3. Share Folder
+
+<details markdown="1">
+<summary><strong>Share Folder Konfiguration anzeigen</strong></summary>
 
 - **1.Ordnerstruktur:**
     - C:\Shares
@@ -182,8 +188,13 @@ _DC01 übernimmt im HomeLab die DNS-Rolle, da Active Directory auf eine funktion
 | Stephan Produktion | Produktion  | GG-Mitarbeiter; GG-Produktion  |
 | Lara Produktion    | Produktion  | GG-Mitarbeiter; GG-Produktion  |
 |                    |             |                                |
-
+</details>
 ## 4. Windows Server Backup
+
+
+<details markdown="1">
+<summary><strong>Backup-Skript anzeigen</strong></summary>
+
 
 - #### 1. Installation
     
@@ -195,7 +206,7 @@ _DC01 übernimmt im HomeLab die DNS-Rolle, da Active Directory auf eine funktion
 - #### 2. Virtuelle Festplatte erstellen/konfigurieren
     
     - In Proxmox unter Hardware eine Hard Disk erstellen
-    - Parameter: local-lvm, **20GB**
+    - Parameter: local-lvm, **80GB**
     - DC neustarten
     - Create and Format Hard Disk Partition
     - Festplatte initialisieren, Formatieren auf NTFS, Name: **SSB (B:)**
@@ -204,3 +215,5 @@ _DC01 übernimmt im HomeLab die DNS-Rolle, da Active Directory auf eine funktion
     - Pfad - Server Manager > Tools > Windows Server Backup > Local Backup > (rechts) Backup Once > Select Item for Backup > Add Items > **System State**
     - Testen - Recover > Get Startet - Hier wird den Backup Quelle gezeigt.
     - Ein Schedule Backup könnte man einrichten. Für meine Zwecke ist es nicht nötig, da der Server nicht dauerhaft an ist.
+
+</details>

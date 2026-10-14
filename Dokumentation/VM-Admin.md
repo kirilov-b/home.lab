@@ -7,18 +7,19 @@ title: "[MGMT] VM – Administrator"
 
 **VM Parameter**
 
-| Parameter      | Wert                      |
-| -------------- | ------------------------- |
-| VM-ID          | 100                       |
-| SSH-Nickname   | jump                      |
-| VM-Name        | jump-lm-10-3              |
-| Zweck          | Verwaltung, Dokumentation |
-| Betriebssystem | Linux Mint                |
-| IPv4           | 10.10.10.3                |
-| Domain         | keinen                    |
-| Größe          | 80 GB                     |
-| RAM            | 8 GB                      |
-| vCPU           | 4                         |
+| Parameter      | Wert                      |     |     |
+| -------------- | ------------------------- | --- | --- |
+| VM-ID          | 100                       |     |     |
+| SSH-Nickname   | jump                      |     |     |
+| VM-Name        | jump-lm-10-3              |     |     |
+| Zweck          | Verwaltung, Dokumentation |     |     |
+| Betriebssystem | Linux Mint                |     |     |
+| IPv4           | 10.10.10.3                |     |     |
+| Domain         | keinen                    |     |     |
+| Größe          | 80 GB                     |     |     |
+| RAM            | 8 GB                      |     |     |
+| vCPU           | 4                         |     |     |
+
 
 # Konfiguration
 
