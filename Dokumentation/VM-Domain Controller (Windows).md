@@ -24,15 +24,6 @@ title: "[SRV] VM – Domain Controller [SRV]"
 
 **AD, DNS, DHCP**
 
-# Proxmox Konfiguration
-
-## Technische Daten
-
-- **Betriebssystem:** winServer 2022
-- **IPv4:** 10.10.20.1
-- **Speicher:** 80 GB
-- **RAM:** 8 GB
-- **vCPU:** 4
 
 **Proxmox Besonderheit** - _1. Eine Treiber müsste heruntergeladen werden um die Virtuelle Festplatte lessen zu können (Red Hat).  
 **Windows Besonderheit** - klassische Installationsproblem ohne Microsoft Account problematisch  
