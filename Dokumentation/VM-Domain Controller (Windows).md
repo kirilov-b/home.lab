@@ -7,20 +7,20 @@ title: "[SRV] VM – Domain Controller [SRV]"
 
 **VM Parameter**
 
-| Parameter      | Wert           |
-| -------------- | -------------- |
-| VM-ID          | 201            |
-| SSH-Nickname   | dc             |
-| VM-Name        | dc-ws-20-3     |
-| Zweck          | AD, DNS, DHCP  |
-| Betriebssystem | Windows Server |
-| IPv4           | 10.10.20.3     |
-| Domain         | lab.home       |
-| Größe          | 80 GB          |
-| RAM            | 8 GB           |
-| vCPU           | 4              |
+| Parameter      | Wert              |
+| -------------- | ----------------- |
+| VM-ID          | 203               |
+| SSH-Nickname   | dc                |
+| VM-Name        | dc-ws-20-3        |
+| Zweck          | AD, DNS, DHCP     |
+| Betriebssystem | Windows Server 25 |
+| IPv4           | 10.10.20.3        |
+| Domain         | cl.lab.test       |
+| Größe          | 70 GB             |
+| RAM            | 8 GB              |
+| vCPU           | 4                 |
 
-## Aufgabe
+# Übersicht
 
 **AD, DNS, DHCP**
 
@@ -34,19 +34,12 @@ Lösung - Installation ohne Netzwerk Verbindung.
 
 # Grundkonfiguration
 
-## Name ändern > DC-WS-20-1
+## Name ändern > dc-ws-20-3
 
-## Statische IP zugewiesen
-
-- Problem - Internetzugang, Kein IPv4 Netzwerk Adapter
-    - Problem Lösung
-        1. Ethernet Adapter manuell über den CD/DVD Virtio ISO suchen und installieren
-        2. IPv4 statische Adresse vergeben. 10.10.20.3
-        3. Gateway: 10.10.20.1
 
 ## DNS einrichten
 
-1. Interne DNS-Zone: **lab-home**
+1. Interne DNS-Zone: **cl.lab.home**
 2. Forwarder: **1.1.1.1** und **8.8.8.8**
 3. **DNS-Rolle:**
 
@@ -87,7 +80,7 @@ _DC01 übernimmt im HomeLab die DNS-Rolle, da Active Directory auf eine funktion
     - LAB-Groups
     - LAB-Servers
     - LAB-Computers
-        - Verschieben von **lab.home\Computers** zu **lab.home\LAB-Computers**
+        - Verschieben von **cl.lab.home\Computers** zu cl.lab.home\LAB-Computers**
 2. **Erstellen von Gruppen (AD Users and Computers)**
     - GG-Mitarbeiter - Global, Security
         - max.mustermann - testuser
@@ -164,7 +157,7 @@ _DC01 übernimmt im HomeLab die DNS-Rolle, da Active Directory auf eine funktion
     - New > **Mapped Drive**
         - Action: **Update**
         - Reconnect: **Aktiv**
-        - Location: **\\DC1\Buchhaltung Share**
+        - Location: **\\DC\Buchhaltung Share**
         - Lable as: **Buchhaltung**
         - Drive Letter: **B**
         - **Unter Common > Item Level Targeting > New Item > GG-Buchhaltung auswählen!**
@@ -197,7 +190,7 @@ _DC01 übernimmt im HomeLab die DNS-Rolle, da Active Directory auf eine funktion
 - #### 2. Virtuelle Festplatte erstellen/konfigurieren
     
     - In Proxmox unter Hardware eine Hard Disk erstellen
-    - Parameter: local-lvm, **80GB**
+    - Parameter: local-lvm, **70GB**
     - DC neustarten
     - Create and Format Hard Disk Partition
     - Festplatte initialisieren, Formatieren auf NTFS, Name: **SSB (B:)**

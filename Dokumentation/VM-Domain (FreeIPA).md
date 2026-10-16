@@ -8,7 +8,7 @@ title: "[SRV] VM – FreeIPA / Identity /"
 
 | Parameter      | Wert                     |
 | -------------- | ------------------------ |
-| VM-ID          | 222                      |
+| VM-ID          | 202                      |
 | SSH-Nickname   | ipa                      |
 | VM-Name        | ipa-la-20-2.srv.test     |
 | Zweck          | FreeIPA / Identity / DNS |
