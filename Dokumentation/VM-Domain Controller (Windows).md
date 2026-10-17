@@ -22,19 +22,20 @@ title: "[SRV] VM – Domain Controller [SRV]"
 
 # Übersicht
 
-**AD, DNS, DHCP**
+Nach der Konfiguration von der ISO 
 
-
-**Proxmox Besonderheit** - _1. Eine Treiber müsste heruntergeladen werden um die Virtuelle Festplatte lessen zu können (Red Hat).  
-**Windows Besonderheit** - klassische Installationsproblem ohne Microsoft Account problematisch  
-Lösung - Installation ohne Netzwerk Verbindung.  
--Shift + F10. Rechner bootet in CMD.  
--Eingabe OOBE\BYPASSNRO  
--Installation weitermachen_
 
 # Grundkonfiguration
 
-## Name ändern > dc-ws-20-3
+## Netzwerkverbindung
+1. In Proxmox wird der vLAN Bereich ausgewählt. Bridge: **LANbr0**. 
+	vLAN **Tag 20** *für SRV Netzwerk*
+2. Nach der Installation von der ISO wird die Netzwerkparameter Manuell eingetragen. *Laut Vorgaben oben*
+3. Name der Hostname wird angepasst: **dc-ws-20-3**
+4. Über den Server Manager werden alle nötige Dienste installiert:
+   - **AD DS, DNS, DHCP, WSB**
+
+
 
 
 ## DNS einrichten
