@@ -120,6 +120,7 @@ Eine Fiktive Unternehmen und die Hierarchische Struktur
         - Testen: Via PS: "net localgroup Administrators" > soll GG-IT-Admins zu sehen sein
 
 </details>
+
 # 3. File Share Struktur
 
 <details markdown="1">
@@ -163,6 +164,7 @@ Eine Fiktive Unternehmen und die Hierarchische Struktur
 | Lara Produktion    | Produktion  | GG-Mitarbeiter; GG-Produktion  |
 |                    |             |                                |
 </details>
+
 # 4. Windows Server Backup
 
 <details markdown="1">
