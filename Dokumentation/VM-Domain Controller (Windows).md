@@ -117,7 +117,7 @@ Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen au
 ## 3. Share Folder
 
 <details markdown="1">
-  <summary><strong><span style="color: #3399FF;">AD-Konfiguration anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #3399FF;">Share Konfiguration anzeigen</span></strong></summary>
 
 - **1.Ordnerstruktur:**
     - C:\Shares
@@ -160,7 +160,7 @@ Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen au
 ## 4. Windows Server Backup
 
 <details markdown="1">
-  <summary><strong><span style="color: #3399FF;">AD-Konfiguration anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #3399FF;">WSB-Konfiguration anzeigen</span></strong></summary>
 
 
 - #### 1. Installation
