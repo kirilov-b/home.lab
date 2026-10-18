@@ -14,7 +14,7 @@ title: "[MGMT] VM – Administrator"
 |        **VM-Name** | jump-lm-10-3              |     **Größe** | 80 GB      |
 |          **Zweck** | Verwaltung, Dokumentation |       **RAM** | 8 GB       |
 | **Betriebssystem** | Linux Mint                |      **vCPU** | 4          |
-|                    |                           |               |            |
+
 
 
 

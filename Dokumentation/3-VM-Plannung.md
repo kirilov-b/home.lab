@@ -42,8 +42,8 @@ Für Service & Management - **srv.test**
 Für Domain Controller - **cl.lab.test**
 
 **Beispiel FQDNs**
-	ans-la-10-20.srv.test
-	dc-ws-20-02.cl.lab.test
+	ans-la-10-20.**srv.test**
+	dc-ws-20-3.**cl.lab.test**
   
 ## VM-Tabelle
 
@@ -63,6 +63,6 @@ Für Domain Controller - **cl.lab.test**
 | 288   | wazuh        | **sec-la-20-70** | Wazuh / Security Monitoring   | Linux Alma          | 10.10.20.70 | 64          | 4         | 4    |
 | 299   | gitea        | **git-ld-20-80** | Gitea / Git-Server            | Linux Debian        | 10.10.20.80 | 32          | 2         | 2    |
 | 301   | cl1          | **cl1-wc-30**    | Testclient                    | Windows 11          | DHCP        | 60          | 4         | 2    |
-| 302   | cl2          | **cl2-wc-30**    | Testclient                    | Windows 11          | DHCP        | 40          | 4         | 2    |
+| 302   | cl2          | **cl2-lm-30**    | Testclient                    | Linux Mint          | DHCP        | 40          | 4         | 2    |
 | 303   | cl3          | **cl3-mac-30**   | Testclient                    | MacOS               | DHCP        | 40          | 4         | 2    |
 
