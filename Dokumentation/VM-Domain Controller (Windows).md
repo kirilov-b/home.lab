@@ -13,18 +13,14 @@ VLANs.
 
 **VM Parameter**
 
-| Parameter      | Wert              |
-| -------------- | ----------------- |
-| VM-ID          | 203               |
-| SSH-Nickname   | dc                |
-| VM-Name        | dc-ws-20-3        |
-| Zweck          | AD, DNS, DHCP     |
-| Betriebssystem | Windows Server 25 |
-| IPv4           | 10.10.20.3        |
-| Domain         | cl.lab.test       |
-| Größe          | 70 GB             |
-| RAM            | 8 GB              |
-| vCPU           | 4                 |
+|      **Parameter** | Wert              | **Parameter** | Wert        |
+| -----------------: | ----------------- | ------------: | ----------- |
+|          **VM-ID** | 203               |      **IPv4** | 10.10.20.3  |
+|   **SSH-Nickname** | dc                |    **Domain** | cl.lab.test |
+|        **VM-Name** | dc-ws-20-3        |     **Größe** | 70 GB       |
+|          **Zweck** | AD, DNS, DHCP     |       **RAM** | 8 GB        |
+| **Betriebssystem** | Windows Server 25 |      **vCPU** | 4           |
+
 
 # Grundkonfiguration
 
@@ -45,7 +41,7 @@ eine statische IP konfigurieren.
 
 Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen auf dem Router (OPNsense) müssen folgende Ports erlaubt werden um die Verbindung zu ermöglichen.
 
-**TCP / UDP **
+**TCP / UDP**
 1. **53** - DNS Abfragen und großere DNS Antworten
 2. **88** - Kerberos Authentifizierung
 3. **123** - NTP - Network Time Protokoll (Zeitsynchronisation)
@@ -121,7 +117,7 @@ Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen au
 ## 3. Share Folder
 
 <details markdown="1">
-<summary><strong>Share Folder Konfiguration anzeigen</strong></summary>
+  <summary><strong><span style="color: #3399FF;">AD-Konfiguration anzeigen</span></strong></summary>
 
 - **1.Ordnerstruktur:**
     - C:\Shares
@@ -163,13 +159,12 @@ Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen au
 </details>
 ## 4. Windows Server Backup
 
-
 <details markdown="1">
-<summary><strong>Backup-Skript anzeigen</strong></summary>
+  <summary><strong><span style="color: #3399FF;">AD-Konfiguration anzeigen</span></strong></summary>
 
 
 - #### 1. Installation
-    
+- 
     - Server Manager > Manage > Add Roles and Features > Next
     - Role-Based or Feature ... > Next
     - DC.lab.test auswählen > Next
