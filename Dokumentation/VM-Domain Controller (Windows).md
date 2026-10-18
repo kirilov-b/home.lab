@@ -30,7 +30,7 @@ Evaluation mit Desktop Experience installieren, Hostname setzen und
 eine statische IP konfigurieren.
 - Uhrzeit und Zeitzone Richtig einstellen - Der Server Dient als Master Uhr für alle andere Clients
 **3. Dienste Installieren** und konfigurieren
-- **DNS** -
+- **DNS** - Der Dienst wird als DNS Server für die Komplette VLAN30 dienen. Alle Clients
 - **AD DS** - Domäne `cl.lab.test`, NetBIOS-Name `CL`. SRV-Einträge und DC-Erkennung testen.
 - **DHCP installieren und autorisieren:** Scope für `10.10.30.0/24` anlegen, Gateway/DNS/DNS-Suffix setzen und Scope aktivieren. 
 - **DHCP-Relay und Firewall setzen**:Relay aus VLAN 30 zum  DHCP-Server `10.10.20.3`; notwendige Verbindungen nur von den  benötigten Netzen zum DC erlauben. 
@@ -52,10 +52,10 @@ Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen au
 8. **49152--65535** TCP Dynamische RPC-Ports bei  modernen Windows-Versionen;  für bestimmte  AD-/Netlogon-Funktionen  relevant
 # SERVICES
 
-## 2. Active Directory Installieren
+# 2. Active Directory Aufbau
 
 <details markdown="1">
-  <summary><strong><span style="color: #006600;">AD-Konfiguration anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #009900;">AD-Konfiguration anzeigen</span></strong></summary>
 ### Active Directory konfigurieren.
 
 1. **Erstellen von Organisational Unit (OU)**
@@ -114,7 +114,7 @@ Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen au
         - Testen: Via PS: "net localgroup Administrators" > soll GG-IT-Admins zu sehen sein
 
 </details>
-## 3. Share Folder
+# 3. Share Folder
 
 <details markdown="1">
   <summary><strong><span style="color: #006600;">Share Konfiguration anzeigen</span></strong></summary>
@@ -157,10 +157,10 @@ Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen au
 | Lara Produktion    | Produktion  | GG-Mitarbeiter; GG-Produktion  |
 |                    |             |                                |
 </details>
-## 4. Windows Server Backup
+# 4. Windows Server Backup
 
 <details markdown="1">
-  <summary><strong><span style="color: #006600;">WSB-Konfiguration anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #009900;">WSB-Konfiguration anzeigen</span></strong></summary>
 
 
 - #### 1. Installation
@@ -190,11 +190,11 @@ Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen au
 Diese Abschnitt dient als Hilfsmittel für die Konfiguration über Power Shell.
 
 <details markdown="1">
-  <summary><strong><span style="color: #006600;">Power Shell - Konfiguration anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #009900;">Power Shell - Konfiguration anzeigen</span></strong></summary>
 ## 2. Server vorbereiten
 
 <details markdown="1">
-  <summary><strong><span style="color: #006600;">Vorbereitung anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #009900;">Vorbereitung anzeigen</span></strong></summary>
 ### Hostname und statische IP
 
 Setze den gewünschten Hostnamen:
