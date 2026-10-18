@@ -21,24 +21,14 @@ VLANs.
 |          **Zweck** | AD, DNS, DHCP     |       **RAM** | 8 GB        |
 | **Betriebssystem** | Windows Server 25 |      **vCPU** | 4           |
 
-
 # Grundkonfiguration
 
-**1. vLAN Tag 20 in Proxmox auf setzen**
+**1. In Proxmox** - Setzen den VLAN Tag: **20**
 
 **2. Windows Server installieren:** Windows Server 2025 Standard  
 Evaluation mit Desktop Experience installieren, Hostname setzen und  
 eine statische IP konfigurieren.
 - Uhrzeit und Zeitzone Richtig einstellen - Der Server Dient als Master Uhr für alle andere Clients
-
-**3. Dienste Installieren** und konfigurieren
-- **DNS** - Der Dienst wird als DNS Server für die Komplette VLAN30 dienen. Alle Clients
-- **AD DS** - Domäne `cl.lab.test`, NetBIOS-Name `CL`. SRV-Einträge und DC-Erkennung testen.
-- **DHCP installieren und autorisieren:** Scope für `10.10.30.0/24` anlegen, Gateway/DNS/DNS-Suffix setzen und Scope aktivieren. 
-- **DHCP-Relay und Firewall setzen**:Relay aus VLAN 30 zum  DHCP-Server `10.10.20.3`; notwendige Verbindungen nur von den  benötigten Netzen zum DC erlauben. 
-
-**4. SSH und RDP einrichten**
-
 
 ## Wichtige Ports für Domain - Client Verbindung
 
@@ -58,7 +48,7 @@ Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen au
 # Unternehmenstruktur
 Eine Fiktive Unternehmen und die Hierarchische Struktur
 
-# 2. Active Directory Struktur
+## 2. Active Directory Struktur
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">AD-Konfiguration anzeigen</span></strong></summary>
@@ -121,7 +111,7 @@ Eine Fiktive Unternehmen und die Hierarchische Struktur
 
 </details>
 
-# 3. File Share Struktur
+## 3. File Share Struktur
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Share Konfiguration anzeigen</span></strong></summary>
@@ -165,19 +155,20 @@ Eine Fiktive Unternehmen und die Hierarchische Struktur
 |                    |             |                                |
 </details>
 
-# 4. Windows Server Backup
+## 4. Windows Server Backup
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">WSB-Konfiguration anzeigen</span></strong></summary>
 
 
 - #### 1. Installation
-- 
+
     - Server Manager > Manage > Add Roles and Features > Next
     - Role-Based or Feature ... > Next
     - DC.lab.test auswählen > Next
     - Features > **Windows Serve Backup** aktivieren
     - Next > Install
+
 - #### 2. Virtuelle Festplatte erstellen/konfigurieren
     
     - In Proxmox unter Hardware eine Hard Disk erstellen
@@ -185,6 +176,7 @@ Eine Fiktive Unternehmen und die Hierarchische Struktur
     - DC neustarten
     - Create and Format Hard Disk Partition
     - Festplatte initialisieren, Formatieren auf NTFS, Name: **SSB (B:)**
+
 - #### 3. System State Backup einrichten
     
     - Pfad - Server Manager > Tools > Windows Server Backup > Local Backup > (rechts) Backup Once > Select Item for Backup > Add Items > **System State**
