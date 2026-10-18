@@ -56,10 +56,8 @@ Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen au
 
 #  Konfigurationschritte 
 
-Diese Abschnitt dient als Hilfsmittel für die Konfiguration über Power Shell.
+Diese Abschnitt dient als Hilfsmittel für die Konfiguration über Server Managment und die  PowerShell Variante.
 
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
 ## 1. Server vorbereiten
 
 <details markdown="1">
@@ -419,7 +417,6 @@ separat eingerichtet und getestet werden.
 
 </details>
 
-</details>
 
 # Unternehmenstruktur
 Eine Fiktive Unternehmen und die Hierarchische Struktur
