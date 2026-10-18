@@ -42,7 +42,7 @@ Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen au
 5. **389** - LDAP - Verzeichnisabfragen und DC Emittlung
 6. **445** - SMB - Server Message Block - SYSVOL und Gruppenrichlinien
 7. **464** - Kerberos - Passwortänderung und Verwaltung
-8. **49152--65535** TCP Dynamische RPC-Ports bei  modernen Windows-Versionen;  für bestimmte  AD-/Netlogon-Funktionen  relevant
+8. **49152:65535** TCP Dynamische RPC-Ports bei  modernen Windows-Versionen;  für bestimmte  AD-/Netlogon-Funktionen  relevant
 
 
 # Unternehmenstruktur
