@@ -195,18 +195,38 @@ Eine Fiktive Unternehmen und die Hierarchische Struktur
 
 ## Konfigurationschritte 
 
-Diese Abschnitt dient als Hilfsmittel für die Konfiguration über **Server Manager** und die  **PowerShell** Variante.
+Diese Abschnitt dient als Anleitung für die Konfiguration über **Server Manager (GUI)** und die  **PowerShell** Variante.
 
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Konfiguration anzeigen</span></strong></summary>
 
 ### 1. Server vorbereiten
+#### 1.1 Hostname setzen
 
+1. Öffne **Server Manager > Local Server**.
+2. Klicke neben **Computer name** auf den aktuellen Namen.
+3. Klicke auf **Change**, trage `dc-ws-20-3` ein und bestätige.
+4. Starte den Server neu, falls Windows dazu auffordert.
+
+#### 1.2 Statische IPv4-Adresse konfigurieren
+
+1. Öffne **Server Manager > Local Server**.
+2. Klicke neben **Ethernet** auf den Netzwerk-Link.
+3. Rechtsklick auf den aktiven Adapter > **Properties**.
+4. Öffne **Internet Protocol Version 4 (TCP/IPv4) > Properties**.
+5. Wähle **Use the following IP address** und trage ein:
+    - IP: `10.10.20.3`
+    - Subnet mask: `255.255.255.0`
+    - Default gateway: `10.10.20.1`
+6. Wähle **Use the following DNS server addresses**:
+    - Preferred DNS: `10.10.20.3`
+    - Alternate DNS: leer lassen
+7. Bestätigen.
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
-### Hostname und statische IP
+#### Hostname und statische IP
 
 Setze den gewünschten Hostnamen:
 
@@ -229,7 +249,7 @@ Get-DnsClientServerAddress -AddressFamily IPv4
 mit `Get-NetAdapter` ermitteln. Keine zweite, widersprüchliche  
 IP-Konfiguration auf derselben Schnittstelle anlegen.
 
-### DNS auf den DC zeigen lassen
+#### DNS auf den DC zeigen lassen
 
 Nachdem die statische IP korrekt konfiguriert ist, den bevorzugten  
 DNS-Server der DC-Netzwerkkarte auf `10.10.20.3` setzen. Den  
@@ -246,6 +266,39 @@ Ersetze `"Ethernet"`, falls der Adapter anders heißt.
 
 ### 2. AD DS und DNS installieren
 
+#### 2.1 Rollen installieren
+
+1. Öffne **Server Manager > Manage > Add Roles and Features**.
+2. Wähle **Role-based or feature-based installation**.
+3. Wähle den lokalen Server.
+4. Markiere **Active Directory Domain Services** und bestätige **Add  
+    Features**.
+5. Markiere **DNS Server** und bestätige erforderliche Features.
+6. Klicke **Next** bis **Install**, dann installiere die Rollen.
+
+#### 2.2 Neue Domäne erstellen
+
+1. Im Server Manager auf das Benachrichtigungsfähnchen klicken.
+2. **Promote this server to a domain controller** wählen.
+3. **Add a new forest** wählen und als Root-Domäne `cl.lab.test`  
+    eintragen.
+4. Unter **Domain Controller Options** DNS Server und Global Catalog  
+    aktiviert lassen.
+5. Ein DSRM-Kennwort setzen und sicher aufbewahren.
+6. Prüfen, dass der NetBIOS-Name `CL` lautet.
+7. Durch die restlichen Seiten gehen; Voraussetzungen prüfen und  
+    **Install** wählen.
+8. Der Server startet normalerweise automatisch neu.
+9. Danach als `CL\\Administrator` oder `Administrator@cl.lab.test`  
+    anmelden.
+
+#### 2.3 AD/DNS prüfen
+
+- **Server Manager > Tools > Active Directory Users and Computers**  
+    öffnen und `cl.lab.test` prüfen.
+- **Server Manager > Tools > DNS** öffnen.
+- Unter **Forward Lookup Zones** die Zone `cl.lab.test` und die  
+    AD-DNS-Einträge kontrollieren.
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
@@ -283,6 +336,45 @@ korrekten IP zurückgeben.
 
 ### 3. DHCP installieren und konfigurieren
 
+#### 3.1 DHCP-Rolle installieren
+
+1. **Server Manager > Manage > Add Roles and Features** öffnen.
+2. **DHCP Server** markieren und erforderliche Features hinzufügen.
+3. **Next > Install** wählen.
+4. Nach der Installation die DHCP-Nachkonfiguration im Server Manager  
+    abschließen, falls sie angezeigt wird.
+
+#### 3.2 DHCP-Server autorisieren
+
+1. Öffne **Server Manager > Tools > DHCP**.
+2. Rechtsklick auf `dc-ws-20-3.cl.lab.test`.
+3. **Authorize** wählen, falls noch nicht autorisiert.
+4. **Refresh** wählen und Status kontrollieren.
+
+#### 3.3 IPv4-Scope erstellen
+
+1. Im DHCP-Manager den Server erweitern.
+2. Rechtsklick auf **IPv4 > New Scope**.
+3. Name: `VLAN30-Clients`.
+4. Start-IP `10.10.30.100`, End-IP `10.10.30.200`.
+5. Subnetzmaske `255.255.255.0`.
+6. Ausschlussbereiche nur bei Bedarf eintragen.
+7. Lease Duration festlegen (im bisherigen Lab waren es 8 Tage).
+8. **Configure these options now** wählen.
+9. Router: `10.10.30.1`.
+10. Domain Name: `cl.lab.test`.
+11. DNS Server: `10.10.20.3`.
+12. WINS leer lassen, sofern nicht benötigt.
+13. Scope-Optionen prüfen und den Scope anschließend mit Rechtsklick >  
+    **Activate** aktivieren.
+
+#### 3.4 Scope-Optionen kontrollieren
+
+Unter **IPv4 > VLAN30-Clients > Scope Options** prüfen:
+
+- `003 Router`: `10.10.30.1`
+- `006 DNS Servers`: `10.10.20.3`
+- `015 DNS Domain Name`: `cl.lab.test`
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
@@ -331,6 +423,13 @@ vorgenommen.
 
 ### 4. Client prüfen und der Domäne beitreten
 
+- OPNsense-Weboberfläche öffnen.
+- **Services > DHCP Relay** öffnen (Menü kann je nach Version  
+    abweichen).
+- Client-Interface `VLAN_30_CLIENTS` auswählen.
+- DHCP-Serverziel `10.10.20.3` eintragen.
+- Relay aktivieren, speichern und anwenden.
+- Status prüfen.
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
@@ -359,7 +458,7 @@ Restart-Computer
 ```
 
 Nach dem Neustart mit einem Domänenkonto anmelden, z. B.  
-`CL\\Administrator` oder `Administrator@cl.lab.test`.
+`CL\Administrator` oder `Administrator@cl.lab.test`.
 
 Prüfen:
 
@@ -384,6 +483,39 @@ Computerkonto gelöscht wird.
 
 ### 5. Zeitsynchronisierung prüfen
 
+#### 5.1 DHCP/DNS prüfen
+
+1. Am Client **Settings > Network & Internet > Advanced network  
+    settings > More network adapter options** öffnen (oder `ncpa.cpl`  
+    ausführen).
+2. Rechtsklick auf Ethernet > **Properties**.
+3. **Internet Protocol Version 4 (TCP/IPv4) > Properties** öffnen.
+4. **Obtain an IP address automatically** und **Obtain DNS server  
+    address automatically** auswählen.
+5. In einer Eingabeaufforderung `ipconfig /all` ausführen.
+6. Prüfen: IP aus dem DHCP-Bereich, Gateway `10.10.30.1`, DNS  
+    `10.10.20.3`, DNS-Suffix `cl.lab.test`.
+
+#### 5.2 Domain-Join
+
+1. **Settings > System > About** öffnen.
+2. **Domain or workgroup** bzw. **Advanced system settings > Computer  
+    Name > Change** wählen (je nach Windows-Version).
+3. **Change** anklicken und unter **Member of** die Option **Domain**  
+    wählen.
+4. `cl.lab.test` eingeben und bestätigen.
+5. Berechtigte Anmeldedaten angeben, z. B. `CL\\Administrator`.
+6. Die Willkommensmeldung bestätigen und den Client neu starten.
+7. Am Anmeldebildschirm **Other user** wählen und `CL\\Administrator`  
+    oder `Administrator@cl.lab.test` eingeben.
+
+#### 5.3 Mitgliedschaft kontrollieren
+
+- **Settings > System > About** öffnen und Domänenmitgliedschaft  
+    prüfen.
+- Auf dem DC **Active Directory Users and Computers > cl.lab.test >  
+    Computers** öffnen.
+- Prüfen, ob `CL1-WC-30` existiert und aktiviert ist.
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
@@ -415,6 +547,15 @@ Set-TimeZone -Id "W. Europe Standard Time"
 
 ### 6. Windows-Firewall für AD
 
+- Auf DC und Client **Settings > Time & language > Date & time**  
+    öffnen.
+- Zeitzone auf **(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm,  
+    Vienna** stellen.
+- Die Windows-Zeitquelle des Clients sollte in der Domäne  
+    normalerweise der DC sein.
+- Bei Abweichungen zuerst die tatsächliche Uhrzeit und Zeitzone auf  
+    dem DC prüfen. Zeitzone und Systemuhr sind unterschiedliche Dinge;  
+    die Uhrzeit nicht ohne Prüfung manuell ändern.
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
@@ -435,6 +576,58 @@ Get-NetFirewallRule -Enabled True |
 </details>
 
 ### 7. OpenSSH Server auf einem Windows-Host
+
+### 7.1 Installieren
+
+1. **Settings > System > Optional features** öffnen.
+2. **View features** bzw. **Add an optional feature** wählen.
+3. **OpenSSH Server** suchen, auswählen und installieren.
+
+### 7.2 Dienst starten
+
+1. `services.msc` öffnen.
+2. **OpenSSH SSH Server (sshd)** öffnen.
+3. **Startup type** auf **Automatic** stellen.
+4. **Start** klicken und Status **Running** kontrollieren.
+
+### 7.3 Firewallregel prüfen
+
+1. `wf.msc` öffnen.
+2. **Inbound Rules** auswählen und **OpenSSH SSH Server (sshd)**  
+    suchen.
+3. Regel aktivieren.
+4. In den Eigenschaften unter **Advanced > Profiles** das passende  
+    Profil, typischerweise **Domain**, auswählen.
+5. Die Regel muss TCP-Port 22 erlauben.
+
+### 7.4 Administrator-Public-Key
+
+1. Auf Linux Mint `cat ~/.ssh/id_ed25519.pub` ausführen.
+2. Nur den öffentlichen Schlüssel kopieren; den privaten Schlüssel  
+    `id_ed25519` niemals übertragen.
+3. Auf Windows in  
+    `C:\\ProgramData\\ssh\\administrators_authorized_keys` eintragen.
+4. Die Datei muss restriktive Berechtigungen für `SYSTEM` und  
+    `BUILTIN\\Administrators` haben.
+5. Bestehende Schlüssel nicht überschreiben; neue Schlüssel ergänzen.
+
+Für die zentrale Administrator-Schlüsseldatei ist PowerShell oft  
+zuverlässiger als Notepad; die genaue Ein-Befehl-Variante steht in  
+`Wie.md`.
+
+### 7.5 SSH testen
+
+Von Linux Mint:
+
+```
+ssh -l 'Administrator@cl.lab.test' 10.10.30.101
+```
+
+Mit Schlüssel:
+
+```
+ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes -l 'Administrator@cl.lab.test' 10.10.30.101
+```
 
 
 <details markdown="1">
@@ -499,7 +692,7 @@ Auf Windows in administrativer PowerShell die Public-Key-Zeile
 einsetzen:
 
 ```
-Set-Content -Path "C:\\ProgramData\\ssh\\administrators_authorized_keys" -Value "ssh-ed25519 HIER_DEN_VOLLSTAENDIGEN_PUBLIC_KEY_EINFUEGEN support@jump"
+Set-Content -Path "C:\\ProgramData\\ssh\\administrators_authorized_keys" -Value "ssh-ed25519 (Schlüssel) linuxuser@hostname"
 icacls.exe "C:\\ProgramData\\ssh\\administrators_authorized_keys" /inheritance:r
 icacls.exe "C:\\ProgramData\\ssh\\administrators_authorized_keys" /grant "SYSTEM:F" /grant "BUILTIN\\Administrators:F"
 ```
@@ -521,6 +714,34 @@ Wenn SSH trotz laufendem Dienst nicht erreichbar ist, zuerst IP, Port
 
 ### 8. RDP auf einem Windows-Host (optional)
 
+### 8.1 Remote Desktop aktivieren
+
+1. Auf dem Zielhost **Settings > System > Remote Desktop** öffnen.
+2. **Enable Remote Desktop** aktivieren und bestätigen.
+3. Prüfen, ob der Domänenbenutzer zur RDP-Anmeldung berechtigt ist.  
+    Andere Benutzer können bei Bedarf zu **Remote Desktop Users**  
+    hinzugefügt werden.
+
+### 8.2 Windows-Firewall prüfen
+
+1. `wf.msc` öffnen.
+2. Unter **Inbound Rules** die Regeln der Gruppe **Remote Desktop**  
+    suchen.
+3. Passende Regeln für das Domänenprofil aktivieren.
+4. RDP verwendet standardmäßig TCP 3389; UDP 3389 kann optional für  
+    bestimmte Funktionen genutzt werden.
+
+### 8.3 Remmina von Linux Mint
+
+1. Remmina öffnen und eine neue Verbindung erstellen.
+2. Protocol: **RDP**.
+3. Server: `10.10.30.101`.
+4. Benutzername: `Administrator@cl.lab.test` (oder Benutzername plus  
+    Domäne, je nach Remmina).
+5. Domänenkennwort eingeben und verbinden.
+
+Bei Problemen TCP 3389, Windows-Firewall und OPNsense-Regeln zwischen  
+Jump-Host und Client prüfen.
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
@@ -559,6 +780,17 @@ in einem anderen VLAN liegt.
 
 ### 9. Windows Server Backup
 
+1. **Server Manager > Manage > Add Roles and Features** öffnen.
+2. Im Wizard den lokalen Server auswählen.
+3. Unter **Features** **Windows Server Backup** markieren.
+4. **Next > Install** wählen.
+5. Danach **Server Manager > Tools > Windows Server Backup** öffnen.
+6. **Backup Schedule** für regelmäßige Sicherungen oder **Backup Once**  
+    für eine einmalige Sicherung auswählen.
+7. Umfang, Ziel und Zeitplan festlegen; Status kontrollieren und  
+    Wiederherstellung testen.
+
+Die Installation allein erstellt noch keinen Sicherungsplan.
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
