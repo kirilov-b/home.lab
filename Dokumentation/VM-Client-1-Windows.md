@@ -7,18 +7,13 @@ title: "[CL] VM – Testclient - 1 - Windows"
 
 **VM Parameter**
 
-| Parameter      | Wert       |
-| -------------- | ---------- |
-| VM-ID          | 301        |
-| SSH-Nickname   | cl1        |
-| VM-Name        | cl1-wc-30  |
-| Zweck          | Testclient |
-| Betriebssystem | Windows 11 |
-| IPv4           | DHCP       |
-| Domain         | lab.home   |
-| Größe          | 60 GB      |
-| RAM            | 6 GB       |
-| vCPU           | 2          |
+|      **Parameter** | Wert               |     | **Parameter** | Wert         |
+| -----------------: | ------------------ | --- | ------------: | ------------ |
+|          **VM-ID** | 301                |     | **IPv4 DHCP** | 10.10.30.xxx |
+|   **SSH-Nickname** | cl1                |     |    **Domain** | cl.lab.test  |
+|        **VM-Name** | cl1-wc-30          |     |     **Größe** | 60 GB        |
+|          **Zweck** | Testclient Windows |     |       **RAM** | 4 GB         |
+| **Betriebssystem** | Windows 11         |     |      **vCPU** | 4            |
 
 # Übersicht
 
