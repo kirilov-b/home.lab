@@ -9,7 +9,7 @@ title: "[SRV] VM – FreeIPA / Identity /"
 |      **Parameter** | Wert                     | **Parameter** | Wert       |
 | -----------------: | ------------------------ | ------------: | ---------- |
 |          **VM-ID** | 202                      |      **IPv4** | 10.10.20.2 |
-|   **SSH-Nickname** | ipa                      |    **Domain** | srv.test   |
+|       **vLAN Tag** | 20                       |    **Domain** | srv.test   |
 |        **VM-Name** | ipa-la-20-2.srv.test     |     **Größe** | 40 GB      |
 |          **Zweck** | FreeIPA / Identity / DNS |       **RAM** | 4 GB       |
 | **Betriebssystem** | Linux Alma               |      **vCPU** | 2          |

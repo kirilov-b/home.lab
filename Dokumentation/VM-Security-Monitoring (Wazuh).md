@@ -9,9 +9,9 @@ title: "[SRV] VM – Wazuh / Security Monitoring"
 
 |          Parameter | Wert                        | **Parameter** | Wert        |
 | -----------------: | --------------------------- | ------------: | ----------- |
-|          **VM-ID** | 288                         |      **IPv4** | 10.10.20.80 |
-|   **SSH-Nickname** | wazuh                       |    **Domain** | srv.test    |
-|        **VM-Name** | SEC-LA-20-80                |     **Größe** | 64 GB       |
+|          **VM-ID** | 288                         |      **IPv4** | 10.10.20.70 |
+|       **vLAN Tag** | 20                          |    **Domain** | srv.test    |
+|        **VM-Name** | sec-la-20-70                |     **Größe** | 64 GB       |
 |          **Zweck** | Wazuh / Security Monitoring |       **RAM** | 8 GB        |
 | **Betriebssystem** | Linux Alma                  |      **vCPU** | 4           |
 

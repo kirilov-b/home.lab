@@ -10,7 +10,7 @@ title: "[MGMT] VM – Administrator"
 |      **Parameter** | Wert                      | **Parameter** | Wert       |
 | -----------------: | ------------------------- | ------------: | ---------- |
 |          **VM-ID** | 100                       |      **IPv4** | 10.10.10.3 |
-|   **SSH-Nickname** | jump                      |    **Domain** | keinen     |
+|       **vLAN Tag** | 10                        |    **Domain** | keinen     |
 |        **VM-Name** | jump-lm-10-3              |     **Größe** | 80 GB      |
 |          **Zweck** | Verwaltung, Dokumentation |       **RAM** | 8 GB       |
 | **Betriebssystem** | Linux Mint                |      **vCPU** | 4          |

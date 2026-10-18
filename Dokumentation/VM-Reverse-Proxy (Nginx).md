@@ -9,9 +9,9 @@ title: "[SRV] VM – Nginx / Reverse Proxy"
 
 |      **Parameter** | Wert                  | **Parameter** | Wert        |
 | -----------------: | --------------------- | ------------: | ----------- |
-|          **VM-ID** | 233                   |      **IPv4** | 10.10.20.30 |
-|   **SSH-Nickname** | ngx                   |    **Domain** | srv.test    |
-|        **VM-Name** | NGX-LA-20-30          |     **Größe** | 20 GB       |
+|          **VM-ID** | 233                   |      **IPv4** | 10.10.20.20 |
+|       **vLAN Tag** | 20                    |    **Domain** | srv.test    |
+|        **VM-Name** | ngc-la-20-20          |     **Größe** | 20 GB       |
 |          **Zweck** | Nginx / Reverse Proxy |       **RAM** | 2 GB        |
 | **Betriebssystem** | Linux Alma            |      **vCPU** | 2           |
 
