@@ -203,6 +203,7 @@ Diese Abschnitt dient als Hilfsmittel für die Konfiguration über **Server Mana
 
 ## 1. Server vorbereiten
 
+
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
 ### Hostname und statische IP
@@ -242,6 +243,7 @@ Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses 10.10.20.
 Ersetze `"Ethernet"`, falls der Adapter anders heißt.
 
 </details>
+
 ## 2. AD DS und DNS installieren
 
 
@@ -278,7 +280,9 @@ Die SRV-Abfrage sollte den DC `dc-ws-20-3.cl.lab.test` mit seiner
 korrekten IP zurückgeben.
 
 </details>
+
 ## 3. DHCP installieren und konfigurieren
+
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
@@ -324,7 +328,9 @@ zulassen. Die konkrete OPNsense-Konfiguration wird in deren Oberfläche
 vorgenommen.
 
 </details>
+
 ## 4. Client prüfen und der Domäne beitreten
+
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
@@ -375,7 +381,9 @@ untersuchen, bevor der Client aus der Domäne entfernt oder das
 Computerkonto gelöscht wird.
 
 </details>
+
 ## 5. Zeitsynchronisierung prüfen
+
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
@@ -404,7 +412,9 @@ Set-TimeZone -Id "W. Europe Standard Time"
 ```
 
 </details>
+
 ## 6. Windows-Firewall für AD
+
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
@@ -423,7 +433,9 @@ Get-NetFirewallRule -Enabled True |
 ```
 
 </details>
-## 7. OpenSSH Server auf einem Windows-Host (optional)
+
+## 7. OpenSSH Server auf einem Windows-Host
+
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
@@ -506,7 +518,9 @@ Wenn SSH trotz laufendem Dienst nicht erreichbar ist, zuerst IP, Port
 22, Windows-Firewallprofil und OPNsense-Regel prüfen.
 
 </details>
+
 ## 8. RDP auf einem Windows-Host (optional)
+
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
@@ -542,7 +556,9 @@ Netzwerk-Firewall zwischen den VLANs erlaubt sein, falls der Jump-Host
 in einem anderen VLAN liegt.
 
 </details>
+
 ## 9. Windows Server Backup
+
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
