@@ -25,15 +25,18 @@ VLANs.
 # Grundkonfiguration
 
 **1. vLAN Tag 20 in Proxmox auf setzen**
+
 **2. Windows Server installieren:** Windows Server 2025 Standard  
 Evaluation mit Desktop Experience installieren, Hostname setzen und  
 eine statische IP konfigurieren.
 - Uhrzeit und Zeitzone Richtig einstellen - Der Server Dient als Master Uhr für alle andere Clients
+
 **3. Dienste Installieren** und konfigurieren
 - **DNS** - Der Dienst wird als DNS Server für die Komplette VLAN30 dienen. Alle Clients
 - **AD DS** - Domäne `cl.lab.test`, NetBIOS-Name `CL`. SRV-Einträge und DC-Erkennung testen.
 - **DHCP installieren und autorisieren:** Scope für `10.10.30.0/24` anlegen, Gateway/DNS/DNS-Suffix setzen und Scope aktivieren. 
 - **DHCP-Relay und Firewall setzen**:Relay aus VLAN 30 zum  DHCP-Server `10.10.20.3`; notwendige Verbindungen nur von den  benötigten Netzen zum DC erlauben. 
+
 **4. SSH und RDP einrichten**
 
 
@@ -55,7 +58,7 @@ Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen au
 # 2. Active Directory Aufbau
 
 <details markdown="1">
-  <summary><strong><span style="color: #009900;">AD-Konfiguration anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #00813F;">AD-Konfiguration anzeigen</span></strong></summary>
 ### Active Directory konfigurieren.
 
 1. **Erstellen von Organisational Unit (OU)**
@@ -117,7 +120,7 @@ Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen au
 # 3. Share Folder
 
 <details markdown="1">
-  <summary><strong><span style="color: #006600;">Share Konfiguration anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #00813F;">Share Konfiguration anzeigen</span></strong></summary>
 
 - **1.Ordnerstruktur:**
     - C:\Shares
@@ -160,7 +163,7 @@ Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen au
 # 4. Windows Server Backup
 
 <details markdown="1">
-  <summary><strong><span style="color: #009900;">WSB-Konfiguration anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #00813F;">WSB-Konfiguration anzeigen</span></strong></summary>
 
 
 - #### 1. Installation
@@ -190,11 +193,11 @@ Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen au
 Diese Abschnitt dient als Hilfsmittel für die Konfiguration über Power Shell.
 
 <details markdown="1">
-  <summary><strong><span style="color: #009900;">Power Shell - Konfiguration anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #00813F;">Power Shell - Konfiguration anzeigen</span></strong></summary>
 ## 2. Server vorbereiten
 
 <details markdown="1">
-  <summary><strong><span style="color: #009900;">Vorbereitung anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #00813F;">Vorbereitung anzeigen</span></strong></summary>
 ### Hostname und statische IP
 
 Setze den gewünschten Hostnamen:
@@ -234,6 +237,10 @@ Ersetze `"Ethernet"`, falls der Adapter anders heißt.
 </details>
 ## 3. AD DS und DNS installieren
 
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
+
 ```
 Install-WindowsFeature AD-Domain-Services, DNS -IncludeManagementTools
 ```
@@ -264,6 +271,10 @@ Die SRV-Abfrage sollte den DC `dc-ws-20-3.cl.lab.test` mit seiner
 korrekten IP zurückgeben.
 
 ## 4. DHCP installieren und konfigurieren
+
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
 
 DHCP-Rolle installieren:
 
@@ -306,6 +317,10 @@ zulassen. Die konkrete OPNsense-Konfiguration wird in deren Oberfläche
 vorgenommen.
 
 ## 5. Client prüfen und der Domäne beitreten
+
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
 
 Auf dem Client zunächst prüfen:
 
@@ -354,6 +369,10 @@ Computerkonto gelöscht wird.
 
 ## 6. Zeitsynchronisierung prüfen
 
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
+
 Auf DC und Client:
 
 ```
@@ -379,6 +398,10 @@ Set-TimeZone -Id "W. Europe Standard Time"
 
 ## 7. Windows-Firewall für AD
 
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
+
 Auf OPNsense nur die benötigten Verbindungen vom Client-VLAN zum DC  
 `10.10.20.3` zulassen. Für moderne Windows-RPC-Kommunikation kann  
 dynamisches TCP-RPC im Bereich `49152–65535` erforderlich sein. Auf dem  
@@ -393,6 +416,10 @@ Get-NetFirewallRule -Enabled True |
 ```
 
 ## 8. OpenSSH Server auf einem Windows-Host (optional)
+
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
 
 Prüfen ob OpenSSH Server installiert ist
 ```
@@ -439,6 +466,10 @@ New-NetFirewallRule `
 
 ### Public Key für einen Domänenadministrator hinterlegen
 
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
+
 Auf Linux Mint den **öffentlichen** Schlüssel anzeigen:
 
 ```
@@ -472,6 +503,9 @@ Wenn SSH trotz laufendem Dienst nicht erreichbar ist, zuerst IP, Port
 
 ## 9. RDP auf einem Windows-Host (optional)
 
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
+
 Remote Desktop aktivieren und Dienst starten:
 
 ```
@@ -502,7 +536,12 @@ geeignetes Domänenkonto verwenden. RDP-Zugriff muss auch durch die
 Netzwerk-Firewall zwischen den VLANs erlaubt sein, falls der Jump-Host  
 in einem anderen VLAN liegt.
 
-## 10. Windows Server Backup (optional)
+</details>
+
+## 10. Windows Server Backup
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
 
 Feature installieren und Status prüfen:
 
