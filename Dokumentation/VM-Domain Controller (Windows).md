@@ -421,9 +421,10 @@ separat eingerichtet und getestet werden.
 
 </details>
 
-# SERVICES
+# Unternehmenstruktur
+Eine Fiktive Unternehmen und die Hierarchische Struktur
 
-# 2. Active Directory Aufbau
+# 2. Active Directory Struktur
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">AD-Konfiguration anzeigen</span></strong></summary>
@@ -485,7 +486,7 @@ separat eingerichtet und getestet werden.
         - Testen: Via PS: "net localgroup Administrators" > soll GG-IT-Admins zu sehen sein
 
 </details>
-# 3. Share Folder H
+# 3. File Share Struktur
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Share Konfiguration anzeigen</span></strong></summary>
