@@ -6,18 +6,14 @@ title: "[SRV] VM – Proxmox Backup Server"
 
 **VM Parameter**
 
-| Parameter      | Wert          |
-| -------------- | ------------- |
-| VM-ID          | 211           |
-| SSH-Nickname   | pbs           |
-| VM-Name        | pbs-pbs-20-10 |
-| Zweck          | Backup Server |
-| Betriebssystem | PBS (Debian)  |
-| IPv4           | 10.10.20.10   |
-| Domain         | keinen        |
-| Größe          | 20 GB         |
-| RAM            | 8 GB          |
-| vCPU           | 4             |
+|      **Parameter** | Wert          | **Parameter** | Wert        |
+| -----------------: | ------------- | ------------: | ----------- |
+|          **VM-ID** | 211           |      **IPv4** | 10.10.20.10 |
+|   **SSH-Nickname** | pbs           |    **Domain** | keinen      |
+|        **VM-Name** | pbs-pbs-20-10 |     **Größe** | 20 GB       |
+|          **Zweck** | Backup Server |       **RAM** | 8 GB        |
+| **Betriebssystem** | PBS (Debian)  |      **vCPU** | 4           |
+
 
 # Übersicht
 

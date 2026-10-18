@@ -7,18 +7,14 @@ title: "[CL] VM – Testclient - 3 - MacOS"
 
 **VM Parameter**
 
-| Parameter      | Wert       |
-| -------------- | ---------- |
-| VM-ID          | 303        |
-| SSH-Nickname   | cl3        |
-| VM-Name        | cl3-mac-30 |
-| Zweck          | Testclient |
-| Betriebssystem | MacOS      |
-| IPv4           | DHCP       |
-| Domain         | lab.home   |
-| Größe          | 60 GB      |
-| RAM            | 4 GB       |
-| vCPU           | 2          |
+|      **Parameter** | Wert       | **Parameter** | Wert         |
+| -----------------: | ---------- | ------------: | ------------ |
+|          **VM-ID** | 303        | **IPv4 DHCP** | 10.10.30.xxx |
+|   **SSH-Nickname** | cl3        |    **Domain** | cl.lab.test  |
+|        **VM-Name** | cl3-mac-30 |     **Größe** | 60 GB        |
+|          **Zweck** | Testclient |       **RAM** | 4 GB         |
+| **Betriebssystem** | MacOS      |      **vCPU** | 2            |
+
 
 # Übersicht
 

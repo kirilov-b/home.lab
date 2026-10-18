@@ -7,18 +7,14 @@ title: "[SRV] VM – Gitea / Git-Server"
 
 **VM Parameter**
 
-| Parameter      | Wert               |
-| -------------- | ------------------ |
-| VM-ID          | 299                |
-| SSH-Nickname   | gitea              |
-| VM-Name        | git-ld-20-90       |
-| Zweck          | Gitea / Git-Server |
-| Betriebssystem | Linux Debian       |
-| IPv4           | 10.10.20.90        |
-| Domain         | lsrv.test          |
-| Größe          | 32 GB              |
-| RAM            | 2 GB               |
-| vCPU           | 2                  |
+|      Parameter | Wert               | **Parameter** | Wert        |
+| -------------: | ------------------ | ------------: | ----------- |
+|          VM-ID | 299                |      **IPv4** | 10.10.20.90 |
+|   SSH-Nickname | gitea              |    **Domain** | srv.test    |
+|        VM-Name | git-ld-20-90       |     **Größe** | 32 GB       |
+|          Zweck | Gitea / Git-Server |       **RAM** | 2 GB        |
+| Betriebssystem | Linux Debian       |      **vCPU** | 2           |
+
 
 # Übersicht
 

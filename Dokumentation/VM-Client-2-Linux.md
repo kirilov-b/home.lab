@@ -7,18 +7,14 @@ title: "[CL] VM – Testclient - 2 - Linux"
 
 **VM Parameter**
 
-| Parameter      | Wert       |
-| -------------- | ---------- |
-| VM-ID          | 302        |
-| SSH-Nickname   | cl2        |
-| VM-Name        | cl2-wc-30  |
-| Zweck          | Testclient |
-| Betriebssystem | Windows 11 |
-| IPv4           | DHCP       |
-| Domain         | lab.home   |
-| Größe          | 60 GB      |
-| RAM            | 4 GB       |
-| vCPU           | 2          |
+|      **Parameter** | Wert       | **Parameter** | Wert         |
+| -----------------: | ---------- | ------------: | ------------ |
+|          **VM-ID** | 302        | **IPv4 DHCP** | 10.10.30.xxx |
+|   **SSH-Nickname** | cl2        |    **Domain** | cl.lab.test  |
+|        **VM-Name** | cl2-lm-30  |     **Größe** | 60 GB        |
+|          **Zweck** | Testclient |       **RAM** | 4 GB         |
+| **Betriebssystem** | Linux Mint |      **vCPU** | 2            |
+
 
 # Übersicht
 

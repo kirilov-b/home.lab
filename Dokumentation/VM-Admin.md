@@ -7,18 +7,15 @@ title: "[MGMT] VM – Administrator"
 
 **VM Parameter**
 
-| Parameter      | Wert                      |     |     |
-| -------------- | ------------------------- | --- | --- |
-| VM-ID          | 100                       |     |     |
-| SSH-Nickname   | jump                      |     |     |
-| VM-Name        | jump-lm-10-3              |     |     |
-| Zweck          | Verwaltung, Dokumentation |     |     |
-| Betriebssystem | Linux Mint                |     |     |
-| IPv4           | 10.10.10.3                |     |     |
-| Domain         | keinen                    |     |     |
-| Größe          | 80 GB                     |     |     |
-| RAM            | 8 GB                      |     |     |
-| vCPU           | 4                         |     |     |
+|      **Parameter** | Wert                      | **Parameter** | Wert       |
+| -----------------: | ------------------------- | ------------: | ---------- |
+|          **VM-ID** | 100                       |      **IPv4** | 10.10.10.3 |
+|   **SSH-Nickname** | jump                      |    **Domain** | keinen     |
+|        **VM-Name** | jump-lm-10-3              |     **Größe** | 80 GB      |
+|          **Zweck** | Verwaltung, Dokumentation |       **RAM** | 8 GB       |
+| **Betriebssystem** | Linux Mint                |      **vCPU** | 4          |
+|                    |                           |               |            |
+
 
 
 # Konfiguration
@@ -30,7 +27,7 @@ Remote Destkop Protocol **(RDP)** wird auf der Controller Laptop und auf dem jum
 Ziel ist der **jump** ein Jumphost zu machen und von dort aus die komplette Umgebung zu verwalten. Die **jump** VM befindet sich in VLAN 10 - Management Netz (**MGMT**). Über den OPNsens Firewall wird an der Managment Netz hat folgende Zugriff ermöglicht:
 - Verbindung zu HTTPS: **Proxmox WebGUI**
 - Verbindung zu **Service VLAN 20** (**SRV)**
-- Verbindung zu **Clients VLAN 30** (CL)
+- Verbindung zu **Clients VLAN 30** **(CL)**
 - Verbindung zu **OPNsense Web GUI** 
 
 Zusätzlich wird zu jede VM von **jump** aus eine SSH Verbindung eingerichtet.

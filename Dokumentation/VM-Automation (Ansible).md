@@ -7,18 +7,14 @@ title: "[MGMT] VM – Ansible / Automation"
 
 **VM Parameter**
 
-| Parameter      | Wert                 |
-| -------------- | -------------------- |
-| VM-ID          | 102                  |
-| SSH-Nickname   | ansible              |
-| VM-Name        | ans-la-10-3.srv.test |
-| Zweck          | Ansible / Automation |
-| Betriebssystem | Linux Alma           |
-| IPv4           | 10.10.10.20          |
-| Domain         | srv.test             |
-| Größe          | 20 GB                |
-| RAM            | 4 GB                 |
-| vCPU           | 2                    |
+|      **Parameter** | Wert                 | **Parameter** | Wert        |
+| -----------------: | -------------------- | ------------: | ----------- |
+|          **VM-ID** | 102                  |      **IPv4** | 10.10.10.20 |
+|   **SSH-Nickname** | ansible              |    **Domain** | srv.test    |
+|        **VM-Name** | ans-la-10-3.srv.test |     **Größe** | 20 GB       |
+|          **Zweck** | Ansible / Automation |       **RAM** | 4 GB        |
+| **Betriebssystem** | Linux Alma           |      **vCPU** | 2           |
+
 
 # Übersicht
 

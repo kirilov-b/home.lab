@@ -7,18 +7,14 @@ title: "[SRV] VM – Zabbix Monitoring"
 
 **VM Parameter**
 
-| Parameter      | Wert              |
-| -------------- | ----------------- |
-| VM-ID          | 255               |
-| SSH-Nickname   | zabbix            |
-| VM-Name        | MON-LA-20-50      |
-| Zweck          | Zabbix Monitoring |
-| Betriebssystem | Linux Alma        |
-| IPv4           | 10.10.20.50       |
-| Domain         | srv.test          |
-| Größe          | 32 GB             |
-| RAM            | 4 GB              |
-| vCPU           | 2                 |
+|  Parameter | Wert              | **Parameter** | Wert        |
+| -------------: | ----------------- | ------------: | ----------- |
+|          VM-ID | 255               |      **IPv4** | 10.10.20.50 |
+|   SSH-Nickname | zabbix            |    **Domain** | srv.test    |
+|        VM-Name | MON-LA-20-50      |     **Größe** | 32 GB       |
+|          Zweck | Zabbix Monitoring |       **RAM** | 4 GB        |
+| Betriebssystem | Linux Alma        |      **vCPU** | 2           |
+
 
 # Übersicht
 
