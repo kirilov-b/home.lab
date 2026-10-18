@@ -193,7 +193,7 @@ Eine Fiktive Unternehmen und die Hierarchische Struktur
 
 </details>
 
-# Konfigurationschritte 
+## Konfigurationschritte 
 
 Diese Abschnitt dient als Hilfsmittel für die Konfiguration über **Server Manager** und die  **PowerShell** Variante.
 
@@ -201,7 +201,7 @@ Diese Abschnitt dient als Hilfsmittel für die Konfiguration über **Server Mana
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Konfiguration anzeigen</span></strong></summary>
 
-## 1. Server vorbereiten
+### 1. Server vorbereiten
 
 
 <details markdown="1">
@@ -244,7 +244,7 @@ Ersetze `"Ethernet"`, falls der Adapter anders heißt.
 
 </details>
 
-## 2. AD DS und DNS installieren
+### 2. AD DS und DNS installieren
 
 
 <details markdown="1">
@@ -281,7 +281,7 @@ korrekten IP zurückgeben.
 
 </details>
 
-## 3. DHCP installieren und konfigurieren
+### 3. DHCP installieren und konfigurieren
 
 
 <details markdown="1">
@@ -329,7 +329,7 @@ vorgenommen.
 
 </details>
 
-## 4. Client prüfen und der Domäne beitreten
+### 4. Client prüfen und der Domäne beitreten
 
 
 <details markdown="1">
@@ -382,7 +382,7 @@ Computerkonto gelöscht wird.
 
 </details>
 
-## 5. Zeitsynchronisierung prüfen
+### 5. Zeitsynchronisierung prüfen
 
 
 <details markdown="1">
@@ -413,7 +413,7 @@ Set-TimeZone -Id "W. Europe Standard Time"
 
 </details>
 
-## 6. Windows-Firewall für AD
+### 6. Windows-Firewall für AD
 
 
 <details markdown="1">
@@ -434,7 +434,7 @@ Get-NetFirewallRule -Enabled True |
 
 </details>
 
-## 7. OpenSSH Server auf einem Windows-Host
+### 7. OpenSSH Server auf einem Windows-Host
 
 
 <details markdown="1">
@@ -519,7 +519,7 @@ Wenn SSH trotz laufendem Dienst nicht erreichbar ist, zuerst IP, Port
 
 </details>
 
-## 8. RDP auf einem Windows-Host (optional)
+### 8. RDP auf einem Windows-Host (optional)
 
 
 <details markdown="1">
@@ -557,7 +557,7 @@ in einem anderen VLAN liegt.
 
 </details>
 
-## 9. Windows Server Backup
+### 9. Windows Server Backup
 
 
 <details markdown="1">
