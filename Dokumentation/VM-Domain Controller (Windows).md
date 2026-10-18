@@ -5,6 +5,12 @@ title: "[SRV] VM – Domain Controller [SRV]"
 
 # VM – Windows Domain Controller
 
+## Ziel und Lab-Übersicht
+
+Diese Dokumentation beschreibt den Aufbau des Labs mit Windows Server  
+2025, **Active Directory, DNS, DHCP** und **Windows Server Backup** sowie Windows-Clients in getrennten  
+VLANs.
+
 **VM Parameter**
 
 | Parameter      | Wert              |
@@ -20,59 +26,40 @@ title: "[SRV] VM – Domain Controller [SRV]"
 | RAM            | 8 GB              |
 | vCPU           | 4                 |
 
-# Übersicht
-
-Nach der Konfiguration von der ISO 
-
-
 # Grundkonfiguration
 
-## Netzwerkverbindung
-1. In Proxmox wird der vLAN Bereich ausgewählt. Bridge: **LANbr0**. 
-	vLAN **Tag 20** *für SRV Netzwerk*
-2. Nach der Installation von der ISO wird die Netzwerkparameter Manuell eingetragen. *Laut Vorgaben oben*
-3. Name der Hostname wird angepasst: **dc-ws-20-3**
-4. Über den Server Manager werden alle nötige Dienste installiert:
-   - **AD DS, DNS, DHCP, WSB**
+**1. vLAN Tag 20 in Proxmox auf setzen**
+**2. Windows Server installieren:** Windows Server 2025 Standard  
+Evaluation mit Desktop Experience installieren, Hostname setzen und  
+eine statische IP konfigurieren.
+- Uhrzeit und Zeitzone Richtig einstellen - Der Server Dient als Master Uhr für alle andere Clients
+**3. Dienste Installieren** und konfigurieren
+- **DNS** -
+- **AD DS** - Domäne `cl.lab.test`, NetBIOS-Name `CL`. SRV-Einträge und DC-Erkennung testen.
+- **DHCP installieren und autorisieren:** Scope für `10.10.30.0/24` anlegen, Gateway/DNS/DNS-Suffix setzen und Scope aktivieren. 
+- **DHCP-Relay und Firewall setzen**:Relay aus VLAN 30 zum  DHCP-Server `10.10.20.3`; notwendige Verbindungen nur von den  benötigten Netzen zum DC erlauben. 
+**4. SSH und RDP einrichten**
 
 
+## Wichtige Ports für Domain - Client Verbindung
 
+Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen auf dem Router (OPNsense) müssen folgende Ports erlaubt werden um die Verbindung zu ermöglichen.
 
-## DNS einrichten
-
-1. Interne DNS-Zone: **cl.lab.home**
-2. Forwarder: **1.1.1.1** und **8.8.8.8**
-3. **DNS-Rolle:**
-
-- Auf DC installiert
-- Wird für die Namensauflösung innerhalb der Active-Directory-Domäne verwendet.
-- Externe DNS-Anfragen werden an die konfigurierten Forwarder weitergeleitet.
-
-**Tests:**  
-nslookup lab.home → erfolgreich  
-nslookup google.com → erfolgreich  
-Resolve-DnsName google.com → erfolgreich
-
-### Erklärung
-
-_DC01 übernimmt im HomeLab die DNS-Rolle, da Active Directory auf eine funktionierende DNS-Infrastruktur angewiesen ist. Die interne Zone `lab.home` ermöglicht die Namensauflösung innerhalb der Domäne. Für externe DNS-Anfragen werden öffentliche DNS-Server als Forwarder verwendet._
-
+**TCP / UDP **
+1. **53** - DNS Abfragen und großere DNS Antworten
+2. **88** - Kerberos Authentifizierung
+3. **123** - NTP - Network Time Protokoll (Zeitsynchronisation)
+4. **135** - RPC - Remote Procedure Call 
+5. **389** - LDAP - Verzeichnisabfragen und DC Emittlung
+6. **445** - SMB - Server Message Block - SYSVOL und Gruppenrichlinien
+7. **464** - Kerberos - Passwortänderung und Verwaltung
+8. **49152--65535** TCP Dynamische RPC-Ports bei  modernen Windows-Versionen;  für bestimmte  AD-/Netlogon-Funktionen  relevant
 # SERVICES
-
-## 1. DC an Firewall (FW-OPNsense) anhängen - 10.10.20.0 /24
-
-- **NIC ändern** - Neue Netzwerkkarte erstellen für LAN 10.10.20.3 /24
-- **IPv4 anpassen** - Statische IP, Gateway, DNS. - Außerhalb der DHCP Bereich so, dass die Daten konstant bleiben.
-- Internet zugang Funktioniert -
-    - Test:
-    - nslookup dc.lab.home -
-    - ping google.com
-    
 
 ## 2. Active Directory Installieren
 
 <details markdown="1">
-<summary><strong>AD-Konfiguration anzeigen</strong></summary>
+  <summary><strong><span style="color: #3399FF;">AD-Konfiguration anzeigen</span></strong></summary>
 ### Active Directory konfigurieren.
 
 1. **Erstellen von Organisational Unit (OU)**
@@ -185,7 +172,7 @@ _DC01 übernimmt im HomeLab die DNS-Rolle, da Active Directory auf eine funktion
     
     - Server Manager > Manage > Add Roles and Features > Next
     - Role-Based or Feature ... > Next
-    - DC.lab.home auswählen > Next
+    - DC.lab.test auswählen > Next
     - Features > **Windows Serve Backup** aktivieren
     - Next > Install
 - #### 2. Virtuelle Festplatte erstellen/konfigurieren
