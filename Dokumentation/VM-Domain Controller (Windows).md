@@ -270,8 +270,8 @@ nltest /dsgetdc:cl.lab.test
 Die SRV-Abfrage sollte den DC `dc-ws-20-3.cl.lab.test` mit seiner  
 korrekten IP zurückgeben.
 
+</details>
 ## 4. DHCP installieren und konfigurieren
-
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
@@ -316,8 +316,8 @@ konfigurieren. Die Firewall muss DHCP-Relay-Verkehr entsprechend
 zulassen. Die konkrete OPNsense-Konfiguration wird in deren Oberfläche  
 vorgenommen.
 
+</details>
 ## 5. Client prüfen und der Domäne beitreten
-
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
@@ -367,8 +367,8 @@ Bei einem Fehler zuerst DNS, Zeit, Ereignisprotokolle und Erreichbarkeit
 untersuchen, bevor der Client aus der Domäne entfernt oder das  
 Computerkonto gelöscht wird.
 
+</details>
 ## 6. Zeitsynchronisierung prüfen
-
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
@@ -396,8 +396,8 @@ passend setzen, z. B.:
 Set-TimeZone -Id "W. Europe Standard Time"
 ```
 
+</details>
 ## 7. Windows-Firewall für AD
-
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
@@ -415,8 +415,8 @@ Get-NetFirewallRule -Enabled True |
   Select-Object DisplayName, Profile, Direction, Action
 ```
 
+</details>
 ## 8. OpenSSH Server auf einem Windows-Host (optional)
-
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
@@ -464,8 +464,8 @@ New-NetFirewallRule `
   -Profile Domain
 ```
 
+</details>
 ### Public Key für einen Domänenadministrator hinterlegen
-
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
@@ -501,6 +501,7 @@ ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes -l 'Administrator@cl.lab.test' 10
 Wenn SSH trotz laufendem Dienst nicht erreichbar ist, zuerst IP, Port  
 22, Windows-Firewallprofil und OPNsense-Regel prüfen.
 
+</details>
 ## 9. RDP auf einem Windows-Host (optional)
 
 <details markdown="1">
@@ -537,7 +538,6 @@ Netzwerk-Firewall zwischen den VLANs erlaubt sein, falls der Jump-Host
 in einem anderen VLAN liegt.
 
 </details>
-
 ## 10. Windows Server Backup
 
 <details markdown="1">
