@@ -32,9 +32,8 @@ Status-E-Mail.
 
 # Konfiguration
 
-
 <details markdown="1">
-<summary><strong>Konfiguration anzeigen</strong></summary>
+  <summary><strong><span style="color: #00813F;">Konfiguration anzeigen</span></strong></summary>
 
 ## 1. Logische Darstellung des Prozesses
 

@@ -21,7 +21,7 @@ title: "[MGMT] VM – Administrator"
 # Konfiguration
 
 <details markdown="1">
-<summary><strong>Konfiguration anzeigen</strong></summary>
+  <summary><strong><span style="color: #00813F;">Konfiguration anzeigen</span></strong></summary>
 ## RDP Verbindung
 Remote Destkop Protocol **(RDP)** wird auf der Controller Laptop und auf dem jump-lm-10-3 (**JUMP**) installiert, um eine Verbindung zwischen beide Machinen ohne die Proxmox Browser Verbindung benutzen zu müssen.
 Ziel ist der **jump** ein Jumphost zu machen und von dort aus die komplette Umgebung zu verwalten. Die **jump** VM befindet sich in VLAN 10 - Management Netz (**MGMT**). Über den OPNsens Firewall wird an der Managment Netz hat folgende Zugriff ermöglicht:
