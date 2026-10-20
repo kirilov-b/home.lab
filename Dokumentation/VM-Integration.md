@@ -5,7 +5,7 @@ Eine **VM Clone Image** mit Grundkonfiguration und wiederholende Schritte wurde 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Integrationsschritte anzeigen</span></strong></summary>
 
-## Grundkonfiguration VM
+## 1. Grundkonfiguration VM
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Grundkonfiguration anzeigen</span></strong></summary>
@@ -28,7 +28,7 @@ Eine **VM Clone Image** mit Grundkonfiguration und wiederholende Schritte wurde 
 
 </details>
 
-## SSH Integration
+## 2. SSH Integration
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">SSH Verbindung anzeigen</span></strong></summary>
@@ -50,9 +50,9 @@ Aus Jump Host aus:
 
 </details>
 
-## Windows
+### Windows
 
-## Domain Join - FreeIPA
+## 3. Domain Join - FreeIPA
 Die obengenannten Voraussetzungen müssen erfüllt sein um den Domain zu betreten.
 
 <details markdown="1">
@@ -88,7 +88,7 @@ dig +short SRV _kerberos._tcp.srv.test
 *0 100 389 ipa-la-20-2.srv.test.*
 *0 100 88 ipa-la-20-2.srv.test.*
 
-## DNS Eintrag auf FreeIPA erstellen
+### DNS Eintrag auf FreeIPA erstellen
 
 Auf FreeIPA VM: *Beispielname: app-la-20-90*
 
@@ -108,7 +108,7 @@ Eintrag (A-Record) anlegen
 ipa dnsrecord-add srv.test app-la-20-90 --a-rec=10.10.20.90
 ```
 
-## FreeIPA Client installieren
+### FreeIPA Client installieren
 
 Auf der neue VM:
 1. Installationsbefehlt -  `dnf install -y ipa-client`
@@ -120,7 +120,7 @@ chronyc tracking
 3. Zeit synchronisieren - `chronyc makestep`
 4. Zeitserver prüfen - `chronyc sources -v`
 
-## FreeIPA - betreten
+### FreeIPA - betreten
 Auf der neue VM:
 ```
 ipa-client-install --mkhomedir \
@@ -144,7 +144,133 @@ ipa-client-install --mkhomedir \
 
 </details>
 
-## Monitoring - Zabb
+## Monitoring - Zabbix
 
+<details markdown="1">
+  <summary><strong>Zabbix Integration anzeigen</span></strong></summary>
+
+## 1. Agent 2 installieren
+
+### AlmaLinux 10
+
+```
+dnf install -y https://repo.zabbix.com/zabbix/7.4/release/alma/10/noarch/zabbix-release-latest-7.4.el10.noarch.rpm
+dnf clean all
+dnf makecache
+dnf install -y zabbix-agent2
+```
+
+Für andere AlmaLinux-/RHEL-Versionen oder Debian/Ubuntu das Repository  
+passend zur jeweiligen Distribution und Version wählen.
+
+## 2. Agent konfigurieren
+
+Konfigurationsdatei öffnen:
+
+```
+nano /etc/zabbix/zabbix_agent2.conf
+```
+
+Diese Werte setzen bzw. vorhandene Zeilen bearbeiten:
+
+```
+Server=10.10.20.40
+ServerActive=10.10.20.40
+Hostname=VM-FQDN.srv.test
+```
+
+- `Server`: Zabbix-Server, der passive Agent-Abfragen stellen darf.
+- `ServerActive`: Server für aktive Checks.
+- `Hostname`: muss exakt dem später in der Zabbix-Oberfläche  
+    eingetragenen Hostnamen entsprechen.
+
+Keine doppelten Einträge anlegen. Speichern mit `Ctrl+O`, `Enter`, dann  
+`Ctrl+X`.
+
+## 3. Agent starten und testen
+
+```
+systemctl enable --now zabbix-agent2
+systemctl status zabbix-agent2 --no-pager
+zabbix_agent2 -t system.hostname
+```
+
+Der Dienst sollte `active (running)` zeigen. Der lokale Test sollte den  
+konfigurierten Hostnamen zurückgeben.
+
+## 4. Firewall gezielt öffnen
+
+Auf der Ziel-VM prüfen:
+
+```
+systemctl is-active firewalld
+```
+
+Wenn die Ausgabe `active` lautet, Port `10050/tcp` nur für den  
+Zabbix-Server freigeben:
+
+```
+firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="10.10.20.40/32" port port="10050" protocol="tcp" accept'
+firewall-cmd --reload
+firewall-cmd --list-rich-rules
+```
+
+Wenn `firewalld` inaktiv ist, diese Befehle nicht ausführen. Dann  
+prüfen, welche Firewall oder Netzwerkregeln tatsächlich verwendet  
+werden.
+
+## 5. Host in der Zabbix-Weboberfläche hinzufügen
+
+1. Öffne `http://10.10.20.40/zabbix`.
+2. Gehe zu **Data collection → Hosts** und klicke **Create host**.
+3. Trage ein:
+    - **Host name:** exakt derselbe Wert wie `Hostname` in  
+        `zabbix_agent2.conf`, z. B. `ngx-la-20-20.srv.test`
+    - **Host groups:** `Linux servers` (Gruppe auswählen oder anlegen)
+    - **Templates:** `Linux by Zabbix agent`
+    - **Interface:** `Agent`
+    - **IP address:** IP-Adresse der VM, z. B. `10.10.20.20`
+    - **Connect to:** `IP`
+    - **Port:** `10050`
+4. Klicke **Add**.
+
+Für eine normale passive Agent-Überwachung ist `Linux by Zabbix agent`  
+passend. Falls du stattdessen ausschließlich aktive Checks einrichten  
+möchtest, müssen Template und Agent-Konfiguration entsprechend auf  
+aktive Checks abgestimmt werden.
+
+## 6. Verbindung prüfen
+
+Warte 30--60 Sekunden und aktualisiere die Hostliste. Das `ZBX`-Symbol  
+unter **Availability** sollte grün werden.
+
+Wenn es rot oder grau bleibt, prüfe:
+
+```
+systemctl status zabbix-agent2 --no-pager
+tail -n 50 /var/log/zabbix/zabbix_agent2.log
+```
+
+Prüfe zusätzlich: - Stimmt `Hostname` exakt mit **Host name** in Zabbix  
+überein? - Ist `Server=10.10.20.40` korrekt? - Ist TCP-Port `10050` von  
+`10.10.20.40` aus erreichbar? - Zeigt das Zabbix-Interface auf die  
+richtige IP-Adresse?
+
+## Sicherheitshinweise
+
+- Agent-Port `10050/tcp` nicht unnötig für das gesamte Netzwerk  
+    freigeben.
+- Keine Passwörter oder Geheimnisse in Dokumentationen ablegen.
+- Für produktivere Umgebungen später TLS/PSK oder  
+    Zertifikatsverschlüsselung und passende Netzwerkregeln einrichten.
+
+---
+
+**Beispiel erfolgreich getestet:** `ngx-la-20-20.srv.test`  
+(`10.10.20.20`) mit AlmaLinux 10.2 und Zabbix Agent 2 7.4.15.
+
+</details>
+
+.....
 
 </details>

@@ -23,7 +23,8 @@ Das Plattform überwacht. Hardware Auslastung (CPU, RAM, HardDisk), Netzwerkverk
 **Anmerkung:** Zabbix verwendet ein PostgreSQL-Instanz. Sie ist unabhängig von der separaten PostgreSQL-VM 2
 
 # Konfigurationsschritte 
-Folgende Abschnitt zeigt die Vorbereitung, Installation und Konfiguration von der Zabbix Server auf der VM. Alle Grundkonfigurationen aus der "VM Integration" müssen vorher erfüllt sein.
+Folgende Abschnitt zeigt die Vorbereitung, Installation und Konfiguration von der Zabbix Server auf der VM. 
+Voraussetzung für eine reibungslose Integration sind 1. Grundkonfiguration und 2. SSH Verbindung von Dokument: **VM-Integration**: 
 
 Schritte: 
 1. **Zabbix Repository und Pakete installieren**
