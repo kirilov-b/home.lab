@@ -28,6 +28,7 @@ Eine **VM Clone Image** mit Grundkonfiguration und wiederholende Schritte wurde 
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">SSH Verbindung anzeigen</span></strong></summary>
+  
 ### Linux
 Aus Jump Host aus:
 1. Öffentliche Schlüssel in dementsprechende VM setzen:
