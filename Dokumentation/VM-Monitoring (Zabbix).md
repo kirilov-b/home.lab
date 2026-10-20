@@ -42,13 +42,18 @@ Schritte:
 
 ## 1. Zabbix Repository und Pakete installieren
 
-- Installation von offizielle Repository-Paket für Zabix 7.4 auf Alma Linux 10, damit `dnf`passende Packete findet
-`dnf install -y https://repo.zabbix.com/zabbix/7.4/release/alma/10/noarch/zabbix-release-latest-7.4.el10.noarch.rpm`
+- Installation von offizielle Repository-Paket für Zabix 7.4 auf Alma Linux 10, damit **dnf**passende Packete findet
+- Entfernt lokale Paket-Caches und Metadaten, damit keine veralteten Repository-Informationen verwendet werden. 
+- Lädt Repository-Metadaten neu herunter und erstellt einen lokalen Cache. 
 
-- Entfernt lokale Paket-Caches und Metadaten, damit keine veralteten Repository-Informationen verwendet werden. `dnf clean all`
-- Lädt Repository-Metadaten neu herunter und erstellt einen lokalen Cache.  `dnf makecache`
+```
+dnf install -y https://repo.zabbix.com/zabbix/7.4/release/alma/10/noarch/zabbix-release-latest-7.4.el10.noarch.rpm
+dnf clean all
+dnf makecache
+```
 
 - Installiert den Zabbix-Server mit PostgreSQL-Unterstützung,  Weboberfläche, Apache-Konfiguration, SQL-Skripte, SELinux-Richtlinien,  Agent 2 und PostgreSQL.
+
 ```
 dnf install -y \
   zabbix-server-pgsql \
@@ -62,6 +67,9 @@ dnf install -y \
 
 ## 2. PostgreSQL initialisieren und Starten
 
+- Erstellt die anfängliche PostgreSQL-Datenstruktur.
+- Aktiviert
+- Prüft
 ```
 postgresql-setup --initdb
 systemctl enable --now postgresql
@@ -70,11 +78,16 @@ systemctl status postgresql --no-pager
 
 ## 3. Zabbix-Datenbank und Benutzer erstellen
 
+Öffnet die PostgreSQL-Konsole als Betriebssystembenutzer `postgres`, der  
+administrative Datenbankaktionen durchführen kann.
+
 ```
 sudo -u postgres psql
 ```
 
 In der PostgeSQL-Konsole:
+- Erstellt den Datenbankbenutzer `zabbix` und setzt sein Passwort.
+- Erstellt die Datenbank `zabbix` und setzt `zabbix` als Eigentümer.
 
 ```
 CREATE USER zabbix WITH PASSWORD 'geheime Passwort';
@@ -84,13 +97,16 @@ CREATE DATABASE zabbix OWNER zabbix;
 
 ## 4. Zabbix-Datenbankschema importieren
 
+- Entpackt das komprimierte SQL-Schema und leitet es an **pslq** weiter. 
+- Importiert als Betriebsystemnutzer **zabbix** in die Datenbank **zabbix**
+
 ```
 zcat /usr/share/zabbix/sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix
 ```
 
 ## 5. Datenbankverbindung in Zabbix konfigurieren
 
-Die Konfigurationsdatei muss angepasst werden:
+Die Server Konfigurationsdatei muss angepasst werden:
 
 ```
 nano /etc/zabbix/zabbix_server.conf
@@ -102,7 +118,6 @@ Diese Einstellungen müssen aktiviert sein und angepasst werden:
 DBUser=zabbix
 DBPassword=`geheime Password`
 ```
-
 
 Die Datei enthält ein Passwort im Klartext. Zugriff wird einschränken:
 
@@ -117,7 +132,7 @@ ls -l /etc/zabbix/zabbix_server.conf
 Beim ersten Start meldete Zabbix  
 `Ident authentication failed for user "zabbix"`.
 
-Regeln prüfen:
+Zeigt aktive lokale und TCP-Verbindungsregeln aus *pg_hba.conf*:
 
 ```
 grep -nE '^[[:space:]]*(local|host)' /var/lib/pgsql/data/pg_hba.conf
@@ -172,13 +187,16 @@ Datenbankverbindungsfehler mehr auftreten.
 
 ## 8. Apache starten und Firewall konfigurieren
 
+- Aktiviert Apache für den automatischen Start und startet den Webserver sofort.
+- Prüft Dienst
+- Prüft Firewall
 ```
 systemctl enable --now httpd
 systemctl status httpd --no-pager
 systemctl is-active firewalld
 ```
 
-Da `firewalld` aktiv war, wurden HTTP und HTTPS freigegeben:
+Da **firewalld** aktiv war, wurden HTTP und HTTPS freigegeben:
 
 ```
 firewall-cmd --permanent --add-service=http
