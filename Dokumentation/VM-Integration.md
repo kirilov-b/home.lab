@@ -6,6 +6,7 @@ Eine **VM Clone Image** mit Grundkonfiguration und wiederholende Schritte wurde 
   <summary><strong><span style="color: #00813F;">Integrationsschritte anzeigen</span></strong></summary>
 
 ## 1. Grundkonfiguration VM
+Beschreibt die notwendige Tools und Einstellungen, um die VM in der Umgebung zu funktionieren
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Grundkonfiguration anzeigen</span></strong></summary>
@@ -29,6 +30,7 @@ Eine **VM Clone Image** mit Grundkonfiguration und wiederholende Schritte wurde 
 </details>
 
 ## 2. SSH Integration
+Beschreibt die Verbindung zu dem Administrations VM (jump-lm-10-3)
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">SSH Verbindung anzeigen</span></strong></summary>
