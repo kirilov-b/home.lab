@@ -22,7 +22,6 @@ Das Plattform überwacht. Hardware Auslastung (CPU, RAM, HardDisk), Netzwerkverk
 
 **Anmerkung:** Zabbix verwendet ein PostgreSQL-Instanz. Sie ist unabhängig von der separaten PostgreSQL-VM 2
 
-
 # Konfigurationsschritte 
 Folgende Abschnitt zeigt die Vorbereitung, Installation und Konfiguration von der Zabbix Server auf der VM. Alle Grundkonfigurationen aus der "VM Integration" müssen vorher erfüllt sein.
 
@@ -38,7 +37,7 @@ Schritte:
 9. **Webinstaller und Anmeldung**
 
 <details markdown="1">
-  <summary><strong><span style="color: #00813F;">Konfigurationschrotte anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #00813F;">Konfigurationschritte anzeigen</span></strong></summary>
 
 ## 1. Zabbix Repository und Pakete installieren
 
@@ -130,7 +129,7 @@ ls -l /etc/zabbix/zabbix_server.conf
 ## 6. PostgreSQL-Authentifizierung korrigieren
 
 Beim ersten Start meldete Zabbix  
-`Ident authentication failed for user "zabbix"`.
+*Ident authentication failed for user "zabbix".*
 
 Zeigt aktive lokale und TCP-Verbindungsregeln aus *pg_hba.conf*:
 
