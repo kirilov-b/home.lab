@@ -145,7 +145,7 @@ ipa-client-install --mkhomedir \
 
 </details>
 
-## Monitoring - Zabbix
+## 4. Monitoring - Zabbix
 
 <details markdown="1">
   <summary><strong>Zabbix Integration anzeigen</span></strong></summary>
@@ -163,6 +163,16 @@ dnf install -y zabbix-agent2
 
 Für andere AlmaLinux-/RHEL-Versionen oder Debian/Ubuntu das Repository  
 passend zur jeweiligen Distribution und Version wählen.
+
+### Linux Mint
+
+```
+dnf install -y https://repo.zabbix.com/zabbix/7.4/release/alma/10/noarch/zabbix-release-latest-7.4.el10.noarch.rpm
+dnf clean all
+dnf makecache
+```
+
+
 
 ## 2. Agent konfigurieren
 
