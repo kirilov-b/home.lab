@@ -16,11 +16,15 @@ Eine **VM Clone Image** mit Grundkonfiguration und wiederholende Schritte wurde 
 	je nach VLAN 
 	2. Gateway - 10.10.20.1 / 10.10.30.1
 	3. DNS -  10.10.20.2 / 10.10.20.3
+	4. Zeitzone anpassen
+		- prüfen - `timedatectl`
+		- anpassen - `timedatectl set-timezone Europe/Berlin`
 3. FQDN - VM Namenkonvention + Domain muss stimmen
 4. VM Tools
 	1. **Nano** Installieren `dnf install -y nano`
 	2. Firewallregeln anpassen
 	3. **Dig** installieren - `dnf install -y bind-utils` 
+	
 
 </details>
 
