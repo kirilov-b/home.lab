@@ -13,7 +13,7 @@ title: "[SRV] VM – Nginx / Reverse Proxy"
 |       **vLAN Tag** | 20                    |    **Domain** | srv.test    |
 |        **VM-Name** | ngc-la-20-20          |     **Größe** | 20 GB       |
 |          **Zweck** | Nginx / Reverse Proxy |       **RAM** | 2 GB        |
-| **Betriebssystem** | Linux Alma            |      **vCPU** | 2           |
+| **Betriebssystem** | Linux Alma 10.2       |      **vCPU** | 2           |
 
 
 # Übersicht

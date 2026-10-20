@@ -13,7 +13,7 @@ title: "[SRV] VM – Zentrales Logging"
 |       **vLAN Tag** | 20                | **Domain** | srv.test    |
 |        **VM-Name** | log-la-20-70      |  **Größe** | 20 GB       |
 |          **Zweck** | Zentrales Logging |    **RAM** | 4 GB        |
-| **Betriebssystem** | Linux Alma        |   **vCPU** | 2           |
+| **Betriebssystem** | Linux Alma 10.2   |   **vCPU** | 2           |
 
 
 # Übersicht

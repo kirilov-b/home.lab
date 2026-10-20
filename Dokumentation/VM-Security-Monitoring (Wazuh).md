@@ -13,7 +13,7 @@ title: "[SRV] VM – Wazuh / Security Monitoring"
 |       **vLAN Tag** | 20                          |    **Domain** | srv.test    |
 |        **VM-Name** | sec-la-20-70                |     **Größe** | 64 GB       |
 |          **Zweck** | Wazuh / Security Monitoring |       **RAM** | 8 GB        |
-| **Betriebssystem** | Linux Alma                  |      **vCPU** | 4           |
+| **Betriebssystem** | Linux Alma 10.2             |      **vCPU** | 4           |
 
 
 # Übersicht

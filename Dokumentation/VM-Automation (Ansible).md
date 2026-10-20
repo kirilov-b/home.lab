@@ -13,7 +13,7 @@ title: "[MGMT] VM – Ansible / Automation"
 |       **vLAN Tag** | 10                   |    **Domain** | srv.test    |
 |        **VM-Name** | ans-la-10-3.srv.test |     **Größe** | 20 GB       |
 |          **Zweck** | Ansible / Automation |       **RAM** | 4 GB        |
-| **Betriebssystem** | Linux Alma           |      **vCPU** | 2           |
+| **Betriebssystem** | Linux Alma 10.2      |      **vCPU** | 2           |
 
 
 # Übersicht
