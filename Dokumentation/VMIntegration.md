@@ -8,7 +8,7 @@ Eine **VM Clone Image** mit Grundkonfiguration und wiederholende Schritte wurde 
 ## Grundkonfiguration VM
 
 <details markdown="1">
-  <summary><strong><span style="color: #00813F;">SSH Verbindung anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #00813F;">Grundkonfiguration anzeigen</span></strong></summary>
 
 1. Proxmox - VLAN Tag muss das Schema entsprechen
 2. IP Konfiguration - muss die Vorgaben entsprechen
@@ -23,6 +23,7 @@ Eine **VM Clone Image** mit Grundkonfiguration und wiederholende Schritte wurde 
 	3. **Dig** installieren - `dnf install -y bind-utils` 
 
 </details>
+
 ## SSH Integration
 
 <details markdown="1">
@@ -43,6 +44,7 @@ Aus Jump Host aus:
      `chmod 600 ~/.ssh/config`
 
 </details>
+
 ## Windows
 
 ## Domain Join - FreeIPA
@@ -51,7 +53,7 @@ Die obengenannten Voraussetzungen müssen erfüllt sein um den Domain zu betrete
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">IPA Integration anzeigen</span></strong></summary>
 
-## ### IPA - Relevante Ports
+### IPA - Relevante Ports
 
 Vom Linux-Client zum FreeIPA-Server müssen je nach aktivierten  
 Funktionen unter anderem erreichbar sein:
@@ -136,6 +138,7 @@ ipa-client-install --mkhomedir \
     Beispielsweise `admin`, sofern dieses Konto dafür berechtigt ist.
 
 </details>
+
 ## Monitoring - Zabb
 
 
