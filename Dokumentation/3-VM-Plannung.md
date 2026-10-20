@@ -57,7 +57,7 @@ Für Domain Controller - **cl.lab.test**
 | 211   | pbs          | **pbs-ld-20-10** | Proxmox Backup Server         | PBS(Debian)         | 10.10.20.10 | 20          | 4         | 2    |
 | 233   | ngx          | **ngx-la-20-20** | Nginx / Reverse Proxy         | Linux Alma          | 10.10.20.20 | 20          | 2         | 2    |
 | 244   | postgres     | **db-ld-20-30**  | PostgreSQL                    | Linux Debian        | 10.10.20.30 | 20          | 4         | 2    |
-| 255   | zabbix       | **mon-la-20-40** | Zabbix Monitoring             | Linux Alma          | 10.10.20.40 | 20          | 4         | 2    |
+| 245   | zabbix       | **mon-la-20-40** | Zabbix Monitoring             | Linux Alma          | 10.10.20.40 | 40          | 4         | 2    |
 | 266   | docker       | **doc-lu-20-50** | Docker / Podman / Container   | Linux Ubuntu Server | 10.10.20.50 | 40          | 4         | 2    |
 | 277   | log          | **log-la-20-60** | Rsyslog                       | Linux Alma          | 10.10.20.60 | 40          | 4         | 2    |
 | 288   | wazuh        | **sec-la-20-70** | Wazuh / Security Monitoring   | Linux Alma          | 10.10.20.70 | 64          | 4         | 4    |
@@ -65,4 +65,5 @@ Für Domain Controller - **cl.lab.test**
 | 301   | cl1          | **cl1-wc-30**    | Testclient                    | Windows 11          | DHCP        | 60          | 4         | 2    |
 | 302   | cl2          | **cl2-lm-30**    | Testclient                    | Linux Mint          | DHCP        | 40          | 4         | 2    |
 | 303   | cl3          | **cl3-mac-30**   | Testclient                    | MacOS               | DHCP        | 40          | 4         | 2    |
+
 

@@ -11,7 +11,7 @@ title: "[SRV] VM – Zabbix Monitoring"
 | -----------------: | ----------------- | ------------: | ----------- |
 |          **VM-ID** | 255               |      **IPv4** | 10.10.20.40 |
 |       **vLAN Tag** | 20                |    **Domain** | srv.test    |
-|        **VM-Name** | mon-la-20-40      |     **Größe** | 32 GB       |
+|        **VM-Name** | mon-la-20-40      |     **Größe** | 40 GB       |
 |          **Zweck** | Zabbix Monitoring |       **RAM** | 4 GB        |
 | **Betriebssystem** | Linux Alma        |      **vCPU** | 2           |
 
