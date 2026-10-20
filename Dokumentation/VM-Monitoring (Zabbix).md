@@ -24,7 +24,7 @@ Das Plattform überwacht. Hardware Auslastung (CPU, RAM, HardDisk), Netzwerkverk
 
 # Konfigurationsschritte 
 Folgende Abschnitt zeigt die Vorbereitung, Installation und Konfiguration von der Zabbix Server auf der VM. 
-Voraussetzung für eine reibungslose Integration sind 1. Grundkonfiguration und 2. SSH Verbindung von Dokument: **VM-Integration**: 
+Voraussetzung für eine reibungslose Integration sind (1. Grundkonfiguration) und (2. SSH Verbindung) von Dokument: **VM-Integration**: 
 
 Schritte: 
 1. **Zabbix Repository und Pakete installieren**
