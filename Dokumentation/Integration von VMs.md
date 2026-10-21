@@ -2,14 +2,10 @@
 Folgende Absatz beschreibt die notwendige Schritte, um unsere Umgebung zu betreten.
 Eine **VM Clone Image** mit Grundkonfiguration und wiederholende Schritte wurde vorbereitet um die Integration zu erleichtern
 
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">Integrationsschritte anzeigen</span></strong></summary>
 
 ## 1. Grundkonfiguration VM
 Beschreibt die notwendige Tools und Einstellungen, um die VM in der Umgebung zu funktionieren
 
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">Grundkonfiguration anzeigen</span></strong></summary>
 
 1. **Proxmox** - VLAN Tag muss das Schema entsprechen
 2. **IP Konfiguration** - muss die Vorgaben entsprechen
@@ -26,13 +22,10 @@ Beschreibt die notwendige Tools und Einstellungen, um die VM in der Umgebung zu 
 	-  Firewallregeln anpassen
 	-  **Dig** installieren - `dnf install -y bind-utils` 
 
-</details>
+
 
 ## 2. SSH Integration
 Beschreibt die Verbindung zu dem Administrations VM (jump-lm-10-3)
-
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">SSH Verbindung anzeigen</span></strong></summary>
   
 ### Linux
 Aus Jump Host aus:
@@ -49,15 +42,11 @@ Aus Jump Host aus:
 4. Rechte anpassen
      `chmod 600 ~/.ssh/config`
 
-</details>
 
 ### Windows
 
 ## 3. Domain Join - FreeIPA
 Die obengenannten Voraussetzungen müssen erfüllt sein um den Domain zu betreten.
-
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">IPA Integration anzeigen</span></strong></summary>
 
 ### IPA - Relevante Ports
 
@@ -143,15 +132,15 @@ ipa-client-install --mkhomedir \
 4. **User authorized to enroll computers:**  
     Beispielsweise `admin`, sofern dieses Konto dafür berechtigt ist.
 
-</details>
-
 ## 4. Monitoring - Zabbix
 
-<details markdown="1">
-  <summary><strong>Zabbix Integration anzeigen</span></strong></summary>
 
 ## 1. Agent 2 installieren
 
+
+<details markdown="1">
+  <summary><strong>Alma Linux 10 Integration anzeigen</span></strong></summary>
+  
 ### AlmaLinux 10
 
 Alma ist RHEL basiert. Folgende Besonderheiten bei der Installation beachten
@@ -163,7 +152,13 @@ dnf makecache
 dnf install -y zabbix-agent2
 ```
 
+danach weiter mit Agent Konfigurieren
 
+</details>
+
+<details markdown="1">
+  <summary><strong>Linux Mint Integration anzeigen</span></strong></summary>
+  
 ### Linux Mint
 
 Mint ist Ubuntu basiert. Folgende Besonderheiten bei der Installation beachten
@@ -175,8 +170,14 @@ sudo apt update
 sudo apt install -y zabbix-agent2
 ```
 
+danach weiter mit Agent Konfigurieren
+
+</details>
 ### Debian
 
+<details markdown="1">
+  <summary><strong>Debian Integration anzeigen</span></strong></summary>
+  
 PBS und PVE sind Debian basiert. Folgende Besonderheiten bei der Installation beachten
 
 ```
@@ -186,10 +187,37 @@ apt update
 apt install zabbix-agent2
 ```
 
+danach weiter mit Agent Konfigurieren
+
+</details>
+
 ### Windows
 
-### OPNsense
+<details markdown="1">
+  <summary><strong>Windows Integration anzeigen</span></strong></summary>
 
+
+Die Intergration auf Windows Server oder Client läuft über den GUI. Der passende Agent aus der Webseite herunterladen. https://www.zabbix.com/download_agents. Installieren und die IP Konfiguration wie in /config eintragen.
+
+**Danach die Firewall öffnen:**
+
+in Powershell:
+
+```
+New-NetFirewallRule `
+  -DisplayName "Zabbix Agent 2 from Zabbix Server" `
+  -Direction Inbound `
+  -Protocol TCP `
+  -LocalPort 10050 `
+  -RemoteAddress 10.10.20.40 `
+  -Action Allow
+```
+
+Prüfen: ` Get-Service *Zabbix*`
+
+danach weiter mit Agent Konfigurieren
+
+</details>
 
 ### MacOS
 
