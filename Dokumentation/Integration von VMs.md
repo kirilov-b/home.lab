@@ -139,7 +139,7 @@ ipa-client-install --mkhomedir \
 
 
 <details markdown="1">
-  <summary><strong>**Alma Linux 10 Integration** anzeigen</span></strong></summary>
+  <summary><strong>Alma Linux 10 Integration anzeigen</span></strong></summary>
 
 
 Alma ist RHEL basiert. Folgende Besonderheiten bei der Installation beachten
@@ -155,10 +155,10 @@ danach weiter mit Agent Konfigurieren
 
 </details>
 
+
 <details markdown="1">
   <summary><strong>Linux Mint Integration anzeigen</span></strong></summary>
   
-### Linux Mint
 
 Mint ist Ubuntu basiert. Folgende Besonderheiten bei der Installation beachten
 
@@ -173,7 +173,6 @@ danach weiter mit Agent Konfigurieren
 
 </details>
 
-### Debian
 
 <details markdown="1">
   <summary><strong>Debian Integration anzeigen</span></strong></summary>
@@ -191,7 +190,6 @@ danach weiter mit Agent Konfigurieren
 
 </details>
 
-### Windows
 
 <details markdown="1">
   <summary><strong>Windows Integration anzeigen</span></strong></summary>
