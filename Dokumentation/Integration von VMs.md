@@ -154,6 +154,8 @@ ipa-client-install --mkhomedir \
 
 ### AlmaLinux 10
 
+Alma ist RHEL basiert. Folgende Besonderheiten bei der Installation beachten
+
 ```
 dnf install -y https://repo.zabbix.com/zabbix/7.4/release/alma/10/noarch/zabbix-release-latest-7.4.el10.noarch.rpm
 dnf clean all
@@ -161,17 +163,35 @@ dnf makecache
 dnf install -y zabbix-agent2
 ```
 
-Für andere AlmaLinux-/RHEL-Versionen oder Debian/Ubuntu das Repository  
-passend zur jeweiligen Distribution und Version wählen.
 
 ### Linux Mint
 
+Mint ist Ubuntu basiert. Folgende Besonderheiten bei der Installation beachten
+
 ```
-dnf install -y https://repo.zabbix.com/zabbix/7.4/release/alma/10/noarch/zabbix-release-latest-7.4.el10.noarch.rpm
-dnf clean all
-dnf makecache
+wget https://repo.zabbix.com/zabbix/7.4/release/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest+ubuntu24.04_all.deb
+sudo dpkg -i zabbix-release_latest+ubuntu24.04_all.deb
+sudo apt update
+sudo apt install -y zabbix-agent2
 ```
 
+### Debian
+
+PBS und PVE sind Debian basiert. Folgende Besonderheiten bei der Installation beachten
+
+```
+wget https://repo.zabbix.com/zabbix/7.4/release/debian/pool/main/z/zabbix-release/zabbix-release_latest+debian13_all.deb
+dpkg -i zabbix-release_latest+debian13_all.deb
+apt update
+apt install zabbix-agent2
+```
+
+### Windows
+
+### OPNsense
+
+
+### MacOS
 
 
 ## 2. Agent konfigurieren
