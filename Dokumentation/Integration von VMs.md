@@ -139,9 +139,8 @@ ipa-client-install --mkhomedir \
 
 
 <details markdown="1">
-  <summary><strong>Alma Linux 10 Integration anzeigen</span></strong></summary>
-  
-### AlmaLinux 10
+  <summary><strong>**Alma Linux 10 Integration** anzeigen</span></strong></summary>
+
 
 Alma ist RHEL basiert. Folgende Besonderheiten bei der Installation beachten
 
@@ -173,6 +172,7 @@ sudo apt install -y zabbix-agent2
 danach weiter mit Agent Konfigurieren
 
 </details>
+
 ### Debian
 
 <details markdown="1">
