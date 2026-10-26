@@ -2,6 +2,11 @@
 
 Technische Projektdokumentation meines Home-Lab-Projekts.
 
+Das Projekt beinhaltet zwei Umgebungen. 
+- Ein **Service (SRV)** Domäne: Der besteht nur aus Server hauptsächlich Linux + ein Windows Domain Controller (relevant für die zweite Umgebung) 
+  Hier werden Dienste für Überwachung, Automatisierungen, Datensicherungen
+- Ein **Client (CL)** Domäne: Diese Umgebung simuliert eine Unternehmungsumgebung mit Clienets in eine separate Netzwerk und beschäftigt sich mit der Integration von Active Directory und unterschiedliche Clients OS: Windows, MacOS, Linux
+
 ## Dokumentation
 
 → [Home Lab Dokumentation öffnen](https://kirilov-b.github.io/home.lab/)
