@@ -1,12 +1,10 @@
 # Home Lab
 
+Technische Projektdokumentation meines Home-Lab-Projekts
+Das Projekt beinhaltet zwei Umgebungen:
+-  Domäne **Service (SRV):** Diese besteht hauptsächlich aus Linux-Servern sowie einem Windows Domain Controller *(relevant für die zweite Umgebung)*. Hier werden Dienste für Überwachung, Automatisierungen und Datensicherungen betrieben.
 
- Technische Projektdokumentation meines Home-Lab-Projekts
-
- Das Projekt beinhaltet zwei Umgebungen:
-  • Eine Service-Domäne (SRV): Diese besteht hauptsächlich aus Linux-Servern sowie einem Windows Domain Controller (relevant für die zweite Umgebung). Hier werden Dienste für Überwachung, Automatisierungen und Datensicherungen betrieben.
-  • Eine Client-Domäne (CL): Diese Umgebung simuliert ein Unternehmensnetzwerk mit Clients in einem separaten Netzwerk. Der Fokus liegt auf der Integration des Active Directory sowie unterschiedlicher Client-Betriebssysteme (Windows, macOS, Linux).
-
+- Domäne **Client (CL)**: Diese Umgebung simuliert ein Unternehmensnetzwerk mit Clients in einem separaten Netzwerk. Der Fokus liegt auf der Integration des Active Directory sowie unterschiedlicher Client-Betriebssysteme (Windows, macOS, Linux).
 
 ## Dokumentation
 
