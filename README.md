@@ -1,6 +1,10 @@
 # Home Lab
 
-Technische Projektdokumentation meines Home-Lab-Projekts.
+Technische Projektdokumentation meines Home-Lab-Projekts
+Das Projekt beinhaltet zwei Umgebungen:
+-  Domäne **Service (SRV):** Diese besteht hauptsächlich aus Linux-Servern sowie einem Windows Domain Controller *(relevant für die zweite Umgebung)*. Hier werden Dienste für Überwachung, Automatisierungen und Datensicherungen betrieben.
+
+- Domäne **Client (CL)**: Diese Umgebung simuliert ein Unternehmensnetzwerk mit Clients in einem separaten Netzwerk. Der Fokus liegt auf der Integration des Active Directory sowie unterschiedlicher Client-Betriebssysteme (Windows, macOS, Linux).
 
 ## Dokumentation
 
@@ -28,24 +32,24 @@ Die Dokumentation umfasst aktuell:
 
 Die aktuelle VM-Planung umfasst unter anderem folgende Systeme:
 
-| VM | ID | Funktion |
-|---|---:|---|
-| JUMP-LM-10-3 | 100 | Verwaltung / Dokumentation |
-| FW-OPSense | 101 | Firewall / Router |
-| ANS-LU-10-20 | 102 | Ansible / Automation |
-| DC-WS-20-1 | 201 | Domain Controller |
-| PBS-PBS-20-10 | 211 | Proxmox Backup Server |
-| IPA-LA-20-20 | 222 | FreeIPA / Identity / DNS |
-| NGX-LA-20-30 | 233 | Nginx / Reverse Proxy |
-| DB-LD-20-40 | 244 | PostgreSQL |
-| MON-LA-20-50 | 255 | Zabbix Monitoring |
-| DOC-LU-20-60 | 266 | Docker / Podman / Container |
-| LOG-LA-20-70 | 277 | Zentrales Logging |
-| SEC-LA-20-80 | 288 | Wazuh / Security Monitoring |
-| GIT-LD-20-90 | 299 | Git-Server |
-| CL1-WC-30 | 301 | Windows-11-Testclient |
-| CL2-WC-30 | 302 | Windows-11-Testclient |
-| CL3-MAC-30 | 303 | Testclient |
+| VM-NameServer    | Zweck                         | Betriebsystem       |
+| ---------------- | ----------------------------- | ------------------- |
+| **jump-lm-10-3** | Administrator, Dokumentation, | Linux Mint          |
+| **fw-opnense**   | Firewall                      | OPNsense            |
+| **ans-la-10-20** | Ansible / Automation          | Linux Alma          |
+| **ipa-la-20-2**  | FreeIPA / Identity / DNS      | Linux Alma          |
+| **dc-ws-20-3**   | AD, DNS, DHCP                 | Windows Server 2025 |
+| **pbs-ld-20-10** | Proxmox Backup Server         | PBS(Debian)         |
+| **ngx-la-20-20** | Nginx / Reverse Proxy         | Linux Alma          |
+| **db-ld-20-30**  | PostgreSQL                    | Linux Debian        |
+| **mon-la-20-40** | Zabbix Monitoring             | Linux Alma          |
+| **doc-lu-20-50** | Docker / Podman / Container   | Linux Ubuntu Server |
+| **log-la-20-60** | Rsyslog                       | Linux Alma          |
+| **sec-la-20-70** | Wazuh / Security Monitoring   | Linux Alma          |
+| **git-ld-20-80** | Gitea / Git-Server            | Linux Debian        |
+| **cl1-wc-30**    | Testclient                    | Windows 11          |
+| **cl2-lm-30**    | Testclient                    | Linux Mint          |
+| **cl3-mac-30**   | Testclient                    | MacOS               |
 
 ## Netzwerk
 
