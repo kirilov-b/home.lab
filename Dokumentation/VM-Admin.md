@@ -50,6 +50,7 @@ Auf **jump-lm-10-3**:
 	 `ssh-add ~/.ssh/id_ed25519`
 	 `ssh-add -l`> schlüssel abrufen
 ### Wiederholende Schritte für jede weitere VM-Einrichtung
+
 Auf jump-lm-10-3:
 1. Öffentliche Schlüssel in dementsprechende VM setzen:
      `ssh-copy-id -i ~/.ssh/id_ed25519.pub root@10.10.20.xx`
@@ -87,6 +88,7 @@ Ziel ist es, von einem externen Windows-Rechner über eine verschlüsselte WireG
 | Externer Windows-Client    | `10.10.123.2`            |
 | WireGuard-Port             | UDP `51821`              |
 | RDP-Port                   | TCP `3389`               |
+
 ## 1. Einrichtung auf OPNsense und im Heimnetz
 
 ### 1.1 WireGuard konfigurieren
