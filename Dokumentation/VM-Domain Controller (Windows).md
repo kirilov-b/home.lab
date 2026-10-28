@@ -45,117 +45,41 @@ Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen au
 8. **49152:65535** TCP Dynamische RPC-Ports bei  modernen Windows-Versionen;  für bestimmte  AD-/Netlogon-Funktionen  relevant
 
 
-# Unternehmenstruktur
+# Active Diretory - Unternehmenstruktur
 Eine Fiktive Unternehmen und die Hierarchische Struktur
 
-## 2. Active Directory Struktur
+## 2. OU-Struktur
+Benutzer, Computer und Gruppen sind nach Abteilungen getrennt. GPOs können gezielt an passende OUs gebunden werden. OUs sind organisatorische Container und ersetzen keine Berechtigungen.
 
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">AD-Konfiguration anzeigen</span></strong></summary>
-### Active Directory konfigurieren.
+## 3. Benutzerkonten
 
-1. **Erstellen von Organisational Unit (OU)**
-    - LAB-Users
-    - LAB-Admins
-    - LAB-Groups
-    - LAB-Servers
-    - LAB-Computers
-        - Verschieben von **cl.lab.home\Computers** zu cl.lab.home\LAB-Computers**
-2. **Erstellen von Gruppen (AD Users and Computers)**
-    - GG-Mitarbeiter - Global, Security
-        - max.mustermann - testuser
-    - GG-IT-Admins - Global,Security - Administrative Rechte
-    - GG-IT-Helpdesk - Global,Security
-    - GG-Buchhaltung - Global,Security
-    - GG-Management - Global,Security
-    - GG-Produktion - Global,Security
-3. **GPO - (Group Policy Objects)**
-    - **GPO-LAB-Windows-Firewall**
-        - **Action 1** - Firewall State: On
-            - Firewall State: On
-            - Inbound Connection: Block (default)
-            - Outbound Connection: Allow (default)
-        - **Action 2** - RDP Erlauben
-            - Rule Type: **Port**
-            - Protocol: **TCP**
-            - Specific local Port: **3389**
-            - Action: **Allow the connection**
-            - Profile: **Domain aktivieren**
-            - Name: **LAB-Allow RDP**
-    - **GPO-LAB-Helpdesk-Workstations**
-        - Ziel - Einlogen von Helpdesk an Clients per Remote Desktop ohne lokalen Administrationsrechte
-        - Pfad: GPM > LAB-Computers > Create GPO / Computer Configuration > Preferences > Control Panel Settings > Local Users and Groups
-    - **GPO-LAB-RemoteDesktop**
-        - Ziel - Aktiviert den Remote Desktop (RDP) auf den zugewiesenen Windows-Client. Dadurch können berechtigte Benutzer (z.B. Mitglieder der Gruppe GG-IT-Helpdesk), per RDP auf die Clients zugreifen und remote administrieren.
-        - Pfad: GPM > LAB-Computers > Create GPO / Computer Configuration > Policies > Administrative Templates > Windows Components > Remote Desktop Services > Remote Desktop Sessions Host > Connections
-        - Action: **Allow users to connect remotely by using Remote Desktop Services - Enabled**
-    - **GPO-LAB-User-Background**
-        - Ziel - Setzt ein Hintergrundbild anhand der Gruppe, in der der Benutzer sich befindet. (z.B. GG-Produktion > Produktion-Bild)
-        - Datei in **Sorce Ordner** kopieren.
-        - Unter _GPO > Users Configuragtion > Preferences > Windwos Settings > Files_ die Datei auswählen aus der Sorce Ordner und **Destination Ordner** auswählen _Public > Public Pictures_
-        - Registry anpassen:  
-            Hive: HKEY_CURRENT_USER  
-            Key Path: Control Panel\Desktop  
-            Value Name: Wallpaper  
-            Value Type: REG_SZ  
-            Value Data: ... \Public\Public Pictures\
-            - Gruppenzuordnung: Unter Common die Gruppe zuweisen
-    - **GPO-LAB-Local-IT-Admins**
-        - Ziel: GG-IT-Admin Administrationsrechte für alle Clients zu vergeben.
-        - Pfad: LAB-Computers > Create GPO ... > Edit > Computer Configuration > Preferences > Control Pannel Settings > Local Users and Groups >
-        - New > Local Group
-            - Action: Update
-            - Group Name: Administrators (built-in)
-            - Member: GG-IT-Admins
-        - Testen: Via PS: "net localgroup Administrators" > soll GG-IT-Admins zu sehen sein
+| Abteilung   | Anzeigename | Anmeldename           |
+| ----------- | ----------- | --------------------- |
+| Management  | Thomas      | `thomas.management`   |
+| Management  | Maria       | `maria.management`    |
+| Buchhaltung | Anna        | `anna.buchhaltung`    |
+| Buchhaltung | Petra       | `petra.buchaltung`    |
+| IT          | Stefan      | `stefan.it`           |
+| IT          | Julia       | `julia.it`            |
+| Mitarbeiter | Michael     | `michael.mitarbeiter` |
+| Mitarbeiter | Lisa        | `lisa.mitarbeiter`    |
+| Mitarbeiter | Daniel      | `daniel.mitarbeiter`  |
+| Mitarbeiter | Sophie      | `sophie.mitarbeiter`  |
+## 4. Gruppenmodell (AGDLP)
+**Prinzip:** Benutzer → globale Gruppe (GG) → domänenlokale Berechtigungsgruppe (DL) → Ressourcenrechte.
 
-</details>
+### Globale Sicherheitsgruppen
+Alle GG-Gruppen sind als **Global / Security** angelegt.
 
-## 3. File Share Struktur
-
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">Share Konfiguration anzeigen</span></strong></summary>
-
-- **1.Ordnerstruktur:**
-    - C:\Shares
-        - C:\Shares\Buchhaltung
-        - C:\Shares\Produktion
-        - C:\Shares\Management
-        - C:\Shares\IT
-- **2. Berechtigung geben**
-    - *Buchhaltung Ordner > Properties > Security > Advanced (Weiter für die andere Ordner)
-        - Alle "User..." entfernen
-        - Disable inheritance > Convert inheritance permissions ...
-        - Addieren die Gruppe GG-Buchhaltung mit "modify" Privileges. GG-IT-Admins - Full Controll
-- **3. Network Share erstellen - SMB Freigabe**
-    - _Buchhaltung Ordner > Properties > Share > Advance Share (weiter für die andere Ordner)_
-        - Share Folder
-        - Permission > GG-Buchhaltung addieren, GG-IT-Admins - Full Controll
-        - Permission > Everyone löschen, Change und Modify auswählen.  
-            Zusammenfassung: Jede Gruppe hat nur Zugriff auf seine Abteilung. Nur Admin hat Full Controll auf alle Ordner.
-- **4.GPO für Automatische Drive Erkennung (pro Abteilung)**
-    - LAB-Users > GPO-LAB-ShareDrive > Edit > User Config... > Preferences > Windows Settings > DriveMaps
-    - New > **Mapped Drive**
-        - Action: **Update**
-        - Reconnect: **Aktiv**
-        - Location: **\\DC\Buchhaltung Share**
-        - Lable as: **Buchhaltung**
-        - Drive Letter: **B**
-        - **Unter Common > Item Level Targeting > New Item > GG-Buchhaltung auswählen!**
-
-| Benutzername       | Abteilung   | Gruppen                        |
-| ------------------ | ----------- | ------------------------------ |
-| Anna Helpdesk      | Helpdesk    | GG-Mitarbeiter; GG-IT-Helpdesk |
-| Markus Buchhaltung | Buchhaltung | GG-Mitarbeiter; GG-Buchhaltung |
-| Tom Admin          | Admin       | GG-Mitarbeiter; GG-IT-Admins   |
-| Hans Buchhaltung   | Buchhaltung | GG-Mitarbeiter; GG-Buchhaltung |
-| Jürgen Chief       | Management  | GG-Mitarbeiter; GG-Management  |
-| Stephan Produktion | Produktion  | GG-Mitarbeiter; GG-Produktion  |
-| Lara Produktion    | Produktion  | GG-Mitarbeiter; GG-Produktion  |
-|                    |             |                                |
-</details>
-
-## 4. Windows Server Backup
+| Gruppe               | Mitglieder                    |
+| -------------------- | ----------------------------- |
+| `BSI-GG-Management`  | Thomas, Maria                 |
+| `BSI-GG-Buchhaltung` | Anna, Petra                   |
+| `BSI-GG-IT`          | Stefan, Julia                 |
+| `BSI-GG-Mitarbeiter` | Michael, Lisa, Daniel, Sophie |
+| `BSI-GG-Alle`        | alle zehn Benutzer            |
+**Nutzen:** Abteilungsmitgliedschaften und Ressourcenrechte werden getrennt verwaltet. Neue Benutzer benötigen die passende GG-Mitgliedschaft; allgemeiner Zugriff setzt die Mitgliedschaft in `BSI-GG-Alle` voraus.
+# Windows Server Backup
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">WSB-Konfiguration anzeigen</span></strong></summary>

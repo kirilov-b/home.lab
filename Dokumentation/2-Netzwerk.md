@@ -17,10 +17,10 @@ Ich verwende eine **VLAN-Aware Bridge (LANbr0)** in Proxmox und einen **VLAN-Tru
 
 | VM-ID  |             Dienst                |   IPv4 /24     | Netzwerk   | Gateway      | DNS        |
 | ------ | --------------------------------- | -------------- | ---------- | ------------ | ---------- |
-|  101   | Firewall                          |  172.18.87.1   | Heim LAN   | 172.18.87.1  |            |
-|  101   | Firewall - Management (MGMT)      |  10.10.10.1    | vLAN - 10  | 172.18.87.1  |            |
-|  101   | Firewall - Service (SRV)          |  10.10.20.1    | vLAN - 20  | 172.18.87.1  |            |
-|  101   | Firewall - Clients (CL)           |  10.10.30.1    | vLAN - 30  | 172.18.87.1  |            |
+|  101   | Firewall                          | 172.16.87.1    | Heim LAN   | 172.16.87.1  |            |
+|  101   | Firewall - Management (MGMT)      |  10.10.10.1    | vLAN - 10  | 172.16.87.1  |            |
+|  101   | Firewall - Service (SRV)          |  10.10.20.1    | vLAN - 20  | 172.16.87.1  |            |
+|  101   | Firewall - Clients (CL)           |  10.10.30.1    | vLAN - 30  | 172.16.87.1  |            |
 |  100   | Administration, Dokumentation     |  10.10.10.3    | vLAN - 10  | 10.10.10.1   |            |
 | 102    | Ansible / Automation              | 10.10.10.20    | vLAN - 10  | 10.10.10.1   |            |
 | 222    | FreeIPA / Identity / DNS          | 10.10.20.2     | vLAN - 20  | 10.10.20.1   | 10.10.20.2 |
