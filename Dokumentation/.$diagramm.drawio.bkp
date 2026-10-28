@@ -1,6 +1,6 @@
 <mxfile host="Electron" pages="2">
-  <diagram name="Verbindungsdiagramm" id="e-R9hXRKhPBVgImNvWdK">
-    <mxGraphModel dx="3796" dy="2846" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+  <diagram name="Hauptdiagramm" id="e-R9hXRKhPBVgImNvWdK">
+    <mxGraphModel dx="4571" dy="3305" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -782,7 +782,7 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="Zu1xCEk7YnNMqSbPEN0N" name="Steuerung Diagramm">
+  <diagram id="Zu1xCEk7YnNMqSbPEN0N" name="Steuerungdiagramm">
     <mxGraphModel dx="1414" dy="838" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
