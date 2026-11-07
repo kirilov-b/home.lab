@@ -47,23 +47,23 @@ Für Domain Controller - **cl.lab.test**
   
 ## VM-Tabelle
 
-| VM-ID | SSH nickname | VM-NameServer    | Zweck                         | Betriebsystem       | IPv4 /24    | Größe<br>GB | RAM<br>GB | vCPU |
-| ----- | ------------ | ---------------- | ----------------------------- | ------------------- | ----------- | ----------- | --------- | ---- |
-| 100   | jump         | **jump-lm-10-3** | Administrator, Dokumentation, | Linux Mint          | 10.10.10.3  | 80          | 8         | 4    |
-| 101   | ops          | **fw-opnense**   | Firewall                      | OPNsense            |             | 20          | 4         | 2    |
-| 102   | ansible      | **ans-la-10-20** | Ansible / Automation          | Linux Alma          | 10.10.10.20 | 20          | 4         | 2    |
-| 202   | ipa          | **ipa-la-20-2**  | FreeIPA / Identity / DNS      | Linux Alma          | 10.10.20.2  | 40          | 4         | 2    |
-| 203   | dc           | **dc-ws-20-3**   | AD, DNS, DHCP                 | Windows Server 2025 | 10.10.20.3  | 70          | 8         | 4    |
-| 211   | pbs          | **pbs-ld-20-10** | Proxmox Backup Server         | PBS(Debian)         | 10.10.20.10 | 20          | 4         | 2    |
-| 233   | ngx          | **ngx-la-20-20** | Nginx / Reverse Proxy         | Linux Alma          | 10.10.20.20 | 20          | 2         | 2    |
-| 244   | postgres     | **db-ld-20-30**  | PostgreSQL                    | Linux Debian        | 10.10.20.30 | 20          | 4         | 2    |
-| 245   | zabbix       | **mon-la-20-40** | Zabbix Monitoring             | Linux Alma          | 10.10.20.40 | 40          | 4         | 2    |
-| 266   | docker       | **doc-lu-20-50** | Docker / Podman / Container   | Linux Ubuntu Server | 10.10.20.50 | 40          | 4         | 2    |
-| 277   | log          | **log-la-20-60** | Rsyslog                       | Linux Alma          | 10.10.20.60 | 40          | 4         | 2    |
-| 288   | wazuh        | **sec-la-20-70** | Wazuh / Security Monitoring   | Linux Alma          | 10.10.20.70 | 64          | 4         | 4    |
-| 299   | gitea        | **git-ld-20-80** | Gitea / Git-Server            | Linux Debian        | 10.10.20.80 | 32          | 2         | 2    |
-| 301   | cl1          | **cl1-wc-30**    | Testclient                    | Windows 11          | DHCP        | 60          | 4         | 2    |
-| 302   | cl2          | **cl2-lm-30**    | Testclient                    | Linux Mint          | DHCP        | 40          | 4         | 2    |
-| 303   | cl3          | **cl3-mac-30**   | Testclient                    | MacOS               | DHCP        | 40          | 4         | 2    |
+| VM-ID | SSH nickname | VM-NameServer    | Zweck                         | Betriebsystem       | IPv4 /24   | Größe<br>GB | RAM<br>GB | vCPU |
+| ----- | ------------ | ---------------- | ----------------------------- | ------------------- | ---------- | ----------- | --------- | ---- |
+| 100   | jump         | **jump-lm-10-3** | Administrator, Dokumentation, | Linux Mint          | 10.0.10.3  | 80          | 8         | 4    |
+| 101   | ops          | **fw-opnense**   | Firewall                      | OPNsense            |            | 20          | 4         | 2    |
+| 102   | ansible      | **ans-la-10-20** | Ansible / Automation          | Linux Alma          | 10.0.10.20 | 20          | 4         | 2    |
+| 202   | ipa          | **ipa-la-20-2**  | FreeIPA / Identity / DNS      | Linux Alma          | 10.0.20.2  | 40          | 4         | 2    |
+| 203   | dc           | **dc-ws-20-3**   | AD, DNS, DHCP                 | Windows Server 2025 | 10.0.20.3  | 70          | 8         | 4    |
+| 211   | pbs          | **pbs-ld-20-10** | Proxmox Backup Server         | PBS(Debian)         | 10.0.20.10 | 20          | 4         | 2    |
+| 233   | ngx          | **ngx-la-20-20** | Nginx / Reverse Proxy         | Linux Alma          | 10.0.20.20 | 20          | 2         | 2    |
+| 244   | postgres     | **db-ld-20-30**  | PostgreSQL                    | Linux Debian        | 10.0.20.30 | 20          | 4         | 2    |
+| 245   | zabbix       | **mon-la-20-40** | Zabbix Monitoring             | Linux Alma          | 10.0.20.40 | 40          | 4         | 2    |
+| 266   | docker       | **doc-lu-20-50** | Docker / Podman / Container   | Linux Ubuntu Server | 10.0.20.50 | 40          | 4         | 2    |
+| 277   | log          | **log-la-20-60** | Rsyslog                       | Linux Alma          | 10.0.20.60 | 40          | 4         | 2    |
+| 288   | wazuh        | **sec-la-20-70** | Wazuh / Security Monitoring   | Linux Alma          | 10.0.20.70 | 64          | 4         | 4    |
+| 299   | gitea        | **git-ld-20-80** | Gitea / Git-Server            | Linux Debian        | 10.0.20.80 | 32          | 2         | 2    |
+| 301   | cl1          | **cl1-wc-30**    | Testclient                    | Windows 11          | DHCP       | 60          | 4         | 2    |
+| 302   | cl2          | **cl2-lm-30**    | Testclient                    | Linux Mint          | DHCP       | 40          | 4         | 2    |
+| 303   | cl3          | **cl3-mac-30**   | Testclient                    | MacOS               | DHCP       | 40          | 4         | 2    |
 
 

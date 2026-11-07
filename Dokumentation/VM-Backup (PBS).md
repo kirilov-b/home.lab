@@ -6,13 +6,13 @@ title: "[SRV] VM – Proxmox Backup Server"
 
 **VM Parameter**
 
-|      **Parameter** | Wert          | **Parameter** | Wert        |
-| -----------------: | ------------- | ------------: | ----------- |
-|          **VM-ID** | 211           |      **IPv4** | 10.10.20.10 |
-|       **vLAN Tag** | 20            |    **Domain** | keinen      |
-|        **VM-Name** | pbs-pbs-20-10 |     **Größe** | 20 GB       |
-|          **Zweck** | Backup Server |       **RAM** | 8 GB        |
-| **Betriebssystem** | PBS (Debian)  |      **vCPU** | 4           |
+|      **Parameter** | Wert          | **Parameter** | Wert       |
+| -----------------: | ------------- | ------------: | ---------- |
+|          **VM-ID** | 211           |      **IPv4** | 10.0.20.10 |
+|       **vLAN Tag** | 20            |    **Domain** | keinen     |
+|        **VM-Name** | pbs-pbs-20-10 |     **Größe** | 20 GB      |
+|          **Zweck** | Backup Server |       **RAM** | 8 GB       |
+| **Betriebssystem** | PBS (Debian)  |      **vCPU** | 4          |
 
 
 # Übersicht
@@ -47,8 +47,8 @@ heruntergefahren wird. Die Festplatte bleibt angeschlossen und eingeschaltet.
 | --------------------- | -------------------------- |
 | PVE-Host              | prox                       |
 | PBS-VM                | ID 211, Name pbs-pbs-20-10 |
-| PBS-Adresse           | 10.10.20.10                |
-| PBS-Weboberfläche     | https: //10.10.20.10:8007  |
+| PBS-Adresse           | 10.0.20.10                 |
+| PBS-Weboberfläche     | https: //10.0.20.10:8007   |
 | PBS-Datastore         | Backup                     |
 | Datastore-Pfad in PBS | /mnt/datastore/Backup      |
 | PVE-Storage-Name      | Extern-Backup              |
@@ -89,7 +89,7 @@ selbst mit Modus 600.
 
 Ein direkter API-Test wurde mit curl durchgeführt:
 	`TOKEN=$(cat /root/.config/pbs-backup/token)`
-	`curl -k -sS -o /tmp/pbs-api-test.json -w 'HTTP-Status: %{http_code}\n' -H "Authorization: PBSAPIToken=root@pam!check-backup:$TOKEN" https://10.10.20.10:8007/api2/json/admin/datastore/Backup/status`
+	`curl -k -sS -o /tmp/pbs-api-test.json -w 'HTTP-Status: %{http_code}\n' -H "Authorization: PBSAPIToken=root@pam!check-backup:$TOKEN" https://10.0.20.10:8007/api2/json/admin/datastore/Backup/status`
 
 Der Aufruf liest den Token aus der geschützten Datei und fragt den
 Status des Datastores ab. **Ein erfolgreicher API-Test beweist nicht
@@ -116,7 +116,7 @@ für den vorgesehenen Benutzer hinterlegt. Der private Schlüssel bleibt
 auf PVE.
 
 Der Verbindungstest verwendet:
-	`ssh -i /root/.ssh/pbs-disk-check -o BatchMode=yes -o IdentitiesOnly=yes -o ConnectTimeout=10 -o StrictHostKeyChecking=yes root@10.10.20.10`
+	`ssh -i /root/.ssh/pbs-disk-check -o BatchMode=yes -o IdentitiesOnly=yes -o ConnectTimeout=10 -o StrictHostKeyChecking=yes root@10.0.20.10`
 
 Das Skript erwartet für die Datenträgerprüfung die Rückmeldung OK. Der
 genaue Remote-Prüfbefehl ist in den verfügbaren Notizen nicht
@@ -125,7 +125,7 @@ vollständig festgehalten.
 Das Skript `/usr/local/sbin/backup-on-boot.sh` führt die Schritte nach
 dem Systemstart aus:
 
-1.  Es wartet auf die Erreichbarkeit von OPNsense unter `192.168.178.2`.
+1.  Es wartet auf die Erreichbarkeit von OPNsense unter `172.18.87.2`.
 2.  Es wartet, bis die PBS-VM 211 läuft und die PBS-API erreichbar ist.
 3.  Es prüft, ob `Extern-Backup` verfügbar ist.
 4.  Es prüft den Datenträger über SSH.
@@ -207,10 +207,10 @@ trap notify_backup_result EXIT
 
 PBS_VMID=211
 PBS_STORAGE="Extern-Backup"
-PBS_URL="https://10.10.20.10:8007"
+PBS_URL="https://10.0.20.10:8007"
 PBS_SSH_KEY="/root/.ssh/pbs-disk-check"
-PBS_SSH_HOST="root@10.10.20.10"
-OPNSENSE_IP="192.168.178.2"
+PBS_SSH_HOST="root@10.0.20.10"
+OPNSENSE_IP="172.18.87.2"
 
 echo "=== PBS-Backup gestartet: $(date) ==="
 

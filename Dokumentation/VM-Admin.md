@@ -7,13 +7,13 @@ title: "[MGMT] VM – Administrator"
 
 **VM Parameter**
 
-|      **Parameter** | Wert                      | **Parameter** | Wert       |
-| -----------------: | ------------------------- | ------------: | ---------- |
-|          **VM-ID** | 100                       |      **IPv4** | 10.10.10.3 |
-|       **vLAN Tag** | 10                        |    **Domain** | keinen     |
-|        **VM-Name** | jump-lm-10-3              |     **Größe** | 80 GB      |
-|          **Zweck** | Verwaltung, Dokumentation |       **RAM** | 8 GB       |
-| **Betriebssystem** | Linux Mint                |      **vCPU** | 4          |
+|      **Parameter** | Wert                      | **Parameter** | Wert      |
+| -----------------: | ------------------------- | ------------: | --------- |
+|          **VM-ID** | 100                       |      **IPv4** | 10.0.10.3 |
+|       **vLAN Tag** | 10                        |    **Domain** | keinen    |
+|        **VM-Name** | jump-lm-10-3              |     **Größe** | 80 GB     |
+|          **Zweck** | Verwaltung, Dokumentation |       **RAM** | 8 GB      |
+| **Betriebssystem** | Linux Mint                |      **vCPU** | 4         |
 
 
 
@@ -53,12 +53,12 @@ Auf **jump-lm-10-3**:
 
 Auf jump-lm-10-3:
 1. Öffentliche Schlüssel in dementsprechende VM setzen:
-     `ssh-copy-id -i ~/.ssh/id_ed25519.pub root@10.10.20.xx`
+     `ssh-copy-id -i ~/.ssh/id_ed25519.pub root@10.0.20.xx`
 2. Bequeme Verbindung:
 	   `nano ~/.ssh/config`
 3. Host Daten eintragen:
 	   *Host pbs*
-		   *Hostname 10.10.20.10*
+		   *Hostname 10.0.20.10*
 		   *User root*
 		   *Identify file ~/.ssh/ided25519*
 		   *Identify Only yes*
@@ -81,11 +81,11 @@ Ziel ist es, von einem externen Windows-Rechner über eine verschlüsselte WireG
 | -------------------------- | ------------------------ |
 | Heimrouter                 | `172.16.87.1`            |
 | OPNsense WAN               | `172.16.87.2`            |
-| OPNsense VLAN 10 / Gateway | `10.10.10.1`             |
-| Linux Mint Admin-PC        | `10.10.10.3`             |
-| WireGuard-Netzwerk         | `10.10.123.0/24`         |
-| OPNsense WireGuard-IP      | `10.10.123.1`            |
-| Externer Windows-Client    | `10.10.123.2`            |
+| OPNsense VLAN 10 / Gateway | `10.0.10.1`              |
+| Linux Mint Admin-PC        | `10.0.10.3`              |
+| WireGuard-Netzwerk         | `10.0.123.0/24`          |
+| OPNsense WireGuard-IP      | `10.0.123.1`             |
+| Externer Windows-Client    | `10.0.123.2`             |
 | WireGuard-Port             | UDP `51821`              |
 | RDP-Port                   | TCP `3389`               |
 
@@ -94,9 +94,9 @@ Ziel ist es, von einem externen Windows-Rechner über eine verschlüsselte WireG
 ### 1.1 WireGuard konfigurieren
 
 1. WireGuard auf OPNsense aktivieren.
-2. Einen lokalen Tunnel mit der VPN-Adresse `10.10.123.1/24` konfigurieren.
+2. Einen lokalen Tunnel mit der VPN-Adresse `10.0.123.1/24` konfigurieren.
 3. Einen Peer für den externen Windows-Rechner anlegen.
-4. Dem Peer die Adresse `10.10.123.2/32` zuweisen.
+4. Dem Peer die Adresse `10.0.123.2/32` zuweisen.
 5. Den UDP-Port `51821` als Listen-Port verwenden.
 
 ### 1.2 Heimrouter konfigurieren
@@ -115,8 +115,8 @@ In der Heimrouter eine Portfreigabe einrichten:
 Folgende Regeln müssen entsprechend der vorhandenen Konfiguration eingerichtet und geprüft werden. Die Regeln sollten möglichst auf die benötigten Quellnetze, Zieladressen und Ports beschränkt sein.
 
 - **WAN:** Eingehenden WireGuard-Verkehr über UDP-Port `51821` zulassen.
-- **WireGuard/VPN:** Verkehr vom VPN-Netz `10.10.123.0/24` zum Management-Netz `10.10.10.0/24` erlauben.
-- **Zielzugriff:** RDP zu `10.10.10.3` über TCP-Port `3389` zulassen.
+- **WireGuard/VPN:** Verkehr vom VPN-Netz `10.0.123.0/24` zum Management-Netz `10.0.10.0/24` erlauben.
+- **Zielzugriff:** RDP zu `10.0.10.3` über TCP-Port `3389` zulassen.
 
 ## 2. Einrichtung auf dem Jumphost
 
@@ -146,7 +146,7 @@ Die UFW-Firewall erlaubt RDP nur von freigegebenen Quelladressen. Deshalb muss a
 **Erforderliche Freigabe:**
 
 ```bash
-sudo ufw allow from 10.10.123.0/24 to 10.10.10.3 port 3389 proto tcp
+sudo ufw allow from 10.10.123.0/24 to 10.0.10.3 port 3389 proto tcp
 ```
 
 Regeln kontrollieren:
@@ -175,7 +175,7 @@ Address = 10.10.123.2/32
 [Peer]
 PublicKey = <OEFFENTLICHER_OPNSENSE_SCHLUESSEL>
 Endpoint = <OEFFENTLICHE_IP_ODER_DYNDNS>:51821
-AllowedIPs = 10.10.123.0/24, 10.10.10.0/24, 10.10.1.0/24
+AllowedIPs = 10.10.123.0/24, 10.0.10.0/24, 10.0.1.0/24
 PersistentKeepalive = 25
 ```
 
@@ -192,25 +192,25 @@ Den Tunnel in WireGuard aktivieren.
 In PowerShell prüfen:
 
 ```powershell
-ping 10.10.10.3
+ping 10.0.10.3
 ```
 
 Anschließend testen, ob der RDP-Port erreichbar ist:
 
 ```powershell
-Test-NetConnection 10.10.10.3 -Port 3389
+Test-NetConnection 10.0.10.3 -Port 3389
 ```
 
 ### 3.3 RDP-Verbindung herstellen
 
 1. Via `mstsc` in Run.
-2. Als Computer `10.10.10.3` eintragen.
+2. Als Computer `10.0.10.3` eintragen.
 3. Auf **Verbinden** klicken.
 4. Mit dem entsprechenden Linux-Jumphost-Benutzerkonto anmelden.
 
 ## 4. Ergebnis
 
-Nach erfolgreicher Einrichtung kann der externe Windows-Rechner über WireGuard eine verschlüsselte Verbindung zum Heimnetz aufbauen und per RDP auf den Linux-Jumphost-PC unter `10.10.10.3` zugreifen.
+Nach erfolgreicher Einrichtung kann der externe Windows-Rechner über WireGuard eine verschlüsselte Verbindung zum Heimnetz aufbauen und per RDP auf den Linux-Jumphost-PC unter `10.0.10.3` zugreifen.
 
 **Wichtig:** WireGuard muss auf dem Windows-Rechner aktiv sein, bevor die RDP-Verbindung aufgebaut wird.
 

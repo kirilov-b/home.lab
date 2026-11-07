@@ -6,13 +6,13 @@ title: "[SRV] VM – FreeIPA / Identity /"
 
 **VM Parameter**
 
-|      **Parameter** | Wert                     | **Parameter** | Wert       |
-| -----------------: | ------------------------ | ------------: | ---------- |
-|          **VM-ID** | 202                      |      **IPv4** | 10.10.20.2 |
-|       **vLAN Tag** | 20                       |    **Domain** | srv.test   |
-|        **VM-Name** | ipa-la-20-2.srv.test     |     **Größe** | 40 GB      |
-|          **Zweck** | FreeIPA / Identity / DNS |       **RAM** | 4 GB       |
-| **Betriebssystem** | Linux Alma 10.2          |      **vCPU** | 2          |
+|      **Parameter** | Wert                     | **Parameter** | Wert      |
+| -----------------: | ------------------------ | ------------: | --------- |
+|          **VM-ID** | 202                      |      **IPv4** | 10.0.20.2 |
+|       **vLAN Tag** | 20                       |    **Domain** | srv.test  |
+|        **VM-Name** | ipa-la-20-2.srv.test     |     **Größe** | 40 GB     |
+|          **Zweck** | FreeIPA / Identity / DNS |       **RAM** | 4 GB      |
+| **Betriebssystem** | Linux Alma 10.2          |      **vCPU** | 2         |
 
 
 # Übersicht
@@ -51,9 +51,9 @@ Vor Installation:
 <summary><strong>Prüfpunkte anzeigen</strong></summary>
 
 ## 1.1 Netzwerk
-- FreeIPA-Server befindet sich im Servernetz `10.10.20.0/24`.
-- Server-IP: `10.10.20.2/24`.
-- Standardgateway: `10.10.20.1`.
+- FreeIPA-Server befindet sich im Servernetz `10.0.20.0/24`.
+- Server-IP: `10.0.20.2/24`.
+- Standardgateway: `10.0.20.1`.
 - Erreichbarkeit des Gateways und des Windows-Domaincontrollers wurde vor der Installation geprüft.
 - *Zugriffe aus anderen VLANs und passende Firewallregeln sind noch zu prüfen.*
 
@@ -100,9 +100,9 @@ Vor Installation:
 
 ## 3.2 DNS
 - Integrierter BIND-DNS ist aktiviert.
-- DNS-Forwarder: `10.10.20.1` (OPNsense).
+- DNS-Forwarder: `10.0.20.1` (OPNsense).
 - Forward-Policy: `only`.
-- Reverse-Zone: `20.10.10.in-addr.arpa.`.
+- Reverse-Zone: `20.0.10.in-addr.arpa.`.
 
 ## 3.3 Zertifikate
 - Eigenständige, selbstsignierte FreeIPA-CA wurde eingerichtet.
@@ -125,9 +125,9 @@ Vor Installation:
 - Alle dabei aufgeführten Dienste meldeten `RUNNING`.
 
 ## 4.2 DNS
-- A-Record: `ipa-la-20-2.srv.test` löst zu `10.10.20.2` auf.
+- A-Record: `ipa-la-20-2.srv.test` löst zu `10.0.20.2` auf.
 - SOA-Abfrage für `srv.test` war erfolgreich.
-- Reverse-DNS für `10.10.20.2` liefert `ipa-la-20-2.srv.test.`.
+- Reverse-DNS für `10.0.20.2` liefert `ipa-la-20-2.srv.test.`.
 
 ## 4.3 Kerberos
 - `kinit admin` war erfolgreich.

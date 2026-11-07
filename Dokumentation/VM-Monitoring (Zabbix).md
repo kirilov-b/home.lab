@@ -7,13 +7,13 @@ title: "[SRV] VM – Zabbix Monitoring"
 
 **VM Parameter**
 
-|          Parameter | Wert              | **Parameter** | Wert        |
-| -----------------: | ----------------- | ------------: | ----------- |
-|          **VM-ID** | 255               |      **IPv4** | 10.10.20.40 |
-|       **vLAN Tag** | 20                |    **Domain** | srv.test    |
-|        **VM-Name** | mon-la-20-40      |     **Größe** | 40 GB       |
-|          **Zweck** | Zabbix Monitoring |       **RAM** | 4 GB        |
-| **Betriebssystem** | Linux Alma 10.2   |      **vCPU** | 2           |
+|          Parameter | Wert              | **Parameter** | Wert       |
+| -----------------: | ----------------- | ------------: | ---------- |
+|          **VM-ID** | 255               |      **IPv4** | 10.0.20.40 |
+|       **vLAN Tag** | 20                |    **Domain** | srv.test   |
+|        **VM-Name** | mon-la-20-40      |     **Größe** | 40 GB      |
+|          **Zweck** | Zabbix Monitoring |       **RAM** | 4 GB       |
+| **Betriebssystem** | Linux Alma 10.2   |      **vCPU** | 2          |
 
 
 # Übersicht
@@ -205,7 +205,7 @@ firewall-cmd --reload
 firewall-cmd --list-services
 ```
 
-Weboberfläche: **[http://10.10.20.40/zabbix](http://10.10.20.40/zabbix)**
+Weboberfläche: **[http://10.0.20.40/zabbix](http://10.10.20.40/zabbix)**
 
 Die Freigabe des HTTPS-Dienstes öffnet nur den Port; ein TLS-Zertifikat  
 muss später separat eingerichtet werden.

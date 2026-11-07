@@ -30,12 +30,12 @@ Beschreibt die Verbindung zu dem Administrations VM (jump-lm-10-3)
 ### Linux
 Aus Jump Host aus:
 1. Öffentliche Schlüssel in dementsprechende VM setzen:
-     `ssh-copy-id -i ~/.ssh/id_ed25519.pub root@10.10.20.xx`
+     `ssh-copy-id -i ~/.ssh/id_ed25519.pub root@10.0.20.xx`
 2. Bequeme Verbindung:
 	   `nano ~/.ssh/config`
 3. Host Daten eintragen:
 	   *Host pbs*
-		   *Hostname 10.10.20.10*
+		   *Hostname 10.0.20.10*
 		   *User root*
 		   *Identify file ~/.ssh/ided25519*
 		   *Identify Only yes*
@@ -95,7 +95,7 @@ ipa dnsrecord-show srv.test app-la-20-90
 
 Eintrag (A-Record) anlegen
 ```
-ipa dnsrecord-add srv.test app-la-20-90 --a-rec=10.10.20.90
+ipa dnsrecord-add srv.test app-la-20-90 --a-rec=10.0.20.90
 ```
 
 ### FreeIPA Client installieren
@@ -207,7 +207,7 @@ New-NetFirewallRule `
   -Direction Inbound `
   -Protocol TCP `
   -LocalPort 10050 `
-  -RemoteAddress 10.10.20.40 `
+  -RemoteAddress 10.0.20.40 `
   -Action Allow
 ```
 
@@ -231,8 +231,8 @@ nano /etc/zabbix/zabbix_agent2.conf
 Diese Werte setzen bzw. vorhandene Zeilen bearbeiten:
 
 ```
-Server=10.10.20.40
-ServerActive=10.10.20.40
+Server=10.0.20.40
+ServerActive=10.0.20.40
 Hostname=VM-FQDN.srv.test
 ```
 
@@ -267,7 +267,7 @@ Wenn die Ausgabe `active` lautet, Port `10050/tcp` nur für den
 Zabbix-Server freigeben:
 
 ```
-firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="10.10.20.40/32" port port="10050" protocol="tcp" accept'
+firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="10.0.20.40/32" port port="10050" protocol="tcp" accept'
 firewall-cmd --reload
 firewall-cmd --list-rich-rules
 ```
@@ -278,7 +278,7 @@ werden.
 
 ## 5. Host in der Zabbix-Weboberfläche hinzufügen
 
-1. Öffne `http://10.10.20.40/zabbix`.
+1. Öffne `http://10.0.20.40/zabbix`.
 2. Gehe zu **Data collection → Hosts** und klicke **Create host**.
 3. Trage ein:
     - **Host name:** exakt derselbe Wert wie `Hostname` in  
@@ -286,7 +286,7 @@ werden.
     - **Host groups:** `Linux servers` (Gruppe auswählen oder anlegen)
     - **Templates:** `Linux by Zabbix agent`
     - **Interface:** `Agent`
-    - **IP address:** IP-Adresse der VM, z. B. `10.10.20.20`
+    - **IP address:** IP-Adresse der VM, z. B. `10.0.20.20`
     - **Connect to:** `IP`
     - **Port:** `10050`
 4. Klicke **Add**.
@@ -324,7 +324,7 @@ richtige IP-Adresse?
 ---
 
 **Beispiel erfolgreich getestet:** `ngx-la-20-20.srv.test`  
-(`10.10.20.20`) mit AlmaLinux 10.2 und Zabbix Agent 2 7.4.15.
+(`10.0.20.20`) mit AlmaLinux 10.2 und Zabbix Agent 2 7.4.15.
 
 </details>
 

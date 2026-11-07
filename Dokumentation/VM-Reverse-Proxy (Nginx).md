@@ -7,13 +7,13 @@ title: "[SRV] VM – Nginx / Reverse Proxy"
 
 **VM Parameter**
 
-|      **Parameter** | Wert                  | **Parameter** | Wert        |
-| -----------------: | --------------------- | ------------: | ----------- |
-|          **VM-ID** | 233                   |      **IPv4** | 10.10.20.20 |
-|       **vLAN Tag** | 20                    |    **Domain** | srv.test    |
-|        **VM-Name** | ngc-la-20-20          |     **Größe** | 20 GB       |
-|          **Zweck** | Nginx / Reverse Proxy |       **RAM** | 2 GB        |
-| **Betriebssystem** | Linux Alma 10.2       |      **vCPU** | 2           |
+|      **Parameter** | Wert                  | **Parameter** | Wert       |
+| -----------------: | --------------------- | ------------: | ---------- |
+|          **VM-ID** | 233                   |      **IPv4** | 10.0.20.20 |
+|       **vLAN Tag** | 20                    |    **Domain** | srv.test   |
+|        **VM-Name** | ngc-la-20-20          |     **Größe** | 20 GB      |
+|          **Zweck** | Nginx / Reverse Proxy |       **RAM** | 2 GB       |
+| **Betriebssystem** | Linux Alma 10.2       |      **vCPU** | 2          |
 
 
 # Übersicht
@@ -27,7 +27,7 @@ Nginx auf dient als zentraler **Reverse Proxy** für deine Homelab-Webdienste. E
 
 ## 1. Nginx installieren und starten
 
-**Auf NGX `10.10.20.20`, Shell als `root`:**
+**Auf NGX `10.0.20.20`, Shell als `root`:**
 
 ```
 dnf install -y nginx

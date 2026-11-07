@@ -132,11 +132,11 @@ Diese Abschnitt dient als Anleitung für die Konfiguration über **Server Manage
 3. Rechtsklick auf den aktiven Adapter > **Properties**.
 4. Öffne **Internet Protocol Version 4 (TCP/IPv4) > Properties**.
 5. Wähle **Use the following IP address** und trage ein:
-    - IP: `10.10.20.3`
+    - IP: `10.0.20.3`
     - Subnet mask: `255.255.255.0`
-    - Default gateway: `10.10.20.1`
+    - Default gateway: `10.0.20.1`
 6. Wähle **Use the following DNS server addresses**:
-    - Preferred DNS: `10.10.20.3`
+    - Preferred DNS: `10.0.20.3`
     - Alternate DNS: leer lassen
 7. Bestätigen.
 
@@ -173,7 +173,7 @@ tatsächlichen Interface-Alias vorher mit `Get-NetAdapter` ermitteln:
 
 ```
 Get-NetAdapter
-Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses 10.10.20.3
+Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses 10.0.20.3
 ```
 
 Ersetze `"Ethernet"`, falls der Adapter anders heißt.
@@ -272,14 +272,14 @@ korrekten IP zurückgeben.
 1. Im DHCP-Manager den Server erweitern.
 2. Rechtsklick auf **IPv4 > New Scope**.
 3. Name: `VLAN30-Clients`.
-4. Start-IP `10.10.30.100`, End-IP `10.10.30.200`.
+4. Start-IP `10.0.30.100`, End-IP `10.0.30.200`.
 5. Subnetzmaske `255.255.255.0`.
 6. Ausschlussbereiche nur bei Bedarf eintragen.
 7. Lease Duration festlegen (im bisherigen Lab waren es 8 Tage).
 8. **Configure these options now** wählen.
-9. Router: `10.10.30.1`.
+9. Router: `10.0.30.1`.
 10. Domain Name: `cl.lab.test`.
-11. DNS Server: `10.10.20.3`.
+11. DNS Server: `10.0.20.3`.
 12. WINS leer lassen, sofern nicht benötigt.
 13. Scope-Optionen prüfen und den Scope anschließend mit Rechtsklick >  
     **Activate** aktivieren.
@@ -288,8 +288,8 @@ korrekten IP zurückgeben.
 
 Unter **IPv4 > VLAN30-Clients > Scope Options** prüfen:
 
-- `003 Router`: `10.10.30.1`
-- `006 DNS Servers`: `10.10.20.3`
+- `003 Router`: `10.0.30.1`
+- `006 DNS Servers`: `10.0.20.3`
 - `015 DNS Domain Name`: `cl.lab.test`
 
 <details markdown="1">
@@ -304,7 +304,7 @@ Install-WindowsFeature DHCP -IncludeManagementTools
 DHCP-Server in AD autorisieren:
 
 ```
-Add-DhcpServerInDC -DnsName "dc-ws-20-3.cl.lab.test" -IPAddress 10.10.20.3
+Add-DhcpServerInDC -DnsName "dc-ws-20-3.cl.lab.test" -IPAddress 10.0.20.3
 Get-DhcpServerInDC
 ```
 
@@ -313,8 +313,8 @@ Beispiel-Scope erstellen (Bereich und Netz an das eigene Lab anpassen):
 ```
 Add-DhcpServerv4Scope `
   -Name "VLAN30-Clients" `
-  -StartRange 10.10.30.100 `
-  -EndRange 10.10.30.200 `
+  -StartRange 10.0.30.100 `
+  -EndRange 10.0.30.200 `
   -SubnetMask 255.255.255.0 `
   -State Inactive
 ```
@@ -322,12 +322,12 @@ Add-DhcpServerv4Scope `
 Scope-Optionen setzen und Scope aktivieren:
 
 ```
-Set-DhcpServerv4OptionValue -ScopeId 10.10.30.0 -Router 10.10.30.1
-Set-DhcpServerv4OptionValue -ScopeId 10.10.30.0 -DnsServer 10.10.20.3
-Set-DhcpServerv4OptionValue -ScopeId 10.10.30.0 -DnsDomain "cl.lab.test"
-Set-DhcpServerv4Scope -ScopeId 10.10.30.0 -State Active
+Set-DhcpServerv4OptionValue -ScopeId 10.0.30.0 -Router 10.0.30.1
+Set-DhcpServerv4OptionValue -ScopeId 10.0.30.0 -DnsServer 10.0.20.3
+Set-DhcpServerv4OptionValue -ScopeId 10.0.30.0 -DnsDomain "cl.lab.test"
+Set-DhcpServerv4Scope -ScopeId 10.0.30.0 -State Active
 Get-DhcpServerv4Scope
-Get-DhcpServerv4OptionValue -ScopeId 10.10.30.0
+Get-DhcpServerv4OptionValue -ScopeId 10.0.30.0
 ```
 
 Auf OPNsense DHCP Relay auf dem Client-VLAN zum Server `10.10.20.3`  
@@ -343,7 +343,7 @@ vorgenommen.
 - **Services > DHCP Relay** öffnen (Menü kann je nach Version  
     abweichen).
 - Client-Interface `VLAN_30_CLIENTS` auswählen.
-- DHCP-Serverziel `10.10.20.3` eintragen.
+- DHCP-Serverziel `10.0.20.3` eintragen.
 - Relay aktivieren, speichern und anwenden.
 - Status prüfen.
 
@@ -409,8 +409,8 @@ Computerkonto gelöscht wird.
 4. **Obtain an IP address automatically** und **Obtain DNS server  
     address automatically** auswählen.
 5. In einer Eingabeaufforderung `ipconfig /all` ausführen.
-6. Prüfen: IP aus dem DHCP-Bereich, Gateway `10.10.30.1`, DNS  
-    `10.10.20.3`, DNS-Suffix `cl.lab.test`.
+6. Prüfen: IP aus dem DHCP-Bereich, Gateway `10.0.30.1`, DNS  
+    `10.0.20.3`, DNS-Suffix `cl.lab.test`.
 
 #### 5.2 Domain-Join
 
@@ -477,7 +477,7 @@ Set-TimeZone -Id "W. Europe Standard Time"
   <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
 
 Auf OPNsense nur die benötigten Verbindungen vom Client-VLAN zum DC  
-`10.10.20.3` zulassen. Für moderne Windows-RPC-Kommunikation kann  
+`10.0.20.3` zulassen. Für moderne Windows-RPC-Kommunikation kann  
 dynamisches TCP-RPC im Bereich `49152–65535` erforderlich sein. Auf dem  
 DC und Client muss die jeweilige Windows-Firewall ebenfalls die  
 erforderlichen Dienste zulassen.
@@ -536,13 +536,13 @@ zuverlässiger als Notepad; die genaue Ein-Befehl-Variante steht in
 Von Linux Mint:
 
 ```
-ssh -l 'Administrator@cl.lab.test' 10.10.30.101
+ssh -l 'Administrator@cl.lab.test' 10.0.30.101
 ```
 
 Mit Schlüssel:
 
 ```
-ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes -l 'Administrator@cl.lab.test' 10.10.30.101
+ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes -l 'Administrator@cl.lab.test' 10.0.30.101
 ```
 
 
@@ -620,7 +620,7 @@ Schlüssel ergänzen.
 Von Linux Mint testen (UPN-Format für das Domänenkonto):
 
 ```
-ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes -l 'Administrator@cl.lab.test' 10.10.30.101
+ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes -l 'Administrator@cl.lab.test' 10.0.30.101
 ```
 
 Wenn SSH trotz laufendem Dienst nicht erreichbar ist, zuerst IP, Port  
@@ -651,7 +651,7 @@ Wenn SSH trotz laufendem Dienst nicht erreichbar ist, zuerst IP, Port
 
 1. Remmina öffnen und eine neue Verbindung erstellen.
 2. Protocol: **RDP**.
-3. Server: `10.10.30.101`.
+3. Server: `10.0.30.101`.
 4. Benutzername: `Administrator@cl.lab.test` (oder Benutzername plus  
     Domäne, je nach Remmina).
 5. Domänenkennwort eingeben und verbinden.
@@ -684,10 +684,10 @@ Get-NetTCPConnection -State Listen -LocalPort 3389
 Von Linux Mint den TCP-Port testen:
 
 ```
-nc -zv 10.10.30.101 3389
+nc -zv 10.0.30.101 3389
 ```
 
-In Remmina RDP auswählen, als Server `10.10.30.101` eintragen und ein  
+In Remmina RDP auswählen, als Server `10.0.30.101` eintragen und ein  
 geeignetes Domänenkonto verwenden. RDP-Zugriff muss auch durch die  
 Netzwerk-Firewall zwischen den VLANs erlaubt sein, falls der Jump-Host  
 in einem anderen VLAN liegt.
