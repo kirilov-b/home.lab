@@ -43,10 +43,10 @@ Dient als Managed Switch für VLAN.
 ## OPNsense - Grundkonfiguration
 Netzwerk Interface anpassen:
 - WAN - vtnet0: IPv4 (via DHCP) **172.18.87.1 /24**
-- VLAN-10-MGMT - IPV4 (statisch) **10.10.10.1 /24**
-- VLAN-20-SRV  - IPV4 (statisch) **10.10.20.1 /24**
-- VLAN-30-CLT  - IPV4 (statisch) **10.10.30.1 /24**
-### GUI - 10.10.10.1
+- VLAN-10-MGMT - IPV4 (statisch) **10.0.10.1 /24**
+- VLAN-20-SRV  - IPV4 (statisch) **10.0.20.1 /24**
+- VLAN-30-CLT  - IPV4 (statisch) **10.0.30.1 /24**
+### GUI - 10.0.10.1
 
 ## Regeln IPv4
 
