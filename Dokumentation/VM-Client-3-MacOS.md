@@ -65,11 +65,12 @@ Größe: **14.9 GB**
 Die MacOS ISO wird an einem CD/DVD Laufwerk in der Proxmox VM Konfigurationa angehängt. Diese Laufwerk steht an der zweite Stelle in der Bootreihenfolge.
 
 Beim Booten wird zuerst **Disk Utility** gestartet, um die Festplatte in Mac geeignete Format zu konfigurieren.
+
 Name: **Mac HardDisk**
 Format: **APFS**
 Scheme: **GUID Partition Map**
 
-Nach dem Formatieren wird die Installation von MacOS Sonoma gestartet.
+Nach dem Formatieren wird die Installation von MacOS Sonoma gestartet und klassisch durchgefüht.
 
 ## 3. Proxmox VM Konfiguration Besonderheiten
 
