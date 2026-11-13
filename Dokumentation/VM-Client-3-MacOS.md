@@ -32,8 +32,8 @@ Zweck diese Mac Testclient ist unsere Domäne Umgebung aus der MacOS Perspektive
 ## Vorbereitung
 
 
-<strong><span style="color: #00813F;">Vorbereitungsschritte anzeigen</span></strong></summary>
-
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Schritte anzeigen</span></strong></summary>
 
 ## 1. Long QT-OpenCore - v07.iso 
 
