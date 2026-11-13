@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "[CL] VM – Testclient - 3 - MacOS"
+title: "[CL] VM – Testclient - 3 - MacOS Sonoma"
 ---
 # VM – macOS Sonoma (Testclient)
 
