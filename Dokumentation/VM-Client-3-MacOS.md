@@ -79,7 +79,7 @@ Nach dem Formatieren wird die Installation von MacOS Sonoma gestartet und klassi
 - **EFI SecureBoot**: "Aus"
 - **PX Firewall**: "Aus" - Führt nach gewisse Zeit zum Absturz des Systems wenn aktiv ist
 - **CPU**: "host" - Die "x86-64-v2-AES" führt zu ein Kernel Panic
-- **Netzwerkadapter** * : "VMware vmxnet3" (statt "Intel E1000") - sonst funktioniert die ACK der VM bei der Verbindung mit DHCP Server.
+- **Netzwerkadapter** * : "VMware vmxnet3" (statt "Intel E1000") - sonst funktioniert die ACK der VM bei der Verbindung mit DHCP Server nicht.
 
 
 </details>
