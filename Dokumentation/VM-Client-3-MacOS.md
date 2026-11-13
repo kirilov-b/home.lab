@@ -6,14 +6,14 @@ title: "[CL] VM – Testclient - 3 - MacOS"
 
 **VM Parameter**
 
-|      **Parameter** | Wert         |       **Parameter** | Wert           |
-| -----------------: | ------------ | ------------------: | -------------- |
-|          **VM-ID** | 303          |       **IPv4 DHCP** | 10.0.30.xxx    |
-|       **vLAN Tag** | 30           |          **Domain** | cl.lab.test    |
-|        **VM-Name** | cl3-mac-30   |       **Hard Disk** | 80 GB (SATA)   |
-|          **Zweck** | Testclient   |             **RAM** | 8 GB           |
-| **Betriebssystem** | MacOS Sonoma |            **vCPU** | 2              |
-|           **BIOS** | OVMF/UEFI    | **Netzwerkadapter** | VMware vmxnet3 |
+|      **Parameter** | Wert         |         **Parameter** | Wert           |
+| -----------------: | ------------ | --------------------: | -------------- |
+|          **VM-ID** | 303          |         **IPv4 DHCP** | 10.0.30.xxx    |
+|       **vLAN Tag** | 30           |            **Domain** | cl.lab.test    |
+|        **VM-Name** | cl3-mac-30   |       **Hard Disk** * | 80 GB (SATA)   |
+|          **Zweck** | Testclient   |               **RAM** | 8 GB           |
+| **Betriebssystem** | MacOS Sonoma |              **vCPU** | 2              |
+|           **BIOS** | OVMF/UEFI    | **Netzwerkadapter** * | VMware vmxnet3 |
 
 
 # Übersicht
@@ -30,6 +30,7 @@ Zweck diese Mac Testclient ist unsere Domäne Umgebung aus der MacOS Perspektive
 # Konfigurationsschritte 
 
 ## Vorbereitung
+
 
 <strong><span style="color: #00813F;">Vorbereitungsschritte anzeigen</span></strong></summary>
 
@@ -72,12 +73,13 @@ Nach dem Formatieren wird die Installation von MacOS Sonoma gestartet.
 
 ## 3. Proxmox VM Konfiguration Besonderheiten
 
-- **Hard Disk**: "SATA 0" (anstatt "virtio-scsi-single") - Sonst ist die Festplatte nicht sichtbar
+- **Hard Disk** * : "SATA 0" (anstatt "virtio-scsi-single") - Sonst ist die Festplatte nicht sichtbar
 - **Proxmox SecureBoot**: "Aus"
 - **EFI SecureBoot**: "Aus"
 - **PX Firewall**: "Aus" - Führt nach gewisse Zeit zum Absturz des Systems wenn aktiv ist
 - **CPU**: "host" - Die "x86-64-v2-AES" führt zu ein Kernel Panic
-- **Netzwerkadapter**: "VMware vmxnet3" (statt "Intel E1000") - sonst funktioniert die ACK der VM bei der Verbindung mit DHCP Server.
+- **Netzwerkadapter** * : "VMware vmxnet3" (statt "Intel E1000") - sonst funktioniert die ACK der VM bei der Verbindung mit DHCP Server.
+
 
 </details>
 
