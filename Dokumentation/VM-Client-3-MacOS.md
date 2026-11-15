@@ -92,10 +92,8 @@ Nach dem Formatieren wird die Installation von MacOS Sonoma gestartet und klassi
 
 ### 2.1 SSH & RDP
 ### 2.2 Domain Join
-
 Das Beitreten in unsere Active Directory "client" Domäne geht ziemlich einfach an MacOS
 #### 2.2.1 Voraussetzungen prüfen
-
 Vor dem Domain Join wurde die DNS-Konfiguration unter *Systemeinstellungen → Netzwerk → Ethernet → Details → DNS* kontrolliert.
 
 |Einstellung|Wert|
@@ -114,7 +112,6 @@ nslookup -type=SRV _ldap._tcp.dc._msdcs.cl.lab.test
 Der Domain Controller `dc-ws-20-3.cl.lab.test` wurde erfolgreich gefunden.
 
 #### 2.2.2. Active Directory Domain Join
-
 Der Domain Join wurde über die grafische Oberfläche durchgeführt:
 *Directory Utility > Sercice > Active Directory > Edit* 
 
@@ -149,6 +146,36 @@ Active Directory Forest  = cl.lab.test
 Active Directory Domain  = cl.lab.test
 Computer Account         = cl3-mac-30$
 ```
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Troubleshooting anzeigen</span></strong></summary>
+
+
+#### Probleme
+- Anmeldung mit andere Users war nicht auswählbar.
+- Am Anmeldebildschirm erschien jedoch „Network Accounts are unavailable“.
+- AD-Benutzer konnten zunächst nicht aufgelöst werden.
+- Der Directory Editor meldete Fehler `2100`.
+- Kerberos funktionierte bereits, aber die Benutzerauflösung über macOS Directory Services bereitete Probleme.
+#### Lösung
+
+- **Anmeldefenster auf Benutzername und Passwort umstellen**
+Zunächst wurde über das Terminal die Anzeige des macOS-Anmeldefensters angepasst:                    Diese Option war in der GUI nicht sichtbar deswegen mit dem Befehl                                                                                                                                                                                                                                               
+```
+sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWFULLNAME -bool true
+```
+
+Dadurch zeigt macOS Eingabefelder für Benutzername und Passwort statt der Auswahl lokaler Benutzerkonten.
+
+- **Active Directory in Directory Utility konfigurieren**
+Den Eintrag aus *Directory Utility → Search policy → Authentication→ Edit*  **/Active Directory/CL/All Domains** müsste gelöscht werden und mit **/Active Directory/CL/cl.lab.test** ersetzt werden.
+- *Directory Utility > Services > Active Directory > Show Opitons > Administrative*
+  Hier müsste **Allow authentication from any Domain in the forest** deaktiviert werden
+
+
+</details>
+
+
 ### 2.3 Dienste
 
 
