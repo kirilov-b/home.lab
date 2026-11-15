@@ -157,6 +157,7 @@ Computer Account         = cl3-mac-30$
 - AD-Benutzer konnten zunächst nicht aufgelöst werden.
 - Der Directory Editor meldete Fehler `2100`.
 - Kerberos funktionierte bereits, aber die Benutzerauflösung über macOS Directory Services bereitete Probleme.
+
 #### Lösung
 
 - **Anmeldefenster auf Benutzername und Passwort umstellen**
