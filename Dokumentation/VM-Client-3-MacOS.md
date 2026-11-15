@@ -58,16 +58,16 @@ Damit macOS Sonoma ohne separate OpenCore-ISO starten kann, haben wir OpenCore a
 
 Für die Erstellung des Installationsmediums wurde das GitHub-Projekt **LongQT-sea/macos-iso-builder** verwendet. Das GitHub Projekt lädt den vollständigen macOS-Installer von Apples Servern herunter und erstellt daraus ein bootfähiges ISO-Image. Die Erstellung kann über GitHub Actions ausgeführt werden, sodass dafür kein eigener Mac benötigt wird. 
 
-ISO: **macOS_Sonoma_14.8.9.iso**
-Größe: **14.9 GB**
+- ISO: **macOS_Sonoma_14.8.9.iso**
+- Größe: **14.9 GB**
 
 Die MacOS ISO wird an einem CD/DVD Laufwerk in der Proxmox VM Konfigurationa angehängt. Diese Laufwerk steht an der zweite Stelle in der Bootreihenfolge.
 
 Beim Booten wird zuerst **Disk Utility** gestartet, um die Festplatte in Mac geeignete Format zu konfigurieren.
 
-Name: **Mac HardDisk** 
-Format: **APFS** 
-Scheme: **GUID Partition Map** 
+- Name: **Mac HardDisk** 
+- Format: **APFS** 
+- Scheme: **GUID Partition Map** 
 
 Nach dem Formatieren wird die Installation von MacOS Sonoma gestartet und klassisch durchgefüht.
 
@@ -93,6 +93,62 @@ Nach dem Formatieren wird die Installation von MacOS Sonoma gestartet und klassi
 ### 2.1 SSH & RDP
 ### 2.2 Domain Join
 
+Das Beitreten in unsere Active Directory "client" Domäne geht ziemlich einfach an MacOS
+#### 2.2.1 Voraussetzungen prüfen
+
+Vor dem Domain Join wurde die DNS-Konfiguration unter *Systemeinstellungen → Netzwerk → Ethernet → Details → DNS* kontrolliert.
+
+|Einstellung|Wert|
+|---|---|
+|IP-Adresse|DHCP|
+|DNS-Server|`10.10.20.3`|
+|Suchdomäne|`cl.lab.test`|
+|Gateway|`10.10.30.1`|
+
+Anschließend wurde die DNS-Auflösung im Terminal getestet:
+
+```bash
+nslookup -type=SRV _ldap._tcp.dc._msdcs.cl.lab.test
+```
+
+Der Domain Controller `dc-ws-20-3.cl.lab.test` wurde erfolgreich gefunden.
+
+#### 2.2.2. Active Directory Domain Join
+
+Der Domain Join wurde über die grafische Oberfläche durchgeführt:
+*Directory Utility > Sercice > Active Directory > Edit* 
+
+- Active Directory Domain: `cl.lab.test`
+- Computer ID: `cl3-mac-30`
+
+Klicken auf **Bind** zu betreten. Authentifizieren über den Administrator Konto von der Domain Controller (Username / Passwort) und danach dern Vorgang bestätigen.
+
+#### 2.2.3 Domain Join überprüfen
+
+**Grafische Überprüfung**
+Unter *Directory Utility → Services → Active Directory* wurden folgende Angaben angezeigt:
+
+- Active Directory Forest: `cl.lab.test`
+- Active Directory Domain: `cl.lab.test`
+- Computer ID: `cl3-mac-30`
+
+Die Schaltfläche **Unbind** bestätigte die bestehende Domain-Bindung. Zusätzlich wurde unter *Users & Groups → Network account server* der Status der Domäne angezeigt.
+
+**Überprüfung über Terminal**
+
+Eingabe:
+
+```bash
+dsconfigad -show
+```
+
+Die Ausgabe bestätigte:
+
+```text
+Active Directory Forest  = cl.lab.test
+Active Directory Domain  = cl.lab.test
+Computer Account         = cl3-mac-30$
+```
 ### 2.3 Dienste
 
 
