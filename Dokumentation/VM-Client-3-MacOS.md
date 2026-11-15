@@ -29,13 +29,13 @@ Zweck diese Mac Testclient ist unsere Domäne Umgebung aus der MacOS Perspektive
 
 # Konfigurationsschritte 
 
-## Vorbereitung
+## 1. Vorbereitung
 
 
 <details markdown="1">
-  <summary><strong><span style="color: #00813F;">Schritte anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #00813F;"Vorbereitungsschritte anzeigen</span></strong></summary>
 
-## 1. Long QT-OpenCore - v07.iso 
+### 1.1 Long QT-OpenCore - v07.iso 
 
 Für Proxmox/QEMU wurde das vorgefertigte Projekt **LongQT-sea/OpenCore-ISO** (GitHub) verwendet. Das Repository stellt ein speziell für Proxmox VE und QEMU/KVM vorbereitetes, bootfähiges OpenCore-CD/DVD-Image bereit.
 OpenCore wird vor dem eigentlichen macOS-Start geladen und bereitet die Startumgebung so vor, dass macOS auf der bereitgestellten virtuellen Hardware starten kann.
@@ -55,7 +55,7 @@ Der Startablauf sieht vereinfacht so aus:
 Einrichtung das System Booten ohne den OpenCore Laufwerk:
 Die Einrichtung wird in der Dokumentation von LonQT-sea/OpenCore-ISO bechrieben.
 Damit macOS Sonoma ohne separate OpenCore-ISO starten kann, haben wir OpenCore auf der EFI-Partition der virtuellen Systemfestplatte installiert. Der Script **Mount-EFI.command** wurde ausgeführt und die **Boot** und **OS** aus der OpenCore Laufwerk auf der EFI Systemfestplatte kopiert.
-## 2. macOS-Installationsmedium über GitHub erstellen
+### 1.2 macOS-Installationsmedium über GitHub erstellen
 
 Für die Erstellung des Installationsmediums wurde das GitHub-Projekt **LongQT-sea/macos-iso-builder** verwendet. Das GitHub Projekt lädt den vollständigen macOS-Installer von Apples Servern herunter und erstellt daraus ein bootfähiges ISO-Image. Die Erstellung kann über GitHub Actions ausgeführt werden, sodass dafür kein eigener Mac benötigt wird. 
 
@@ -72,7 +72,7 @@ Scheme: **GUID Partition Map**
 
 Nach dem Formatieren wird die Installation von MacOS Sonoma gestartet und klassisch durchgefüht.
 
-## 3. Proxmox VM Konfiguration Besonderheiten
+### 1.3 Proxmox VM Konfiguration Besonderheiten
 
 - **Hard Disk** * : "SATA 0" (anstatt "virtio-scsi-single") - Sonst ist die Festplatte nicht sichtbar
 - **Proxmox SecureBoot**: "Aus"
@@ -80,6 +80,21 @@ Nach dem Formatieren wird die Installation von MacOS Sonoma gestartet und klassi
 - **PX Firewall**: "Aus" - Führt nach gewisse Zeit zum Absturz des Systems wenn aktiv ist
 - **CPU**: "host" - Die "x86-64-v2-AES" führt zu ein Kernel Panic
 - **Netzwerkadapter** * : "VMware vmxnet3" (statt "Intel E1000") - sonst funktioniert die ACK der VM bei der Verbindung mit DHCP Server.
+
+
+</details>
+
+
+## 2. Integration
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Integrationsschritte anzeigen</span></strong></summary>
+
+
+### 2.1 SSH & RDP
+### 2.2 Domain Join
+
+### 2.3 Dienste
 
 
 </details>
