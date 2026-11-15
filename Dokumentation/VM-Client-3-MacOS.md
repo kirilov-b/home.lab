@@ -118,7 +118,7 @@ Der Domain Join wurde über die grafische Oberfläche durchgeführt:
 - Active Directory Domain: `cl.lab.test`
 - Computer ID: `cl3-mac-30`
 
-Klicken auf **Bind** zu betreten. Authentifizieren über den Administrator Konto von der Domain Controller (Username / Passwort) und danach dern Vorgang bestätigen.
+Klicken auf **Bind** zu betreten. Authentifizieren über den Administrator Konto von der Domain Controller (Username / Password) und danach dern Vorgang bestätigen.
 
 #### 2.2.3 Domain Join überprüfen
 
@@ -161,12 +161,10 @@ Computer Account         = cl3-mac-30$
 #### Lösung
 
 - **Anmeldefenster auf Benutzername und Passwort umstellen**
-Zunächst wurde über das Terminal die Anzeige des macOS-Anmeldefensters angepasst:                    Diese Option war in der GUI nicht sichtbar deswegen mit dem Befehl                                                                                                                                                                                                                                               
+Zunächst wurde über das Terminal die Anzeige des macOS-Anmeldefensters angepasst:                    Diese Option war in der GUI nicht sichtbar deswegen mit dem Befehl.                                                                                                                                                                                                                                               
 ```
 sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWFULLNAME -bool true
 ```
-
-Dadurch zeigt macOS Eingabefelder für Benutzername und Passwort statt der Auswahl lokaler Benutzerkonten.
 
 - **Active Directory in Directory Utility konfigurieren**
 Den Eintrag aus *Directory Utility → Search policy → Authentication→ Edit*  **/Active Directory/CL/All Domains** müsste gelöscht werden und mit **/Active Directory/CL/cl.lab.test** ersetzt werden.
