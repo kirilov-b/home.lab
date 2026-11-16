@@ -106,7 +106,9 @@ Unter *System Settings → General → Sharing → Screen Sharing:*
 3. Der Zugriff wurde auf ausgewählte Benutzer beschränkt; der AD-Benutzer `administrator` wurde freigegeben.
 4. Die Remmina-Anmeldung mit den AD-Zugangsdaten von `administrator` war erfolgreich.
 
-Der VNC-Zugriff öffnet den macOS-Anmeldebildschirm. Die anschließende Anmeldung erfolgt mit dem jeweiligen macOS-Konto. Die Anmeldung soll weiterhin für den lokalen macOS-Administrator sowie die AD-Konten `administrator` und `Anna.Buchhaltung` möglich bleiben.
+Der VNC-Zugriff öffnet den macOS-Anmeldebildschirm. Die anschließende Anmeldung erfolgt mit dem jeweiligen macOS-Konto. Die Anmeldung soll weiterhin für den lokalen macOS-Administrator sowie die AD-Konten `administrator` und `Users` möglich bleiben.
+
+**Sicherheitshinweis:** Klassisches VNC bietet keine verlässliche Ende-zu-Ende-Transportverschlüsselung. Den Zugriff auf TCP-Port 5900 daher auf vertrauenswürdige Quellen beschränken oder bei Bedarf über einen geschützten SSH-Tunnel führen.
 
 #### 2.1.3 Jump-VM konfigurieren
 **Remmina für VNC**  - In Remmina wurde ein Verbindungsprofil angelegt:
