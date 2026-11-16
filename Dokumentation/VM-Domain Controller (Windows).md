@@ -65,6 +65,7 @@ Benutzer, Computer und Gruppen sind nach Abteilungen getrennt. GPOs können gezi
 | Mitarbeiter | Lisa        | `lisa.mitarbeiter`    |
 | Mitarbeiter | Daniel      | `daniel.mitarbeiter`  |
 | Mitarbeiter | Sophie      | `sophie.mitarbeiter`  |
+
 ## 4. Gruppenmodell (AGDLP)
 **Prinzip:** Benutzer → globale Gruppe (GG) → domänenlokale Berechtigungsgruppe (DL) → Ressourcenrechte.
 
@@ -78,6 +79,7 @@ Alle GG-Gruppen sind als **Global / Security** angelegt.
 | `BSI-GG-IT`          | Stefan, Julia                 |
 | `BSI-GG-Mitarbeiter` | Michael, Lisa, Daniel, Sophie |
 | `BSI-GG-Alle`        | alle zehn Benutzer            |
+
 **Nutzen:** Abteilungsmitgliedschaften und Ressourcenrechte werden getrennt verwaltet. Neue Benutzer benötigen die passende GG-Mitgliedschaft; allgemeiner Zugriff setzt die Mitgliedschaft in `BSI-GG-Alle` voraus.
 # Windows Server Backup
 
