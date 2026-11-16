@@ -90,53 +90,9 @@ Nach dem Formatieren wird die Installation von MacOS Sonoma gestartet und klassi
   <summary><strong><span style="color: #00813F;">Integrationsschritte anzeigen</span></strong></summary>
 
 
-### 2.1 SSH & VNC (statt RDP)
-
-#### 2.1.1 SSH-Server aktivieren
-  Auf dem Mac unter *System Settings → General → Sharing:*
-
-1. **Remote Login** aktiviert.
-2. Zugriff auf berechtigte Benutzer beschränkt; der AD-Benutzer `administrator` wurde zugelassen.
-3. SSH hört auf TCP-Port `22`.
-#### 2.1.2 Screen Sharing / VNC aktivieren
-Unter *System Settings → General → Sharing → Screen Sharing:*
-
-1. **Screen Sharing** aktiviert.
-2. Zugriff auf ausgewählte Benutzer beschränkt; der AD-Benutzer `administrator` wurde zugelassen.
-3. Der Zugriff wurde auf ausgewählte Benutzer beschränkt; der AD-Benutzer `administrator` wurde freigegeben.
-4. Die Remmina-Anmeldung mit den AD-Zugangsdaten von `administrator` war erfolgreich.
-
-Der VNC-Zugriff öffnet den macOS-Anmeldebildschirm. Die anschließende Anmeldung erfolgt mit dem jeweiligen macOS-Konto. Die Anmeldung soll weiterhin für den lokalen macOS-Administrator sowie die AD-Konten `administrator` und `Users` möglich bleiben.
-
-**Sicherheitshinweis:** Klassisches VNC bietet keine verlässliche Ende-zu-Ende-Transportverschlüsselung. Den Zugriff auf TCP-Port 5900 daher auf vertrauenswürdige Quellen beschränken oder bei Bedarf über einen geschützten SSH-Tunnel führen.
-
-#### 2.1.3 Jump-VM konfigurieren
-**Remmina für VNC**  - In Remmina wurde ein Verbindungsprofil angelegt:
-
-- Protokoll: **VNC Plugin** (nicht VNC Listener Plugin)
-- Server: `cl3-mac-30.cl.lab.test:5900`
-- Verbindung: vom Jump-Host zum macOS Screen Sharing-Dienst
-
-MacOS unterstütz nativ den RDP Verbindung stattdessen verwendet **VNC** (*Virtual Network Computing)*. Der VNC-Dienst des Macs ist über TCP-Port `5900` erreichbar. 
-
-- Auf der Jump-VM wurde in `~/.ssh/config` ein Alias angelegt:
-
-```
-Host mac
-    HostName cl3-mac-30.cl.lab.test
-    User administrator
-```
-
-- Der vorhandene Ed25519-Schlüssel der Jump-VM wurde weiterverwendet; es wurde kein neues Schlüsselpaar erstellt: Öffentlicher Schlüssel: `~/.ssh/id_ed25519.pub` – wurde auf dem Mac beim AD-Benutzer `administrator` hinterlegt.
-
-```
-ssh-copy-id -i ~/.ssh/id_ed25519.pub mac
-```
-
-Danach funktionierte `ssh mac` ohne Passwortabfrage. Die Passwortanmeldung bleibt als alternative Anmeldemöglichkeit bestehen.
-### 2.2 Domain Join
+### 2.1 Domain Join
 Das Beitreten in unsere Active Directory "client" Domäne geht ziemlich einfach an MacOS
-#### 2.2.1 Voraussetzungen prüfen
+#### 2.1.1 Voraussetzungen prüfen
 Vor dem Domain Join wurde die DNS-Konfiguration unter *Systemeinstellungen → Netzwerk → Ethernet → Details → DNS* kontrolliert.
 
 |Einstellung|Wert|
@@ -154,7 +110,7 @@ nslookup -type=SRV _ldap._tcp.dc._msdcs.cl.lab.test
 
 Der Domain Controller `dc-ws-20-3.cl.lab.test` wurde erfolgreich gefunden.
 
-#### 2.2.2. Active Directory Domain Join
+#### 2.1.2. Active Directory Domain Join
 Der Domain Join wurde über die grafische Oberfläche durchgeführt:
 *Directory Utility > Sercice > Active Directory > Edit* 
 
@@ -163,7 +119,7 @@ Der Domain Join wurde über die grafische Oberfläche durchgeführt:
 
 Klicken auf **Bind** zu betreten. Authentifizieren über den Administrator Konto von der Domain Controller (Username / Password) und danach dern Vorgang bestätigen.
 
-#### 2.2.3 Domain Join überprüfen
+#### 2.1.3 Domain Join überprüfen
 
 **Grafische Überprüfung**
 Unter *Directory Utility → Services → Active Directory* wurden folgende Angaben angezeigt:
@@ -213,6 +169,51 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWFULLNAME -boo
 Den Eintrag aus *Directory Utility → Search policy → Authentication→ Edit*  **/Active Directory/CL/All Domains** müsste gelöscht werden und mit **/Active Directory/CL/cl.lab.test** ersetzt werden.
 - *Directory Utility > Services > Active Directory > Show Opitons > Administrative*
   Hier müsste **Allow authentication from any Domain in the forest** deaktiviert werden
+### 2.2 SSH & VNC (statt RDP)
+
+#### 2.2.1 SSH-Server aktivieren
+  Auf dem Mac unter *System Settings → General → Sharing:*
+
+1. **Remote Login** aktiviert.
+2. Zugriff auf berechtigte Benutzer beschränkt; der AD-Benutzer `administrator` wurde zugelassen.
+3. SSH hört auf TCP-Port `22`.
+#### 2.2.2 Screen Sharing / VNC aktivieren
+Unter *System Settings → General → Sharing → Screen Sharing:*
+
+1. **Screen Sharing** aktiviert.
+2. Zugriff auf ausgewählte Benutzer beschränkt; der AD-Benutzer `administrator` wurde zugelassen.
+3. Der Zugriff wurde auf ausgewählte Benutzer beschränkt; der AD-Benutzer `administrator` wurde freigegeben.
+4. Die Remmina-Anmeldung mit den AD-Zugangsdaten von `administrator` war erfolgreich.
+
+Der VNC-Zugriff öffnet den macOS-Anmeldebildschirm. Die anschließende Anmeldung erfolgt mit dem jeweiligen macOS-Konto. Die Anmeldung soll weiterhin für den lokalen macOS-Administrator sowie die AD-Konten `administrator` und `Users` möglich bleiben.
+
+**Sicherheitshinweis:** Klassisches VNC bietet keine verlässliche Ende-zu-Ende-Transportverschlüsselung. Den Zugriff auf TCP-Port 5900 daher auf vertrauenswürdige Quellen beschränken oder bei Bedarf über einen geschützten SSH-Tunnel führen.
+
+#### 2.2.3 Jump-VM konfigurieren
+**Remmina für VNC**  - In Remmina wurde ein Verbindungsprofil angelegt:
+
+- Protokoll: **VNC Plugin** (nicht VNC Listener Plugin)
+- Server: `cl3-mac-30.cl.lab.test:5900`
+- Verbindung: vom Jump-Host zum macOS Screen Sharing-Dienst
+
+MacOS unterstütz nativ den RDP Verbindung stattdessen verwendet **VNC** (*Virtual Network Computing)*. Der VNC-Dienst des Macs ist über TCP-Port `5900` erreichbar. 
+
+- Auf der Jump-VM wurde in `~/.ssh/config` ein Alias angelegt:
+
+```
+Host mac
+    HostName cl3-mac-30.cl.lab.test
+    User administrator
+```
+
+- Der vorhandene Ed25519-Schlüssel der Jump-VM wurde weiterverwendet; es wurde kein neues Schlüsselpaar erstellt: Öffentlicher Schlüssel: `~/.ssh/id_ed25519.pub` – wurde auf dem Mac beim AD-Benutzer `administrator` hinterlegt.
+
+```
+ssh-copy-id -i ~/.ssh/id_ed25519.pub mac
+```
+
+Danach funktionierte `ssh mac` ohne Passwortabfrage. Die Passwortanmeldung bleibt als alternative Anmeldemöglichkeit bestehen.
+
 
 
 </details>
