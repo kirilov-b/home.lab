@@ -206,7 +206,7 @@ MacOS unterstütz nativ den RDP Verbindung stattdessen verwendet **VNC** (*Virtu
 ```
 Host mac
     HostName cl3-mac-30.cl.lab.test
-    User administrator
+    User ladministrator
 ```
 
 - Der vorhandene Ed25519-Schlüssel der Jump-VM wurde weiterverwendet; es wurde kein neues Schlüsselpaar erstellt: Öffentlicher Schlüssel: `~/.ssh/id_ed25519.pub` – wurde auf dem Mac beim AD-Benutzer `administrator` hinterlegt.
