@@ -169,6 +169,9 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWFULLNAME -boo
 Den Eintrag aus *Directory Utility → Search policy → Authentication→ Edit*  **/Active Directory/CL/All Domains** müsste gelöscht werden und mit **/Active Directory/CL/cl.lab.test** ersetzt werden.
 - *Directory Utility > Services > Active Directory > Show Opitons > Administrative*
   Hier müsste **Allow authentication from any Domain in the forest** deaktiviert werden
+
+</details>
+
 ### 2.2 SSH & VNC (statt RDP)
 
 #### 2.2.1 SSH-Server aktivieren
