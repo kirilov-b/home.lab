@@ -244,7 +244,7 @@ sudo sssctl user-checks 'administrator@cl.lab.test' -a acct -s xrdp-sesman
 
 </details>
 
-### 2.3 Weitere Dienste
+## 3 Weitere Dienste
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Dienste anzeigen</span></strong></summary>

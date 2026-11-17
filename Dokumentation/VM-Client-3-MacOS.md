@@ -222,7 +222,7 @@ Danach funktionierte `ssh mac` ohne Passwortabfrage. Die Passwortanmeldung bleib
 </details>
 
 
-### 2.3 Weitere Dienste
+## 3 Weitere Dienste
 
 
 <details markdown="1">
