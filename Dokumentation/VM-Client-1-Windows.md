@@ -3,7 +3,7 @@ layout: default
 title: "[CL] VM – Windows 11 - Testclient 1"
 ---
 
-# VM – Testclient "cl1"
+# VM – Windows 11
 
 **VM Parameter**
 
