@@ -1,9 +1,9 @@
 ---
 layout: default
-title: "[CL] VM – Testclient - 2 - Linux"
+title: "[CL] VM – Linux Mint - Testclient 2"
 ---
-# NOCH NICHT KONFIGURIERT
-# VM – Testclient
+# 
+# VM – Linux Mint
 
 **VM Parameter**
 
