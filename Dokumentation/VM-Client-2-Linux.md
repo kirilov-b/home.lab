@@ -2,7 +2,6 @@
 layout: default
 title: "[CL] VM – Linux Mint - Testclient 2"
 ---
-# 
 # VM – Linux Mint
 
 **VM Parameter**
