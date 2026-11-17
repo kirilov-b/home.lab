@@ -2,7 +2,7 @@
 layout: default
 title: "[CL] VM – Linux Mint - Testclient 2"
 ---
-# VM – Linux Mint 22.3 (Testclient)
+# VM – Linux Mint 22.3
 
 ## VM-Parameter
 
@@ -213,8 +213,8 @@ sudo sssctl user-checks 'administrator@cl.lab.test' -a acct -s xrdp-sesman
 pam_acct_mgmt: Success
 ```
 
-**Remmina auf Jump-Host konfigurieren**
 
+**Remmina auf Jump-Host konfigurieren**
 Verbindungsparameter:
 
 | Einstellung       | Wert                        |
@@ -228,7 +228,6 @@ Verbindungsparameter:
 | Security protocol | RDP protocol security       |
 
 **Verbindung testen**
-
 Verbindung in Remmina starten und mit dem AD-Benutzer anmelden.
 
 **Hinweis zur Sicherheit:** RDP protocol security verwenden wir derzeit nur als funktionierende Übergangslösung, da die TLS-Aushandlung noch Probleme verursacht. Vor einem dauerhaften Betrieb sollte die Verbindung auf TLS umgestellt werden.
@@ -246,5 +245,12 @@ sudo sssctl user-checks 'administrator@cl.lab.test' -a acct -s xrdp-sesman
 </details>
 
 ### 2.3 Weitere Dienste
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Dienste anzeigen</span></strong></summary>
+
+#### Zabbix Monitoring
+
+</details>
 
 # Tests
