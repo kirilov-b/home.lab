@@ -259,7 +259,7 @@ Die Installation unterscheidet sich von Windows und Linux in einigen Punkten:
 - **Dienstverwaltung:** macOS verwendet `launchd` zur Verwaltung von Hintergrunddiensten. MacPorts integriert den Zabbix Agent über einen LaunchDaemon.
 - **Dateisystem:** MacPorts verwendet standardmäßig `/opt/local/` als Installationsverzeichnis.
 
-MacPorts wurde zunächst aktualisiert. Anschließend wurde der passende Zabbix-Agent installiert. MacPorts installiert dabei automatisch benötigte Abhängigkeiten, unter anderem OpenSSL, PCRE2 und libevent.
+MacPorts wurde zunächst aktualisiert. Anschließend wurde der passende Zabbix-Agent installiert. MacPorts installiert dabei automatisch benötigte Abhängigkeiten, unter anderem OpenSSL, PCRE2 und libevent. Port 10050 lauscht.
 
 ```bash
 sudo port -v selfupdate
