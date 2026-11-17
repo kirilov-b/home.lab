@@ -196,6 +196,7 @@ Im Installationsassistenten folgende Parameter eintragen:
 |Zabbix server IP/DNS|`10.10.20.40`|
 |Agent listen port|`10050`|
 |Server or Proxy for active checks|Leer lassen|
+
 **Windows-Firewall konfigurieren** - Der notwendige Regel wurde durch die Installation des Agents erstellt. 
 Der Dienst wird auf der Zabbix Weboberfleche grün angezeigt, was ein Zeichnen für eine fehlerfreie Verbindung ist.
 
