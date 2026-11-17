@@ -95,12 +95,12 @@ Das Beitreten in unsere Active Directory "client" Domäne geht ziemlich einfach 
 #### 2.1.1 Voraussetzungen prüfen
 Vor dem Domain Join wurde die DNS-Konfiguration unter *Systemeinstellungen → Netzwerk → Ethernet → Details → DNS* kontrolliert.
 
-|Einstellung|Wert|
-|---|---|
-|IP-Adresse|DHCP|
-|DNS-Server|`10.10.20.3`|
-|Suchdomäne|`cl.lab.test`|
-|Gateway|`10.10.30.1`|
+| Einstellung | Wert          |
+| ----------- | ------------- |
+| IP-Adresse  | DHCP          |
+| DNS-Server  | `10.0.20.3`   |
+| Suchdomäne  | `cl.lab.test` |
+| Gateway     | `10.0.30.1`   |
 
 Anschließend wurde die DNS-Auflösung im Terminal getestet:
 
@@ -225,4 +225,10 @@ Danach funktionierte `ssh mac` ohne Passwortabfrage. Die Passwortanmeldung bleib
 ### 2.3 Weitere Dienste
 
 
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Dienste anzeigen</span></strong></summary>
+
+#### Zabbix Monitoring
+
+</details>
 # Tests
