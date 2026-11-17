@@ -6,14 +6,15 @@ title: "[CL] VM – MacOS - Testclient - 3"
 
 **VM Parameter**
 
-|      **Parameter** | Wert         |         **Parameter** | Wert           |
-| -----------------: | ------------ | --------------------: | -------------- |
-|          **VM-ID** | 303          |         **IPv4 DHCP** | 10.0.30.xxx    |
-|       **vLAN Tag** | 30           |            **Domain** | cl.lab.test    |
-|        **VM-Name** | cl3-mac-30   |       **Hard Disk** * | 80 GB (SATA)   |
-|          **Zweck** | Testclient   |               **RAM** | 8 GB           |
-| **Betriebssystem** | MacOS Sonoma |              **vCPU** | 2              |
-|           **BIOS** | OVMF/UEFI    | **Netzwerkadapter** * | VMware vmxnet3 |
+|      **Parameter** | Wert           |         **Parameter** | Wert           |
+| -----------------: | -------------- | --------------------: | -------------- |
+|          **VM-ID** | 303            |         **IPv4 DHCP** | 10.0.30.xxx    |
+|       **vLAN Tag** | 30             |            **Domain** | cl.lab.test    |
+|        **VM-Name** | cl3-mac-30     |       **Hard Disk** * | 80 GB (SATA)   |
+|          **Zweck** | Testclient     |               **RAM** | 8 GB           |
+| **Betriebssystem** | MacOS Sonoma   |              **vCPU** | 2              |
+|           **BIOS** | OVMF/UEFI      | **Netzwerkadapter** * | VMware vmxnet3 |
+|    **Local Admin** | ladministrator |                       |                |
 
 
 # Übersicht
@@ -180,6 +181,7 @@ Den Eintrag aus *Directory Utility → Search policy → Authentication→ Edit*
 1. **Remote Login** aktiviert.
 2. Zugriff auf berechtigte Benutzer beschränkt; der AD-Benutzer `administrator` wurde zugelassen.
 3. SSH hört auf TCP-Port `22`.
+
 #### 2.2.2 Screen Sharing / VNC aktivieren
 Unter *System Settings → General → Sharing → Screen Sharing:*
 
