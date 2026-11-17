@@ -228,7 +228,68 @@ Danach funktionierte `ssh mac` ohne Passwortabfrage. Die Passwortanmeldung bleib
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Dienste anzeigen</span></strong></summary>
 
-#### Zabbix Monitoring
+#### 3.1 Zabbix Monitoring
+Die Linux VM wurde an unsere Zabbix Server gebunden, um die Auslastung der Hardware zu überwachen.
+#### 3.1.1 Zabbix Server 
+Über die Weboberfläche wird ein neuen Host hinzugefügt.
+*Data collection > Hosts > Create host*
+
+Hostangaben
+
+| Parameter        | Einstellung            |
+| ---------------- | ---------------------- |
+| **Host name**    | cl3-mac-30             |
+| **Visible name** | CL3 - MacOS Sonoma     |
+| **Host groups**  | Mac client             |
+| **Templates**    | MacOS by Zabbix agent  |
+| **Status**       | Enable                 |
+| **Type**         | Agent                  |
+| **Connect to**   | DNS                    |
+| **DNS name**     | cl3-mac-30.cl.lab.test |
+| **IP address**   | leer                   |
+| **Port**         | 10050                  |
+
+### 3.1.2 Zabbix Agent 2 Installation und Konfiguration
+
+**Installation**
+Die Installation unterscheidet sich von Windows und Linux in einigen Punkten:
+
+- **Paketverwaltung:** Die Installation erfolgt über MacPorts anstelle von Homebrew oder einem Windows-Installer.
+- **Architektur:** Es wird die Intel-Version (x86_64) verwendet. ARM-spezifische Pakete sind nicht erforderlich.
+- **Dienstverwaltung:** macOS verwendet `launchd` zur Verwaltung von Hintergrunddiensten. MacPorts integriert den Zabbix Agent über einen LaunchDaemon.
+- **Dateisystem:** MacPorts verwendet standardmäßig `/opt/local/` als Installationsverzeichnis.
+
+MacPorts wurde zunächst aktualisiert. Anschließend wurde der passende Zabbix-Agent installiert. MacPorts installiert dabei automatisch benötigte Abhängigkeiten, unter anderem OpenSSL, PCRE2 und libevent.
+
+```bash
+sudo port -v selfupdate
+```
+
+```bash
+sudo port install zabbix74-agent
+```
+
+**Konfiguration**
+Die Beispielkonfiguration wurde umbenannt:
+
+```bash
+sudo mv /opt/local/etc/zabbix74/zabbix_agentd.conf.sample /opt/local/etc/zabbix74/zabbix_agentd.conf
+```
+
+Folgende Parameter wurden ergänzt. Nach der Umbenennung wurde der dienst neu gestartet
+
+```ini
+Server=10.10.20.40
+ServerActive=10.10.20.40:10051
+Hostname=cl3-mac-30
+```
+
+```bash
+sudo port unload zabbix74-agent
+sudo port load zabbix74-agent
+```
+
+Der Dienst läuft wieder und die Anzaige an in der Weboberfläche von Zabbix ist grün. Fehlerfreie Verbindung
 
 </details>
 # Tests
