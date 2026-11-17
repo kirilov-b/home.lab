@@ -28,9 +28,9 @@ Zweck diese Mac Testclient ist unsere Domäne Umgebung aus der MacOS Perspektive
 - **Integration der VM in der Domäne**
   Domäne beitreten und Auswirkung der Active Direktory  auf Mac Geräte
 
-# Konfigurationsschritte 
+# Konfiguration
 
-## 1. Vorbereitung
+## 1. Vorbereitung und Installation
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Vorbereitungsschritte anzeigen</span></strong></summary>

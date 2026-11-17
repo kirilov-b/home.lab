@@ -28,7 +28,7 @@ Folgende Themen werden behandelt:
 - **Remote Administration:** Verwaltung des Systems über SSH vom Jump-Host aus.
 
 
-# Konfigurationsschritte
+# Konfiguration
 
 ## 1. Vorbereitung und Installation
 
