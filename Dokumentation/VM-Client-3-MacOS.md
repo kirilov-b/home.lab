@@ -89,7 +89,6 @@ Nach dem Formatieren wird die Installation von MacOS Sonoma gestartet und klassi
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Integrationsschritte anzeigen</span></strong></summary>
 
-
 ### 2.1 Domain Join
 Das Beitreten in unsere Active Directory "client" Domäne geht ziemlich einfach an MacOS
 #### 2.1.1 Voraussetzungen prüfen
