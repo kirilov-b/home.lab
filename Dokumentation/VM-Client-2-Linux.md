@@ -6,14 +6,14 @@ title: "[CL] VM – Linux Mint - Testclient 2"
 
 ## VM-Parameter
 
-|          Parameter | Wert            |           Parameter | Wert        |
-| -----------------: | --------------- | ------------------: | ----------- |
-|          **VM-ID** | 302             |            **IPv4** | 10.0.30.32  |
-|       **VLAN Tag** | 30              |          **Domain** | cl.lab.test |
-|   **VM/Host-Name** | cl2-lm-30       |      **Festplatte** | 60 GB       |
-|          **Zweck** | Testclient      |             **RAM** | 4           |
-| **Betriebssystem** | Linux Mint 22.3 |            **vCPU** | 2           |
-|    **Local Admin** | ladministrator  | **Netzwerkadapter** | VirtIO      |
+|          Parameter | Wert            |           Parameter | Wert         |
+| -----------------: | --------------- | ------------------: | ------------ |
+|          **VM-ID** | 302             |            **IPv4** | 10.0.30.DHCP |
+|       **VLAN Tag** | 30              |          **Domain** | cl.lab.test  |
+|   **VM/Host-Name** | cl2-lm-30       |      **Festplatte** | 60 GB        |
+|          **Zweck** | Testclient      |             **RAM** | 4            |
+| **Betriebssystem** | Linux Mint 22.3 |            **vCPU** | 2            |
+|    **Local Admin** | ladministrator  | **Netzwerkadapter** | VirtIO       |
 
 
 ## Übersicht
