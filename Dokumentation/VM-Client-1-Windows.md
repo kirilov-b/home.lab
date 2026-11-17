@@ -146,4 +146,58 @@ Die Windows-Firewall aktiviert beim Einschalten von Remotedesktop die erforderli
 
 </details>
 
+## 3. Weitere Dienste
 
+<details markdown="1"> <summary><strong><span style="color: #00813F;">Dienste anzeigen</span></strong></summary>
+
+### 3.1 Zabbix Monitoring
+Die Linux VM wurde an unsere Zabbix Server gebunden, um die Auslastung der Hardware zu überwachen.
+#### 3.1.1 Zabbix Server 
+Über die Weboberfläche wird ein neuen Host hinzugefügt.
+*Data collection > Hosts > Create host*
+
+Hostangaben
+
+| Parameter        | Einstellung             |
+| ---------------- | ----------------------- |
+| **Host name**    | cl1-wc-30               |
+| **Visible name** | CL1 - Windows 11        |
+| **Host groups**  | Windows servers         |
+| **Templates**    | Windows by Zabbix agent |
+| **Status**       | Enable                  |
+| **Type**         | Agent                   |
+| **Connect to**   | DNS                     |
+| **DNS name**     | cl1-wc-30.cl.lab.test   |
+| **IP address**   | leer                    |
+| **Port**         | 10050                   |
+
+### 3.1.2 Zabbix Agent 2 Installation und Konfiguration
+
+**Installation**
+1. Zabbix-Downloadseite öffnen:  
+    [https://www.zabbix.com/download_agents](https://www.zabbix.com/download_agents)
+2. Folgende Auswahl treffen:
+    - Zabbix Version: `7.4`
+    - Betriebssystem: Windows
+    - Architektur: AMD64 (64 Bit)
+    - Komponente: Zabbix Agent 2
+    - Packaging: MSI
+    - Encryption: OpenSSL
+3. MSI-Datei herunterladen.
+4. Installationsdatei starten und folgen
+5. Standardinstallationspfad übernehmen.
+
+**Konfiguration**
+Im Installationsassistenten folgende Parameter eintragen:
+
+|Parameter|Wert|
+|---|---|
+|Host name|`cl1-wc-30`|
+|Zabbix server IP/DNS|`10.10.20.40`|
+|Agent listen port|`10050`|
+|Server or Proxy for active checks|Leer lassen|
+**Windows-Firewall konfigurieren** - Der notwendige Regel wurde durch die Installation des Agents erstellt. 
+Der Dienst wird auf der Zabbix Weboberfleche grün angezeigt, was ein Zeichnen für eine fehlerfreie Verbindung ist.
+
+
+</details>
