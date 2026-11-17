@@ -150,8 +150,75 @@ Die Windows-Firewall aktiviert beim Einschalten von Remotedesktop die erforderli
 
 <details markdown="1"> <summary><strong><span style="color: #00813F;">Dienste anzeigen</span></strong></summary>
 
-## Zabbix Monitoring
+### 3.1 Zabbix Monitoring
+Die Linux VM wurde an unsere Zabbix Server gebunden, um die Auslastung der Hardware zu überwachen.
+#### 3.1.1 Zabbix Server 
+Über die Weboberfläche wird ein neuen Host hinzugefügt.
+*Data collection > Hosts > Create host*
+
+Hostangaben
+
+| Parameter        | Einstellung           |
+| ---------------- | --------------------- |
+| **Host name**    | cl2-lm-30             |
+| **Visible name** | CL2 - Linux Mint      |
+| **Host groups**  | Linux servers         |
+| **Templates**    | Linux by Zabbix agent |
+| **Status**       | Enable                |
+| **Type**         | Agent                 |
+| **Connect to**   | DNS                   |
+| **DNS name**     | cl2-lm-30.cl.lab.test |
+| **IP address**   | leer                  |
+| **Port**         | 10050                 |
+
+#### 3.1.2 Zabbix Agent 2 Installieren und Konfigurieren
+
+**Installation**
+Das offizielle Zabbix-Repository für Ubuntu 24.04 wird verwendet, da Linux Mint 22.3 auf Ubuntu 24.04 basiert. Repository Packet ist installiert. Installation der Agent2 wurde durchgeführt.
+
+```
+cd /tmp
+wget https://repo.zabbix.com/zabbix/7.4/release/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.4+ubuntu24.04_all.deb
+```
+
+```
+sudo dpkg -i zabbix-release_latest_7.4+ubuntu24.04_all.deb
+```
+
+```
+sudo apt update
+```
+
+```
+sudo apt install zabbix-agent2
+```
+
+**Konfiguration**
+Die Konfigurationsdatei wurde an unsere Umgebung angepasst. Danach wurde der Dienst aktiviert und neugestartet. Ein Statusüberprüfung wurde durchgeführt.
+
+```
+sudo nano /etc/zabbix/zabbix_agent2.conf
+```
+
+```
+Server=10.0.20.40
+#ServerActive=127.0.0.1
+Hostname=cl2-lm-30
+```
+
+```
+sudo systemctl enable --now zabbix-agent2
+```
+
+```
+sudo systemctl restart zabbix-agent2
+```
+
+```
+sudo systemctl status zabbix-agent2 --no-pager
+```
 
 
 </details>
+
 # Tests
