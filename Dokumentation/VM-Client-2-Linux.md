@@ -76,8 +76,6 @@ Namensauflösung ist getestet: Active-Directory-Dienste werden geteste. Der Doma
 `nslookup dc-ws-20-3.cl.lab.test`
 `nslookup -type=SRV _ldap._tcp.dc._msdcs.cl.lab.test`
 
-</details>
-
 ### 2.2 Integration in Active Directory
 
 #### 2.2.1 Voraussetzungen
@@ -244,5 +242,9 @@ sudo sssctl user-checks 'administrator@cl.lab.test' -a acct -s xrdp-sesman
 ```
 
 **Ergebnis:** Die Linux-Mint-VM ist über Remmina per RDP erreichbar und authentifiziert Domänenbenutzer über Active Directory und SSSD.
+
+</details>
+
+### 2.3 Weitere Dienste
 
 # Tests
