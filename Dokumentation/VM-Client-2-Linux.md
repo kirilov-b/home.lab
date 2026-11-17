@@ -6,17 +6,17 @@ title: "[CL] VM – Linux Mint - Testclient 2"
 
 ## VM-Parameter
 
-| Parameter          | Wert            | Parameter           | Wert          |
-| ------------------ | --------------- | ------------------- | ------------- |
-| **VM-ID**          | 302             | **IPv4**            | `10.0.30.32`  |
-| **VLAN Tag**       | 30              | **Domain**          | `cl.lab.test` |
-| **VM-Name**        | `cl2-lm-30`     | **Festplatte**      | 60 GB         |
-| **Zweck**          | Testclient      | **RAM**             | 4             |
-| **Betriebssystem** | Linux Mint 22.3 | **vCPU**            | 2             |
-| **Hostname**       | `cl2-lm-30`     | **Netzwerkadapter** | VirtIO        |
-| **Local Admin**    | ladministrator  |                     |               |
+|          Parameter | Wert            |           Parameter | Wert        |
+| -----------------: | --------------- | ------------------: | ----------- |
+|          **VM-ID** | 302             |            **IPv4** | 10.0.30.32  |
+|       **VLAN Tag** | 30              |          **Domain** | cl.lab.test |
+|   **VM/Host-Name** | cl2-lm-30       |      **Festplatte** | 60 GB       |
+|          **Zweck** | Testclient      |             **RAM** | 4           |
+| **Betriebssystem** | Linux Mint 22.3 |            **vCPU** | 2           |
+|    **Local Admin** | ladministrator  | **Netzwerkadapter** | VirtIO      |
 
-# Übersicht
+
+## Übersicht
 
 Der Linux-Mint-Testclient dient dazu, die bestehende Active-Directory-Umgebung aus Sicht eines Linux-Clients zu testen. Zusätzlich wird die Integration eines Linux-Systems in eine Windows-basierte Netzwerkumgebung geübt.
 
