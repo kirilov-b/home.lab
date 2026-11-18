@@ -42,7 +42,7 @@ Dient als Managed Switch für VLAN.
 
 ## OPNsense - Grundkonfiguration
 Netzwerk Interface anpassen:
-- WAN - vtnet0: IPv4 (via DHCP) **172.18.87.1 /24**
+- WAN - vtnet0: IPv4 (via DHCP) **172.16.87.1 /24**
 - VLAN-10-MGMT - IPV4 (statisch) **10.0.10.1 /24**
 - VLAN-20-SRV  - IPV4 (statisch) **10.0.20.1 /24**
 - VLAN-30-CLT  - IPV4 (statisch) **10.0.30.1 /24**
@@ -58,7 +58,7 @@ Netzwerk Interface anpassen:
 | MGMT     | WireGuard VPN                      | WAN              | UDP      | any              | any    | WAN address         | 51820          |
 |          | Default allow LAN to any rule<br>  | LAN              | any      | LAN Network      | any    | any                 | any            |
 |          | Default allow LAN IPv6 to any rule | LAN              | any      | LAN Network      | any    | any                 | any            |
-| JUMP     | RDP Laptop > JUMP                  | WAN              | TCP      | 172.18.87.1      | any    | 10.0.10.3           | ???            |
+| JUMP     | RDP Laptop > JUMP                  | WAN              | TCP      | 172.16.87.1      | any    | 10.0.10.3           | ???            |
 | CLIENT   | Block 30 > 10                      | VLAN-30          | any      | VLAN-30-Network  | any    | opt1                |                |
 | DC       | Allow v30 DNS > DC                 | VLAN-30          | TCP/UDP  | VLAN-30-Network  | any    | 10.0.20.3           | Domain(53)     |
 | DC       | Allow v30 AD > DC                  | VLAN-30          | TCP/UDP  | VLAN-30-Network  | any    | 10.0.20.3           | 88,135,389,445 |

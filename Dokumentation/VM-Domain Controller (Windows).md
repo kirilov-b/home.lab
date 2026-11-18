@@ -170,7 +170,7 @@ IP-Konfiguration auf derselben Schnittstelle anlegen.
 #### DNS auf den DC zeigen lassen
 
 Nachdem die statische IP korrekt konfiguriert ist, den bevorzugten  
-DNS-Server der DC-Netzwerkkarte auf `10.10.20.3` setzen. Den  
+DNS-Server der DC-Netzwerkkarte auf `10.0.20.3` setzen. Den  
 tatsächlichen Interface-Alias vorher mit `Get-NetAdapter` ermitteln:
 
 ```
@@ -332,7 +332,7 @@ Get-DhcpServerv4Scope
 Get-DhcpServerv4OptionValue -ScopeId 10.0.30.0
 ```
 
-Auf OPNsense DHCP Relay auf dem Client-VLAN zum Server `10.10.20.3`  
+Auf OPNsense DHCP Relay auf dem Client-VLAN zum Server `10.0.20.3`  
 konfigurieren. Die Firewall muss DHCP-Relay-Verkehr entsprechend  
 zulassen. Die konkrete OPNsense-Konfiguration wird in deren Oberfläche  
 vorgenommen.
@@ -367,7 +367,7 @@ Test-NetConnection dc-ws-20-3.cl.lab.test -Port 445
 Test-NetConnection dc-ws-20-3.cl.lab.test -Port 464
 ```
 
-Die DNS-Serveradresse des Clients muss auf `10.10.20.3` zeigen. Danach  
+Die DNS-Serveradresse des Clients muss auf `10.0.20.3` zeigen. Danach  
 Domain-Join in administrativer PowerShell:
 
 ```

@@ -23,8 +23,8 @@ Ich verwende eine **VLAN-Aware Bridge (LANbr0)** in Proxmox und einen **VLAN-Tru
 |  101   | Firewall - Clients (CL)           | 10.0.30.1      | vLAN - 30  | 172.16.87.1 |            |
 |  100   | Administration, Dokumentation     | 10.0.10.3      | vLAN - 10  | 10.0.10.1   |            |
 | 102    | Ansible / Automation              | 10.0.10.20     | vLAN - 10  | 10.0.10.1   |            |
-| 222    | FreeIPA / Identity / DNS          | 10.0.20.2      | vLAN - 20  | 10.0.20.1   | 10.0.20.2  |
-|  201   | Domain Controller AD, DNS, DHCP   | 10.0.20.3      | vLAN - 20  | 10.0.20.1   |            |
+| 202    | FreeIPA / Identity / DNS          | 10.0.20.2      | vLAN - 20  | 10.0.20.1   | 10.0.20.2  |
+|  203   | Domain Controller AD, DNS, DHCP   | 10.0.20.3      | vLAN - 20  | 10.0.20.1   |            |
 |  211   | Proxmox Backup Server             | 10.0.20.10     | vLAN - 20  | 10.0.20.1   |            |
 |  233   | Nginx / Reverse Proxy             | 10.0.20.20     | vLAN - 20  | 10.0.20.1   |            |
 |  244   | PostgreSQL                        | 10.0.20.30     | vLAN - 20  | 10.0.20.1   |            |
