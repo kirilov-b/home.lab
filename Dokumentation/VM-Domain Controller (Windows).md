@@ -15,7 +15,7 @@ VLANs.
 
 |      **Parameter** | Wert              | **Parameter** | Wert        |
 | -----------------: | ----------------- | ------------: | ----------- |
-|          **VM-ID** | 203               |      **IPv4** | 10.10.20.3  |
+|          **VM-ID** | 203               |      **IPv4** | 10.0.20.3   |
 |       **vLAN Tag** | 20                |    **Domain** | cl.lab.test |
 |        **VM-Name** | dc-ws-20-3        |     **Größe** | 70 GB       |
 |          **Zweck** | AD, DNS, DHCP     |       **RAM** | 8 GB        |

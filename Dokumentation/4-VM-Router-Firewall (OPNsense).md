@@ -18,7 +18,7 @@ Dient als Managed Switch für VLAN.
 - zentrale Netzwerkverwaltung
 
 ## Proxmox-Konfiguration
-- General > VM ID: 202
+- General > VM ID: 101
 - System > Machine q35
 - System > BIOS: OVMF (UEFI)
 - Disk > BUS: SCSI
