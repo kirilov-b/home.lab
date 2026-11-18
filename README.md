@@ -55,9 +55,9 @@ Die aktuelle VM-Planung umfasst unter anderem folgende Systeme:
 
 Die Infrastruktur ist logisch in mehrere Netzbereiche aufgeteilt:
 
-- `10.10.10.0/24` – Infrastruktur / Management
-- `10.10.20.0/24` – Server und zentrale Dienste
-- `10.10.30.0/24` – Clients und Testsysteme
+- `10.0.10.0/24` – Infrastruktur / Management
+- `10.0.20.0/24` – Server und zentrale Dienste
+- `10.0.30.0/24` – Clients und Testsysteme
 
 Die zentrale Firewall übernimmt Routing und die Netzsegmentierung. DNS, DHCP, Identitätsdienste, Monitoring, Logging, Backup und weitere Infrastruktur-Dienste werden innerhalb der virtuellen Umgebung bereitgestellt.
 
