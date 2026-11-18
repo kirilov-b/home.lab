@@ -146,7 +146,7 @@ Die UFW-Firewall erlaubt RDP nur von freigegebenen Quelladressen. Deshalb muss a
 **Erforderliche Freigabe:**
 
 ```bash
-sudo ufw allow from 10.10.123.0/24 to 10.0.10.3 port 3389 proto tcp
+sudo ufw allow from 10.0.123.0/24 to 10.0.10.3 port 3389 proto tcp
 ```
 
 Regeln kontrollieren:
@@ -155,7 +155,7 @@ Regeln kontrollieren:
 sudo ufw status numbered
 ```
 
-Damit dürfen VPN-Clients aus `10.10.123.0/24` den RDP-Dienst auf dem Jumphost-PC erreichen. Andere Quellen werden dadurch nicht automatisch freigegeben.
+Damit dürfen VPN-Clients aus `10.0.123.0/24` den RDP-Dienst auf dem Jumphost-PC erreichen. Andere Quellen werden dadurch nicht automatisch freigegeben.
 
 ## 3. Einrichtung auf dem externen Windows-Rechner
 
@@ -170,12 +170,12 @@ Tunnelkonfiguration:
 ```ini
 [Interface]
 PrivateKey = <PRIVATER_CLIENT_SCHLUESSEL>
-Address = 10.10.123.2/32
+Address = 10.0.123.2/32
 
 [Peer]
 PublicKey = <OEFFENTLICHER_OPNSENSE_SCHLUESSEL>
 Endpoint = <OEFFENTLICHE_IP_ODER_DYNDNS>:51821
-AllowedIPs = 10.10.123.0/24, 10.0.10.0/24, 10.0.1.0/24
+AllowedIPs = 10.0.123.0/24, 10.0.10.0/24, 10.0.1.0/24
 PersistentKeepalive = 25
 ```
 
