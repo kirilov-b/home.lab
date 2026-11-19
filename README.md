@@ -26,30 +26,30 @@ Die Dokumentation umfasst aktuell:
   - Proxmox Backup Server und Backup-Konzept
 - **Netzwerkdiagramm**
   - Übersicht der Infrastruktur und Netzwerkverbindungen
-- **Alle weitere VMs**
+- **Alle weiteren VMs**
 
 ## Virtuelle Infrastruktur
 
 Die aktuelle VM-Planung umfasst unter anderem folgende Systeme:
 
-| VM-NameServer    | Zweck                         | Betriebsystem       |
-| ---------------- | ----------------------------- | ------------------- |
-| **jump-lm-10-3** | Administrator, Dokumentation, | Linux Mint          |
-| **fw-opnense**   | Firewall                      | OPNsense            |
-| **ans-la-10-20** | Ansible / Automation          | Linux Alma          |
-| **ipa-la-20-2**  | FreeIPA / Identity / DNS      | Linux Alma          |
-| **dc-ws-20-3**   | AD, DNS, DHCP                 | Windows Server 2025 |
-| **pbs-ld-20-10** | Proxmox Backup Server         | PBS(Debian)         |
-| **ngx-la-20-20** | Nginx / Reverse Proxy         | Linux Alma          |
-| **db-ld-20-30**  | PostgreSQL                    | Linux Debian        |
-| **mon-la-20-40** | Zabbix Monitoring             | Linux Alma          |
-| **doc-lu-20-50** | Docker / Podman / Container   | Linux Ubuntu Server |
-| **log-la-20-60** | Rsyslog                       | Linux Alma          |
-| **sec-la-20-70** | Wazuh / Security Monitoring   | Linux Alma          |
-| **git-ld-20-80** | Gitea / Git-Server            | Linux Debian        |
-| **cl1-wc-30**    | Testclient                    | Windows 11          |
-| **cl2-lm-30**    | Testclient                    | Linux Mint          |
-| **cl3-mac-30**   | Testclient                    | MacOS               |
+| VM-Name / Server | Zweck                          | Betriebssystem      |
+| ---------------- | -----------------------------  | ------------------- |
+| **jump-lm-10-3** | Administration / Dokumentation | Linux Mint          |
+| **fw-opnsense**  | Firewall                       | OPNsense            |
+| **ans-la-10-20** | Ansible / Automation           | Linux Alma          |
+| **ipa-la-20-2**  | FreeIPA / Identity / DNS       | Linux Alma          |
+| **dc-ws-20-3**   | AD, DNS, DHCP                  | Windows Server 2025 |
+| **pbs-ld-20-10** | Proxmox Backup Server          | PBS (Debian)        |
+| **ngx-la-20-20** | Nginx / Reverse Proxy          | Linux Alma          |
+| **db-ld-20-30**  | PostgreSQL                     | Linux Debian        |
+| **mon-la-20-40** | Zabbix Monitoring              | Linux Alma          |
+| **doc-lu-20-50** | Docker / Podman / Container    | Linux Ubuntu Server |
+| **log-la-20-60** | Rsyslog                        | Linux Alma          |
+| **sec-la-20-70** | Wazuh / Security Monitoring    | Linux Alma          |
+| **git-ld-20-80** | Gitea / Git-Server             | Linux Debian        |
+| **cl1-wc-30**    | Testclient                     | Windows 11          |
+| **cl2-lm-30**    | Testclient                     | Linux Mint          |
+| **cl3-mac-30**   | Testclient                     | macOS               |
 
 ## Netzwerk
 
