@@ -125,7 +125,7 @@ vollständig festgehalten.
 Das Skript `/usr/local/sbin/backup-on-boot.sh` führt die Schritte nach
 dem Systemstart aus:
 
-1.  Es wartet auf die Erreichbarkeit von OPNsense unter `172.18.87.2`.
+1.  Es wartet auf die Erreichbarkeit von OPNsense unter `172.16.87.2`.
 2.  Es wartet, bis die PBS-VM 211 läuft und die PBS-API erreichbar ist.
 3.  Es prüft, ob `Extern-Backup` verfügbar ist.
 4.  Es prüft den Datenträger über SSH.
@@ -210,7 +210,7 @@ PBS_STORAGE="Extern-Backup"
 PBS_URL="https://10.0.20.10:8007"
 PBS_SSH_KEY="/root/.ssh/pbs-disk-check"
 PBS_SSH_HOST="root@10.0.20.10"
-OPNSENSE_IP="172.18.87.2"
+OPNSENSE_IP="172.16.87.2"
 
 echo "=== PBS-Backup gestartet: $(date) ==="
 

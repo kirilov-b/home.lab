@@ -759,7 +759,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="Zu1xCEk7YnNMqSbPEN0N" name="Steuerungdiagramm">
-    <mxGraphModel dx="1334" dy="767" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="3334" dy="1918" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -915,7 +915,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="6Ukous-EYSUMsjo4e2i3-20" parent="6Ukous-EYSUMsjo4e2i3-1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#333333;fontColor=#FFFFFF;" value="lag-la-20-60" vertex="1">
+        <mxCell id="6Ukous-EYSUMsjo4e2i3-20" parent="6Ukous-EYSUMsjo4e2i3-1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#333333;fontColor=#FFFFFF;" value="log-la-20-60" vertex="1">
           <mxGeometry height="30" width="50" x="150" y="219" as="geometry" />
         </mxCell>
         <mxCell id="6Ukous-EYSUMsjo4e2i3-21" parent="6Ukous-EYSUMsjo4e2i3-1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#333333;fontColor=#FFFFFF;" value="sec.la-20-70" vertex="1">
