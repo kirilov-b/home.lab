@@ -9,8 +9,8 @@ title: "[SRV] VM – Proxmox Backup Server"
 |      **Parameter** | Wert          | **Parameter** | Wert       |
 | -----------------: | ------------- | ------------: | ---------- |
 |          **VM-ID** | 211           |      **IPv4** | 10.0.20.10 |
-|       **vLAN Tag** | 20            |    **Domain** | keinen     |
-|        **VM-Name** | pbs-pbs-20-10 |     **Größe** | 20 GB      |
+|       **vLAN Tag** | 20            |    **Domain** | keine      |
+|        **VM-Name** | pbs-ld-20-10  |     **Größe** | 20 GB      |
 |          **Zweck** | Backup Server |       **RAM** | 8 GB       |
 | **Betriebssystem** | PBS (Debian)  |      **vCPU** | 4          |
 
@@ -43,17 +43,17 @@ PVE bleibt danach eingeschaltet, bis es manuell regulär
 heruntergefahren wird. Die Festplatte bleibt angeschlossen und eingeschaltet.
 ## 2. Festgehaltene Systemdaten
 
-| Komponente            | Wert                       |
-| --------------------- | -------------------------- |
-| PVE-Host              | prox                       |
-| PBS-VM                | ID 211, Name pbs-pbs-20-10 |
-| PBS-Adresse           | 10.0.20.10                 |
-| PBS-Weboberfläche     | https: //10.0.20.10:8007   |
-| PBS-Datastore         | Backup                     |
-| Datastore-Pfad in PBS | /mnt/datastore/Backup      |
-| PVE-Storage-Name      | Extern-Backup              |
-| Datastore-Dateisystem | ext4                       |
-| Physische Festplatte  | LaCie USB-Festplatte       |
+| Komponente            | Wert                      |
+| --------------------- | ------------------------- |
+| PVE-Host              | prox                      |
+| PBS-VM                | ID 211, Name pbs-ld-20-10 |
+| PBS-Adresse           | 10.0.20.10                |
+| PBS-Weboberfläche     | https: //10.0.20.10:8007  |
+| PBS-Datastore         | Backup                    |
+| Datastore-Pfad in PBS | /mnt/datastore/Backup     |
+| PVE-Storage-Name      | Extern-Backup             |
+| Datastore-Dateisystem | ext4                      |
+| Physische Festplatte  | LaCie USB-Festplatte      |
 
 ## 3. PBS und Datenträger
 

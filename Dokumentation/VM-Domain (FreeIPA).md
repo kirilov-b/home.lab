@@ -18,7 +18,7 @@ title: "[SRV] VM – FreeIPA / Identity /"
 # Übersicht
 
 FreeIPA stellt zentrale Identitäts-, Authentifizierungs- und Verzeichnisdienste bereit. Die folgenden Komponenten sind für diese Installation relevant.
-Der Dienst besteht aus folgende Komponente:
+Der Dienst besteht aus folgenden Komponenten:
 **LDAP / 389 Directory Server**- Speichert und stellt Identitätsdaten wie Benutzer, Gruppen, Hosts und Richtlinien über ein Verzeichnis bereit.
 
 **Kerberos KDC** - Stellt Kerberos-Tickets für die Anmeldung und den Zugriff auf unterstützte Dienste aus.
@@ -33,7 +33,7 @@ Der Dienst besteht aus folgende Komponente:
 
 **Dogtag PKI / pki-tomcatd** - Stellt die Zertifizierungsstellen-Funktionen (CA) für die FreeIPA-Umgebung bereit.
 
-**ipa-custodia** - Unterstützt die geschützte Verwaltung und Übertragung sensibler Schlüsselmaterialien zwischen FreeIPA-Komponenten.
+**ipa-custodia** - Unterstützt die geschützte Verwaltung und Übertragung sensibler Schlüsselmaterial zwischen FreeIPA-Komponenten.
 
 **ipa-otpd** - Unterstützt die OTP-Authentifizierung, sofern diese eingerichtet und verwendet wird.
 

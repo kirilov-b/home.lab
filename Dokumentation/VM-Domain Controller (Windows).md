@@ -32,21 +32,21 @@ eine statische IP konfigurieren.
 
 ## Wichtige Ports für Domain - Client Verbindung
 
-Der Domain Controller befindet sich ein andere vLAN als die Clientes deswegen auf dem Router (OPNsense) müssen folgende Ports erlaubt werden um die Verbindung zu ermöglichen.
+Der Domain Controller befindet sich ein andere vLAN als die Clients deswegen auf dem Router (OPNsense) müssen folgende Ports erlaubt werden um die Verbindung zu ermöglichen.
 
 **TCP / UDP**
-1. **53** - DNS Abfragen und großere DNS Antworten
+1. **53** - DNS Abfragen und größere DNS-Antworten
 2. **88** - Kerberos Authentifizierung
-3. **123** - NTP - Network Time Protokoll (Zeitsynchronisation)
+3. **123** - NTP - Network Time Protocol (Zeitsynchronisation)
 4. **135** - RPC - Remote Procedure Call 
-5. **389** - LDAP - Verzeichnisabfragen und DC Emittlung
-6. **445** - SMB - Server Message Block - SYSVOL und Gruppenrichlinien
+5. **389** - LDAP - Verzeichnisabfragen und DC-Ermittlung
+6. **445** - SMB - Server Message Block - SYSVOL und Gruppenrichtlinien
 7. **464** - Kerberos - Passwortänderung und Verwaltung
 8. **49152:65535** TCP Dynamische RPC-Ports bei  modernen Windows-Versionen;  für bestimmte  AD-/Netlogon-Funktionen  relevant
 
 
-# Active Diretory - Unternehmenstruktur
-Eine Fiktive Unternehmen und die Hierarchische Struktur
+# Active Directory - Unternehmensstruktur
+Eine fiktives Unternehmen und die Hierarchische Struktur
 
 ## 2. OU-Struktur
 Benutzer, Computer und Gruppen sind nach Abteilungen getrennt. GPOs können gezielt an passende OUs gebunden werden. OUs sind organisatorische Container und ersetzen keine Berechtigungen.
@@ -58,7 +58,7 @@ Benutzer, Computer und Gruppen sind nach Abteilungen getrennt. GPOs können gezi
 | Management  | Thomas      | `thomas.management`   |
 | Management  | Maria       | `maria.management`    |
 | Buchhaltung | Anna        | `anna.buchhaltung`    |
-| Buchhaltung | Petra       | `petra.buchaltung`    |
+| Buchhaltung | Petra       | `petra.buchhaltung`   |
 | IT          | Stefan      | `stefan.it`           |
 | IT          | Julia       | `julia.it`            |
 | Mitarbeiter | Michael     | `michael.mitarbeiter` |
@@ -92,7 +92,7 @@ Alle GG-Gruppen sind als **Global / Security** angelegt.
     - Server Manager > Manage > Add Roles and Features > Next
     - Role-Based or Feature ... > Next
     - DC.lab.test auswählen > Next
-    - Features > **Windows Serve Backup** aktivieren
+    - Features > **Windows Server Backup** aktivieren
     - Next > Install
 
 - #### 2. Virtuelle Festplatte erstellen/konfigurieren
@@ -105,15 +105,15 @@ Alle GG-Gruppen sind als **Global / Security** angelegt.
 
 - #### 3. System State Backup einrichten
     
-    - Pfad - Server Manager > Tools > Windows Server Backup > Local Backup > (rechts) Backup Once > Select Item for Backup > Add Items > **System State**
-    - Testen - Recover > Get Startet - Hier wird den Backup Quelle gezeigt.
+    - Pfad - *Server Manager > Tools > Windows Server Backup > Local Backup > (rechts) Backup* Once > Select Item for Backup > Add Items > **System State**
+    - Testen - *Recover > Get Started* - Hier wird den Backup Quelle gezeigt.
     - Ein Schedule Backup könnte man einrichten. Für meine Zwecke ist es nicht nötig, da der Server nicht dauerhaft an ist.
 
 </details>
 
-## Konfigurationschritte 
+## Konfigurationsschritte 
 
-Diese Abschnitt dient als Anleitung für die Konfiguration über **Server Manager (GUI)** und die  **PowerShell** Variante.
+Dieser Abschnitt dient als Anleitung für die Konfiguration über **Server Manager (GUI)** und die  **PowerShell** Variante.
 
 
 <details markdown="1">

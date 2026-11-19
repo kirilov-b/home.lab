@@ -7,9 +7,9 @@ title: VM – Firewall - OPNsense
 
 ## Übersicht
 
-Diese Seite dokumentiert die virtuelle Firewall **FW-OPSense**. 
+Diese Seite dokumentiert die virtuelle Firewall **FW-OPNsense**. 
 Die Firewall übernimmt die zentrale Netzwerkfunktion innerhalb des Home Labs. Sie stellt die Verbindung zwischen den definierten Netzwerksegmenten her und kontrolliert den Datenverkehr zwischen ihnen.
-Dient als Managed Switch für VLAN.
+OPNsense übernimmt das Routing zwischen den VLANs sowie die Filterung und Kontrolle des Netzwerkverkehrs durch Firewall-Regeln.
 ### Aufgaben
 - Routing zwischen den Netzwerksegmenten
 - Filterung von Verbindungen
@@ -27,9 +27,9 @@ Dient als Managed Switch für VLAN.
 - CPU > Type: Host
 - Memory > 4096
 - NIC 1 > WAN > Bridge: vmbr0
-- NIC 1 > WAM > Model: VirtIO
-### Zweiten NIC hinzufügen
-**prox > System > Network > Create > Linux Bridge**
+- NIC 1 > WAn > Model: VirtIO
+### Zweite Netzwerkkarte hinzufügen
+**Node (prox) > System > Network > Create > Linux Bridge**
 **FW1 > Hardware > Add > Network Device**
 - NIC 2 > LAN > Bridge: vmbr1
 - NIC 2 > LAN > Model: VirtIO
@@ -37,7 +37,7 @@ Dient als Managed Switch für VLAN.
 ## Installation
 - EFI Disk - Pre-Enrolled Keys deaktivieren!
 - Install UFS
-- Deutsch Layout einfügen
+- Deutsches Tastaturlayout auswählen
 - Hard Disk auswählen
 
 ## OPNsense - Grundkonfiguration
@@ -50,7 +50,7 @@ Netzwerk Interface anpassen:
 
 ## Regeln IPv4
 
-| Betrifft | Bennenung                          | Interface        | Protocol | Source           | S-Port | Destination         | D-Port         |
+| Betrifft | Benennung                          | Interface        | Protocol | Source           | S-Port | Destination         | D-Port         |
 | -------- | ---------------------------------- | ---------------- | -------- | ---------------- | ------ | ------------------- | -------------- |
 | SRV      | Block Firewall vLAN20              | any              | TCP      | VLAN-20          | any    | This Firewall       | https(443)     |
 | CLIENT   | Block Firewall vLAN30              | any              | TCP      | VLAN-30          | any    | This Firewall       | https(443)     |

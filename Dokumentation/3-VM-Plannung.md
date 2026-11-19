@@ -3,7 +3,7 @@ layout: default
 title: Virtuelle Machienen - Planung
 ---
 
-# Virtuelle Machienen - Planung
+# Virtuelle Machinen - Planung
 
 ## Namenskonventionen
 ### VMID (Name - Betriebssystem - vLAN - IP Host *letzte Oktett*)
@@ -11,15 +11,15 @@ title: Virtuelle Machienen - Planung
 	- Erste Zahl - **VLAN**
 	- Zweite Zahl - **Host**
 	- Dritte Zahl - **Reihenfolge**
-	Beispiel **202**: VLAN 20, erst aufgesetzte Machine
+	Beispiel **202**: VLAN 20, zuerst erstellte Machine
 - **Name Abkürzung**
 	- **fw** - Firewall
-	- **dc** - Domain Controler
+	- **dc** - Domain Controller
 	- **pbs** - Proxmox Backup Server
 	- **cl1** - Client 1
 	- **sec** - Security
 	- **mon** - Monitoring
-- **Betriebsysteme Abkürzung**
+- **Betriebssysteme Abkürzung**
 	- **wc** - Windows Client
 	- **ws** - Windows Server
 	- **lm** - Linux Mint
@@ -27,13 +27,16 @@ title: Virtuelle Machienen - Planung
 	- **ld** - Linux Debian
 	- **lu** - Linux Ubuntu
 - **Name vLAN**
-	- **10** - Menagement - vLAN .10
+	- **10** - Management - vLAN .10
 	- **20** - Service - vLAN .20
 	- **30** - Client - vLAN .30
 	
 	Beispiel: 
-  **dc-ws-20-1**
-	*Außnahme : **fw-OPNsense**, Clients (DHCP)*
+  **dc-ws-20-3**
+	- **dc**: Domain Controller
+    - **ws**: Windows Server
+    - **20**: VLAN 20
+    - **3**: letzte Stelle der IP-Adresse
 
 ### Domain Planung
 
@@ -54,7 +57,7 @@ Für Domain Controller - **cl.lab.test**
 | 102   | ansible      | **ans-la-10-20** | Ansible / Automation          | Linux Alma          | 10.0.10.20 | 20          | 4         | 2    |
 | 202   | ipa          | **ipa-la-20-2**  | FreeIPA / Identity / DNS      | Linux Alma          | 10.0.20.2  | 40          | 4         | 2    |
 | 203   | dc           | **dc-ws-20-3**   | AD, DNS, DHCP                 | Windows Server 2025 | 10.0.20.3  | 70          | 8         | 4    |
-| 211   | pbs          | **pbs-ld-20-10** | Proxmox Backup Server         | PBS(Debian)         | 10.0.20.10 | 20          | 4         | 2    |
+| 211   | pbs          | **pbs-ld-20-10** | Proxmox Backup Server         | PBS (Debian)        | 10.0.20.10 | 20          | 4         | 2    |
 | 233   | ngx          | **ngx-la-20-20** | Nginx / Reverse Proxy         | Linux Alma          | 10.0.20.20 | 20          | 2         | 2    |
 | 244   | postgres     | **db-ld-20-30**  | PostgreSQL                    | Linux Debian        | 10.0.20.30 | 20          | 4         | 2    |
 | 245   | zabbix       | **mon-la-20-40** | Zabbix Monitoring             | Linux Alma          | 10.0.20.40 | 40          | 4         | 2    |

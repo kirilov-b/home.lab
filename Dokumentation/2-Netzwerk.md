@@ -5,39 +5,39 @@ title: Netzwerk
 
 # Netzwerk
 
-## VLAN, statt virtuelle Netzwerkadapter  
+## VLAN statt virtueller Netzwerkadapter  
 ### Entscheidung  
-Separate Netze oder **Virtuelle Netzwerke/Bridges** wäre in Proxmox die einfache Variante gewesen, die Trennung von **Management, Service und Clients** aufzubauen.  
+Separate Netze oder **virtuelle Netzwerke/Bridges** wären in Proxmox die einfache Variante gewesen, die Trennung von **Management, Service und Clients** umzusetzen.  
 Aus Übungs- und Lernzwecken habe ich mich bewusst dafür entschieden, mit VLAN zu arbeiten. Dadurch wird der praktische Aufbau und die Konfiguration von **VLAN (IEEE 802.1Q)**, **VLAN Trunks** und **VLAN-Tagging** geübt. Die geplante Trennung wird in drei VLANs aufgeteilt.  
   
 ### Ergebnis
-Ich verwende eine **VLAN-Aware Bridge (LANbr0)** in Proxmox und einen **VLAN-Trunk zur OPNsense**. Darüber werden die VLANs 10, 20 und 30 übertragen. OPNsense übernimmt anschließend **Routing und Firewall-Regeln** für die einzelnen Netzwerke. Der **LANbr0** ist ohne zusätzliche Netzwerkkarte in OPNsense und Proxmox möglich.  
+Ich verwende eine **VLAN-aware Bridge (LANbr0)** in Proxmox und einen **VLAN-Trunk zur OPNsense**. Darüber werden die VLANs 10, 20 und 30 übertragen. OPNsense übernimmt anschließend **Routing und Firewall-Regeln** für die einzelnen Netzwerke. Der **LANbr0** ist ohne zusätzliche Netzwerkkarte in OPNsense und Proxmox möglich.  
   
 ## Netzwerktabelle
 
 | VM-ID  |             Dienst                |   IPv4 /24     | Netzwerk   | Gateway     | DNS        |
-| ------ | --------------------------------- | -------------- | ---------- | ----------- | ---------- |
+| :----: | --------------------------------- | -------------- | ---------- | ----------- | ---------- |
 |  101   | Firewall                          | 172.16.87.1    | Heim LAN   | 172.16.87.1 |            |
 |  101   | Firewall - Management (MGMT)      | 10.0.10.1      | vLAN - 10  | 172.16.87.1 |            |
 |  101   | Firewall - Service (SRV)          | 10.0.20.1      | vLAN - 20  | 172.16.87.1 |            |
 |  101   | Firewall - Clients (CL)           | 10.0.30.1      | vLAN - 30  | 172.16.87.1 |            |
 |  100   | Administration, Dokumentation     | 10.0.10.3      | vLAN - 10  | 10.0.10.1   |            |
-| 102    | Ansible / Automation              | 10.0.10.20     | vLAN - 10  | 10.0.10.1   |            |
-| 202    | FreeIPA / Identity / DNS          | 10.0.20.2      | vLAN - 20  | 10.0.20.1   | 10.0.20.2  |
+|  102   | Ansible / Automation              | 10.0.10.20     | vLAN - 10  | 10.0.10.1   |            |
+|  202   | FreeIPA / Identity / DNS          | 10.0.20.2      | vLAN - 20  | 10.0.20.1   | 10.0.20.2  |
 |  203   | Domain Controller AD, DNS, DHCP   | 10.0.20.3      | vLAN - 20  | 10.0.20.1   |            |
 |  211   | Proxmox Backup Server             | 10.0.20.10     | vLAN - 20  | 10.0.20.1   |            |
 |  233   | Nginx / Reverse Proxy             | 10.0.20.20     | vLAN - 20  | 10.0.20.1   |            |
 |  244   | PostgreSQL                        | 10.0.20.30     | vLAN - 20  | 10.0.20.1   |            |
-|  255   | Zabbix Monitoring                 | 10.0.20.40     | vLAN - 20  | 10.0.20.1   |            |
-|  266   | Docker / Podman / Container       | 10.0.20.50     | vLAN - 20  | 10.0.20.1   |            |
-|  277   | Zentrales Logging                 | 10.0.20.60     | vLAN - 20  | 10.0.20.1   |            |
+|  245   | Zabbix Monitoring                 | 10.0.20.40     | vLAN - 20  | 10.0.20.1   |            |
+|  266   | Docker / Podman / Container       | 10.0.20.50     | vLAN - 20  | 10.0.20.1   |            |
+|  277   | Zentrales Logging                 | 10.0.20.60     | vLAN - 20  | 10.0.20.1   |            |
 |  288   | Wazuh / Security Monitoring       | 10.0.20.70     | vLAN - 20  | 10.0.20.1   |            |
 |  299   | Gitea / Git-Server                | 10.0.20.80     | vLAN - 20  | 10.0.20.1   |            |
-| 301    | Testclient - Windows              | 10.0.30.DHCP   | vLAN - 30  | 10.0.30.1   | 10.0.20.3  |
-|  302   | Testclient - Windows              | 10.0.30.DHCP   | vLAN - 30  | 10.0.30.1   |            |
-|  303   | Testclient - MacOS                | 10.0.30.DHCP   | vLAN - 30  | 10.0.30.1   |            |
+|  301   | Testclient - Windows              | 10.0.30.DHCP   | vLAN - 30  | 10.0.30.1   | 10.0.20.3  |
+|  302   | Testclient - Linux Mint           | 10.0.30.DHCP   | vLAN - 30  | 10.0.30.1   |            |
+|  303   | Testclient - macOS                | 10.0.30.DHCP   | vLAN - 30  | 10.0.30.1   |            |
   
-*Eine eine grafische Darstellung befindet sich in der Diagramm*  
+*Eine grafische Darstellung befindet sich im Diagramm*  
   
 ## Netzwerk Konzept  
   
