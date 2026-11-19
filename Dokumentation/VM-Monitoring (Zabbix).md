@@ -17,13 +17,13 @@ title: "[SRV] VM – Zabbix Monitoring"
 
 
 # Übersicht
-Zabbix ist ein Monitoring Plattform, die alle VMs überwachen soll unabhängig davon, ob sie ein Teil einer Domäne sind oder nicht. Alle existierende VMs inklusiv Proxmox VE und Proxmox PBS.
-Das Plattform überwacht. Hardware Auslastung (CPU, RAM, HardDisk), Netzwerkverkehr.
+Zabbix ist eine Monitoring-Plattform, die alle VMs überwachen soll unabhängig davon, ob sie ein Teil einer Domäne sind oder nicht. Alle existierendn VMs einschließlich Proxmox VE und Proxmox PBS.
+Die Plattform überwacht: Hardware Auslastung (CPU, RAM, Festplattenauslastung), Netzwerkverkehr.
 
 **Anmerkung:** Zabbix verwendet ein PostgreSQL-Instanz. Sie ist unabhängig von der separaten PostgreSQL-VM 2
 
 # Konfigurationsschritte 
-Folgende Abschnitt zeigt die Vorbereitung, Installation und Konfiguration von der Zabbix Server auf der VM. 
+Der folgende Abschnitt zeigt die Vorbereitung, Installation und Konfiguration von der Zabbix Server auf der VM. 
 Voraussetzung für eine reibungslose Integration sind (1. Grundkonfiguration) und (2. SSH Verbindung) von Dokument: [Integration von VMs](Integration%20von%20VMs.md): 
 
 Schritte: 
@@ -38,11 +38,11 @@ Schritte:
 9. **Webinstaller und Anmeldung**
 
 <details markdown="1">
-  <summary><strong><span style="color: #00813F;">Konfigurationschritte anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #00813F;">Konfigurationsschritte anzeigen</span></strong></summary>
 
 ## 1. Zabbix Repository und Pakete installieren
 
-- Installation von offizielle Repository-Paket für Zabix 7.4 auf Alma Linux 10, damit **dnf**passende Packete findet
+- Installation von offizielle Repository-Paket für Zabbix 7.4 auf Alma Linux 10, damit **dnf** passende Packete findet
 - Entfernt lokale Paket-Caches und Metadaten, damit keine veralteten Repository-Informationen verwendet werden. 
 - Lädt Repository-Metadaten neu herunter und erstellt einen lokalen Cache. 
 
@@ -65,7 +65,7 @@ dnf install -y \
   postgresql-server
 ```
 
-## 2. PostgreSQL initialisieren und Starten
+## 2. PostgreSQL initialisieren und starten
 
 - Erstellt die anfängliche PostgreSQL-Datenstruktur.
 - Aktiviert
@@ -85,7 +85,7 @@ administrative Datenbankaktionen durchführen kann.
 sudo -u postgres psql
 ```
 
-In der PostgeSQL-Konsole:
+In der PostgreSQL-Konsole:
 - Erstellt den Datenbankbenutzer `zabbix` und setzt sein Passwort.
 - Erstellt die Datenbank `zabbix` und setzt `zabbix` als Eigentümer.
 
@@ -97,8 +97,8 @@ CREATE DATABASE zabbix OWNER zabbix;
 
 ## 4. Zabbix-Datenbankschema importieren
 
-- Entpackt das komprimierte SQL-Schema und leitet es an **pslq** weiter. 
-- Importiert als Betriebsystemnutzer **zabbix** in die Datenbank **zabbix**
+- Entpackt das komprimierte SQL-Schema und leitet es an **psql** weiter. 
+- Importiert als Betriebssystembenutzer **zabbix** in die Datenbank **zabbix**
 
 ```
 zcat /usr/share/zabbix/sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix
