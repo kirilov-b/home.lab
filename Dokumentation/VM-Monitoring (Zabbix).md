@@ -9,7 +9,7 @@ title: "[SRV] VM – Zabbix Monitoring"
 
 |          Parameter | Wert              | **Parameter** | Wert       |
 | -----------------: | ----------------- | ------------: | ---------- |
-|          **VM-ID** | 255               |      **IPv4** | 10.0.20.40 |
+|          **VM-ID** | 245               |      **IPv4** | 10.0.20.40 |
 |       **vLAN Tag** | 20                |    **Domain** | srv.test   |
 |        **VM-Name** | mon-la-20-40      |     **Größe** | 40 GB      |
 |          **Zweck** | Zabbix Monitoring |       **RAM** | 4 GB       |

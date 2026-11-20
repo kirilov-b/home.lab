@@ -28,11 +28,11 @@ Ich verwende eine **VLAN-aware Bridge (LANbr0)** in Proxmox und einen **VLAN-Tru
 |  211   | Proxmox Backup Server             | 10.0.20.10     | vLAN - 20  | 10.0.20.1   |            |
 |  233   | Nginx / Reverse Proxy             | 10.0.20.20     | vLAN - 20  | 10.0.20.1   |            |
 |  244   | PostgreSQL                        | 10.0.20.30     | vLAN - 20  | 10.0.20.1   |            |
-|  245   | Zabbix Monitoring                 | 10.0.20.40     | vLAN - 20  | 10.0.20.1   |            |
-|  266   | Docker / Podman / Container       | 10.0.20.50     | vLAN - 20  | 10.0.20.1   |            |
-|  277   | Zentrales Logging                 | 10.0.20.60     | vLAN - 20  | 10.0.20.1   |            |
-|  288   | Wazuh / Security Monitoring       | 10.0.20.70     | vLAN - 20  | 10.0.20.1   |            |
-|  299   | Gitea / Git-Server                | 10.0.20.80     | vLAN - 20  | 10.0.20.1   |            |
+|  245   | Zabbix Monitoring                 | 10.0.20.40     | vLAN - 20  | 10.0.20.1   |            |
+|  255   | Wazuh / Security Monitoring       | 10.0.20.50     | vLAN - 20  | 10.0.20.1   |            |
+|  266   | Docker / Podman / Container       | 10.0.20.60     | vLAN - 20  | 10.0.20.1   |            |
+|  277   | Zentrales Logging                 | 10.0.20.70     | vLAN - 20  | 10.0.20.1   |            |
+|  288   | Gitea / Git-Server                | 10.0.20.80     | vLAN - 20  | 10.0.20.1   |            |
 |  301   | Testclient - Windows              | 10.0.30.DHCP   | vLAN - 30  | 10.0.30.1   | 10.0.20.3  |
 |  302   | Testclient - Linux Mint           | 10.0.30.DHCP   | vLAN - 30  | 10.0.30.1   |            |
 |  303   | Testclient - macOS                | 10.0.30.DHCP   | vLAN - 30  | 10.0.30.1   |            |
