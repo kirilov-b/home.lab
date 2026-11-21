@@ -9,7 +9,7 @@ title: "[SRV] VM – PostgreSQL"
 
 |      **Parameter** | Wert                   | **Parameter** | Wert       |
 | -----------------: | ---------------------- | ------------: | ---------- |
-|          **VM-ID** | 244                    |      **IPv4** | 10.0.20.30 |
+|          **VM-ID** | 268                    |      **IPv4** | 10.0.20.60 |
 |       **vLAN Tag** | 20                     |    **Domain** | srv.test   |
 |        **VM-Name** | db-ld-20-30            |     **Größe** | 32 GB      |
 |          **Zweck** | PostgreSQL / Datenbank |       **RAM** | 4 GB       |

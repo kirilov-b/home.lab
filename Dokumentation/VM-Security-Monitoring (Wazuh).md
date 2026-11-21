@@ -18,6 +18,12 @@ title: "[SRV] VM – Wazuh / Security Monitoring"
 
 # Übersicht
 
+**Wazuh** soll als zentrale Security-Monitoring-Plattform zur Erkennung, Analyse und Überwachung von Sicherheitsvorfällen in unserer Infrastruktur dienen. Der Wechsel zu **Ubuntu Server 24.04 LTS** erfolgte, weil Ubuntu offiziell als Wazuh-Serverplattform unterstützt wird, während AlmaLinux 10 nicht ausdrücklich aufgeführt ist. Dadurch gewährleisten wir eine bessere dokumentierte Kompatibilität und langfristige Wartbarkeit.
 # Konfigurationsschritte 
+## OS Installation und Integration
+
+# Wazuh Installation und Konfiguration
+
+
 
 # Tests

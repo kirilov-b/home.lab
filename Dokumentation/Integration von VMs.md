@@ -1,3 +1,13 @@
+
+# Standard Installation Ubuntu
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Ubuntu 24 LTS Installationsschritte anzeigen</span></strong></summary>
+
+</details>
+
+
+
 # VM Integration
 Folgende Absatz beschreibt die notwendige Schritte, um unsere Umgebung zu betreten.
 Eine **VM Clone Image** mit Grundkonfiguration und wiederholende Schritte wurde vorbereitet um die Integration zu erleichtern
@@ -135,7 +145,7 @@ ipa-client-install --mkhomedir \
 ## 4. Monitoring - Zabbix
 
 
-## 1. Agent 2 installieren
+### 4.1. Agent 2 installieren
 
 
 <details markdown="1">
@@ -220,7 +230,7 @@ danach weiter mit Agent Konfigurieren
 ### MacOS
 
 
-## 2. Agent konfigurieren
+### 4.2. Agent konfigurieren
 
 Konfigurationsdatei öffnen:
 
@@ -244,7 +254,7 @@ Hostname=VM-FQDN.srv.test
 Keine doppelten Einträge anlegen. Speichern mit `Ctrl+O`, `Enter`, dann  
 `Ctrl+X`.
 
-## 3. Agent starten und testen
+### 4.3. Agent starten und testen
 
 ```
 systemctl enable --now zabbix-agent2
@@ -276,7 +286,7 @@ Wenn `firewalld` inaktiv ist, diese Befehle nicht ausführen. Dann
 prüfen, welche Firewall oder Netzwerkregeln tatsächlich verwendet  
 werden.
 
-## 5. Host in der Zabbix-Weboberfläche hinzufügen
+### 4.5. Host in der Zabbix-Weboberfläche hinzufügen
 
 1. Öffne `http://10.0.20.40/zabbix`.
 2. Gehe zu **Data collection → Hosts** und klicke **Create host**.
@@ -296,7 +306,7 @@ passend. Falls du stattdessen ausschließlich aktive Checks einrichten
 möchtest, müssen Template und Agent-Konfiguration entsprechend auf  
 aktive Checks abgestimmt werden.
 
-## 6. Verbindung prüfen
+### 4.6. Verbindung prüfen
 
 Warte 30--60 Sekunden und aktualisiere die Hostliste. Das `ZBX`-Symbol  
 unter **Availability** sollte grün werden.

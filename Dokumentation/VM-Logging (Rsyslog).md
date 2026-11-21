@@ -9,7 +9,7 @@ title: "[SRV] VM – Zentrales Logging"
 
 |      **Parameter** | Wert              |  Parameter | Wert       |
 | -----------------: | ----------------- | ---------: | ---------- |
-|          **VM-ID** | 277               |   **IPv4** | 10.0.20.60 |
+|          **VM-ID** | 277               |   **IPv4** | 10.0.20.70 |
 |       **vLAN Tag** | 20                | **Domain** | srv.test   |
 |        **VM-Name** | log-la-20-70      |  **Größe** | 20 GB      |
 |          **Zweck** | Zentrales Logging |    **RAM** | 4 GB       |
