@@ -61,7 +61,7 @@ Für Domain Controller - **cl.lab.test**
 | 224   | ngx          | **ngx-la-20-20** | Nginx / Reverse Proxy         | Linux Alma          | 10.0.20.20 | 20          | 2         | 2    |
 | 236   | wazuh        | **sec-lu-20-30** | Wazuh / Security Monitoring   | Linux Ubuntu Server | 10.0.20.30 | 64          | 4         | 4    |
 | 245   | zabbix       | **mon-la-20-40** | Zabbix Monitoring             | Linux Alma          | 10.0.20.40 | 40          | 4         | 2    |
-| 267   | docker       | **doc-lu-20-60** | Docker / Podman / Container   | Linux Ubuntu Server | 10.0.20.50 | 40          | 4         | 2    |
+| 257   | docker       | **doc-lu-20-60** | Docker / Podman / Container   | Linux Ubuntu Server | 10.0.20.50 | 40          | 4         | 2    |
 | 2     | postgres     | **db-ld-20-60**  | PostgreSQL                    | Linux Debian        | 10.0.20.60 | 20          | 4         | 2    |
 | 277   | log          | **log-la-20-70** | Rsyslog                       | Linux Alma          | 10.0.20.70 | 40          | 4         | 2    |
 | 288   | gitea        | **git-ld-20-80** | Gitea / Git-Server            | Linux Debian        | 10.0.20.80 | 32          | 2         | 2    |
