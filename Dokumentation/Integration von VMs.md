@@ -310,7 +310,7 @@ tail -n 50 /var/log/zabbix/zabbix_agent2.log
 
 Prüfe zusätzlich: - Stimmt `Hostname` exakt mit **Host name** in Zabbix  
 überein? - Ist `Server=10.10.20.40` korrekt? - Ist TCP-Port `10050` von  
-`10.10.20.40` aus erreichbar? - Zeigt das Zabbix-Interface auf die  
+`10.0.20.40` aus erreichbar? - Zeigt das Zabbix-Interface auf die  
 richtige IP-Adresse?
 
 ## Sicherheitshinweise
