@@ -58,11 +58,11 @@ Für Domain Controller - **cl.lab.test**
 | 202   | ipa          | **ipa-la-20-2**  | FreeIPA / Identity / DNS      | Linux Alma          | 10.0.20.2  | 40          | 4         | 2    |
 | 203   | dc           | **dc-ws-20-3**   | AD, DNS, DHCP                 | Windows Server 2025 | 10.0.20.3  | 70          | 8         | 4    |
 | 211   | pbs          | **pbs-ld-20-10** | Proxmox Backup Server         | PBS (Debian)        | 10.0.20.10 | 20          | 4         | 2    |
-| 233   | ngx          | **ngx-la-20-20** | Nginx / Reverse Proxy         | Linux Alma          | 10.0.20.20 | 20          | 2         | 2    |
-| 244   | postgres     | **db-ld-20-30**  | PostgreSQL                    | Linux Debian        | 10.0.20.30 | 20          | 4         | 2    |
+| 224   | ngx          | **ngx-la-20-20** | Nginx / Reverse Proxy         | Linux Alma          | 10.0.20.20 | 20          | 2         | 2    |
+| 236   | wazuh        | **sec-lu-20-30** | Wazuh / Security Monitoring   | Linux Ubuntu Server | 10.0.20.30 | 64          | 4         | 4    |
 | 245   | zabbix       | **mon-la-20-40** | Zabbix Monitoring             | Linux Alma          | 10.0.20.40 | 40          | 4         | 2    |
-| 255   | wazuh        | **sec-la-20-50** | Wazuh / Security Monitoring   | Linux Alma          | 10.0.20.50 | 64          | 4         | 4    |
-| 266   | docker       | **doc-lu-20-60** | Docker / Podman / Container   | Linux Ubuntu Server | 10.0.20.60 | 40          | 4         | 2    |
+| 267   | docker       | **doc-lu-20-60** | Docker / Podman / Container   | Linux Ubuntu Server | 10.0.20.50 | 40          | 4         | 2    |
+| 2     | postgres     | **db-ld-20-60**  | PostgreSQL                    | Linux Debian        | 10.0.20.60 | 20          | 4         | 2    |
 | 277   | log          | **log-la-20-70** | Rsyslog                       | Linux Alma          | 10.0.20.70 | 40          | 4         | 2    |
 | 288   | gitea        | **git-ld-20-80** | Gitea / Git-Server            | Linux Debian        | 10.0.20.80 | 32          | 2         | 2    |
 | 301   | cl1          | **cl1-wc-30**    | Testclient                    | Windows 11          | DHCP       | 60          | 4         | 2    |
