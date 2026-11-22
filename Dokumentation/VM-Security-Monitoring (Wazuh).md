@@ -272,7 +272,7 @@ die Anfrage intern per HTTPS an den Wazuh-Server (`10.0.20.30`) weiter.
 ### Alma Linux Agent
 
 <details markdown="1">
-  <summary><strong><span style="color: #00813F;">AlmaLinux Agent Integration anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #00813F;">AlmaLinux Agent Integrationsschritte anzeigen</span></strong></summary>
 
 **Wazuh-Repository einrichten**
 
@@ -356,7 +356,7 @@ erwartet wird "Valid key recieved"
 
 
 <details markdown="1">
-  <summary><strong><span style="color: #00813F;">Ubuntu & Mint Agent Integration anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #00813F;">Ubuntu & Mint Agent Integrationsschritte anzeigen</span></strong></summary>
 
 **Wazuh-Repository einrichten**
 
@@ -370,12 +370,12 @@ curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | sudo gpg --dearmor -o /us
 echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4.x/apt/ stable main" | sudo tee /etc/apt/sources.list.d/wazuh.list
 ```
 
-3. Paketlisten aktualisieren - `sudo apt update`
-4. Agent installieren - `sudo apt install wazuh-agent=4.14.10-1´
+3. Paketlisten aktualisieren - `apt update`
+4. Agent installieren - `apt install wazuh-agent=4.14.10-1´
 5. Version prüfen - `dpkg -l | grep wazuh-agent`
 
 **Manager Adresse konfigurieren**
-- In der Konfigurationsdatei - `sudo nano /var/ossec/etc/ossec.conf´ 
+- In der Konfigurationsdatei - `nano /var/ossec/etc/ossec.conf´ 
 `<address>MANAGER_IP</address>` anpassen auf `<address>10.0.20.30</address>'
 
 **Agent Registrieren**
@@ -383,18 +383,18 @@ echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4
 erwartet wird "Valid key recieved"
 
 **Diens Aktivieren**
-`sudo systemctl daemon-reload`
-`sudo systemctl enable --now wazuh-agent`
+`systemctl daemon-reload`
+`systemctl enable --now wazuh-agent`
 
 **Dienst Prüfen**
-`sudo systemctl status wazuh-aegnt`
+`systemctl status wazuh-aegnt`
 
 </details>
 
-### Windows Server Agent Integration
+### Windows Server / Client Agent Integration
 
 <details markdown="1">
-  <summary><strong><span style="color: #00813F;">Windows Server Agent Integration anzeigen</span></strong></summary>
+  <summary><strong><span style="color: #00813F;">Windows Server Agent Integrationsschritte anzeigen</span></strong></summary>
   
 **Windows Version prüfen**
 `Get-ComputerInfo | Select-Object WindowsProductName, WindowsVersion, OsBuildNumber`
@@ -410,6 +410,39 @@ erwartet wird "Valid key recieved"
 `get-service Wazuhsvc` 
 
 </details>
+
+
+### MacOS Agent Integration
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">MacOS  Agent Integrationsschritte anzeigen</span></strong></summary>
+
+
+**MacOS prüfen**
+`sw-vers`
+`hostnam`
+`uname -m`
+
+**Wazuh Agent herunterladen**
+`curl -O https://packages.wazuh.com/4.x/macos/wazuh-agent-4.14.10-1.intel64.pkg
+`
+**Wazuh-Agent installieren und Konfigurieren**
+`sudo installer -pkg ~/Downloads/wazuh-agent-4.14.10-1.intel64.pkg -target /`
+
+**Wazuh Konfigurationdatei anpassen**
+`sudo nano /Library/Ossec/etc/ossec.conf`
+
+**Verbindung testen**
+`nc -vz 10.10.20.30 1514`
+`nc -vz 10.10.20.30 1515`
+
+**Wazuh Agent registrieren**
+` sudo /Library/Ossec/bin/agent-auth -m 10.0.20.30 -A cl3-mac-30 ` 
+
+**Wazuh Agent starten und prüfen**
+`sudo launchctl load /Library/LaunchDaemons/com.wazuh.agent.plist`
+`sudo /Library/Ossec/bin/wazuh-control status`
+`
 
 </details>
 # Tests
