@@ -269,6 +269,7 @@ die Anfrage intern per HTTPS an den Wazuh-Server (`10.0.20.30`) weiter.
 </details>
 ## 4. Wazuh Agents Installation und Konfiguration
 
+### Alma Linux Agent
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">AlmaLinux Agent Integration anzeigen</span></strong></summary>
@@ -313,8 +314,102 @@ erwartet wird "Valid key recieved"
 
 </details>
 
-### 4.2 Ubuntu & Mint agent Integration
-### 4.3 Windows Server Agent Integration
+### Debian Agent
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Debian Agent Integration anzeigen</span></strong></summary>
+
+**Wazuh-Repository einrichten**
+
+1. GPG-Schlüssel importieren**
+```
+curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | gpg --dearmor -o /usr/share/keyrings/wazuh.gpg
+```
+
+2. Repository erstellen**
+```
+echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4.x/apt/ stable main" > /etc/apt/sources.list.d/wazuh.list
+```
+
+3. Agent installieren - `apt install wazuh-agent=4.14.10-1´
+4. Installation Kontrolieren - `dpkg -l | grep wazuh-agent`
+
+
+**Manager Adresse konfigurieren**
+- In der Konfigurationsdatei - `nano /var/ossec/etc/ossec.conf´ 
+`<address>MANAGER_IP</address>` anpassen auf `<address>10.0.20.30</address>'
+
+**Agent Registrieren**
+`/var/ossec/bin/agent-auth -m 10.0.20.30 -p 1515 -A "Hostname"´
+erwartet wird "Valid key recieved"
+
+**Diens Aktivieren**
+`systemctl daemon-reload`
+`systemctl enable --now wazuh-agent`
+
+**Dienst Prüfen**
+`systemctl status wazuh-aegnt`
+  
+</details>
+
+### Ubuntu & Mint Agent Integration
+
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Ubuntu & Mint Agent Integration anzeigen</span></strong></summary>
+
+**Wazuh-Repository einrichten**
+
+1. GPG-Schlüssel importieren**
+```
+curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | sudo gpg --dearmor -o /usr/share/keyrings/wazuh.gpg
+```
+
+2. Repository erstellen**
+```
+echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4.x/apt/ stable main" | sudo tee /etc/apt/sources.list.d/wazuh.list
+```
+
+3. Paketlisten aktualisieren - `sudo apt update`
+4. Agent installieren - `sudo apt install wazuh-agent=4.14.10-1´
+5. Version prüfen - `dpkg -l | grep wazuh-agent`
+
+**Manager Adresse konfigurieren**
+- In der Konfigurationsdatei - `sudo nano /var/ossec/etc/ossec.conf´ 
+`<address>MANAGER_IP</address>` anpassen auf `<address>10.0.20.30</address>'
+
+**Agent Registrieren**
+`/var/ossec/bin/agent-auth -m 10.0.20.30 -p 1515 -A "Hostname"´
+erwartet wird "Valid key recieved"
+
+**Diens Aktivieren**
+`sudo systemctl daemon-reload`
+`sudo systemctl enable --now wazuh-agent`
+
+**Dienst Prüfen**
+`sudo systemctl status wazuh-aegnt`
+
+</details>
+
+### Windows Server Agent Integration
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Windows Server Agent Integration anzeigen</span></strong></summary>
+  
+**Windows Version prüfen**
+`Get-ComputerInfo | Select-Object WindowsProductName, WindowsVersion, OsBuildNumber`
+
+**Wazuh Agent herunterladen**
+`Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.14.10-1.msi -OutFile "$env:TEMP\wazuh-agent.msi"`
+
+**Wazu-Agent installieren und Konfigurieren**
+` msiexec.exe /i "$env:TEMP\wazuh-agent.msi" /qn WAZUH_MANAGER="10.0.20.30" WAZUH_REGISTRATION_SERVER="10.0.20.30" WAZUH_AGENT_NAME="dc-ws-20-3"`
+
+**Starten und Prüfen**
+`NET START WazuhSvc `
+`get-service Wazuhsvc` 
+
+</details>
 
 </details>
 # Tests
