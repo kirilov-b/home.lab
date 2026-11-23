@@ -2,7 +2,7 @@
 layout: default
 title: "[SRV] VM – Wazuh / Security Monitoring"
 ---
-# VM – Wazuh / Security Monitoring
+root# VM – Wazuh / Security Monitoring
 
 **VM Parameter**
 
@@ -285,7 +285,7 @@ Die Reihenfolge bleibt unter alle OS gleich.
 - **5. Dienst aktivieren, Dienst prüfen**
 
 
-### Alma Linux Agent
+### AlmaLinux Agent
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">AlmaLinux Agent Integrationsschritte anzeigen</span></strong></summary>
@@ -331,6 +331,9 @@ erwartet wird "Valid key recieved"
 </details>
 
 ### Debian Agent
+
+Anmerkung: Proxmox VE ist auch Debian bassiert. Die Konfiguration ist ähnlich wie unten beschriebene Ablauf mit kleine PVE besonderheiten. Ein OPNsense Regel für Ports (1514, 1515) muss zwischen den WAN und 10.0.20.30 erstellt werden.
+
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Debian Agent Integration anzeigen</span></strong></summary>
@@ -404,6 +407,7 @@ erwartet wird "Valid key recieved"
 
 </details>
 
+
 ### Windows Server / Client Agent Integration
 
 <details markdown="1">
@@ -459,6 +463,32 @@ erwartet wird "Valid key recieved"
 
 </details>
 
+### OPNsense-Agent Integration
+
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">OPNsense Integration anzeigen</span></strong></summary>
+
+Die Einrichtung von OPNsense läuft über den Web GUI.
+
+**1. OPNsense vorbereiten**
+Es wird nach Updates der Software geprüft und bei Bedarf ausgeführt. **os-wazuh-agent** aus der community plugins wird heruntergeladen und installiert.
+
+**2. OPNsense Wazuh Agent konfigurieren**
+
+**Manager Hostname:** 10.0.20.30
+**Protocol:** TCP
+**Manager Port:** 1514
+**Enrollment Port:** 1515
+**Active response:** deaktivieren
+**Applications:** firewall
+
+Nach dem **apply** wird die Verbindung zu Wazuh Server hergestellt.
+
 
 </details>
+
+
+</details>
+
 # Tests
