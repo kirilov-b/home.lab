@@ -267,13 +267,23 @@ die Anfrage intern per HTTPS an den Wazuh-Server (`10.0.20.30`) weiter.
 </details>
 ## 4. Wazuh Agents Installation und Konfiguration
 
-Diese Abschnitt beschreibt die Installation und Anpassung der Wazuh-Agent auf unterschiedliche OS Systeme.
-Die Reihenfolge bleibt unter alle OS gleich.
+Diese Abschnitt beschreibt die Installation und Anpassung der Wazuh-Agent auf unterschiedliche OS Systeme. 
 
-**GPG Schlüssel importieren > Repository erstellen > Manager Adresse konfigurieren > Agent registrieren > Dienst aktivieren > Dienst prüfen**
+Voraussetzung ist die folgende Ports an der Wazuh Server freizuschalten um die Verbindung zwischen Server und Client zu ermöglichen.
+- Port **1514** - Kommunikation mit der Server
+- Port **1515** - Registrierung der Wazuh-Agents. *Wird nach der Einrichtung wieder gesperrt.* 
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">OS Agents Integration anzeigen</span></strong></summary>
+
+Die Reihenfolge bleibt unter alle OS gleich.
+
+- **1. GPG Schlüssel importieren** 
+- **2. Repository erstellen** 
+- **3. Manager Adresse konfigurieren** 
+- **4. Agent registrieren** 
+- **5.Dienst aktivieren, Dienst prüfen**
+
 
 ### Alma Linux Agent
 
