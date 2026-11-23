@@ -133,8 +133,6 @@ begrenzt.
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Einrichtungsschritte anzeigen</span></strong></summary>
 
-# NGINX-Weiterleitung einrichten
-
 ### 3.1 DNS-Eintrag erstellen
 
 In FreeIPA wurde ein DNS-A-Record für den Dashboard-Namen angelegt:
@@ -146,7 +144,7 @@ Der Name zeigt bewusst auf den NGINX-Server und nicht direkt auf den
 Wazuh-Server. NGINX nimmt die HTTPS-Verbindung entgegen und leitet sie  
 intern an Wazuh weiter.
 
-## 2.2 TLS-Zertifikat über FreeIPA ausstellen
+### 3.2 TLS-Zertifikat über FreeIPA ausstellen
 
 Auf dem NGINX-Server wurde ein privater Schlüssel und eine  
 Zertifikatsanforderung (CSR) für `wazuh.srv.test` erstellt. Der DNS-Name  
@@ -182,7 +180,7 @@ openssl verify -CAfile /etc/ipa/ca.crt /etc/pki/nginx/wazuh.crt
 
 Erwartetes Ergebnis: `OK`.
 
-## 2.3 NGINX-Konfiguration erstellen
+### 3.3 NGINX-Konfiguration erstellen
 
 Auf dem NGINX-Server wurde eine eigene Konfigurationsdatei angelegt:
 
@@ -232,7 +230,7 @@ ist damit HTTPS-verschlüsselt, aber NGINX prüft die Identität des
 Backend-Zertifikats nicht. Eine spätere Härtung sollte die Prüfung mit  
 der passenden CA aktivieren.
 
-## 2.4 NGINX-Konfiguration prüfen und laden
+### 3.4 NGINX-Konfiguration prüfen und laden
 
 Vor dem Neuladen wird die Konfiguration auf Syntaxfehler geprüft:
 
@@ -256,7 +254,7 @@ curl -k -I https://10.0.20.30
 Eine Antwort des Wazuh-Dashboards (beispielsweise eine Weiterleitung zur  
 Login-Seite) bestätigt, dass der Backend-Webserver erreichbar ist.
 
-## 2.5 Dashboard aufrufen
+### 3.5 Dashboard aufrufen
 
 Nach Einrichtung von DNS, Zertifikat, Firewall und Reverse Proxy ist das  
 Dashboard über folgende Adresse erreichbar:
@@ -269,6 +267,11 @@ die Anfrage intern per HTTPS an den Wazuh-Server (`10.0.20.30`) weiter.
 </details>
 ## 4. Wazuh Agents Installation und Konfiguration
 
+Diese Abschnitt beschreibt die Installation und Anpassung der Wazuh-Agent auf unterschiedliche OS Systeme.
+Die Reihenfolge bleibt unter alle OS gleich.
+
+**GPG Schlüssel importieren > Repository erstellen > Manager Adresse konfigurieren > Agent registrieren > Dienst aktivieren > Dienst prüfen**
+
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">OS Agents Integration anzeigen</span></strong></summary>
 
@@ -279,12 +282,12 @@ die Anfrage intern per HTTPS an den Wazuh-Server (`10.0.20.30`) weiter.
 
 **Wazuh-Repository einrichten**
 
-1. GPG-Schlüssel importieren**
+**GPG-Schlüssel importieren**
 ```
 rpm --import https://packages.wazuh.com/key/GPG-KEY-WAZUH
 ```
 
-2. Repository erstellen**
+**Repository erstellen**
 ```
 cat > /etc/yum.repos.d/wazuh.repo << 'EOF'
 [wazuh]
@@ -297,8 +300,8 @@ protect=1
 EOF
 ```
 
-3. Repository prüfen - `dnf repolist | grep wazuh'
-4. Agent installieren - `dnf install wazuh-agent-4.14.10 -y´
+**Repository prüfen** - `dnf repolist | grep wazuh'
+**Agent installieren** - `dnf install wazuh-agent-4.14.10 -y´
 
 **Manager Adresse konfigurieren**
 - In der Konfigurationsdatei - `nano /var/ossec/etc/ossec.conf´ 
@@ -308,11 +311,11 @@ EOF
 `/var/ossec/bin/agent-auth -m 10.0.20.30 -p 1515 -A "Hostname"´
 erwartet wird "Valid key recieved"
 
-**Diens Aktivieren**
+**Dienst aktivieren**
 `systemctl daemon-reload`
 `systemctl enable --now wazuh-agent`
 
-**Dienst Prüfen**
+**Dienst prüfen**
 `systemctl status wazuh-aegnt`
 
 </details>
