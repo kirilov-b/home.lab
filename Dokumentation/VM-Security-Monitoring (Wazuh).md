@@ -325,20 +325,18 @@ erwartet wird "Valid key recieved"
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Debian Agent Integration anzeigen</span></strong></summary>
 
-**Wazuh-Repository einrichten**
-
-1. GPG-Schlüssel importieren**
+**GPG-Schlüssel importieren**
 ```
 curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | gpg --dearmor -o /usr/share/keyrings/wazuh.gpg
 ```
 
-2. Repository erstellen**
+**Repository erstellen**
 ```
 echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4.x/apt/ stable main" > /etc/apt/sources.list.d/wazuh.list
 ```
 
-3. Agent installieren - `apt install wazuh-agent=4.14.10-1´
-4. Installation Kontrolieren - `dpkg -l | grep wazuh-agent`
+**Agent installieren** - `apt install wazuh-agent=4.14.10-1`
+**Installation Kontrolieren** - `dpkg -l | grep wazuh-agent`
 
 
 **Manager Adresse konfigurieren**
@@ -349,11 +347,11 @@ echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4
 `/var/ossec/bin/agent-auth -m 10.0.20.30 -p 1515 -A "Hostname"´
 erwartet wird "Valid key recieved"
 
-**Diens Aktivieren**
+**Dienst aktivieren**
 `systemctl daemon-reload`
 `systemctl enable --now wazuh-agent`
 
-**Dienst Prüfen**
+**Dienst prüfen**
 `systemctl status wazuh-aegnt`
   
 </details>
@@ -364,21 +362,20 @@ erwartet wird "Valid key recieved"
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Ubuntu & Mint Agent Integrationsschritte anzeigen</span></strong></summary>
 
-**Wazuh-Repository einrichten**
 
-1. GPG-Schlüssel importieren**
+**GPG-Schlüssel importieren**
 ```
 curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | sudo gpg --dearmor -o /usr/share/keyrings/wazuh.gpg
 ```
 
-2. Repository erstellen**
+**Repository erstellen**
 ```
 echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4.x/apt/ stable main" | sudo tee /etc/apt/sources.list.d/wazuh.list
 ```
 
-3. Paketlisten aktualisieren - `apt update`
-4. Agent installieren - `apt install wazuh-agent=4.14.10-1´
-5. Version prüfen - `dpkg -l | grep wazuh-agent`
+**Paketlisten aktualisieren** - `apt update`
+**Agent installieren** - `apt install wazuh-agent=4.14.10-1´
+**Version prüfen** - `dpkg -l | grep wazuh-agent`
 
 **Manager Adresse konfigurieren**
 - In der Konfigurationsdatei - `nano /var/ossec/etc/ossec.conf´ 
@@ -388,11 +385,11 @@ echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4
 `/var/ossec/bin/agent-auth -m 10.0.20.30 -p 1515 -A "Hostname"´
 erwartet wird "Valid key recieved"
 
-**Diens Aktivieren**
+**Dienst aktivieren**
 `systemctl daemon-reload`
 `systemctl enable --now wazuh-agent`
 
-**Dienst Prüfen**
+**Dienst prüfen**
 `systemctl status wazuh-aegnt`
 
 </details>
@@ -405,7 +402,7 @@ erwartet wird "Valid key recieved"
 **Windows Version prüfen**
 `Get-ComputerInfo | Select-Object WindowsProductName, WindowsVersion, OsBuildNumber`
 
-**Wazuh Agent herunterladen**
+**Wazuh-Agent herunterladen**
 `Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.14.10-1.msi -OutFile "$env:TEMP\wazuh-agent.msi"`
 
 **Wazu-Agent installieren und Konfigurieren**
@@ -429,7 +426,7 @@ erwartet wird "Valid key recieved"
 `hostnam`
 `uname -m`
 
-**Wazuh Agent herunterladen**
+**Wazuh-Agent herunterladen**
 `curl -O https://packages.wazuh.com/4.x/macos/wazuh-agent-4.14.10-1.intel64.pkg
 `
 **Wazuh-Agent installieren und Konfigurieren**
@@ -442,10 +439,10 @@ erwartet wird "Valid key recieved"
 `nc -vz 10.10.20.30 1514`
 `nc -vz 10.10.20.30 1515`
 
-**Wazuh Agent registrieren**
+**Wazuh-Agent registrieren**
 ` sudo /Library/Ossec/bin/agent-auth -m 10.0.20.30 -A cl3-mac-30 ` 
 
-**Wazuh Agent starten und prüfen**
+**Wazuh-Agent starten und prüfen**
 `sudo launchctl load /Library/LaunchDaemons/com.wazuh.agent.plist`
 `sudo /Library/Ossec/bin/wazuh-control status`
 `
