@@ -270,8 +270,14 @@ die Anfrage intern per HTTPS an den Wazuh-Server (`10.0.20.30`) weiter.
 Diese Abschnitt beschreibt die Installation und Anpassung der Wazuh-Agent auf unterschiedliche OS Systeme. 
 
 Voraussetzung ist die folgende Ports an der Wazuh Server freizuschalten um die Verbindung zwischen Server und Client zu ermöglichen.
+
 - Port **1514** - Kommunikation mit der Server
-- Port **1515** - Registrierung der Wazuh-Agents. *Wird nach der Einrichtung wieder gesperrt.* 
+`sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="Host-IP" port port="1514" protocol="tcp" accept' `
+
+- Port **1515** - Registrierung der Wazuh-Agents.
+`sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="Host-IP" port port="1515" protocol="tcp" accept' `
+**Hinweis:**  *Wird nach der Einrichtung wieder gesperrt.* 
+
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">OS Agents Integration anzeigen</span></strong></summary>
