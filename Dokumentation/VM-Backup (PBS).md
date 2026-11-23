@@ -331,6 +331,7 @@ for VMID in "${VMIDS[@]}"; do
     echo "=== Sichere VM $VMID: $(date) ==="
 
     if vzdump "$VMID" \
+        --notification-mode legacy-sendmail \
         --storage "$PBS_STORAGE" \
         --mode snapshot \
         --compress zstd; then
