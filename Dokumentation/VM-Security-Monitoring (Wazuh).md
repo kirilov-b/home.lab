@@ -2,7 +2,6 @@
 layout: default
 title: "[SRV] VM – Wazuh / Security Monitoring"
 ---
-# NOCH NICHT KONFIGURIERT
 # VM – Wazuh / Security Monitoring
 
 **VM Parameter**
@@ -23,6 +22,7 @@ title: "[SRV] VM – Wazuh / Security Monitoring"
 ## 1. OS Installation und Integration
 
 Ubuntu server wurde installiert. Ich verwende die version ohne GUI, um den Speicherbedarf niedrig zu halten.
+
 **Firewalld** wurde installiert um die Einheitlichkeit der Umgebung zu halten
 
 ## 2. Wazuh Server Installation und Konfiguration
@@ -208,7 +208,7 @@ server {
     ssl_certificate_key /etc/pki/nginx/wazuh-privkey.pem;
 
     location / {
-        proxy_pass https://10.10.20.30;
+        proxy_pass https://10.0.20.30;
         proxy_http_version 1.1;
 
         proxy_set_header Host sec-lu-20-30.srv.test;
@@ -268,6 +268,9 @@ die Anfrage intern per HTTPS an den Wazuh-Server (`10.0.20.30`) weiter.
 
 </details>
 ## 4. Wazuh Agents Installation und Konfiguration
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">OS Agents Integration anzeigen</span></strong></summary>
 
 ### Alma Linux Agent
 
@@ -443,6 +446,9 @@ erwartet wird "Valid key recieved"
 `sudo launchctl load /Library/LaunchDaemons/com.wazuh.agent.plist`
 `sudo /Library/Ossec/bin/wazuh-control status`
 `
+
+</details>
+
 
 </details>
 # Tests
