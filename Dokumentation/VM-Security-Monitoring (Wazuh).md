@@ -276,6 +276,7 @@ Voraussetzung ist die folgende Ports an der Wazuh Server freizuschalten um die V
 
 - Port **1515** - Registrierung der Wazuh-Agents.
 `sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="Host-IP" port port="1515" protocol="tcp" accept' `
+
 **Hinweis:**  *Wird nach der Einrichtung wieder gesperrt.* 
 
 
@@ -338,7 +339,7 @@ erwartet wird "Valid key recieved"
 
 ### Debian Agent
 
-Anmerkung: Proxmox VE ist auch Debian bassiert. Die Konfiguration ist ähnlich wie unten beschriebene Ablauf mit kleine PVE besonderheiten. Ein OPNsense Regel für Ports (1514, 1515) muss zwischen den WAN und 10.0.20.30 erstellt werden.
+**Anmerkung:** Proxmox VE ist auch Debian basiert. Die Konfiguration ist ähnlich wie unten beschriebene Ablauf mit kleine PVE Besonderheiten. Ein OPNsense Regel für Ports (1514, 1515) muss zwischen den WAN und 10.0.20.30 erstellt werden.
 
 
 <details markdown="1">
@@ -482,14 +483,14 @@ Es wird nach Updates der Software geprüft und bei Bedarf ausgeführt. **os-wazu
 
 **2. OPNsense Wazuh Agent konfigurieren**
 
-**Manager Hostname:** 10.0.20.30
-**Protocol:** TCP
-**Manager Port:** 1514
-**Enrollment Port:** 1515
-**Active response:** deaktivieren
-**Applications:** firewall
+- **Manager Hostname:** 10.0.20.30
+- **Protocol:** TCP
+- **Manager Port:** 1514
+- **Enrollment Port:** 1515
+- **Active response:** deaktivieren
+- **Applications:** firewall
 
-Nach dem **apply** wird die Verbindung zu Wazuh Server hergestellt.
+Nach dem **apply** wird die Verbindung zu Wazuh-Server hergestellt.
 
 
 </details>
