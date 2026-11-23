@@ -4,6 +4,28 @@
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Ubuntu 24 LTS Installationsschritte anzeigen</span></strong></summary>
 
+**Ubuntu Server**: Minimized
+**IP Konfiguration**
+- IP method: Manual
+- Subnet: 10.0.20.0/24
+- Address: "geplante IP Adresse"
+- Gateway: 10.0.20.1
+- Name Server: 10.0.20.2
+- Search domain: srv.test
+
+**Proxy Address**: leer
+
+**Profile configuration**
+- Your Name: "Dienst" Server
+- Your servers name: "Namenkonvention"
+- Pick a username: ladministrator
+- Passwort: "nach Vorgaben"
+
+**Install OpenSSH server**: Aktivieren
+
+
+
+
 </details>
 
 
