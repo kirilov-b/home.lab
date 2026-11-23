@@ -282,7 +282,7 @@ Die Reihenfolge bleibt unter alle OS gleich.
 - **2. Repository erstellen** 
 - **3. Manager Adresse konfigurieren** 
 - **4. Agent registrieren** 
-- **5.Dienst aktivieren, Dienst prüfen**
+- **5. Dienst aktivieren, Dienst prüfen**
 
 
 ### Alma Linux Agent
