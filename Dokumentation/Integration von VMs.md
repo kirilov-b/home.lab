@@ -23,7 +23,7 @@
 
 **Install OpenSSH server**: Aktivieren
 
-
+Bei erste Frage für ein Restart, die ISO CD/DVD entfernen. Oder Boot Sequence ändern.
 
 
 </details>
@@ -133,7 +133,9 @@ ipa dnsrecord-add srv.test app-la-20-90 --a-rec=10.0.20.90
 ### FreeIPA Client installieren
 
 Auf der neue VM:
-1. Installationsbefehlt -  `dnf install -y ipa-client`
+1. Installationsbefehlt -  
+    `dnf install -y ipa-client`
+    `apt install freeipa-client`
 2. Zeitstatus prüfen 
 ```
 timedatectl
@@ -164,199 +166,11 @@ ipa-client-install --mkhomedir \
 4. **User authorized to enroll computers:**  
     Beispielsweise `admin`, sofern dieses Konto dafür berechtigt ist.
 
-## 4. Monitoring - Zabbix
+## 4. Monitoring - Zabbix Integration
+Anleitung in VM-Zabbis
 
+## 5. Wazuh Integration
 
-### 4.1. Agent 2 installieren
-
-
-<details markdown="1">
-  <summary><strong>Alma Linux 10 Integration anzeigen</span></strong></summary>
-
-
-Alma ist RHEL basiert. Folgende Besonderheiten bei der Installation beachten
-
-```
-dnf install -y https://repo.zabbix.com/zabbix/7.4/release/alma/10/noarch/zabbix-release-latest-7.4.el10.noarch.rpm
-dnf clean all
-dnf makecache
-dnf install -y zabbix-agent2
-```
-
-danach weiter mit Agent Konfigurieren
-
-</details>
-
-
-<details markdown="1">
-  <summary><strong>Linux Mint Integration anzeigen</span></strong></summary>
-  
-
-Mint ist Ubuntu basiert. Folgende Besonderheiten bei der Installation beachten
-
-```
-wget https://repo.zabbix.com/zabbix/7.4/release/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest+ubuntu24.04_all.deb
-sudo dpkg -i zabbix-release_latest+ubuntu24.04_all.deb
-sudo apt update
-sudo apt install -y zabbix-agent2
-```
-
-danach weiter mit Agent Konfigurieren
-
-</details>
-
-
-<details markdown="1">
-  <summary><strong>Debian Integration anzeigen</span></strong></summary>
-  
-PBS und PVE sind Debian basiert. Folgende Besonderheiten bei der Installation beachten
-
-```
-wget https://repo.zabbix.com/zabbix/7.4/release/debian/pool/main/z/zabbix-release/zabbix-release_latest+debian13_all.deb
-dpkg -i zabbix-release_latest+debian13_all.deb
-apt update
-apt install zabbix-agent2
-```
-
-danach weiter mit Agent Konfigurieren
-
-</details>
-
-
-<details markdown="1">
-  <summary><strong>Windows Integration anzeigen</span></strong></summary>
-
-
-Die Intergration auf Windows Server oder Client läuft über den GUI. Der passende Agent aus der Webseite herunterladen. https://www.zabbix.com/download_agents. Installieren und die IP Konfiguration wie in /config eintragen.
-
-**Danach die Firewall öffnen:**
-
-in Powershell:
-
-```
-New-NetFirewallRule `
-  -DisplayName "Zabbix Agent 2 from Zabbix Server" `
-  -Direction Inbound `
-  -Protocol TCP `
-  -LocalPort 10050 `
-  -RemoteAddress 10.0.20.40 `
-  -Action Allow
-```
-
-Prüfen: ` Get-Service *Zabbix*`
-
-danach weiter mit Agent Konfigurieren
-
-</details>
-
-### MacOS
-
-
-### 4.2. Agent konfigurieren
-
-Konfigurationsdatei öffnen:
-
-```
-nano /etc/zabbix/zabbix_agent2.conf
-```
-
-Diese Werte setzen bzw. vorhandene Zeilen bearbeiten:
-
-```
-Server=10.0.20.40
-ServerActive=10.0.20.40
-Hostname=VM-FQDN.srv.test
-```
-
-- `Server`: Zabbix-Server, der passive Agent-Abfragen stellen darf.
-- `ServerActive`: Server für aktive Checks.
-- `Hostname`: muss exakt dem später in der Zabbix-Oberfläche  
-    eingetragenen Hostnamen entsprechen.
-
-Keine doppelten Einträge anlegen. Speichern mit `Ctrl+O`, `Enter`, dann  
-`Ctrl+X`.
-
-### 4.3. Agent starten und testen
-
-```
-systemctl enable --now zabbix-agent2
-systemctl status zabbix-agent2 --no-pager
-zabbix_agent2 -t system.hostname
-```
-
-Der Dienst sollte `active (running)` zeigen. Der lokale Test sollte den  
-konfigurierten Hostnamen zurückgeben.
-
-## 4. Firewall gezielt öffnen
-
-Auf der Ziel-VM prüfen:
-
-```
-systemctl is-active firewalld
-```
-
-Wenn die Ausgabe `active` lautet, Port `10050/tcp` nur für den  
-Zabbix-Server freigeben:
-
-```
-firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="10.0.20.40/32" port port="10050" protocol="tcp" accept'
-firewall-cmd --reload
-firewall-cmd --list-rich-rules
-```
-
-Wenn `firewalld` inaktiv ist, diese Befehle nicht ausführen. Dann  
-prüfen, welche Firewall oder Netzwerkregeln tatsächlich verwendet  
-werden.
-
-### 4.5. Host in der Zabbix-Weboberfläche hinzufügen
-
-1. Öffne `http://10.0.20.40/zabbix`.
-2. Gehe zu **Data collection → Hosts** und klicke **Create host**.
-3. Trage ein:
-    - **Host name:** exakt derselbe Wert wie `Hostname` in  
-        `zabbix_agent2.conf`, z. B. `ngx-la-20-20.srv.test`
-    - **Host groups:** `Linux servers` (Gruppe auswählen oder anlegen)
-    - **Templates:** `Linux by Zabbix agent`
-    - **Interface:** `Agent`
-    - **IP address:** IP-Adresse der VM, z. B. `10.0.20.20`
-    - **Connect to:** `IP`
-    - **Port:** `10050`
-4. Klicke **Add**.
-
-Für eine normale passive Agent-Überwachung ist `Linux by Zabbix agent`  
-passend. Falls du stattdessen ausschließlich aktive Checks einrichten  
-möchtest, müssen Template und Agent-Konfiguration entsprechend auf  
-aktive Checks abgestimmt werden.
-
-### 4.6. Verbindung prüfen
-
-Warte 30--60 Sekunden und aktualisiere die Hostliste. Das `ZBX`-Symbol  
-unter **Availability** sollte grün werden.
-
-Wenn es rot oder grau bleibt, prüfe:
-
-```
-systemctl status zabbix-agent2 --no-pager
-tail -n 50 /var/log/zabbix/zabbix_agent2.log
-```
-
-Prüfe zusätzlich: - Stimmt `Hostname` exakt mit **Host name** in Zabbix  
-überein? - Ist `Server=10.10.20.40` korrekt? - Ist TCP-Port `10050` von  
-`10.0.20.40` aus erreichbar? - Zeigt das Zabbix-Interface auf die  
-richtige IP-Adresse?
-
-## Sicherheitshinweise
-
-- Agent-Port `10050/tcp` nicht unnötig für das gesamte Netzwerk  
-    freigeben.
-- Keine Passwörter oder Geheimnisse in Dokumentationen ablegen.
-- Für produktivere Umgebungen später TLS/PSK oder  
-    Zertifikatsverschlüsselung und passende Netzwerkregeln einrichten.
-
----
-
-**Beispiel erfolgreich getestet:** `ngx-la-20-20.srv.test`  
-(`10.0.20.20`) mit AlmaLinux 10.2 und Zabbix Agent 2 7.4.15.
 
 </details>
 

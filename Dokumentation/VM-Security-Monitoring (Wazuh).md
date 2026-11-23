@@ -394,7 +394,7 @@ echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4
 ```
 
 **Paketlisten aktualisieren** - `apt update`
-**Agent installieren** - `apt install wazuh-agent=4.14.10-1´
+**Agent installieren** - `apt install wazuh-agent=4.14.10-1`
 **Version prüfen** - `dpkg -l | grep wazuh-agent`
 
 **Manager Adresse konfigurieren**
