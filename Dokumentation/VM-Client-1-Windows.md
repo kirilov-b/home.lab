@@ -38,10 +38,7 @@ Folgende Punkte werden behandelt:
 
 ## 1. Vorbereitung und Installation
 
-
-<details markdown="1">
-<summary class="summary-title-green">Vorbereitungsschritte anzeigen</summary>
-
+<details markdown="1"> <summary><strong><span style="color: #00813F;">Vorbereitungsschritte anzeigen</span></strong></summary>
 
 ### 1.1 Installationsmedium vorbereiten
 
