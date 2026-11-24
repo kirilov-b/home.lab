@@ -21,27 +21,8 @@ FreeIPA stellt zentrale Identitäts-, Authentifizierungs- und Verzeichnisdienste
 Der Dienst besteht aus folgenden Komponenten:
 **LDAP / 389 Directory Server**- Speichert und stellt Identitätsdaten wie Benutzer, Gruppen, Hosts und Richtlinien über ein Verzeichnis bereit.
 
-**Kerberos KDC** - Stellt Kerberos-Tickets für die Anmeldung und den Zugriff auf unterstützte Dienste aus.
 
-**kadmin** - Unterstützt die Verwaltung von Kerberos-Prinzipalen und Schlüsseln.
-
-**DNS / BIND** - Löst Namen der FreeIPA-Domain auf und stellt DNS-Zonendaten bereit.
-
-**Reverse-DNS** - Ordnet IP-Adressen den zugehörigen Hostnamen zu.
-
-**Apache HTTP Server** - Stellt die FreeIPA-Weboberfläche und zugehörige HTTP(S)-Endpunkte bereit.
-
-**Dogtag PKI / pki-tomcatd** - Stellt die Zertifizierungsstellen-Funktionen (CA) für die FreeIPA-Umgebung bereit.
-
-**ipa-custodia** - Unterstützt die geschützte Verwaltung und Übertragung sensibler Schlüsselmaterial zwischen FreeIPA-Komponenten.
-
-**ipa-otpd** - Unterstützt die OTP-Authentifizierung, sofern diese eingerichtet und verwendet wird.
-
-**ipa-dnskeysyncd** - Synchronisiert Schlüsselmaterial, das für DNSSEC in der integrierten DNS-Umgebung benötigt wird.
-
-**SSSD auf Clients** - Kann Linux-Clients an FreeIPA anbinden und Identitäten sowie Anmeldungen zentral nutzbar machen; Client-Anbindung ist noch offen.
-
-**NTP/Chrony-Zeitdienst** - Eine passende Systemzeit ist für Kerberos wichtig. Die Zeit wurde vor der Installation als synchronisiert angezeigt; der Zustand nach der Installation ist noch zu prüfen.
+# Konfiguration
 
 # 1. Prüfpunkte 
 Vor Installation:

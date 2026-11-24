@@ -15,11 +15,24 @@ title: "[MGMT] VM – Administrator"
 |          **Zweck** | Verwaltung, Dokumentation |       **RAM** | 8 GB      |
 | **Betriebssystem** | Linux Mint 22.3           |      **vCPU** | 4         |
 
+# Übersicht
 
+Diese VM dient als zentrale Steuerung PC das komplette Umgebung. Die Verwaltungsschnittstellen alle andere VMs werden hier geleitet. Linux Mint ist eine Distribution, die Ubuntu basiert ist und dadurch erleichtert die Kommunikation mit den anderen VMs die auch großteils Linux sind. Die VM hat auch eine GUI, was die Steuerung über Webseiten den anderen Dienste auch möglich macht. Linux Mint verbraucht auch wenig RAM Speicher und dass macht diese Distribution zu eine sehr passende Kandidat. In diese VM wird auch die Dokumentation des Projektes geschrieben und veröffentlicht.
 
+Programme:
+**Wireshark, VS-Code, Obsidian, Draw IO, Brave, Remina**
 
 # Konfiguration
 
+## Integration
+
+**Vorkonfiguration**
+1. **Hostname** wurde laut Namenkonvention angepasst: `dc-ws-20-3`
+2. Einbinden in das geplante **Netzwerk** - VLAN 10
+3. Einrichtung von **SSH** und **RDP** (Remina) installieren und aktivieren
+**Nachkonfiguration**
+-  Integration in **Zabbix** Monitoring System:  [Zabbix Integration](./Integration.md#zabbix)
+-  Integration in **Wazuh** Security Monitoring System: [Wazuh Integration](./Integration.md#wazuh)
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Konfiguration anzeigen</span></strong></summary>
@@ -70,6 +83,7 @@ Auf jump-lm-10-3:
 
 
 ## VPN via WireGuard
+Die VPN erweitert den Zugriff auf dem Home Lab von außen.
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">VPN Einrichtung anzeigen</span></strong></summary>

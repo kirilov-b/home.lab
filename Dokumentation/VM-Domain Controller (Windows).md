@@ -30,9 +30,9 @@ Die Umgebung simuliert die IT-Infrastruktur eines fiktiven Unternehmens. Benutze
 - **Windows Server Backup:** Sicherung des System State zur Wiederherstellung wichtiger Active-Directory-Komponenten.
 - **Remote Administration:** Verwaltung des Servers und der Windows-Clients über SSH und optional RDP.
 
-# Integration und Konfiguration
+#  Konfiguration
 
-## Integration 
+## Vorkonfiguration
 
 Folgende Integrationsschritte wurden durchgeführt bevor man mit der Konfiguration des Dienstes beginnt.
 

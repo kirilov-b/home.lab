@@ -18,7 +18,20 @@ root# VM – Wazuh / Security Monitoring
 # Übersicht
 
 **Wazuh** soll als zentrale Security-Monitoring-Plattform zur Erkennung, Analyse und Überwachung von Sicherheitsvorfällen in unserer Infrastruktur dienen. Der Wechsel zu **Ubuntu Server 24.04 LTS** erfolgte, weil Ubuntu offiziell als Wazuh-Serverplattform unterstützt wird, während AlmaLinux 10 nicht ausdrücklich aufgeführt ist. Dadurch gewährleisten wir eine bessere dokumentierte Kompatibilität und langfristige Wartbarkeit.
-# Konfigurationsschritte 
+# Integration und Konfiguration
+
+## Integration
+
+1. **Hostname** wurde laut Namenkonvention angepasst: `dc-ws-20-3`
+2. Einbinden in das geplante **Netzwerk**
+3. Einbinden in der vorgesehene Domäne
+4. Einrichtung von **SSH** Verbindung mit dem Jump VM
+5. Integration in **Zabbix** Monitoring System:  [Zabbix Integration](./Integration.md#zabbix)
+6. Integration in **Wazuh** Security Monitoring System: [Wazuh Integration](./Integration.md#wazuh)
+
+## Konfiguration
+
+
 ## 1. OS Installation und Integration
 
 Ubuntu server wurde installiert. Ich verwende die version ohne GUI, um den Speicherbedarf niedrig zu halten.
