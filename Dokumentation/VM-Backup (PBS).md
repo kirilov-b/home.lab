@@ -161,6 +161,7 @@ bedeutet nicht automatisch, dass die Sicherung fehlerhaft ist.
 Eine automatische Verifizierung wurde jede 5 Tage nach der Backup in der WebGUI von PBS eingerichtet.
 
 </details>
+
 # Backup-Skript
 
 Das Skript wird beim Start des Proxmox-Hosts automatisch ausgeführt. Es prüft die Voraussetzungen, sichert die VMs und fährt den PBS nur bei erfolgreichem Abschluss herunter.

@@ -13,7 +13,7 @@ title: "[MGMT] VM – Administrator"
 |       **vLAN Tag** | 10                        |    **Domain** | keinen    |
 |        **VM-Name** | jump-lm-10-3              |     **Größe** | 80 GB     |
 |          **Zweck** | Verwaltung, Dokumentation |       **RAM** | 8 GB      |
-| **Betriebssystem** | Linux Mint                |      **vCPU** | 4         |
+| **Betriebssystem** | Linux Mint 22.3           |      **vCPU** | 4         |
 
 
 
