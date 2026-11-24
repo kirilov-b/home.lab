@@ -38,7 +38,7 @@ Folgende Integrationsschritte wurden durchgeführt bevor man mit der Konfigurati
 1. Einbinden in das geplante Netzwerk
 2. Einrichtung von SSH und RDP Verbindung mit dem Jump VM
 3. Integration in Zabbix Monitoring System
-4. Integration in Wazuh Security Monitoringsystem
+4. Integration in Wazuh Security Monitoring System
 
 
 ## Konfiguration
