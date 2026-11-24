@@ -278,7 +278,7 @@ Voraussetzung ist die folgende Ports an der Wazuh Server freizuschalten um die V
 - Port **1515** - Registrierung der Wazuh-Agents.
 `sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="Host-IP" port port="1515" protocol="tcp" accept' `
 
-**Hinweis:**  *Wird nach der Einrichtung wieder gesperrt.* 
+**Hinweis:**  *Port 1515 wird nach der Einrichtung wieder gesperrt.* 
 
 
 <details markdown="1">
