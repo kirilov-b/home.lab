@@ -267,7 +267,7 @@ die Anfrage intern per HTTPS an den Wazuh-Server (`10.0.20.30`) weiter.
 </details>
 
 ## 4. Wazuh Agents Installation und Konfiguration
-
+Die Installation- und Integrationsschritte von unterschiedliche OS Clients werden hier beschrieben. [[VM-Integration#Wazuh Monitoring - Client Integration]]
 
 
 

@@ -185,7 +185,8 @@ ipa-client-install --mkhomedir \
 ---
 # Agents Installation
 ---
-## Zabbix Monitoring - Client Integration
+## Zabbix 
+Monitoring - Client Integration
 ### 10.1. Agent 2 installieren
 
 #### AlmaLinux 
@@ -368,7 +369,8 @@ richtige IP-Adresse?
 </details>
 
 
-## Wazu Monitoring - Client Integration
+## Wazuh 
+**Monitoring - Client Integration**
 
 Diese Abschnitt beschreibt die Installation und Anpassung der Wazuh-Agent auf unterschiedliche OS Systeme. 
 

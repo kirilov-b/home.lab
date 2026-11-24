@@ -24,7 +24,7 @@ Die Plattform überwacht: Hardware Auslastung (CPU, RAM, Festplattenauslastung),
 
 # Konfigurationsschritte 
 Der folgende Abschnitt zeigt die Vorbereitung, Installation und Konfiguration von der Zabbix Server auf der VM. 
-Voraussetzung für eine reibungslose Integration sind (1. Grundkonfiguration) und (2. SSH Verbindung) von Dokument: [Integration von VMs](Integration%20von%20VMs.md): 
+
 
 Schritte: 
 1. **Zabbix Repository und Pakete installieren**
@@ -235,6 +235,6 @@ Standard-Anmeldedaten einer neuen Installation:
 Das System ist bereit für Verbindungen mit VMs
 
 ## 10. Zabbix Agents installieren
-
+Die Installation- und Integrationsschritte von unterschiedliche OS Clients werden hier beschrieben. [[VM-Integration#Zabbix Monitoring - Client Integration]]
 
 # Tests
