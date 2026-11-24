@@ -28,7 +28,9 @@ Die Umgebung simuliert die IT-Infrastruktur eines fiktiven Unternehmens. Benutze
 - **Windows Server Backup:** Sicherung des System State zur Wiederherstellung wichtiger Active-Directory-Komponenten.
 - **Remote Administration:** Verwaltung des Servers und der Windows-Clients über SSH und optional RDP.
 
-# Konfiguration und Integration
+# Integration und Konfiguration
+
+## Integration 
 
 ## Konfiguration
 
@@ -43,7 +45,7 @@ Evaluation mit Desktop Experience installieren, Hostname setzen und
 eine statische IP konfigurieren.
 - Uhrzeit und Zeitzone Richtig einstellen - Der Server Dient als Master Uhr für alle andere Clients
 
-## Wichtige Ports für Domain - Client Verbindung
+### Wichtige Ports für Domain - Client Verbindung
 
 Der Domain Controller befindet sich ein andere vLAN als die Clients deswegen auf dem Router (OPNsense) müssen folgende Ports erlaubt werden um die Verbindung zu ermöglichen.
 
@@ -81,6 +83,50 @@ Dieser Abschnitt dient als Anleitung für die Konfiguration über **Server Manag
     - Preferred DNS: `10.0.20.3`
     - Alternate DNS: leer lassen
 7. Bestätigen.
+
+### 2. Active Directory und DNS 
+
+#### 2.1 Rollen installieren
+
+1. Öffne **Server Manager > Manage > Add Roles and Features**.
+2. Wähle **Role-based or feature-based installation**.
+3. Wähle den lokalen Server.
+4. Markiere **Active Directory Domain Services** und bestätige **Add  
+    Features**.
+5. Markiere **DNS Server** und bestätige erforderliche Features.
+6. Klicke **Next** bis **Install**, dann installiere die Rollen.
+
+#### 2.2 Neue Domäne erstellen
+
+1. Im Server Manager auf das Benachrichtigungsfähnchen klicken.
+2. **Promote this server to a domain controller** wählen.
+3. **Add a new forest** wählen und als Root-Domäne `cl.lab.test`  
+    eintragen.
+4. Unter **Domain Controller Options** DNS Server und Global Catalog  
+    aktiviert lassen.
+5. Ein DSRM-Kennwort setzen und sicher aufbewahren.
+6. Prüfen, dass der NetBIOS-Name `CL` lautet.
+7. Durch die restlichen Seiten gehen; Voraussetzungen prüfen und  
+    **Install** wählen.
+8. Der Server startet normalerweise automatisch neu.
+9. Danach als `CL\\Administrator` oder `Administrator@cl.lab.test`  
+    anmelden.
+
+#### 2.3 AD/DNS prüfen
+
+- **Server Manager > Tools > Active Directory Users and Computers**  
+    öffnen und `cl.lab.test` prüfen.
+- **Server Manager > Tools > DNS** öffnen.
+- Unter **Forward Lookup Zones** die Zone `cl.lab.test` und die  
+    AD-DNS-Einträge kontrollieren.
+
+
+
+
+
+
+
+
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
@@ -120,145 +166,6 @@ Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses 10.0.20.3
 ```
 
 Ersetze `"Ethernet"`, falls der Adapter anders heißt.
-
-</details>
-# Anwendung 
-## 1. Active Directory - Unternehmensstruktur
-Eine fiktives Unternehmen und die Hierarchische Struktur
-
-###  1.2. OU-Struktur
-Benutzer, Computer und Gruppen sind nach Abteilungen getrennt. GPOs können gezielt an passende OUs gebunden werden. OUs sind organisatorische Container und ersetzen keine Berechtigungen.
-
-### 1. 3. Benutzerkonten
-
-| Abteilung   | Anzeigename | Anmeldename           |
-| ----------- | ----------- | --------------------- |
-| Management  | Thomas      | `thomas.management`   |
-| Management  | Maria       | `maria.management`    |
-| Buchhaltung | Anna        | `anna.buchhaltung`    |
-| Buchhaltung | Petra       | `petra.buchhaltung`   |
-| IT          | Stefan      | `stefan.it`           |
-| IT          | Julia       | `julia.it`            |
-| Mitarbeiter | Michael     | `michael.mitarbeiter` |
-| Mitarbeiter | Lisa        | `lisa.mitarbeiter`    |
-| Mitarbeiter | Daniel      | `daniel.mitarbeiter`  |
-| Mitarbeiter | Sophie      | `sophie.mitarbeiter`  |
-
-### 1.4. Gruppenmodell (AGDLP)
-**Prinzip:** Benutzer → globale Gruppe (GG) → domänenlokale Berechtigungsgruppe (DL) → Ressourcenrechte.
-
-#### Globale Sicherheitsgruppen
-Alle GG-Gruppen sind als **Global / Security** angelegt.
-
-| Gruppe               | Mitglieder                    |
-| -------------------- | ----------------------------- |
-| `BSI-GG-Management`  | Thomas, Maria                 |
-| `BSI-GG-Buchhaltung` | Anna, Petra                   |
-| `BSI-GG-IT`          | Stefan, Julia                 |
-| `BSI-GG-Mitarbeiter` | Michael, Lisa, Daniel, Sophie |
-| `BSI-GG-Alle`        | alle zehn Benutzer            |
-
-**Nutzen:** Abteilungsmitgliedschaften und Ressourcenrechte werden getrennt verwaltet. Neue Benutzer benötigen die passende GG-Mitgliedschaft; allgemeiner Zugriff setzt die Mitgliedschaft in `BSI-GG-Alle` voraus.
-## 2. Windows Server Backup
-
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">WSB-Konfiguration anzeigen</span></strong></summary>
-
-
-- #### 1. Installation
-
-    - Server Manager > Manage > Add Roles and Features > Next
-    - Role-Based or Feature ... > Next
-    - DC.lab.test auswählen > Next
-    - Features > **Windows Server Backup** aktivieren
-    - Next > Install
-
-- #### 2. Virtuelle Festplatte erstellen/konfigurieren
-    
-    - In Proxmox unter Hardware eine Hard Disk erstellen
-    - Parameter: local-lvm, **70GB**
-    - DC neustarten
-    - Create and Format Hard Disk Partition
-    - Festplatte initialisieren, Formatieren auf NTFS, Name: **SSB (B:)**
-
-- #### 3. System State Backup einrichten
-    
-    - Pfad - *Server Manager > Tools > Windows Server Backup > Local Backup > (rechts) Backup* Once > Select Item for Backup > Add Items > **System State**
-    - Testen - *Recover > Get Started* - Hier wird den Backup Quelle gezeigt.
-    - Ein Schedule Backup könnte man einrichten. Für meine Zwecke ist es nicht nötig, da der Server nicht dauerhaft an ist.
-
-</details>
-
-
-
-
-### 2. AD DS und DNS installieren
-
-#### 2.1 Rollen installieren
-
-1. Öffne **Server Manager > Manage > Add Roles and Features**.
-2. Wähle **Role-based or feature-based installation**.
-3. Wähle den lokalen Server.
-4. Markiere **Active Directory Domain Services** und bestätige **Add  
-    Features**.
-5. Markiere **DNS Server** und bestätige erforderliche Features.
-6. Klicke **Next** bis **Install**, dann installiere die Rollen.
-
-#### 2.2 Neue Domäne erstellen
-
-1. Im Server Manager auf das Benachrichtigungsfähnchen klicken.
-2. **Promote this server to a domain controller** wählen.
-3. **Add a new forest** wählen und als Root-Domäne `cl.lab.test`  
-    eintragen.
-4. Unter **Domain Controller Options** DNS Server und Global Catalog  
-    aktiviert lassen.
-5. Ein DSRM-Kennwort setzen und sicher aufbewahren.
-6. Prüfen, dass der NetBIOS-Name `CL` lautet.
-7. Durch die restlichen Seiten gehen; Voraussetzungen prüfen und  
-    **Install** wählen.
-8. Der Server startet normalerweise automatisch neu.
-9. Danach als `CL\\Administrator` oder `Administrator@cl.lab.test`  
-    anmelden.
-
-#### 2.3 AD/DNS prüfen
-
-- **Server Manager > Tools > Active Directory Users and Computers**  
-    öffnen und `cl.lab.test` prüfen.
-- **Server Manager > Tools > DNS** öffnen.
-- Unter **Forward Lookup Zones** die Zone `cl.lab.test` und die  
-    AD-DNS-Einträge kontrollieren.
-
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
-
-```
-Install-WindowsFeature AD-Domain-Services, DNS -IncludeManagementTools
-```
-
-Neue Gesamtstruktur erstellen (der Server wird dabei üblicherweise neu  
-gestartet):
-
-```
-Install-ADDSForest `
-  -DomainName "cl.lab.test" `
-  -DomainNetbiosName "CL" `
-  -InstallDNS
-```
-
-Folge den Aufforderungen für das DSRM-Kennwort und den Neustart.
-
-Nach dem Neustart prüfen:
-
-```
-Get-ADDomain
-Get-ADForest
-Get-Service NTDS, DNS, Netlogon
-Resolve-DnsName -Type SRV _ldap._tcp.dc._msdcs.cl.lab.test
-nltest /dsgetdc:cl.lab.test
-```
-
-Die SRV-Abfrage sollte den DC `dc-ws-20-3.cl.lab.test` mit seiner  
-korrekten IP zurückgeben.
 
 </details>
 
@@ -304,436 +211,83 @@ Unter **IPv4 > VLAN30-Clients > Scope Options** prüfen:
 - `006 DNS Servers`: `10.0.20.3`
 - `015 DNS Domain Name`: `cl.lab.test`
 
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
+### 4. Windows Server Backup
 
-DHCP-Rolle installieren:
+- #### 1. Installation
 
-```
-Install-WindowsFeature DHCP -IncludeManagementTools
-```
+    - Server Manager > Manage > Add Roles and Features > Next
+    - Role-Based or Feature ... > Next
+    - DC.lab.test auswählen > Next
+    - Features > **Windows Server Backup** aktivieren
+    - Next > Install
 
-DHCP-Server in AD autorisieren:
+- #### 2. Virtuelle Festplatte erstellen/konfigurieren
+    
+    - In Proxmox unter Hardware eine Hard Disk erstellen
+    - Parameter: local-lvm, **70GB**
+    - DC neustarten
+    - Create and Format Hard Disk Partition
+    - Festplatte initialisieren, Formatieren auf NTFS, Name: **SSB (B:)**
 
-```
-Add-DhcpServerInDC -DnsName "dc-ws-20-3.cl.lab.test" -IPAddress 10.0.20.3
-Get-DhcpServerInDC
-```
+- #### 3. System State Backup einrichten
+    
+    - Pfad - *Server Manager > Tools > Windows Server Backup > Local Backup > (rechts) Backup* Once > Select Item for Backup > Add Items > **System State**
+    - Testen - *Recover > Get Started* - Hier wird den Backup Quelle gezeigt.
+    - Ein Schedule Backup könnte man einrichten. Für meine Zwecke ist es nicht nötig, da der Server nicht dauerhaft an ist.
 
-Beispiel-Scope erstellen (Bereich und Netz an das eigene Lab anpassen):
-
-```
-Add-DhcpServerv4Scope `
-  -Name "VLAN30-Clients" `
-  -StartRange 10.0.30.100 `
-  -EndRange 10.0.30.200 `
-  -SubnetMask 255.255.255.0 `
-  -State Inactive
-```
-
-Scope-Optionen setzen und Scope aktivieren:
-
-```
-Set-DhcpServerv4OptionValue -ScopeId 10.0.30.0 -Router 10.0.30.1
-Set-DhcpServerv4OptionValue -ScopeId 10.0.30.0 -DnsServer 10.0.20.3
-Set-DhcpServerv4OptionValue -ScopeId 10.0.30.0 -DnsDomain "cl.lab.test"
-Set-DhcpServerv4Scope -ScopeId 10.0.30.0 -State Active
-Get-DhcpServerv4Scope
-Get-DhcpServerv4OptionValue -ScopeId 10.0.30.0
-```
-
-Auf OPNsense DHCP Relay auf dem Client-VLAN zum Server `10.0.20.3`  
-konfigurieren. Die Firewall muss DHCP-Relay-Verkehr entsprechend  
-zulassen. Die konkrete OPNsense-Konfiguration wird in deren Oberfläche  
-vorgenommen.
 
 </details>
 
-### 4. Client prüfen und der Domäne beitreten
-
-- OPNsense-Weboberfläche öffnen.
-- **Services > DHCP Relay** öffnen (Menü kann je nach Version  
-    abweichen).
-- Client-Interface `VLAN_30_CLIENTS` auswählen.
-- DHCP-Serverziel `10.0.20.3` eintragen.
-- Relay aktivieren, speichern und anwenden.
-- Status prüfen.
-
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
-
-Auf dem Client zunächst prüfen:
-
-```
-ipconfig /all
-Resolve-DnsName -Type SRV _ldap._tcp.dc._msdcs.cl.lab.test
-nltest /dsgetdc:cl.lab.test
-Test-NetConnection dc-ws-20-3.cl.lab.test -Port 53
-Test-NetConnection dc-ws-20-3.cl.lab.test -Port 88
-Test-NetConnection dc-ws-20-3.cl.lab.test -Port 123
-Test-NetConnection dc-ws-20-3.cl.lab.test -Port 135
-Test-NetConnection dc-ws-20-3.cl.lab.test -Port 389
-Test-NetConnection dc-ws-20-3.cl.lab.test -Port 445
-Test-NetConnection dc-ws-20-3.cl.lab.test -Port 464
-```
-
-Die DNS-Serveradresse des Clients muss auf `10.0.20.3` zeigen. Danach  
-Domain-Join in administrativer PowerShell:
-
-```
-Add-Computer -DomainName "cl.lab.test" -Credential (Get-Credential) -Verbose
-Restart-Computer
-```
-
-Nach dem Neustart mit einem Domänenkonto anmelden, z. B.  
-`CL\Administrator` oder `Administrator@cl.lab.test`.
-
-Prüfen:
-
-```
-Get-CimInstance Win32_ComputerSystem | Select-Object Name, Domain, PartOfDomain
-Test-ComputerSecureChannel -Verbose
-nltest /sc_query:cl.lab.test
-```
-
-Computerkonto auf dem DC kontrollieren:
-
-```
-Get-ADComputer CL1-WC-30 -Properties DNSHostName, ServicePrincipalName, Enabled |
-  Format-List Name, DNSHostName, ServicePrincipalName, Enabled
-```
-
-Bei einem Fehler zuerst DNS, Zeit, Ereignisprotokolle und Erreichbarkeit  
-untersuchen, bevor der Client aus der Domäne entfernt oder das  
-Computerkonto gelöscht wird.
-
-</details>
-
-### 5. Zeitsynchronisierung prüfen
-
-#### 5.1 DHCP/DNS prüfen
-
-1. Am Client **Settings > Network & Internet > Advanced network  
-    settings > More network adapter options** öffnen (oder `ncpa.cpl`  
-    ausführen).
-2. Rechtsklick auf Ethernet > **Properties**.
-3. **Internet Protocol Version 4 (TCP/IPv4) > Properties** öffnen.
-4. **Obtain an IP address automatically** und **Obtain DNS server  
-    address automatically** auswählen.
-5. In einer Eingabeaufforderung `ipconfig /all` ausführen.
-6. Prüfen: IP aus dem DHCP-Bereich, Gateway `10.0.30.1`, DNS  
-    `10.0.20.3`, DNS-Suffix `cl.lab.test`.
-
-#### 5.2 Domain-Join
-
-1. **Settings > System > About** öffnen.
-2. **Domain or workgroup** bzw. **Advanced system settings > Computer  
-    Name > Change** wählen (je nach Windows-Version).
-3. **Change** anklicken und unter **Member of** die Option **Domain**  
-    wählen.
-4. `cl.lab.test` eingeben und bestätigen.
-5. Berechtigte Anmeldedaten angeben, z. B. `CL\\Administrator`.
-6. Die Willkommensmeldung bestätigen und den Client neu starten.
-7. Am Anmeldebildschirm **Other user** wählen und `CL\\Administrator`  
-    oder `Administrator@cl.lab.test` eingeben.
-
-#### 5.3 Mitgliedschaft kontrollieren
-
-- **Settings > System > About** öffnen und Domänenmitgliedschaft  
-    prüfen.
-- Auf dem DC **Active Directory Users and Computers > cl.lab.test >  
-    Computers** öffnen.
-- Prüfen, ob `CL1-WC-30` existiert und aktiviert ist.
-
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
-
-Auf DC und Client:
-
-```
-Get-Date
-Get-TimeZone
-w32tm /query /status
-```
+# Anwendung 
 
-Auf dem Client die Domänenzeit neu erkennen und synchronisieren:
+## Active Directory
+Eine fiktives Unternehmen und die Hierarchische Struktur
 
-```
-w32tm /resync /rediscover
-```
+### 1. Unternehmensstruktur
+### 1.2. OU-Struktur
+Benutzer, Computer und Gruppen sind nach Abteilungen getrennt. GPOs können gezielt an passende OUs gebunden werden. OUs sind organisatorische Container und ersetzen keine Berechtigungen.
 
-Der DC sollte eine korrekte Systemzeit haben. In einem Lab kann die  
-DC-Uhr lokal als Zeitquelle dienen; in produktiven Umgebungen sollte die  
-Zeitquelle bewusst geplant werden. Die Zeitzone auf beiden Systemen  
-passend setzen, z. B.:
+### 1. 3. Benutzerkonten
 
-```
-Set-TimeZone -Id "W. Europe Standard Time"
-```
+| Abteilung   | Anzeigename | Anmeldename           |
+| ----------- | ----------- | --------------------- |
+| Management  | Thomas      | `thomas.management`   |
+| Management  | Maria       | `maria.management`    |
+| Buchhaltung | Anna        | `anna.buchhaltung`    |
+| Buchhaltung | Petra       | `petra.buchhaltung`   |
+| IT          | Stefan      | `stefan.it`           |
+| IT          | Julia       | `julia.it`            |
+| Mitarbeiter | Michael     | `michael.mitarbeiter` |
+| Mitarbeiter | Lisa        | `lisa.mitarbeiter`    |
+| Mitarbeiter | Daniel      | `daniel.mitarbeiter`  |
+| Mitarbeiter | Sophie      | `sophie.mitarbeiter`  |
 
-</details>
+### 1.4. Gruppenmodell (AGDLP)
+**Prinzip:** Benutzer → globale Gruppe (GG) → domänenlokale Berechtigungsgruppe (DL) → Ressourcenrechte.
 
-### 6. Windows-Firewall für AD
+#### Globale Sicherheitsgruppen
+Alle GG-Gruppen sind als **Global / Security** angelegt.
 
-- Auf DC und Client **Settings > Time & language > Date & time**  
-    öffnen.
-- Zeitzone auf **(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm,  
-    Vienna** stellen.
-- Die Windows-Zeitquelle des Clients sollte in der Domäne  
-    normalerweise der DC sein.
-- Bei Abweichungen zuerst die tatsächliche Uhrzeit und Zeitzone auf  
-    dem DC prüfen. Zeitzone und Systemuhr sind unterschiedliche Dinge;  
-    die Uhrzeit nicht ohne Prüfung manuell ändern.
+| Gruppe               | Mitglieder                    |
+| -------------------- | ----------------------------- |
+| `BSI-GG-Management`  | Thomas, Maria                 |
+| `BSI-GG-Buchhaltung` | Anna, Petra                   |
+| `BSI-GG-IT`          | Stefan, Julia                 |
+| `BSI-GG-Mitarbeiter` | Michael, Lisa, Daniel, Sophie |
+| `BSI-GG-Alle`        | alle zehn Benutzer            |
 
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
+**Nutzen:** Abteilungsmitgliedschaften und Ressourcenrechte werden getrennt verwaltet. Neue Benutzer benötigen die passende GG-Mitgliedschaft; allgemeiner Zugriff setzt die Mitgliedschaft in `BSI-GG-Alle` voraus.
 
-Auf OPNsense nur die benötigten Verbindungen vom Client-VLAN zum DC  
-`10.0.20.3` zulassen. Für moderne Windows-RPC-Kommunikation kann  
-dynamisches TCP-RPC im Bereich `49152–65535` erforderlich sein. Auf dem  
-DC und Client muss die jeweilige Windows-Firewall ebenfalls die  
-erforderlichen Dienste zulassen.
 
-Vor Änderungen prüfen, welche Regeln bereits vorhanden sind:
 
-```
-Get-NetFirewallRule -Enabled True |
-  Select-Object DisplayName, Profile, Direction, Action
-```
 
-</details>
 
-### 7. OpenSSH Server auf einem Windows-Host
 
-### 7.1 Installieren
 
-1. **Settings > System > Optional features** öffnen.
-2. **View features** bzw. **Add an optional feature** wählen.
-3. **OpenSSH Server** suchen, auswählen und installieren.
 
-### 7.2 Dienst starten
 
-1. `services.msc` öffnen.
-2. **OpenSSH SSH Server (sshd)** öffnen.
-3. **Startup type** auf **Automatic** stellen.
-4. **Start** klicken und Status **Running** kontrollieren.
 
-### 7.3 Firewallregel prüfen
 
-1. `wf.msc` öffnen.
-2. **Inbound Rules** auswählen und **OpenSSH SSH Server (sshd)**  
-    suchen.
-3. Regel aktivieren.
-4. In den Eigenschaften unter **Advanced > Profiles** das passende  
-    Profil, typischerweise **Domain**, auswählen.
-5. Die Regel muss TCP-Port 22 erlauben.
 
-### 7.4 Administrator-Public-Key
 
-1. Auf Linux Mint `cat ~/.ssh/id_ed25519.pub` ausführen.
-2. Nur den öffentlichen Schlüssel kopieren; den privaten Schlüssel  
-    `id_ed25519` niemals übertragen.
-3. Auf Windows in  
-    `C:\\ProgramData\\ssh\\administrators_authorized_keys` eintragen.
-4. Die Datei muss restriktive Berechtigungen für `SYSTEM` und  
-    `BUILTIN\\Administrators` haben.
-5. Bestehende Schlüssel nicht überschreiben; neue Schlüssel ergänzen.
 
-Für die zentrale Administrator-Schlüsseldatei ist PowerShell oft  
-zuverlässiger als Notepad; die genaue Ein-Befehl-Variante steht in  
-`Wie.md`.
-
-### 7.5 SSH testen
-
-Von Linux Mint:
-
-```
-ssh -l 'Administrator@cl.lab.test' 10.0.30.101
-```
-
-Mit Schlüssel:
-
-```
-ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes -l 'Administrator@cl.lab.test' 10.0.30.101
-```
-
-
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
-
-Prüfen ob OpenSSH Server installiert ist
-```
-Get-Service sshd
-```
-
-Falls nicht, installieren:
-
-```
-Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
-```
-
-Dienst automatisch starten und starten:
-
-```
-Set-Service -Name sshd -StartupType Automatic
-Start-Service sshd
-Get-Service sshd
-```
-
-Vorhandene Standard-Firewallregel prüfen und für das Domänenprofil  
-aktivieren:
-
-```
-Get-NetFirewallRule -Name "OpenSSH-Server-In-TCP" |
-  Select-Object DisplayName, Enabled, Profile, Direction, Action
-
-Set-NetFirewallRule -Name "OpenSSH-Server-In-TCP" -Enabled True -Profile Domain
-```
-
-Falls die Regel fehlt, kann sie erstellt werden:
-
-```
-New-NetFirewallRule `
-  -Name "OpenSSH-Server-In-TCP" `
-  -DisplayName "OpenSSH Server (sshd)" `
-  -Enabled True `
-  -Direction Inbound `
-  -Protocol TCP `
-  -Action Allow `
-  -LocalPort 22 `
-  -Profile Domain
-```
-
-### Public Key für einen Domänenadministrator hinterlegen
-
-
-Auf Linux Mint den **öffentlichen** Schlüssel anzeigen:
-
-```
-cat ~/.ssh/id_ed25519.pub
-```
-
-Nur die vollständige Zeile aus der `.pub`-Datei kopieren. Den privaten  
-Schlüssel `~/.ssh/id_ed25519` niemals auf den Windows-Host kopieren.
-
-Auf Windows in administrativer PowerShell die Public-Key-Zeile  
-einsetzen:
-
-```
-Set-Content -Path "C:\\ProgramData\\ssh\\administrators_authorized_keys" -Value "ssh-ed25519 (Schlüssel) linuxuser@hostname"
-icacls.exe "C:\\ProgramData\\ssh\\administrators_authorized_keys" /inheritance:r
-icacls.exe "C:\\ProgramData\\ssh\\administrators_authorized_keys" /grant "SYSTEM:F" /grant "BUILTIN\\Administrators:F"
-```
-
-Falls `administrators_authorized_keys` bereits andere Schlüssel enthält,  
-nicht einfach überschreiben: bestehende Schlüssel erhalten und den neuen  
-Schlüssel ergänzen.
-
-Von Linux Mint testen (UPN-Format für das Domänenkonto):
-
-```
-ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes -l 'Administrator@cl.lab.test' 10.0.30.101
-```
-
-Wenn SSH trotz laufendem Dienst nicht erreichbar ist, zuerst IP, Port  
-22, Windows-Firewallprofil und OPNsense-Regel prüfen.
-
-</details>
-
-### 8. RDP auf einem Windows-Host (optional)
-
-### 8.1 Remote Desktop aktivieren
-
-1. Auf dem Zielhost **Settings > System > Remote Desktop** öffnen.
-2. **Enable Remote Desktop** aktivieren und bestätigen.
-3. Prüfen, ob der Domänenbenutzer zur RDP-Anmeldung berechtigt ist.  
-    Andere Benutzer können bei Bedarf zu **Remote Desktop Users**  
-    hinzugefügt werden.
-
-### 8.2 Windows-Firewall prüfen
-
-1. `wf.msc` öffnen.
-2. Unter **Inbound Rules** die Regeln der Gruppe **Remote Desktop**  
-    suchen.
-3. Passende Regeln für das Domänenprofil aktivieren.
-4. RDP verwendet standardmäßig TCP 3389; UDP 3389 kann optional für  
-    bestimmte Funktionen genutzt werden.
-
-### 8.3 Remmina von Linux Mint
-
-1. Remmina öffnen und eine neue Verbindung erstellen.
-2. Protocol: **RDP**.
-3. Server: `10.0.30.101`.
-4. Benutzername: `Administrator@cl.lab.test` (oder Benutzername plus  
-    Domäne, je nach Remmina).
-5. Domänenkennwort eingeben und verbinden.
-
-Bei Problemen TCP 3389, Windows-Firewall und OPNsense-Regeln zwischen  
-Jump-Host und Client prüfen.
-
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
-
-Remote Desktop aktivieren und Dienst starten:
-
-```
-Set-ItemProperty `
-  -Path "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server" `
-  -Name "fDenyTSConnections" -Value 0
-
-Set-Service -Name TermService -StartupType Automatic
-Start-Service -Name TermService
-Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-```
-
-Prüfen:
-
-```
-Get-Service TermService
-Get-NetTCPConnection -State Listen -LocalPort 3389
-```
-
-Von Linux Mint den TCP-Port testen:
-
-```
-nc -zv 10.0.30.101 3389
-```
-
-In Remmina RDP auswählen, als Server `10.0.30.101` eintragen und ein  
-geeignetes Domänenkonto verwenden. RDP-Zugriff muss auch durch die  
-Netzwerk-Firewall zwischen den VLANs erlaubt sein, falls der Jump-Host  
-in einem anderen VLAN liegt.
-
-</details>
-
-### 9. Windows Server Backup
-
-1. **Server Manager > Manage > Add Roles and Features** öffnen.
-2. Im Wizard den lokalen Server auswählen.
-3. Unter **Features** **Windows Server Backup** markieren.
-4. **Next > Install** wählen.
-5. Danach **Server Manager > Tools > Windows Server Backup** öffnen.
-6. **Backup Schedule** für regelmäßige Sicherungen oder **Backup Once**  
-    für eine einmalige Sicherung auswählen.
-7. Umfang, Ziel und Zeitplan festlegen; Status kontrollieren und  
-    Wiederherstellung testen.
-
-Die Installation allein erstellt noch keinen Sicherungsplan.
-
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">Power Shell Konfiguration anzeigen</span></strong></summary>
-
-Feature installieren und Status prüfen:
-
-```
-Install-WindowsFeature Windows-Server-Backup
-Get-WindowsFeature Windows-Server-Backup
-```
-
-Die Installation des Features allein erstellt noch keinen  
-Backup-Zeitplan. Backup-Ziel, Zeitplan und Wiederherstellung müssen  
-separat eingerichtet und getestet werden.
-
-</details>
-
-</details>
