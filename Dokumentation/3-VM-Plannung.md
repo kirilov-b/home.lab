@@ -40,13 +40,13 @@ title: Virtuelle Machienen - Planung
 
 ### Domain Planung
 
-Es sind zwei Domäne geplant.
-Für Service & Management - **srv.test**
-Für Domain Controller - **cl.lab.test**
+- Es sind zwei Domäne geplant.
+- Für Service & Management - **srv.test**
+- Für Domain Controller - **cl.lab.test**
 
 **Beispiel FQDNs**
-	ans-la-10-20.**srv.test**
-	dc-ws-20-3.**cl.lab.test**
+- ans-la-10-20.**srv.test**
+- dc-ws-20-3.**cl.lab.test**
   
 ## VM-Tabelle
 
