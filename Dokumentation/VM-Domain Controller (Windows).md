@@ -39,7 +39,7 @@ Folgende Integrationsschritte wurden durchgeführt bevor man mit der Konfigurati
 1. **Hostname** wurde laut Namenkonvention angepasst: `dc-ws-20-3`
 2. Einbinden in das geplante **Netzwerk**
 3. Einrichtung von **SSH** und **RDP** Verbindung mit dem Jump VM
-4. Integration in **Zabbix** Monitoring System: *Integration >*  [[Integration#Zabbix]]
+4. Integration in **Zabbix** Monitoring System:  [Zabbix Integration](./Integration.md#zabbix)
 5. Integration in **Wazuh** Security Monitoring System: *Integration >*  [[Integration#Wazuh]]
 
 
