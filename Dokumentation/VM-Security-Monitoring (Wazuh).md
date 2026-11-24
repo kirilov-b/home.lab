@@ -265,6 +265,7 @@ Der Browser verbindet sich dabei mit NGINX (`10.0.20.20`). NGINX leitet
 die Anfrage intern per HTTPS an den Wazuh-Server (`10.0.20.30`) weiter.
 
 </details>
+
 ## 4. Wazuh Agents Installation und Konfiguration
 
 Diese Abschnitt beschreibt die Installation und Anpassung der Wazuh-Agent auf unterschiedliche OS Systeme. 
