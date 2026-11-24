@@ -38,7 +38,13 @@ Folgende Punkte werden behandelt:
 
 ## 1. Vorbereitung und Installation
 
-<details markdown="1"> <summary><strong><span style="color: #00813F;">Vorbereitungsschritte anzeigen</span></strong></summary>
+
+<details>
+<summary>
+<strong>
+$\color{#00813F}{\textsf{Vorbereitungsschritte anzeigen}}$
+</strong>
+</summary>
 
 
 ### 1.1 Installationsmedium vorbereiten
