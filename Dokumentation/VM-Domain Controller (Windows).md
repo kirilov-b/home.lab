@@ -5,12 +5,6 @@ title: "[SRV] VM – Domain Controller [SRV]"
 
 # VM – Windows Domain Controller
 
-## Ziel und Lab-Übersicht
-
-Diese Dokumentation beschreibt den Aufbau des Labs mit Windows Server  
-2025, **Active Directory, DNS, DHCP** und **Windows Server Backup** sowie Windows-Clients in getrennten  
-VLANs.
-
 **VM Parameter**
 
 |      **Parameter** | Wert              | **Parameter** | Wert        |
@@ -20,8 +14,27 @@ VLANs.
 |        **VM-Name** | dc-ws-20-3        |     **Größe** | 70 GB       |
 |          **Zweck** | AD, DNS, DHCP     |       **RAM** | 8 GB        |
 | **Betriebssystem** | Windows Server 25 |      **vCPU** | 4           |
+# Übersicht
 
-# Grundkonfiguration
+Der Domain Controller bildet die zentrale Identitäts- und Netzwerkverwaltungsinstanz unserer Lab-Umgebung. Er basiert auf Windows Server 2025 und stellt die Dienste **Active Directory Domain Services (AD DS), DNS und DHCP** bereit.
+
+Die Umgebung simuliert die IT-Infrastruktur eines fiktiven Unternehmens. Benutzer, Computer und Gruppen werden zentral verwaltet und in einer hierarchischen Organisationsstruktur abgebildet.
+
+### Aufgaben in unserer Umgebung
+- **Active Directory:** Zentrale Verwaltung von Benutzern, Computern, Gruppen und Domänenmitgliedschaften.
+- **DNS:** Namensauflösung innerhalb der Domäne und Bereitstellung der benötigten AD-DNS-Einträge.
+- **DHCP:** Automatische IP-Adressvergabe für Clients im VLAN 30.
+- **Zeitsynchronisierung:** Bereitstellung der Domänenzeit für Windows-Clients.
+- **Windows Server Backup:** Sicherung des System State zur Wiederherstellung wichtiger Active-Directory-Komponenten.
+- **Remote Administration:** Verwaltung des Servers und der Windows-Clients über SSH und optional RDP.
+
+# Konfiguration und Integration
+
+## Konfiguration
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Konfigurationsschirtte anzeigen</span></strong></summary>
+  
 
 **1. In Proxmox** - Setzen den VLAN Tag: **20**
 
@@ -44,80 +57,7 @@ Der Domain Controller befindet sich ein andere vLAN als die Clients deswegen auf
 7. **464** - Kerberos - Passwortänderung und Verwaltung
 8. **49152:65535** TCP Dynamische RPC-Ports bei  modernen Windows-Versionen;  für bestimmte  AD-/Netlogon-Funktionen  relevant
 
-
-# Active Directory - Unternehmensstruktur
-Eine fiktives Unternehmen und die Hierarchische Struktur
-
-## 2. OU-Struktur
-Benutzer, Computer und Gruppen sind nach Abteilungen getrennt. GPOs können gezielt an passende OUs gebunden werden. OUs sind organisatorische Container und ersetzen keine Berechtigungen.
-
-## 3. Benutzerkonten
-
-| Abteilung   | Anzeigename | Anmeldename           |
-| ----------- | ----------- | --------------------- |
-| Management  | Thomas      | `thomas.management`   |
-| Management  | Maria       | `maria.management`    |
-| Buchhaltung | Anna        | `anna.buchhaltung`    |
-| Buchhaltung | Petra       | `petra.buchhaltung`   |
-| IT          | Stefan      | `stefan.it`           |
-| IT          | Julia       | `julia.it`            |
-| Mitarbeiter | Michael     | `michael.mitarbeiter` |
-| Mitarbeiter | Lisa        | `lisa.mitarbeiter`    |
-| Mitarbeiter | Daniel      | `daniel.mitarbeiter`  |
-| Mitarbeiter | Sophie      | `sophie.mitarbeiter`  |
-
-## 4. Gruppenmodell (AGDLP)
-**Prinzip:** Benutzer → globale Gruppe (GG) → domänenlokale Berechtigungsgruppe (DL) → Ressourcenrechte.
-
-### Globale Sicherheitsgruppen
-Alle GG-Gruppen sind als **Global / Security** angelegt.
-
-| Gruppe               | Mitglieder                    |
-| -------------------- | ----------------------------- |
-| `BSI-GG-Management`  | Thomas, Maria                 |
-| `BSI-GG-Buchhaltung` | Anna, Petra                   |
-| `BSI-GG-IT`          | Stefan, Julia                 |
-| `BSI-GG-Mitarbeiter` | Michael, Lisa, Daniel, Sophie |
-| `BSI-GG-Alle`        | alle zehn Benutzer            |
-
-**Nutzen:** Abteilungsmitgliedschaften und Ressourcenrechte werden getrennt verwaltet. Neue Benutzer benötigen die passende GG-Mitgliedschaft; allgemeiner Zugriff setzt die Mitgliedschaft in `BSI-GG-Alle` voraus.
-# Windows Server Backup
-
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">WSB-Konfiguration anzeigen</span></strong></summary>
-
-
-- #### 1. Installation
-
-    - Server Manager > Manage > Add Roles and Features > Next
-    - Role-Based or Feature ... > Next
-    - DC.lab.test auswählen > Next
-    - Features > **Windows Server Backup** aktivieren
-    - Next > Install
-
-- #### 2. Virtuelle Festplatte erstellen/konfigurieren
-    
-    - In Proxmox unter Hardware eine Hard Disk erstellen
-    - Parameter: local-lvm, **70GB**
-    - DC neustarten
-    - Create and Format Hard Disk Partition
-    - Festplatte initialisieren, Formatieren auf NTFS, Name: **SSB (B:)**
-
-- #### 3. System State Backup einrichten
-    
-    - Pfad - *Server Manager > Tools > Windows Server Backup > Local Backup > (rechts) Backup* Once > Select Item for Backup > Add Items > **System State**
-    - Testen - *Recover > Get Started* - Hier wird den Backup Quelle gezeigt.
-    - Ein Schedule Backup könnte man einrichten. Für meine Zwecke ist es nicht nötig, da der Server nicht dauerhaft an ist.
-
-</details>
-
-## Konfigurationsschritte 
-
 Dieser Abschnitt dient als Anleitung für die Konfiguration über **Server Manager (GUI)** und die  **PowerShell** Variante.
-
-
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">Konfiguration anzeigen</span></strong></summary>
 
 ### 1. Server vorbereiten
 #### 1.1 Hostname setzen
@@ -144,6 +84,7 @@ Dieser Abschnitt dient als Anleitung für die Konfiguration über **Server Manag
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
+  
 #### Hostname und statische IP
 
 Setze den gewünschten Hostnamen:
@@ -181,6 +122,75 @@ Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses 10.0.20.3
 Ersetze `"Ethernet"`, falls der Adapter anders heißt.
 
 </details>
+# Anwendung 
+## 1. Active Directory - Unternehmensstruktur
+Eine fiktives Unternehmen und die Hierarchische Struktur
+
+###  1.2. OU-Struktur
+Benutzer, Computer und Gruppen sind nach Abteilungen getrennt. GPOs können gezielt an passende OUs gebunden werden. OUs sind organisatorische Container und ersetzen keine Berechtigungen.
+
+### 1. 3. Benutzerkonten
+
+| Abteilung   | Anzeigename | Anmeldename           |
+| ----------- | ----------- | --------------------- |
+| Management  | Thomas      | `thomas.management`   |
+| Management  | Maria       | `maria.management`    |
+| Buchhaltung | Anna        | `anna.buchhaltung`    |
+| Buchhaltung | Petra       | `petra.buchhaltung`   |
+| IT          | Stefan      | `stefan.it`           |
+| IT          | Julia       | `julia.it`            |
+| Mitarbeiter | Michael     | `michael.mitarbeiter` |
+| Mitarbeiter | Lisa        | `lisa.mitarbeiter`    |
+| Mitarbeiter | Daniel      | `daniel.mitarbeiter`  |
+| Mitarbeiter | Sophie      | `sophie.mitarbeiter`  |
+
+### 1.4. Gruppenmodell (AGDLP)
+**Prinzip:** Benutzer → globale Gruppe (GG) → domänenlokale Berechtigungsgruppe (DL) → Ressourcenrechte.
+
+#### Globale Sicherheitsgruppen
+Alle GG-Gruppen sind als **Global / Security** angelegt.
+
+| Gruppe               | Mitglieder                    |
+| -------------------- | ----------------------------- |
+| `BSI-GG-Management`  | Thomas, Maria                 |
+| `BSI-GG-Buchhaltung` | Anna, Petra                   |
+| `BSI-GG-IT`          | Stefan, Julia                 |
+| `BSI-GG-Mitarbeiter` | Michael, Lisa, Daniel, Sophie |
+| `BSI-GG-Alle`        | alle zehn Benutzer            |
+
+**Nutzen:** Abteilungsmitgliedschaften und Ressourcenrechte werden getrennt verwaltet. Neue Benutzer benötigen die passende GG-Mitgliedschaft; allgemeiner Zugriff setzt die Mitgliedschaft in `BSI-GG-Alle` voraus.
+## 2. Windows Server Backup
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">WSB-Konfiguration anzeigen</span></strong></summary>
+
+
+- #### 1. Installation
+
+    - Server Manager > Manage > Add Roles and Features > Next
+    - Role-Based or Feature ... > Next
+    - DC.lab.test auswählen > Next
+    - Features > **Windows Server Backup** aktivieren
+    - Next > Install
+
+- #### 2. Virtuelle Festplatte erstellen/konfigurieren
+    
+    - In Proxmox unter Hardware eine Hard Disk erstellen
+    - Parameter: local-lvm, **70GB**
+    - DC neustarten
+    - Create and Format Hard Disk Partition
+    - Festplatte initialisieren, Formatieren auf NTFS, Name: **SSB (B:)**
+
+- #### 3. System State Backup einrichten
+    
+    - Pfad - *Server Manager > Tools > Windows Server Backup > Local Backup > (rechts) Backup* Once > Select Item for Backup > Add Items > **System State**
+    - Testen - *Recover > Get Started* - Hier wird den Backup Quelle gezeigt.
+    - Ein Schedule Backup könnte man einrichten. Für meine Zwecke ist es nicht nötig, da der Server nicht dauerhaft an ist.
+
+</details>
+
+
+
 
 ### 2. AD DS und DNS installieren
 
