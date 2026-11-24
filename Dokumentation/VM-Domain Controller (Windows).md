@@ -33,6 +33,14 @@ Die Umgebung simuliert die IT-Infrastruktur eines fiktiven Unternehmens. Benutze
 
 ## Integration 
 
+Folgende Integrationsschritte wurden durchgeführt bevor man mit der Konfiguration des Dienstes beginnt.
+
+1. Einbinden in das geplante Netzwerk
+2. Einrichtung von SSH und RDP Verbindung mit dem Jump VM
+3. Integration in Zabbix Monitoring System
+4. Integration in Wazuh Security Monitoringsystem
+
+
 ## Konfiguration
 
 <details markdown="1">
@@ -42,8 +50,7 @@ Die Umgebung simuliert die IT-Infrastruktur eines fiktiven Unternehmens. Benutze
 **1. In Proxmox** - Setzen den VLAN Tag: **20**
 
 **2. Windows Server installieren:** Windows Server 2025 Standard  
-Evaluation mit Desktop Experience installieren, Hostname setzen und  
-eine statische IP konfigurieren.
+Evaluation mit Desktop Experience installieren, Hostname setzen und  eine statische IP konfigurieren.
 - Uhrzeit und Zeitzone Richtig einstellen - Der Server Dient als Master Uhr für alle andere Clients
 
 ### Wichtige Ports für Domain - Client Verbindung
