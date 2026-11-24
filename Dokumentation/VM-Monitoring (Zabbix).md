@@ -235,6 +235,6 @@ Standard-Anmeldedaten einer neuen Installation:
 Das System ist bereit für Verbindungen mit VMs
 
 ## 10. Zabbix Agents integration
-Die Installation- und Integrationsschritte von unterschiedliche OS Clients werden hier beschrieben. [[Integration#Zabbix]]
+Die Installation- und Integrationsschritte von unterschiedliche OS Clients werden hier beschrieben. [Zabbix Integration](./Integration.md#zabbix)
 
 # Tests
