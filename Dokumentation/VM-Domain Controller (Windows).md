@@ -14,6 +14,7 @@ title: "[SRV] VM – Domain Controller [SRV]"
 |        **VM-Name** | dc-ws-20-3        |     **Größe** | 70 GB       |
 |          **Zweck** | AD, DNS, DHCP     |       **RAM** | 8 GB        |
 | **Betriebssystem** | Windows Server 25 |      **vCPU** | 4           |
+
 # Übersicht
 
 Der Domain Controller bildet die zentrale Identitäts- und Netzwerkverwaltungsinstanz unserer Lab-Umgebung. Er basiert auf Windows Server 2025 und stellt die Dienste **Active Directory Domain Services (AD DS), DNS und DHCP** bereit.
