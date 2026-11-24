@@ -7,13 +7,14 @@ title: "[SRV] VM – Domain Controller [SRV]"
 
 **VM Parameter**
 
-|      **Parameter** | Wert              | **Parameter** | Wert        |
-| -----------------: | ----------------- | ------------: | ----------- |
-|          **VM-ID** | 203               |      **IPv4** | 10.0.20.3   |
-|       **vLAN Tag** | 20                |    **Domain** | cl.lab.test |
-|        **VM-Name** | dc-ws-20-3        |     **Größe** | 70 GB       |
-|          **Zweck** | AD, DNS, DHCP     |       **RAM** | 8 GB        |
-| **Betriebssystem** | Windows Server 25 |      **vCPU** | 4           |
+|           **Parameter** | Wert              | **Parameter** | Wert        |
+| ----------------------: | ----------------- | ------------: | ----------- |
+|               **VM-ID** | 203               |      **IPv4** | 10.0.20.3   |
+|            **vLAN Tag** | 20                |   **Gateway** | 10.0.20.1   |
+|             **VM-Name** | dc-ws-20-3        |    **Domain** | cl.lab.test |
+|               **Zweck** | AD, DNS, DHCP     |     **Größe** | 70 GB       |
+|      **Betriebssystem** | Windows Server 25 |       **RAM** | 8 GB        |
+| **Local Admin Account** | ladministrator    |      **vCPU** | 4           |
 
 # Übersicht
 
@@ -35,10 +36,11 @@ Die Umgebung simuliert die IT-Infrastruktur eines fiktiven Unternehmens. Benutze
 
 Folgende Integrationsschritte wurden durchgeführt bevor man mit der Konfiguration des Dienstes beginnt.
 
-1. Einbinden in das geplante Netzwerk
-2. Einrichtung von SSH und RDP Verbindung mit dem Jump VM
-3. Integration in Zabbix Monitoring System
-4. Integration in Wazuh Security Monitoring System
+1. **Hostname** wurde laut Namenkonvention angepasst: `dc-ws-20-3`
+2. Einbinden in das geplante **Netzwerk**
+3. Einrichtung von **SSH** und **RDP** Verbindung mit dem Jump VM
+4. Integration in **Zabbix** Monitoring System
+5. Integration in **Wazuh** Security Monitoring System
 
 
 ## Konfiguration
@@ -47,9 +49,7 @@ Folgende Integrationsschritte wurden durchgeführt bevor man mit der Konfigurati
   <summary><strong><span style="color: #00813F;">Konfigurationsschirtte anzeigen</span></strong></summary>
   
 
-**1. In Proxmox** - Setzen den VLAN Tag: **20**
-
-**2. Windows Server installieren:** Windows Server 2025 Standard  
+**Windows Server ISO installieren:** Windows Server 2025 Standard  
 Evaluation mit Desktop Experience installieren, Hostname setzen und  eine statische IP konfigurieren.
 - Uhrzeit und Zeitzone Richtig einstellen - Der Server Dient als Master Uhr für alle andere Clients
 
@@ -67,32 +67,7 @@ Der Domain Controller befindet sich ein andere vLAN als die Clients deswegen auf
 7. **464** - Kerberos - Passwortänderung und Verwaltung
 8. **49152:65535** TCP Dynamische RPC-Ports bei  modernen Windows-Versionen;  für bestimmte  AD-/Netlogon-Funktionen  relevant
 
-Dieser Abschnitt dient als Anleitung für die Konfiguration über **Server Manager (GUI)** und die  **PowerShell** Variante.
-
-### 1. Server vorbereiten
-#### 1.1 Hostname setzen
-
-1. Öffne **Server Manager > Local Server**.
-2. Klicke neben **Computer name** auf den aktuellen Namen.
-3. Klicke auf **Change**, trage `dc-ws-20-3` ein und bestätige.
-4. Starte den Server neu, falls Windows dazu auffordert.
-
-#### 1.2 Statische IPv4-Adresse konfigurieren
-
-1. Öffne **Server Manager > Local Server**.
-2. Klicke neben **Ethernet** auf den Netzwerk-Link.
-3. Rechtsklick auf den aktiven Adapter > **Properties**.
-4. Öffne **Internet Protocol Version 4 (TCP/IPv4) > Properties**.
-5. Wähle **Use the following IP address** und trage ein:
-    - IP: `10.0.20.3`
-    - Subnet mask: `255.255.255.0`
-    - Default gateway: `10.0.20.1`
-6. Wähle **Use the following DNS server addresses**:
-    - Preferred DNS: `10.0.20.3`
-    - Alternate DNS: leer lassen
-7. Bestätigen.
-
-### 2. Active Directory und DNS 
+### 1. Active Directory und DNS 
 
 #### 2.1 Rollen installieren
 
@@ -128,56 +103,7 @@ Dieser Abschnitt dient als Anleitung für die Konfiguration über **Server Manag
 - Unter **Forward Lookup Zones** die Zone `cl.lab.test` und die  
     AD-DNS-Einträge kontrollieren.
 
-
-
-
-
-
-
-
-
-<details markdown="1">
-  <summary><strong><span style="color: #00813F;">PowerShell Konfiguration anzeigen</span></strong></summary>
-  
-#### Hostname und statische IP
-
-Setze den gewünschten Hostnamen:
-
-```
-Rename-Computer -NewName "dc-ws-20-3" -Restart
-```
-
-Nach dem Neustart konfigurierst wird die statische IP über die  
-Netzwerkeinstellungen oder mit  
-`New-NetIPAddress`/`Set-DnsClientServerAddress`. Vorhandene  
-IP-Konfiguration prüfen:
-
-```
-Get-NetIPConfiguration
-Get-NetIPAddress -AddressFamily IPv4
-Get-DnsClientServerAddress -AddressFamily IPv4
-```
-
-**Achtung:** Vor `New-NetIPAddress` die korrekte Netzwerkschnittstelle  
-mit `Get-NetAdapter` ermitteln. Keine zweite, widersprüchliche  
-IP-Konfiguration auf derselben Schnittstelle anlegen.
-
-#### DNS auf den DC zeigen lassen
-
-Nachdem die statische IP korrekt konfiguriert ist, den bevorzugten  
-DNS-Server der DC-Netzwerkkarte auf `10.0.20.3` setzen. Den  
-tatsächlichen Interface-Alias vorher mit `Get-NetAdapter` ermitteln:
-
-```
-Get-NetAdapter
-Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses 10.0.20.3
-```
-
-Ersetze `"Ethernet"`, falls der Adapter anders heißt.
-
-</details>
-
-### 3. DHCP installieren und konfigurieren
+### 2. DHCP installieren und konfigurieren
 
 #### 3.1 DHCP-Rolle installieren
 
@@ -219,7 +145,19 @@ Unter **IPv4 > VLAN30-Clients > Scope Options** prüfen:
 - `006 DNS Servers`: `10.0.20.3`
 - `015 DNS Domain Name`: `cl.lab.test`
 
-### 4. Windows Server Backup
+#### 3.5 Router Relay
+Unsere DC befindet sich in andere Netzwerk als unsere Clients. Dafür muss man der Transfer der DHCP Trafik an der Router (OPNsense) ermöglichen
+
+- OPNsense-Weboberfläche öffnen.
+- **Services > DHCP Relay** öffnen (Menü kann je nach Version  
+    abweichen).
+- Client-Interface `VLAN_30_CLIENTS` auswählen.
+- DHCP-Serverziel `10.0.20.3` eintragen.
+- Relay aktivieren, speichern und anwenden.
+- Status prüfen.
+
+
+### 3. Windows Server Backup
 
 - #### 1. Installation
 
@@ -252,10 +190,10 @@ Unter **IPv4 > VLAN30-Clients > Scope Options** prüfen:
 Eine fiktives Unternehmen und die Hierarchische Struktur
 
 ### 1. Unternehmensstruktur
-### 1.2. OU-Struktur
+#### 1.2. OU-Struktur
 Benutzer, Computer und Gruppen sind nach Abteilungen getrennt. GPOs können gezielt an passende OUs gebunden werden. OUs sind organisatorische Container und ersetzen keine Berechtigungen.
 
-### 1. 3. Benutzerkonten
+#### 1. 3. Benutzerkonten
 
 | Abteilung   | Anzeigename | Anmeldename           |
 | ----------- | ----------- | --------------------- |
@@ -270,7 +208,7 @@ Benutzer, Computer und Gruppen sind nach Abteilungen getrennt. GPOs können gezi
 | Mitarbeiter | Daniel      | `daniel.mitarbeiter`  |
 | Mitarbeiter | Sophie      | `sophie.mitarbeiter`  |
 
-### 1.4. Gruppenmodell (AGDLP)
+#### 1.4. Gruppenmodell (AGDLP)
 **Prinzip:** Benutzer → globale Gruppe (GG) → domänenlokale Berechtigungsgruppe (DL) → Ressourcenrechte.
 
 #### Globale Sicherheitsgruppen
