@@ -40,7 +40,7 @@ Folgende Integrationsschritte wurden durchgeführt bevor man mit der Konfigurati
 2. Einbinden in das geplante **Netzwerk**
 3. Einrichtung von **SSH** und **RDP** Verbindung mit dem Jump VM
 4. Integration in **Zabbix** Monitoring System:  [Zabbix Integration](./Integration.md#zabbix)
-5. Integration in **Wazuh** Security Monitoring System: *Integration >*  [[Integration#Wazuh]]
+5. Integration in **Wazuh** Security Monitoring System: [Wazuh Integration](./Integration.md#wazuh)
 
 
 ## Konfiguration
