@@ -6,15 +6,14 @@ title: "[CL] VM – MacOS - Testclient - 3"
 
 ## VM Parameter
 
-|      **Parameter** | Wert           |         **Parameter** | Wert           |
-| -----------------: | -------------- | --------------------: | -------------- |
-|          **VM-ID** | 303            |         **IPv4 DHCP** | 10.0.30.DHCP   |
-|       **vLAN Tag** | 30             |            **Domain** | cl.lab.test    |
-| **VM / Host-Name** | cl3-mac-30     |       **Hard Disk** * | 80 GB (SATA)   |
-|          **Zweck** | Testclient     |               **RAM** | 8 GB           |
-| **Betriebssystem** | MacOS Sonoma   |              **vCPU** | 2              |
-|    **Local Admin** | ladministrator | **Netzwerkadapter** * | VMware vmxnet3 |
-
+|      **Parameter** | Wert           |       **Parameter** | Wert           |
+| -----------------: | -------------- | ------------------: | -------------- |
+|          **VM-ID** | 303            |       **CPU / RAM** | 2 Core / 8 GB  |
+|       **vLAN Tag** | 30             |       **Hard Disk** | 80 GB (SATA)   |
+| **VM / Host-Name** | cl3-mac-30     |            **IPv4** | 10.0.30.DHCP   |
+|          **Zweck** | Testclient     |         **Gateway** | 10.0.30.1      |
+| **Betriebssystem** | MacOS Sonoma   |          **Domäne** | cl.lab.test    |
+|    **Local Admin** | ladministrator | **Netzwerkadapter** | VMware vmxnet3 |
 
 # Übersicht
 

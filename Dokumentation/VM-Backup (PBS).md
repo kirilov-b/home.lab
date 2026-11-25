@@ -6,14 +6,14 @@ title: "[SRV] VM – Proxmox Backup Server"
 
 **VM Parameter**
 
-|      **Parameter** | Wert          | **Parameter** | Wert       |
-| -----------------: | ------------- | ------------: | ---------- |
-|          **VM-ID** | 211           |      **IPv4** | 10.0.20.10 |
-|       **vLAN Tag** | 20            |    **Domain** | keine      |
-|        **VM-Name** | pbs-ld-20-10  |     **Größe** | 20 GB      |
-|          **Zweck** | Backup Server |       **RAM** | 8 GB       |
-| **Betriebssystem** | PBS (Debian)  |      **vCPU** | 4          |
-
+|      **Parameter** | Wert                |       **Parameter** | Wert          |
+| -----------------: | ------------------- | ------------------: | ------------- |
+|          **VM-ID** | 211                 |       **CPU / RAM** | 4 Core / 8 GB |
+|       **vLAN Tag** | 20                  |       **Hard Disk** | 20 GB         |
+| **VM / Host-Name** | pbs-ld-20-10        |            **IPv4** | 10.0.20.10    |
+|          **Zweck** | Backup Server       |         **Gateway** | 10.0.20.1     |
+| **Betriebssystem** | PBS (Debian Trixie) |          **Domäne** | srv.test      |
+|    **Local Admin** | root                | **Netzwerkadapter** |               |
 
 # Übersicht
 
@@ -30,7 +30,7 @@ Status-E-Mail.
 **Ablauf:** Proxmox-VMs → PVE-Speicher **Extern-Backup** → PBS-Datastore
 **Backup** → externer Datenträger.
 
-# Konfiguration
+# PBS - installation und Konfiguration
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Konfiguration anzeigen</span></strong></summary>

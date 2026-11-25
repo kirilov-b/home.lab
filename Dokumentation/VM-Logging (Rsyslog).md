@@ -7,14 +7,15 @@ title: "[SRV] VM – Zentrales Logging"
 
 **VM Parameter**
 
-|      **Parameter** | Wert              |  Parameter | Wert       |
-| -----------------: | ----------------- | ---------: | ---------- |
-|          **VM-ID** | 277               |   **IPv4** | 10.0.20.70 |
-|       **vLAN Tag** | 20                | **Domain** | srv.test   |
-|        **VM-Name** | log-la-20-70      |  **Größe** | 20 GB      |
-|          **Zweck** | Zentrales Logging |    **RAM** | 4 GB       |
-| **Betriebssystem** | Linux Alma 10.2   |   **vCPU** | 2          |
 
+|      **Parameter** | Wert              |       **Parameter** | Wert          |
+| -----------------: | ----------------- | ------------------: | ------------- |
+|          **VM-ID** | 277               |       **CPU / RAM** | 2 Core / 4 GB |
+|       **vLAN Tag** | 20                |       **Hard Disk** | 20 GB         |
+| **VM / Host-Name** | log-la-20-70      |            **IPv4** | 10.0.20.70    |
+|          **Zweck** | Zentrales Logging |         **Gateway** | 10.0.20.1     |
+| **Betriebssystem** | Linux Alma 10.2   |          **Domäne** | srv.test      |
+|    **Local Admin** | root              | **Netzwerkadapter** |               |
 
 # Übersicht
 

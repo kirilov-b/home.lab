@@ -7,14 +7,14 @@ title: "[CL] VM – Windows 11 - Testclient 1"
 
 **VM Parameter**
 
-|      **Parameter** | Wert           |       **Parameter** | Wert         |
-| -----------------: | -------------- | ------------------: | ------------ |
-|          **VM-ID** | 301            |       **IPv4 DHCP** | 10.0.30.DHCP |
-|       **vLAN Tag** | 30             |          **Domain** | cl.lab.test  |
-| **VM / Host-Name** | cl1-wc-30      |           **Größe** | 60 GB        |
-|          **Zweck** | Testclient     |             **RAM** | 4 GB         |
-| **Betriebssystem** | Windows 11 Pro |            **vCPU** | 2            |
-|    **Local Admin** | ladministrator | **Netzwerkadapter** | Intel E1000  |
+|      **Parameter** | Wert           |       **Parameter** | Wert          |
+| -----------------: | -------------- | ------------------: | ------------- |
+|          **VM-ID** | 301            |       **CPU / RAM** | 2 Core / 4 GB |
+|       **vLAN Tag** | 30             |       **Hard Disk** | 60 GB         |
+| **VM / Host-Name** | cl1-wc-30      |            **IPv4** | 10.0.30.DHCP  |
+|          **Zweck** | Testclient     |         **Gateway** | 10.0.30.1     |
+| **Betriebssystem** | Windows 11 Pro |          **Domäne** | cl.lab.test   |
+|    **Local Admin** | ladministrator | **Netzwerkadapter** | Intel E1000   |
 
 # Übersicht
 

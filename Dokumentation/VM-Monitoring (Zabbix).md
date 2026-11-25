@@ -7,14 +7,15 @@ title: "[SRV] VM – Zabbix Monitoring"
 
 **VM Parameter**
 
-|          Parameter | Wert              | **Parameter** | Wert       |
-| -----------------: | ----------------- | ------------: | ---------- |
-|          **VM-ID** | 245               |      **IPv4** | 10.0.20.40 |
-|       **vLAN Tag** | 20                |    **Domain** | srv.test   |
-|        **VM-Name** | mon-la-20-40      |     **Größe** | 40 GB      |
-|          **Zweck** | Zabbix Monitoring |       **RAM** | 4 GB       |
-| **Betriebssystem** | Linux Alma 10.2   |      **vCPU** | 2          |
 
+|      **Parameter** | Wert              |       **Parameter** | Wert          |
+| -----------------: | ----------------- | ------------------: | ------------- |
+|          **VM-ID** | 245               |       **CPU / RAM** | 2 Core / 4 GB |
+|       **vLAN Tag** | 20                |       **Hard Disk** | 40 GB         |
+| **VM / Host-Name** | mon-la-20-40      |            **IPv4** | 10.0.20.40    |
+|          **Zweck** | Zabbix Monitoring |         **Gateway** | 10.0.20.1     |
+| **Betriebssystem** | Linux Alma 10.2   |          **Domäne** | srv.test      |
+|    **Local Admin** | root              | **Netzwerkadapter** |               |
 
 # Übersicht
 Zabbix ist eine Monitoring-Plattform, die alle VMs überwachen soll unabhängig davon, ob sie ein Teil einer Domäne sind oder nicht. Alle existierendn VMs einschließlich Proxmox VE und Proxmox PBS.
@@ -22,7 +23,16 @@ Die Plattform überwacht: Hardware Auslastung (CPU, RAM, Festplattenauslastung),
 
 **Anmerkung:** Zabbix verwendet ein PostgreSQL-Instanz. Sie ist unabhängig von der separaten PostgreSQL-VM 2
 
-# Konfigurationsschritte 
+## Vorbereitung und Integration
+
+1. **Hostname** wurde laut Namenkonvention angepasst: 
+2. Einbinden in das geplante **Netzwerk**
+3. Einbinden in der vorgesehene Domäne
+4. Einrichtung von **SSH** Verbindung mit dem Jump VM
+5. Integration in **Zabbix** Monitoring System:  [Zabbix Integration](./Integration.md#zabbix)
+6. Integration in **Wazuh** Security Monitoring System: [Wazuh Integration](./Integration.md#wazuh)
+
+# Zabbix - Installation und Konfiguration 
 Der folgende Abschnitt zeigt die Vorbereitung, Installation und Konfiguration von der Zabbix Server auf der VM. 
 
 

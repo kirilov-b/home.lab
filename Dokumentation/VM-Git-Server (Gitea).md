@@ -7,14 +7,14 @@ title: "[SRV] VM – Gitea / Git-Server"
 
 **VM Parameter**
 
-|      Parameter | Wert               | **Parameter** | Wert       |
-| -------------: | ------------------ | ------------: | ---------- |
-|          VM-ID | 299                |      **IPv4** | 10.0.20.80 |
-|   **vLAN Tag** | 20                 |    **Domain** | srv.test   |
-|        VM-Name | git-ld-20-80       |     **Größe** | 32 GB      |
-|          Zweck | Gitea / Git-Server |       **RAM** | 2 GB       |
-| Betriebssystem | Linux Debian       |      **vCPU** | 2          |
-
+|      **Parameter** | Wert               |       **Parameter** | Wert          |
+| -----------------: | ------------------ | ------------------: | ------------- |
+|          **VM-ID** | 299                |       **CPU / RAM** | 2 Core / 2 GB |
+|       **vLAN Tag** | 20                 |       **Hard Disk** | 32 GB         |
+| **VM / Host-Name** | git-ld-20-80       |            **IPv4** | 10.0.20.80    |
+|          **Zweck** | Gitea / Git-Server |         **Gateway** | 10.0.20.1     |
+| **Betriebssystem** | Linux Debian       |          **Domäne** | srv.test      |
+|    **Local Admin** | root               | **Netzwerkadapter** |               |
 
 # Übersicht
 

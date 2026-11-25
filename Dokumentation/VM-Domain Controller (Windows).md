@@ -7,14 +7,14 @@ title: "[SRV] VM – Domain Controller [SRV]"
 
 **VM Parameter**
 
-|           **Parameter** | Wert              | **Parameter** | Wert        |
-| ----------------------: | ----------------- | ------------: | ----------- |
-|               **VM-ID** | 203               |      **IPv4** | 10.0.20.3   |
-|            **vLAN Tag** | 20                |   **Gateway** | 10.0.20.1   |
-|             **VM-Name** | dc-ws-20-3        |    **Domain** | cl.lab.test |
-|               **Zweck** | AD, DNS, DHCP     |     **Größe** | 70 GB       |
-|      **Betriebssystem** | Windows Server 25 |       **RAM** | 8 GB        |
-| **Local Admin Account** | ladministrator    |      **vCPU** | 4           |
+|      **Parameter** | Wert              |       **Parameter** | Wert          |
+| -----------------: | ----------------- | ------------------: | ------------- |
+|          **VM-ID** | 203               |       **CPU / RAM** | 4 Core / 8 GB |
+|       **vLAN Tag** | 20                |       **Hard Disk** | 70 GB         |
+| **VM / Host-Name** | dc-ws-20-3        |            **IPv4** | 10.0.20.3     |
+|          **Zweck** | AD, DNS, DHCP     |         **Gateway** | 10.0.20.1     |
+| **Betriebssystem** | Windows Server 25 |          **Domäne** | cl.lab.test   |
+|    **Local Admin** | ladministrator    | **Netzwerkadapter** |               |
 
 # Übersicht
 
@@ -29,10 +29,7 @@ Die Umgebung simuliert die IT-Infrastruktur eines fiktiven Unternehmens. Benutze
 - **Zeitsynchronisierung:** Bereitstellung der Domänenzeit für Windows-Clients.
 - **Windows Server Backup:** Sicherung des System State zur Wiederherstellung wichtiger Active-Directory-Komponenten.
 - **Remote Administration:** Verwaltung des Servers und der Windows-Clients über SSH und optional RDP.
-
-#  Konfiguration
-
-## Vorkonfiguration
+## Vorbereitung und Integration
 
 Folgende Integrationsschritte wurden durchgeführt bevor man mit der Konfiguration des Dienstes beginnt.
 
@@ -42,8 +39,7 @@ Folgende Integrationsschritte wurden durchgeführt bevor man mit der Konfigurati
 4. Integration in **Zabbix** Monitoring System:  [Zabbix Integration](./Integration.md#zabbix)
 5. Integration in **Wazuh** Security Monitoring System: [Wazuh Integration](./Integration.md#wazuh)
 
-
-## Konfiguration
+# Domain Controller - Installation und Konfiguration
 
 <details markdown="1">
   <summary><strong><span style="color: #00813F;">Konfigurationsschirtte anzeigen</span></strong></summary>

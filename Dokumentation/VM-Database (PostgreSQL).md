@@ -7,14 +7,14 @@ title: "[SRV] VM – PostgreSQL"
 
 **VM Parameter**
 
-|      **Parameter** | Wert                   | **Parameter** | Wert       |
-| -----------------: | ---------------------- | ------------: | ---------- |
-|          **VM-ID** | 268                    |      **IPv4** | 10.0.20.60 |
-|       **vLAN Tag** | 20                     |    **Domain** | srv.test   |
-|        **VM-Name** | db-ld-20-30            |     **Größe** | 32 GB      |
-|          **Zweck** | PostgreSQL / Datenbank |       **RAM** | 4 GB       |
-| **Betriebssystem** | Linux Debian           |      **vCPU** | 2          |
-
+|      **Parameter** | Wert                   |       **Parameter** | Wert          |
+| -----------------: | ---------------------- | ------------------: | ------------- |
+|          **VM-ID** | 268                    |       **CPU / RAM** | 2 Core / 4 GB |
+|       **vLAN Tag** | 20                     |       **Hard Disk** | 32 GB         |
+| **VM / Host-Name** | db-ld-20-30            |            **IPv4** | 10.0.20.60    |
+|          **Zweck** | PostgreSQL / Datenbank |         **Gateway** | 10.0.20.1     |
+| **Betriebssystem** | Linux Debian           |          **Domäne** | srv.test      |
+|    **Local Admin** | root                   | **Netzwerkadapter** |               |
 
 # Übersicht
 

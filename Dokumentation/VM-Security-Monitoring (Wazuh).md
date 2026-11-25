@@ -6,30 +6,33 @@ root# VM – Wazuh / Security Monitoring
 
 **VM Parameter**
 
-|          Parameter | Wert                        | **Parameter** | Wert       |
-| -----------------: | --------------------------- | ------------: | ---------- |
-|          **VM-ID** | 236                         |      **IPv4** | 10.0.20.30 |
-|       **vLAN Tag** | 20                          |    **Domain** | srv.test   |
-|        **VM-Name** | sec-lu-20-30                |     **Größe** | 64 GB      |
-|          **Zweck** | Wazuh / Security Monitoring |       **RAM** | 8 GB       |
-| **Betriebssystem** | Ubuntu 24.04.4 LTS          |      **vCPU** | 4          |
 
+|      **Parameter** | Wert                        |       **Parameter** | Wert          |
+| -----------------: | --------------------------- | ------------------: | ------------- |
+|          **VM-ID** | 236                         |       **CPU / RAM** | 4 Core / 8 GB |
+|       **vLAN Tag** | 20                          |       **Hard Disk** | 64 GB         |
+| **VM / Host-Name** | sec-lu-20-30                |            **IPv4** | 10.0.20.30    |
+|          **Zweck** | Wazuh / Security Monitoring |         **Gateway** | 10.0.20.1     |
+| **Betriebssystem** | Ubuntu 24.04.4 LTS          |          **Domäne** | srv.test      |
+|    **Local Admin** | ladministrator              | **Netzwerkadapter** |               |
 
 # Übersicht
 
 **Wazuh** soll als zentrale Security-Monitoring-Plattform zur Erkennung, Analyse und Überwachung von Sicherheitsvorfällen in unserer Infrastruktur dienen. Der Wechsel zu **Ubuntu Server 24.04 LTS** erfolgte, weil Ubuntu offiziell als Wazuh-Serverplattform unterstützt wird, während AlmaLinux 10 nicht ausdrücklich aufgeführt ist. Dadurch gewährleisten wir eine bessere dokumentierte Kompatibilität und langfristige Wartbarkeit.
-# Integration und Konfiguration
 
-## Integration
+## Vorbereitung und Integration
 
-1. **Hostname** wurde laut Namenkonvention angepasst: `dc-ws-20-3`
+1. **Hostname** wurde laut Namenkonvention angepasst: 
 2. Einbinden in das geplante **Netzwerk**
 3. Einbinden in der vorgesehene Domäne
 4. Einrichtung von **SSH** Verbindung mit dem Jump VM
 5. Integration in **Zabbix** Monitoring System:  [Zabbix Integration](./Integration.md#zabbix)
 6. Integration in **Wazuh** Security Monitoring System: [Wazuh Integration](./Integration.md#wazuh)
 
-## Konfiguration
+# Wazuh - Installation und Konfiguration
+
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Konfigurationsschirtte anzeigen</span></strong></summary>
 
 
 ## 1. OS Installation und Integration

@@ -7,13 +7,14 @@ title: "[MGMT] VM – Administrator"
 
 **VM Parameter**
 
-|      **Parameter** | Wert                      | **Parameter** | Wert      |
-| -----------------: | ------------------------- | ------------: | --------- |
-|          **VM-ID** | 100                       |      **IPv4** | 10.0.10.3 |
-|       **vLAN Tag** | 10                        |    **Domain** | keinen    |
-|        **VM-Name** | jump-lm-10-3              |     **Größe** | 80 GB     |
-|          **Zweck** | Verwaltung, Dokumentation |       **RAM** | 8 GB      |
-| **Betriebssystem** | Linux Mint 22.3           |      **vCPU** | 4         |
+|      **Parameter** | Wert                      |       **Parameter** | Wert          |
+| -----------------: | ------------------------- | ------------------: | ------------- |
+|          **VM-ID** | 100                       |       **CPU / RAM** | 4 Core / 8 GB |
+|       **vLAN Tag** | 10                        |       **Hard Disk** | 80 GB         |
+| **VM / Host-Name** | jump-lm-10-3              |            **IPv4** | 10.0.10.3     |
+|          **Zweck** | Verwaltung, Dokumentation |         **Gateway** | 10.0.10.1     |
+| **Betriebssystem** | Linux Mint 22.3           |          **Domäne** | kein          |
+|    **Local Admin** | support                   | **Netzwerkadapter** |               |
 
 # Übersicht
 
