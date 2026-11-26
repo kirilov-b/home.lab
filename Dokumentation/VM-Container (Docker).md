@@ -29,6 +29,10 @@ Docker dient als zentrale Container-Plattform der Umgebung. Damit können wir An
 6. Integration in **Wazuh** Security Monitoring System: [Wazuh Integration](./Integration.md#wazuh)
 # Docker - Installation und Konfiguration
 
+<details markdown="1">
+  <summary><strong><span style="color: #00813F;">Schritte anzeigen</span></strong></summary>
+
+
 ## 1.Installation
 Die Installation erfolgt über das offizielle Docker-APT-Repository. Das ist der bevorzugte Weg für eine wartbare Installation und ermöglicht spätere Updates über APT.
 
@@ -134,7 +138,6 @@ Zuerst wurde die Konfiguration überprüft, danach wird Portainer gestartet und 
 `docker compose up -d`
 `docker ps`
 ### 2.2. Portainer im Browser einrichten
-
 Erfolgreich eingerichtet
 Wir haben die Weboberfläche geöffnet:
 `https://10.10.20.50:9443`
@@ -145,7 +148,7 @@ Wir haben die Weboberfläche geöffnet:
 4. Edge Compute mit **Skip** übersprungen.
 5. Die lokale Docker-Umgebung `local` verwendet.
 
-
+</details>
 
 # Anwendung
 
