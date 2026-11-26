@@ -68,5 +68,6 @@ title: Virtuelle Machienen - Planung
 | 301   | cl1          | **cl1-wc-30**    | Testclient                    | Windows 11          | DHCP       | 60          | 4         | 2    |
 | 302   | cl2          | **cl2-lm-30**    | Testclient                    | Linux Mint          | DHCP       | 40          | 4         | 2    |
 | 303   | cl3          | **cl3-mac-30**   | Testclient                    | MacOS               | DHCP       | 40          | 4         | 2    |
+| 304   | cl4          | **cl4-andr-30**  | Testclient                    | Bliss-v16.9.7       | DHCP       | 20          | 4         | 2    |
 
 

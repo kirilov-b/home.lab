@@ -1,6 +1,6 @@
 <mxfile host="Electron" pages="3">
   <diagram name="Hauptdiagramm" id="e-R9hXRKhPBVgImNvWdK">
-    <mxGraphModel dx="2777" dy="2209" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2028" dy="1833" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -780,6 +780,21 @@
         <mxCell id="CLkGdCkE5vc_SrPs4uMI-105" parent="MfXe9mtYYvu2yKNhsO0o-1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000, #446e2c);" value="Wazuh" vertex="1">
           <mxGeometry height="20" width="49.25" x="790.24" y="54" as="geometry" />
         </mxCell>
+        <mxCell id="hjZ-cUxrnjAbCTlOhA-C-1" parent="MfXe9mtYYvu2yKNhsO0o-1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;direction=west;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="157" width="81" x="1509.87" y="263" as="geometry" />
+        </mxCell>
+        <mxCell id="hjZ-cUxrnjAbCTlOhA-C-6" parent="MfXe9mtYYvu2yKNhsO0o-1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;arcSize=29;fillColor=#dae8fc;strokeColor=#000000;fontSize=11;verticalAlign=bottom;" value="&lt;b&gt;CL4-ANDR-30&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="81" x="1509.87" y="263" as="geometry" />
+        </mxCell>
+        <mxCell id="hjZ-cUxrnjAbCTlOhA-C-7" edge="1" parent="MfXe9mtYYvu2yKNhsO0o-1" source="T4qNfiDk5lv5usiu9zMW-3" style="edgeStyle=orthogonalEdgeStyle;shape=wire;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;dashed=1;fontColor=light-dark(#007FFF,#007FFF);strokeColor=light-dark(#007FFF,#007FFF);strokeWidth=2;endArrow=none;endFill=0;" target="hjZ-cUxrnjAbCTlOhA-C-6">
+          <mxGeometry relative="1" x="0.0005" as="geometry">
+            <Array as="points">
+              <mxPoint x="919.87" y="474.3" />
+              <mxPoint x="919.87" y="159" />
+              <mxPoint x="1530.17" y="159" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="mMlF2aO2YJuq351Z9pf_-4" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;fillColor=#f0a30a;strokeColor=#000000;endFill=0;strokeWidth=2;" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
             <mxPoint x="10" y="670" as="sourcePoint" />
@@ -830,7 +845,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="Zu1xCEk7YnNMqSbPEN0N" name="Steuerungdiagramm">
-    <mxGraphModel dx="982" dy="582" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1414" dy="880" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1180,6 +1195,9 @@
             <mxPoint x="210" y="260" as="sourcePoint" />
             <mxPoint x="200" y="152" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="z0h--2OPkzENYpkAGBCU-1" parent="zimgDLgoZLWlmfi-P4yK-1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#333333;fontColor=#FFFFFF;" value="cl4-andr-30" vertex="1">
+          <mxGeometry height="30" width="50" x="310" y="120" as="geometry" />
         </mxCell>
         <mxCell id="zimgDLgoZLWlmfi-P4yK-40" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#333333;strokeColor=none;fontColor=#FFFFFF;" value="Level 4&lt;br&gt;PX Intern (VLAN)" vertex="1">
           <mxGeometry height="30" width="130" x="50" y="578" as="geometry" />
